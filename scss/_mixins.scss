@@ -1,0 +1,14 @@
+$position: center;
+$font: 'Raleway', sans-serif;
+$sign_color_1: #cc0033;
+$sign_color_2: #ffcc00;
+$font-size: 1rem;
+$back_color: #fefefa;
+$font_color: #333333;
+
+
+
+@mixin border($border_width){
+    border: $border_width dotted $sign_color_2;
+}
+
