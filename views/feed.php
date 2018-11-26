@@ -6,7 +6,7 @@
 
             <article class="feed_post row">
                 <div class="col-8">
-                    <h2 class="post_title"></h2>
+                    <h2 class="post_title">hej</h2>
                     <p class="date"></p>
                     <p class="category"></p>
                     <p class="content"></p>
