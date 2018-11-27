@@ -7,7 +7,14 @@
   ?>
 
   <div class="container justify-content-center">
-  <h2>Hej</h2>
+    <h2>Hej 
+        <?php 
+        if(isset($_SESSION["username"])){
+        ?>
+            <p> Hej <?= $_SESSION["username"]; ?> </p>
+        <?php
+        } ?>
+    </h2>
     <a href="../includes/logout.php">Logga ut</a>
   <main class="col-12">
         <!-- If we are sending a file in a form we must supply the extra attribute
@@ -23,24 +30,25 @@
             <input type="text" name="title" id="title">
 
             <label for="category_sunsglass">Sun glasses</label>
-            <input type="checkbox" name="category_sunsglass" id="category_sunsglass">
+            <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="sunsglass">
 
             <label for="category_living">Living</label>
-            <input type="checkbox" name="category_sunsglass" id="category_living">
+            <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="living">
 
             <label for="category_watches">Watches</label>
-            <input type="checkbox" name="category_sunsglass" id="category_watches">
+            <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="watches">
         
             <textarea name="text" id="text" ></textarea>
             <input type="submit" value="Send">
         </form>
 
   <?php 
-  foreach($all_posts as $post): ?>
+  foreach(array_reverse($all_posts) as $post): ?>
     <div class="col-12 row mb-4 border border-dark justify-content-between">
         <div class="col-4">
             <h2><?= $post["title"]; ?></h2>
             <p><?= $post["content"]; ?></p>
+            <p>Category: <?= $post["category_checkbox"]; ?></p>
         </div>
         <div class="col-8">
             <img src="<?= $post["image"]; ?>" alt="Cool image.">
