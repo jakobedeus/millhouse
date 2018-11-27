@@ -15,16 +15,19 @@
 <body>
 
   <?php
-  /*include 'partials/fetch_images.php';
+
+  include "database-connection.php";
+  include 'fetch_images.php';
   foreach($all_images as $image): ?>
     <div>
       <img src="<?= $image["image"]; ?>" alt="Cool image.">
       <div>
-        <?= $image["text"]; ?>
+        <?= $image["title"]; ?>
+        <?= $image["content"]; ?>
       </div>
     </div>
   <?php
-  endforeach;*/
+  endforeach;
   ?>
   <h2>Hej</h2>
   <main>
@@ -35,9 +38,24 @@
       <label for="image">Image</label>
       <!-- Use 'type="file"' to automatically create a input-field for uploads -->
       <input type="file" name="image" id="image">
-      <label for="text">Image text</label>
       <!-- Use a textarea for a bigger input-field, put an ID on the area for the
            wysiwyg-editor to initialize on -->
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title">
+
+      <section class="new_post_category">
+        <label for="category_sunsglass">Sun glasses</label>
+        <input type="checkbox" name="category_sunsglass" id="category_sunsglass">
+
+        <label for="category_living">Living</label>
+        <input type="checkbox" name="category_sunsglass" id="category_living">
+
+        <label for="category_watches">Watches</label>
+        <input type="checkbox" name="category_sunsglass" id="category_watches">
+      </section>
+      
+      
+
       <textarea name="text" id="text" ></textarea>
       <input type="submit" value="Send">
     </form>
