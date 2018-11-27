@@ -6,6 +6,7 @@ include 'database-connection.php';
 $username = $_POST["username"];
 $password = $_POST["password"];
 $email = $_POST["email"];
+$admin  = $_POST["admin"];
 
     $statement = $pdo->prepare("SELECT * FROM users WHERE username = :username ");
 
@@ -29,13 +30,14 @@ $email = $_POST["email"];
     }else {
 
         $statement = $pdo->prepare("INSERT INTO users
-        (username, password, mail) VALUES (:username, :password, :mail)");
+        (username, password, mail, admin) VALUES (:username, :password, :mail, :admin)");
 
         $statement->execute (
             [
                 ":username" => $username,
                 ":password" => $hashed_password,
-                ":mail" => $email
+                ":mail" => $email,
+                ":admin" => $admin
             ]
         );
         header ('location: ../index.php');

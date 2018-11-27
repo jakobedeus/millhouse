@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+$_SESSION["username"] = $fetched_user ["username"];
+$_SESSION["user_id"] = $fetched_user ["id"];
+
 // database_connection.php (connection with our database)  
 include 'database-connection.php';
 
@@ -27,9 +30,9 @@ if($is_password_correct){
     
   $_SESSION["username"] = $fetched_user["username"];
   
-  header('Location: views/feed.php');
+  header('Location: ../views/feed.php');
 } else {
 
-  header('Location: index.php?login_failed=true');
+  header('Location: ../index.php?login_failed=true');
 }
 
