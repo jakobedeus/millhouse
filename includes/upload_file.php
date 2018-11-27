@@ -1,5 +1,6 @@
 <?php
 include 'database-connection.php';
+session_start();
 /**
  * If the file is sent via a form with 'enctype="multiplart/form-data"' the
  * file is saved go the superglobal '$_FILES' variable and inside of $_FILES["image"]
@@ -8,6 +9,8 @@ $image = $_FILES["image"];
 $image_text = $_POST["text"];
 $title = $_POST["title"];
 $category_checkbox = $_POST["category_checkbox"];
+$user_id = $_SESSION["user_id"];
+
 //$category = $_POST["category_checkbox"];
 
 /**
@@ -36,12 +39,12 @@ $upload_ok = move_uploaded_file($temporary_location, $new_location);
  * Here I am also sending along the text from the editor, that text is saved as usual in $_POST
  */
 if($upload_ok){
-  $statement = $pdo->prepare("INSERT INTO posts (image, content, title, category_checkbox) VALUES (:image, :content, :title, :category_checkbox)");
+  $statement = $pdo->prepare("INSERT INTO posts (image, content, title, created_by) VALUES (:image, :content, :title, :user_id)");
   $statement->execute(
     [
         ":image" => $new_location,
         ":content"  => $image_text,
-        ":category_checkbox" => $category_checkbox,
+        ":created_by" => $user_id,
         ":title" => $title
     ]
 );
