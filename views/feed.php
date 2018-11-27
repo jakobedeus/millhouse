@@ -7,13 +7,16 @@
   ?>
 
   <div class="container justify-content-center">
-    <h2>Hej 
+    <h2>
         <?php 
         if(isset($_SESSION["username"])){
         ?>
-            <p> Hej <?= $_SESSION["username"]; ?> </p>
+             Hej <?= $_SESSION["username"]; ?>
         <?php
-        } ?>
+        } 
+        
+        var_dump($_SESSION);
+        ?>
     </h2>
     <a href="../includes/logout.php">Logga ut</a>
   <main class="col-12">

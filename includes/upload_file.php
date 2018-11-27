@@ -8,7 +8,7 @@ session_start();
 $image = $_FILES["image"];
 $image_text = $_POST["text"];
 $title = $_POST["title"];
-$category_checkbox = $_POST["category_checkbox"];
+//$category_checkbox = $_POST["category_checkbox"];
 $user_id = $_SESSION["user_id"];
 
 //$category = $_POST["category_checkbox"];
@@ -39,7 +39,7 @@ $upload_ok = move_uploaded_file($temporary_location, $new_location);
  * Here I am also sending along the text from the editor, that text is saved as usual in $_POST
  */
 if($upload_ok){
-  $statement = $pdo->prepare("INSERT INTO posts (image, content, title, created_by) VALUES (:image, :content, :title, :user_id)");
+  $statement = $pdo->prepare("INSERT INTO posts (image, content, title, created_by) VALUES (:image, :content, :title, :created_by)");
   $statement->execute(
     [
         ":image" => $new_location,
