@@ -12,9 +12,6 @@ include 'includes/head-index.php';
             </div>
         </div>
     </main>
-    
-    <footer>
-        
-    </footer>
-    </body>
-</html>
+    <?php
+    include 'includes/footer-index.php';
+    ?>

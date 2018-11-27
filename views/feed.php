@@ -1,4 +1,6 @@
-<?php include "../includes/head-views.php" ?>
+<?php 
+include "../includes/head-views.php" 
+?>
 
     <main class="container">
     
@@ -25,5 +27,6 @@
         </section>
     </main>
     
-</body>
-</html>
+    <?php 
+    include "../includes/footer-views.php" 
+    ?>
