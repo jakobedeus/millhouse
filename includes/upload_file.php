@@ -8,7 +8,6 @@ $image = $_FILES["image"];
 $image_text = $_POST["text"];
 $title = $_POST["title"];
 
-var_dump ($_POST);
 /**
  * When it is uploaded it is stored at a temporary location inside a /tmp folder
  * on your computer or server. We must move this temporary file to a permanent location
@@ -23,7 +22,6 @@ $temporary_location = $image["tmp_name"];
  */
 $new_location = "uploads/" . $image["name"];
 
-var_dump ($new_location);
 /**
  * 'move_uploaded_file' moves the file from the temporary location to your newly specified location
  * if the transfer is complete we will get a true/false return value from the function indiciating
@@ -37,12 +35,14 @@ $upload_ok = move_uploaded_file($temporary_location, $new_location);
  */
 if($upload_ok){
   $statement = $pdo->prepare("INSERT INTO posts (image, content, title) VALUES (:image, :content, :title)");
-  $statement->execute([
-    ":image" => $new_location,
-    ":content"  => $image_text,
-    ":title" => $title
-  ]);
+  $statement->execute(
+    [
+        ":image" => $new_location,
+        ":content"  => $image_text,
+        ":title" => $title
+    ]
+);
   
   //When everything is done, redirect
-  //header('Location: /');
+  header('Location: /');
 }
