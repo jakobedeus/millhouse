@@ -3,23 +3,19 @@
 session_start();
 include 'includes/head-index.php';
 
+
 ?>
 
     <main class="container">
         <div class="row justify-content-center">
             <div class="col-8 border pad">
-                <img src="images/logo_border.png" alt="logo_image">
+                <img src="images/millhouse_logo.png" alt="logo_image">
             </div>
             <div class="col-8">
                 <p>Lorem ipsum dolor amet waistcoat echo park live-edge, 
                 cliche four loko pinterest tousled cred bespoke raw denim 
                 vape 90's brooklyn meditation. Slow-carb vinyl vape cronut 
                 gastropub, swag quinoa chillwave. You probably haven't heard 
-                of them prism hoodie cray polaroid cronut aesthetic vaporware. 
-                Swag affogato aesthetic art party umami poutine seitan. Vaporware 
-                fingerstache mlkshk art party iceland shoreditch hella beard thundercats 
-                enamel pin taiyaki. Cray vice +1 flannel etsy. Direct trade echo park 
-                scenester, cornhole readymade hell of tattooed pour-over actually yr retro.
                 </p>
             </div>
         </div> <!-- closing row-->
@@ -37,7 +33,7 @@ include 'includes/head-index.php';
 
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                     <div class="card-body">
-                                        <form action='views/login.php' method='POST'>
+                                        <form action='includes/login.php' method='POST'>
                                             <label for='login_username'>Your Username</label>
                                             <input name='username' id='login_username' type='text' required>
                                             <label for='login_password'>Your Password</label>
@@ -57,12 +53,14 @@ include 'includes/head-index.php';
                                 </div> <!-- closing div card-header-->
                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                     <div class="card-body">
-                                        <form action='views/register.php' method='POST'>
+                                        <form action='includes/register.php' method='POST'>
                                             <label for='reg_usernam'>Your Username</label>
-                                            <input name='username' id='reg_username' type='text' required>
+                                            <input name='username' id='reg_username' type='text'>
                                             <label for='reg_password'>Your Password</label>
-                                            <input name='password' id='reg_password' type='password' required>
-                                            <button type='submit'>Register!</button>
+                                            <input name='password' id='reg_password' type='password'>
+                                            <label for='email'>Your E-mail</label>
+                                            <input name='email' id='email' type='text'>
+                                            <input type='submit'value="Register!">
                                         </form>
                                     </div>
                                 </div>
