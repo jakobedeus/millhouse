@@ -42,6 +42,18 @@
            wysiwyg-editor to initialize on -->
       <label for="title">Title</label>
       <input type="text" name="title" id="title">
+
+      <section class="new_post_category">
+        <label for="category_sunsglass">Sun glasses</label>
+        <input type="checkbox" name="category_sunsglass" id="category_sunsglass">
+
+        <label for="category_living">Living</label>
+        <input type="checkbox" name="category_sunsglass" id="category_living">
+
+        <label for="category_watches">Watches</label>
+        <input type="checkbox" name="category_sunsglass" id="category_watches">
+      </section>
+      
       
 
       <textarea name="text" id="text" ></textarea>
