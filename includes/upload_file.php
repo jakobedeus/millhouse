@@ -7,6 +7,8 @@ include 'database-connection.php';
 $image = $_FILES["image"];
 $image_text = $_POST["text"];
 $title = $_POST["title"];
+$category_checkbox = $_POST["category_checkbox"];
+//$category = $_POST["category_checkbox"];
 
 /**
  * When it is uploaded it is stored at a temporary location inside a /tmp folder
@@ -20,7 +22,7 @@ $temporary_location = $image["tmp_name"];
  * and then reuse the name of the uploaded file. In my example the file is named 'tired.png' so the
  * new file will be named 'uploads/tired.png'
  */
-$new_location = "uploads/" . $image["name"];
+$new_location = "../views/uploads/" . $image["name"];
 
 /**
  * 'move_uploaded_file' moves the file from the temporary location to your newly specified location
@@ -34,15 +36,18 @@ $upload_ok = move_uploaded_file($temporary_location, $new_location);
  * Here I am also sending along the text from the editor, that text is saved as usual in $_POST
  */
 if($upload_ok){
-  $statement = $pdo->prepare("INSERT INTO posts (image, content, title) VALUES (:image, :content, :title)");
+  $statement = $pdo->prepare("INSERT INTO posts (image, content, title, category_checkbox) VALUES (:image, :content, :title, :category_checkbox)");
   $statement->execute(
     [
         ":image" => $new_location,
         ":content"  => $image_text,
+        ":category_checkbox" => $category_checkbox,
         ":title" => $title
     ]
 );
   
+
+//var_dump($category);
   //When everything is done, redirect
-  header('Location: /');
+  header('Location: ../views/feed.php');
 }
