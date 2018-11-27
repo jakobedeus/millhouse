@@ -2,6 +2,7 @@
 
 session_start();
 include 'includes/head-index.php';
+include 'includes/functions.php';
 
 
 ?>
@@ -9,6 +10,13 @@ include 'includes/head-index.php';
     <main class="container">
         <div class="row justify-content-center">
             <div class="col-8 border pad">
+                <?php 
+                if(isset($_SESSION["username"])){ 
+                ?>
+                    <p> Hej <?= $_SESSION["username"]; ?> </p>
+                <?php
+                }
+                ?>
                 <img src="images/millhouse_logo.png" alt="logo_image">
             </div>
             <div class="col-8">
@@ -33,11 +41,18 @@ include 'includes/head-index.php';
 
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                     <div class="card-body">
+                                    <?php
+                                        // My function, that echoes out if register fails
+                                        $text = access_denied_messages(
+                                            'login_failed', 'Username or password is incorrect, please try again.'
+                                        );
+                                        echo $text;
+                                        ?>
                                         <form action='includes/login.php' method='POST'>
                                             <label for='login_username'>Your Username</label>
-                                            <input name='username' id='login_username' type='text' required>
+                                            <input name='username' id='login_username' type='text'>
                                             <label for='login_password'>Your Password</label>
-                                            <input name='password' id='login_password' type='password' required>
+                                            <input name='password' id='login_password' type='password'>
                                             <button type='submit'>Login!</button>
                                         </form>
                                     </div> <!-- closing card-body-->
@@ -53,6 +68,21 @@ include 'includes/head-index.php';
                                 </div> <!-- closing div card-header-->
                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                     <div class="card-body">
+                                       <?php
+                                        // My function, that echoes out if register fails
+                                        $text = access_denied_messages(
+                                            'register_failed', 'You need to fill in all fields.'
+                                        );
+                                        echo $text;
+                                        ?>
+                                        <?php
+                                        // My function, that echoes out if register fails
+                                        $text = access_denied_messages(
+                                            'register_failed_exist', 'A user with this name already exists, try again.'
+                                        );
+                                        echo $text;
+                                        ?>
+
                                         <form action='includes/register.php' method='POST'>
                                             <label for='reg_usernam'>Your Username</label>
                                             <input name='username' id='reg_username' type='text'>
@@ -60,6 +90,7 @@ include 'includes/head-index.php';
                                             <input name='password' id='reg_password' type='password'>
                                             <label for='email'>Your E-mail</label>
                                             <input name='email' id='email' type='text'>
+                                            <input name='admin' value='false' type='hidden'>
                                             <input type='submit'value="Register!">
                                         </form>
                                     </div>
