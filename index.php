@@ -90,7 +90,7 @@ include 'includes/functions.php';
                                             <input name='password' id='reg_password' type='password'>
                                             <label for='email'>Your E-mail</label>
                                             <input name='email' id='email' type='text'>
-                                            <input name='admin' value='false' type='hidden'>
+                                            <input name='admin' value='not_admin' type='hidden'>
                                             <input type='submit'value="Register!">
                                         </form>
                                     </div>
