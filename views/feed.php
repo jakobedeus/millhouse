@@ -3,7 +3,7 @@
   include "../includes/database-connection.php";
   include '../includes/fetch_posts.php';
   session_start();
-
+  
   ?>
 
   <div class="container justify-content-center">
@@ -44,7 +44,6 @@
             <textarea name="text" id="text" ></textarea>
             <input type="submit" value="Send">
         </form>
-
   <?php 
   foreach(array_reverse($all_posts) as $post): ?>
     <div class="col-12 row mb-4 border border-dark justify-content-between">
