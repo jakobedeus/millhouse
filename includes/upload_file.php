@@ -37,11 +37,13 @@ $upload_ok = move_uploaded_file($temporary_location, $new_location);
  */
 if($upload_ok){
   $statement = $pdo->prepare("INSERT INTO posts (image, content, title) VALUES (:image, :content, :title)");
-  $statement->execute([
-    ":image" => $new_location,
-    ":content"  => $image_text,
-    ":title" => $title
-  ]);
+  $statement->execute(
+    [
+        ":image" => $new_location,
+        ":content"  => $image_text,
+        ":title" => $title
+    ]
+);
   
   //When everything is done, redirect
   //header('Location: /');
