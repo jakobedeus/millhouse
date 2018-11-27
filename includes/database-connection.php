@@ -5,5 +5,3 @@ $pdo = new PDO(
     "root", //user
     "root"  //password
 );
-
-?>

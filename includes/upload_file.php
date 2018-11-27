@@ -1,11 +1,14 @@
 <?php
-require 'partials/pdo.php';
+include 'database-connection.php';
 /**
  * If the file is sent via a form with 'enctype="multiplart/form-data"' the
  * file is saved go the superglobal '$_FILES' variable and inside of $_FILES["image"]
  */
 $image = $_FILES["image"];
 $image_text = $_POST["text"];
+$title = $_POST["title"];
+
+var_dump ($_POST);
 /**
  * When it is uploaded it is stored at a temporary location inside a /tmp folder
  * on your computer or server. We must move this temporary file to a permanent location
@@ -19,6 +22,8 @@ $temporary_location = $image["tmp_name"];
  * new file will be named 'uploads/tired.png'
  */
 $new_location = "uploads/" . $image["name"];
+
+var_dump ($new_location);
 /**
  * 'move_uploaded_file' moves the file from the temporary location to your newly specified location
  * if the transfer is complete we will get a true/false return value from the function indiciating
@@ -31,12 +36,13 @@ $upload_ok = move_uploaded_file($temporary_location, $new_location);
  * Here I am also sending along the text from the editor, that text is saved as usual in $_POST
  */
 if($upload_ok){
-  $statement = $pdo->prepare("INSERT INTO images (image, text) VALUES (:image, :text)");
+  $statement = $pdo->prepare("INSERT INTO posts (image, content, title) VALUES (:image, :content, :title)");
   $statement->execute([
     ":image" => $new_location,
-    ":text"  => $image_text
+    ":content"  => $image_text,
+    ":title" => $title
   ]);
   
   //When everything is done, redirect
-  header('Location: /');
+  //header('Location: /');
 }
