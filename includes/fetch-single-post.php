@@ -1,4 +1,5 @@
 <?php
+include 'database-connection.php';
 session_start();
 
     $post_id = $_POST["id"];
@@ -13,5 +14,3 @@ session_start();
     );
 
     $single_post = $single_post_Statement->fetch(PDO::FETCH_ASSOC);
-
-    header('Location: ../views/post.php');
