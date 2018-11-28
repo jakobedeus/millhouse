@@ -11,6 +11,9 @@ $title = $_POST["title"];
 $user_id = $_SESSION["user_id"];
 $date = date('l jS \of F Y h:i:s A');
 
+
+
+
 //$category = $_POST["category_checkbox"];
 
 /**
@@ -50,25 +53,36 @@ if($upload_ok){
     ]
 );
 
-$fetch_all_images_statement = $pdo->prepare("SELECT id FROM posts ORDER BY DESC");
-$fetch_all_images_statement->execute();
+//var_dump($category);
+  //When everything is done, redirect
+  //header('Location: ../views/feed.php');
+}
 
-$post_id = $fetch_all_images_statement->fetchAll(PDO::FETCH_ASSOC);
+$fetch_all_post_id_statement = $pdo->prepare("SELECT id FROM `posts` ORDER BY id DESC");
+$fetch_all_post_id_statement->execute();
 
-$lastest_post_id = $post_id[0];
+$post_id = $fetch_all_post_id_statement->fetchAll(PDO::FETCH_ASSOC);
+
+$latest_post_id = $post_id[0];
+
+//var_dump($latest_post_id);
 
 $category_id = $_POST["category_checkbox"];
 
-$statement = $pdo->prepare("INSERT INTO posts_categories (post_id, category_id) VALUES (:post_id, :category_id)");
+var_dump($_POST["category_checkbox"]);
+
+foreach ($latest_post_id as $key => $value) {
+  //echo $value;
+  $latest_post_id = $latest_post_id = $value;
+}
+
+$statement = $pdo->prepare("INSERT INTO post_categories (post_id, category_id) VALUES (:post_id, :category_id)");
 $statement->execute(
   [
-      ":post_id" => $lastest_post_id,
-      ":category_id"  => $category_id,
+      ":post_id" => $value,
+      ":category_id" => $category_id
+      
   ]
 );
-  
 
-//var_dump($category);
-  //When everything is done, redirect
-  header('Location: ../views/feed.php');
-}
+header ('location: ../views/feed.php');
