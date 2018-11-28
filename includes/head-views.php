@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -23,4 +26,26 @@
         <title>Millhouse</title>
     </head>
     <body>
+
+    <header class="container p-4">
+    <div class="d-flex justify-content-between border-bottom">
+        <div class="col-2 pb-4">
+            <a href="../index.php">
+                <img src="../images/logo_borders.png" alt="Logotype" style="width:100%; color:black">
+            </a>
+        </div>
+        <nav class="col-10 align-self-center">
+        <h2>
+        <?php
+        if(isset($_SESSION["username"])){
+        ?>
+             Hej <?= $_SESSION["username"]; ?>
+        <?php
+        }
+        ?>
+    </h2>
+            <a href="../includes/logout.php"><button class="btn btn-danger">Log out</button></a>
+        </nav>
+        </div>
+    </header>
         
