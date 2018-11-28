@@ -10,7 +10,7 @@ $pdo = new PDO(
 
 class Posts
 {
-    /*private*/public $pdo;
+    private $pdo;
     /* Inject the pdo connection so it is available inside of the class
     * so we can call it with '$this->pdo', always available inside of the class
     */
@@ -19,18 +19,12 @@ class Posts
         $this->pdo = $pdo;
     }
 
-        public function delete()
+    public function fetchAll()
     {
-        return true;
-    }
-    
-        public function create($newPost)
-    {
-        return true;
+        $fetch_all_images_statement = $this->pdo->prepare("SELECT * FROM posts");
+        $fetch_all_images_statement->execute();
+        $all_posts = $fetch_all_images_statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $all_posts;
     }
 }
-
-
-$db = new Posts($pdo);
-
-?>

@@ -1,73 +1,75 @@
 <?php
-  include "../includes/head-views.php";
-  //include "../includes/database-connection.php";
-  include '../includes/fetch_posts.php';
+    include "../includes/head-views.php";
+    //include "../includes/database-connection.php";
+    //include '../includes/fetch_posts.php';
+    include '../classes/Posts.php';
+    //include '../includes/database-connection.php';
 
+$posts = new Posts($pdo);
+print_r($posts->fetchAll());
+//echo $posts->fetchAll();
+//echo $posts->$all_posts;
 
-  include '../classes/Posts.php';
+?>
+<div class="container justify-content-center">
+<h2>
+    <?php
+    if(isset($_SESSION["username"])){
+    ?>
+         Hej <?= $_SESSION["username"]; ?>
+    <?php
+    }
 
-  $db = new Posts($pdo);
+    ?>
+</h2>
+<main class="col-12">
+    <!-- If we are sending a file in a form we must supply the extra attribute
+     'encytype="multipart/form-data"', otherwise the file will be sent as a
+     string and not uploaded to the server, otherwise the form is similar to every other form -->
+    <form action="../includes/upload_file.php" method="POST" enctype="multipart/form-data">
+        <label for="image">Image</label>
+        <!-- Use 'type="file"' to automatically create a input-field for uploads -->
+        <input type="file" name="image" id="image">
+        <!-- Use a textarea for a bigger input-field, put an ID on the area for the
+        wysiwyg-editor to initialize on -->
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
 
-  
-  
-  ?>
+        <label for="category_sunsglass">Sun glasses</label>
+        <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="2">
 
-  <div class="container justify-content-center">
-    <h2>
-        <?php
-        if(isset($_SESSION["username"])){
-        ?>
-             Hej <?= $_SESSION["username"]; ?>
-        <?php
-        }
+        <label for="category_living">Living</label>
+        <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="1">
 
-        ?>
-    </h2>
-  <main class="col-12">
-        <!-- If we are sending a file in a form we must supply the extra attribute
-         'encytype="multipart/form-data"', otherwise the file will be sent as a
-         string and not uploaded to the server, otherwise the form is similar to every other form -->
-        <form action="../includes/upload_file.php" method="POST" enctype="multipart/form-data">
-            <label for="image">Image</label>
-            <!-- Use 'type="file"' to automatically create a input-field for uploads -->
-            <input type="file" name="image" id="image">
-            <!-- Use a textarea for a bigger input-field, put an ID on the area for the
-            wysiwyg-editor to initialize on -->
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title">
+        <label for="category_watches">Watches</label>
+        <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="3">
 
-            <label for="category_sunsglass">Sun glasses</label>
-            <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="2">
+        <textarea name="text" id="text" ></textarea>
+        <input type="submit" value="Send">
+    </form>
 
-            <label for="category_living">Living</label>
-            <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="1">
-
-            <label for="category_watches">Watches</label>
-            <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="3">
-
-            <textarea name="text" id="text" ></textarea>
-            <input type="submit" value="Send">
+<?php
+foreach(array_reverse($all_posts) as $post): ?>
+<div class="col-12 row mb-4 border border-dark justify-content-between">
+    <div class="col-4">
+        <h2><?= ($post["title"]); ?></h2>
+        <p><?= $post["date"]; ?></p>
+        <form action="post.php" method="post">
+          <input type="hidden" name="id" value="<?= $post["id"]; ?>">
+          <input type="submit" value="comment">
         </form>
-
-  <?php
-  foreach(array_reverse($all_posts) as $post): ?>
-    <div class="col-12 row mb-4 border border-dark justify-content-between">
-        <div class="col-4">
-            <h2><?= $post["title"]; ?></h2>
-            <p><?= $post["date"]; ?></p>
-            <form action="post.php" method="post">
-              <input type="hidden" name="id" value="<?= $post["id"]; ?>">
-              <input type="submit" value="comment">
-            </form>
-            <p><?= $post["id"]; ?></p>
-            <p><?= $post["content"];  ?></p>
-            <p>Category: <?= $post["category_checkbox"]; ?></p>
-            <p>hej</p>
-        </div>
-        <div class="col-8">
-            <img src="<?= $post["image"]; ?>" alt="Cool image.">
-        </div>
+        <p><?= $post["id"]; ?></p>
+        <p><?= $post["content"];  ?></p>
+        <p>Category: <?= $post["category_checkbox"]; ?></p>
+        <p>hej</p>
     </div>
+    <div class="col-8">
+        <img src="<?= $post["image"]; ?>" alt="Cool image.">
+    </div>
+</div>
+
+
+
   <?php
   endforeach;
   include '../includes/footer-views.php';
