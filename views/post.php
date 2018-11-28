@@ -1,23 +1,28 @@
 <?php 
-include "../includes/head-views.php" 
+include "../includes/head-views.php"; 
+include "../includes/fetch-single-post.php";
 ?>
 
     <main class="container">
     
         <section>
 
-            <article class="feed_post row">
-                <div class="col-8">
-                    <h2 class="post_title"></h2>
-                    <p class="date"></p>
-                    <p class="category"></p>
-                    <p class="content"></p>
-                    <p class="number_of_comments"></p>
-                    <a href=""><p class="comments"></p></a>
+            <article>
+            <?php 
+            foreach(array_reverse($single_post) as $post): ?>
+                <div class="col-12 row mb-4 border border-dark justify-content-between">
+                    <div class="col-4">
+                        <h2><?= $post["title"]; ?></h2>
+                        <p><?= $post["content"]; ?></p>
+                        <p>Category: <?= $post["category_checkbox"]; ?></p>
+                    </div>
+                    <div class="col-8">
+                        <img src="<?= $post["image"]; ?>" alt="Cool image.">
+                    </div>
                 </div>
-                <div class="img_container col-4">
-                    <img src="" alt="">
-                </div>
+            <?php
+            endforeach;
+            ?> 
             </article>
 
         </section>
