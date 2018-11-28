@@ -1,5 +1,11 @@
 
         <footer>
+          <div class="row">
+            <div class="col">
+              <img src="../images/coupleswatches.jpg" class="img-fluid" alt="couples watches" />
+
+            </div>
+          </div>
 
         </footer>
         <!-- Optional JavaScript -->
