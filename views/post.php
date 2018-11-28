@@ -6,33 +6,26 @@ include "../includes/fetch-single-post.php";
     <main class="container">
     
         <section>
+        <h2>Hej</h2>
 
+        <?php //var_dump($single_post) ?>
             <article>
-            <?php 
-            foreach(array_reverse($single_post) as $post): ?>
-                <div class="col-12 row mb-4 border border-dark justify-content-between">
+            <div class="col-12 row mb-4 border border-dark justify-content-between">
                     <div class="col-4">
-                        <h2><?= $post["title"]; ?></h2>
-                        <p><?= $post["content"]; ?></p>
-                        <p>Category: <?= $post["category_checkbox"]; ?></p>
+                        <h2><?= $single_post["title"]; ?></h2>
+                        <p><?= $single_post["content"]; ?></p>
+                        <p>Category: <?= $single_post["category_checkbox"]; ?></p>
                     </div>
                     <div class="col-8">
-                        <img src="<?= $post["image"]; ?>" alt="Cool image.">
+                        <img src="<?= $single_post["image"]; ?>" alt="Cool image.">
                     </div>
-                </div>
-            <?php
-            endforeach;
-            ?> 
+            </div>
             </article>
 
         </section>
 
-        <form action="" class="form_comment">
-            <textarea name="" id=""></textarea>
-            <input type="submit">
-        </form>
     </main>
     
     <?php
-    include "../includes/footer-views.php" 
+    include "../includes/footer-views.php";
     ?>
