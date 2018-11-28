@@ -13,7 +13,7 @@ include 'includes/functions.php';
                 <?php 
                 if(isset($_SESSION["username"])){ 
                 ?>
-                    <p> Hej <?= $_SESSION["username"]; ?> </p>
+                    <p><?php header('Location: views/feed.php'); ?> </p>
                 <?php
                 }
                 ?>

@@ -1,10 +1,15 @@
 <?php
   include "../includes/head-views.php";
-  include "../includes/database-connection.php";
+  //include "../includes/database-connection.php";
   include '../includes/fetch_posts.php';
 
-  session_start();
 
+  include '../classes/Posts.php';
+
+  $db = new Posts($pdo);
+
+  
+  
   ?>
 
   <div class="container justify-content-center">
@@ -16,10 +21,8 @@
         <?php
         }
 
-        var_dump($_SESSION);
         ?>
     </h2>
-    <a href="../includes/logout.php">Logga ut</a>
   <main class="col-12">
         <!-- If we are sending a file in a form we must supply the extra attribute
          'encytype="multipart/form-data"', otherwise the file will be sent as a
@@ -34,13 +37,13 @@
             <input type="text" name="title" id="title">
 
             <label for="category_sunsglass">Sun glasses</label>
-            <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="sunsglass">
+            <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="2">
 
             <label for="category_living">Living</label>
-            <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="living">
+            <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="1">
 
             <label for="category_watches">Watches</label>
-            <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="watches">
+            <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="3">
 
             <textarea name="text" id="text" ></textarea>
             <input type="submit" value="Send">

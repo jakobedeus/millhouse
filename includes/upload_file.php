@@ -8,7 +8,6 @@ session_start();
 $image = $_FILES["image"];
 $image_text = $_POST["text"];
 $title = $_POST["title"];
-//$category_checkbox = $_POST["category_checkbox"];
 $user_id = $_SESSION["user_id"];
 $date = date('l jS \of F Y h:i:s A');
 
@@ -49,6 +48,23 @@ if($upload_ok){
         ":title" => $title,
         ":date" => $date
     ]
+);
+
+$fetch_all_images_statement = $pdo->prepare("SELECT id FROM posts ORDER BY DESC");
+$fetch_all_images_statement->execute();
+
+$post_id = $fetch_all_images_statement->fetchAll(PDO::FETCH_ASSOC);
+
+$lastest_post_id = $post_id[0];
+
+$category_id = $_POST["category_checkbox"];
+
+$statement = $pdo->prepare("INSERT INTO posts_categories (post_id, category_id) VALUES (:post_id, :category_id)");
+$statement->execute(
+  [
+      ":post_id" => $lastest_post_id,
+      ":category_id"  => $category_id,
+  ]
 );
   
 
