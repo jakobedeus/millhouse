@@ -50,6 +50,7 @@
     <div class="col-12 row mb-4 border border-dark justify-content-between">
         <div class="col-4">
             <h2><?= $post["title"]; ?></h2>
+            <p><?= $post["date"]; ?></p>
             <form action="post.php" method="post">
               <input type="hidden" name="id" value="<?= $post["id"]; ?>">
               <input type="submit" value="comment">
