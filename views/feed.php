@@ -8,13 +8,13 @@
 
   <div class="container justify-content-center">
     <h2>
-        <?php 
+        <?php
         if(isset($_SESSION["username"])){
         ?>
              Hej <?= $_SESSION["username"]; ?>
         <?php
-        } 
-        
+        }
+
         var_dump($_SESSION);
         ?>
     </h2>
@@ -40,17 +40,24 @@
 
             <label for="category_watches">Watches</label>
             <input type="checkbox" name="category_checkbox" id="category_checkbox[]" value="watches">
-        
+
             <textarea name="text" id="text" ></textarea>
             <input type="submit" value="Send">
         </form>
+
   <?php 
   foreach(array_reverse($all_posts) as $post): ?>
     <div class="col-12 row mb-4 border border-dark justify-content-between">
         <div class="col-4">
             <h2><?= $post["title"]; ?></h2>
-            <p><?= $post["content"]; ?></p>
+            <form action="fetch-single-post.php" method="post">
+              <input type="hidden" name="id" value="<?= $post["id"]; ?>">
+              <input type="submit" value="comment">
+            </form>
+            <p><?= $post["id"]; ?></p>
+            <p><?= $post["content"];  ?></p>
             <p>Category: <?= $post["category_checkbox"]; ?></p>
+            <p>hej</p>
         </div>
         <div class="col-8">
             <img src="<?= $post["image"]; ?>" alt="Cool image.">
@@ -58,13 +65,13 @@
     </div>
   <?php
   endforeach;
-  ?>   
+  ?>
   </main>
   </div>
 
   <!-- Link dependencies for the editor -->
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
   <script>
     /**
