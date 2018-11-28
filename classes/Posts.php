@@ -1,9 +1,16 @@
 <?php
-include '../includes/database-connection.php';
+//include '../includes/database-connection.php';
+
+$pdo = new PDO(
+    "mysql:host=localhost;dbname=millhouse;charset=utf8",
+    "root", //user
+    "root"  //password
+
+);
 
 class Posts
 {
-    private $pdo;
+    /*private*/public $pdo;
     /* Inject the pdo connection so it is available inside of the class
     * so we can call it with '$this->pdo', always available inside of the class
     */
@@ -12,27 +19,18 @@ class Posts
         $this->pdo = $pdo;
     }
 
-    public function showDate($date)
-    {
-        return date('F j, Y, g:i a', strtotime($date));
-    }
-
         public function delete()
     {
         return true;
     }
-
+    
         public function create($newPost)
     {
         return true;
     }
 }
+
+
+$db = new Posts($pdo);
+
 ?>
-
-<?php/*
-include '../classes/Posts.php';
-
-$post = new Posts();
-echo $post->showDate();
-
-*/?>
