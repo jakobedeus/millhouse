@@ -1,7 +1,21 @@
 
-        <footer>
-        <footer>
-        
+        <footer class="bg-primary">
+          <div class="row justify-content-center">
+            <div class="col">
+              <a href="https://facebook.com"><i class="fab fa-facebook fa-3x"></i></a>
+              <a href="https://instagram.com"><i class="fab fa-instagram fa-3x"></i></a>
+              <a href="https://twitter.com"><i class="fab fa-twitter-square fa-3x"></i></a>
+              <a href="https://plus.google.com"><i class="fab fa-google-plus-square fa-3x"></i></a>
+              <img src="../images/millhouse_logo.png" class="img-fluid" height="10px" alt="logo" />
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col never_ends">
+              © Never Ends
+            </div>
+          </div>
+
+
         </footer>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

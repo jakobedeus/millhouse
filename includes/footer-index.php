@@ -1,5 +1,14 @@
 
-        <footer>
+        <footer class="bg-primary">
+          <div class="row">
+            <div class="col">
+              <img src="../images/coupleswatches.jpg" class="img-fluid" alt="couples watches" />
+              <img src="../images/living.jpg" class="img-fluid" alt="interior" />
+              <img src="../images/mantach.jpg" class="img-fluid" alt="mens watch" />
+              <img src="../images/yellowgirl.jpg" class="img-fluid" alt="girl on yellow background" />
+              <img src="../images/sunglassesbeach.jpg" class="img-fluid" alt="sunglasses" />
+            </div>
+          </div>
 
         </footer>
         <!-- Optional JavaScript -->
