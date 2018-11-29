@@ -21,9 +21,13 @@ class Posts
 
     public function fetchAll()
     {
-        $fetch_all_images_statement = $this->pdo->prepare("SELECT * FROM posts");
-        $fetch_all_images_statement->execute();
-        $all_posts = $fetch_all_images_statement->fetchAll(PDO::FETCH_ASSOC);
+        /*$fetch_all_posts_statement = $this->pdo->prepare("SELECT * FROM posts");
+        $fetch_all_posts_statement->execute();
+        $all_posts = $fetch_all_posts_statement->fetchAll(PDO::FETCH_ASSOC);*/
+
+        $fetch_all_posts_statement = $this->pdo->prepare("SELECT * FROM posts");
+        $fetch_all_posts_statement->execute();
+        $all_posts = $fetch_all_posts_statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $all_posts;
     }

@@ -10,11 +10,16 @@ $image_text = $_POST["text"];
 $title = $_POST["title"];
 $user_id = $_SESSION["user_id"];
 $date = date('l jS \of F Y h:i:s A');
+//$category_id = $_POST["category_checkbox"];
 
+//var_dump($category_id);
 
+/*foreach($category_id as $key => $value) {
+  $category_id = $value;
+}
 
+echo $category_id;*/
 
-//$category = $_POST["category_checkbox"];
 
 /**
  * When it is uploaded it is stored at a temporary location inside a /tmp folder
@@ -49,7 +54,8 @@ if($upload_ok){
         ":content"  => $image_text,
         ":created_by" => $user_id,
         ":title" => $title,
-        ":date" => $date
+        ":date" => $date,
+
     ]
 );
 
@@ -65,15 +71,14 @@ $post_id = $fetch_all_post_id_statement->fetchAll(PDO::FETCH_ASSOC);
 
 $latest_post_id = $post_id[0];
 
-//var_dump($latest_post_id);
+var_dump($latest_post_id);
 
 $category_id = $_POST["category_checkbox"];
 
 var_dump($_POST["category_checkbox"]);
 
-foreach ($latest_post_id as $key => $value) {
-  //echo $value;
-  $latest_post_id = $latest_post_id = $value;
+foreach($latest_post_id as $key => $value) {
+  $category_id = $value;
 }
 
 $statement = $pdo->prepare("INSERT INTO post_categories (post_id, category_id) VALUES (:post_id, :category_id)");
@@ -83,6 +88,6 @@ $statement->execute(
       ":category_id" => $category_id
       
   ]
-);
+  );
 
 header ('location: ../views/feed.php');
