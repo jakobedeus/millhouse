@@ -14,3 +14,4 @@ session_start();
     );
 
     $single_post = $single_post_Statement->fetch(PDO::FETCH_ASSOC);
+    

@@ -25,10 +25,39 @@ class Posts
         $fetch_all_posts_statement->execute();
         $all_posts = $fetch_all_posts_statement->fetchAll(PDO::FETCH_ASSOC);*/
 
-        $fetch_all_posts_statement = $this->pdo->prepare("SELECT * FROM posts");
+        $fetch_all_posts_statement = $this->pdo->prepare(
+        "SELECT posts.title, posts.date, posts.image, posts.content, 
+        posts.category, categories.category, users.username 
+        FROM posts
+        JOIN categories
+        ON posts.category = categories.id
+        JOIN users
+        ON users.id = posts.created_by
+        ");
         $fetch_all_posts_statement->execute();
         $all_posts = $fetch_all_posts_statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $all_posts;
+    }
+
+    public function fetchSinglePost()
+    {
+    /* RONJA ska fixas när Parmis är klar med sin del. 
+    session_start();
+
+    $post_id = $_POST["id"];
+
+    $single_post_Statement = $pdo->prepare("SELECT * FROM posts
+        WHERE id = :id");
+
+    $single_post_Statement->execute(
+        [
+            ":id" => $post_id
+        ]
+    );
+
+    $single_post = $single_post_Statement->fetch(PDO::FETCH_ASSOC);
+    
+    */   
     }
 }
