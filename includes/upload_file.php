@@ -10,16 +10,12 @@ $image_text = $_POST["text"];
 $title = $_POST["title"];
 $user_id = $_SESSION["user_id"];
 $date = date('l jS \of F Y h:i:s A');
-//$category_id = $_POST["category_checkbox"];
+$category = $_POST["category_checkbox"];
 
-//var_dump($category_id);
-
-/*foreach($category_id as $key => $value) {
-  $category_id = $value;
+foreach($category as $key => $value) {
+  $category = $value;
+  
 }
-
-echo $category_id;*/
-
 
 /**
  * When it is uploaded it is stored at a temporary location inside a /tmp folder
@@ -47,7 +43,7 @@ $upload_ok = move_uploaded_file($temporary_location, $new_location);
  * Here I am also sending along the text from the editor, that text is saved as usual in $_POST
  */
 if($upload_ok){
-  $statement = $pdo->prepare("INSERT INTO posts (image, content, title, date, created_by) VALUES (:image, :content, :title, :date, :created_by)");
+  $statement = $pdo->prepare("INSERT INTO posts (image, content, title, date, created_by, category) VALUES (:image, :content, :title, :date, :created_by, :category)");
   $statement->execute(
     [
         ":image" => $new_location,
@@ -55,16 +51,12 @@ if($upload_ok){
         ":created_by" => $user_id,
         ":title" => $title,
         ":date" => $date,
-
+        ":category" => $category
     ]
 );
-
-//var_dump($category);
-  //When everything is done, redirect
-  //header('Location: ../views/feed.php');
 }
 
-$fetch_all_post_id_statement = $pdo->prepare("SELECT id FROM `posts` ORDER BY id DESC");
+/*$fetch_all_post_id_statement = $pdo->prepare("SELECT id FROM `posts` ORDER BY id DESC");
 $fetch_all_post_id_statement->execute();
 
 $post_id = $fetch_all_post_id_statement->fetchAll(PDO::FETCH_ASSOC);
@@ -88,6 +80,8 @@ $statement->execute(
       ":category_id" => $category_id
       
   ]
-  );
+);
+
+  );*/
 
 header ('location: ../views/feed.php');

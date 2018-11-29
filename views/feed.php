@@ -38,13 +38,15 @@ print_r($posts->fetchAll());
         <input type="text" name="title" id="title">
 
             <label for="category_living">Living</label>
-            <input type="checkbox" name="category_checkbox" id="category_living" value="1">
+
+            <input type="checkbox" name="category_checkbox[]" id="category_living" value="1">
 
             <label for="category_sunsglass">Sun glasses</label>
-            <input type="checkbox" name="category_checkbox" id="category_sunsglass" value="2">
+            <input type="checkbox" name="category_checkbox[]" id="category_sunsglass" value="2">
 
             <label for="category_watches">Watches</label>
-            <input type="checkbox" name="category_checkbox" id="category_watches" value="3">
+            <input type="checkbox" name="category_checkbox[]" id="category_watches" value="3">
+      
         <textarea name="text" id="text" ></textarea>
         <input type="submit" value="Send">
     </form>
