@@ -13,5 +13,6 @@ session_start();
         ]
     );
 
+    $_SESSION["post_id"] = $post_id;
+
     $single_post = $single_post_Statement->fetch(PDO::FETCH_ASSOC);
-    
