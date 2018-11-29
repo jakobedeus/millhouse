@@ -9,7 +9,7 @@ $image = $_FILES["image"];
 $image_text = $_POST["text"];
 $title = $_POST["title"];
 $user_id = $_SESSION["user_id"];
-$date = date('l jS \of F Y h:i:s A');
+$date = date('Y/m/d H:i:s');   
 $category = $_POST["category_checkbox"];
 
 foreach($category as $key => $value) {
