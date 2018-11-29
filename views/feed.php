@@ -6,6 +6,8 @@
     //include '../includes/database-connection.php';
 
 $posts = new Posts($pdo);
+$all_posts= $posts->fetchAll();  
+
 print_r($posts->fetchAll());
 //echo $posts->fetchAll();
 //echo $posts->$all_posts;
@@ -36,6 +38,7 @@ print_r($posts->fetchAll());
         <input type="text" name="title" id="title">
 
             <label for="category_living">Living</label>
+
             <input type="checkbox" name="category_checkbox[]" id="category_living" value="1">
 
             <label for="category_sunsglass">Sun glasses</label>
@@ -43,15 +46,16 @@ print_r($posts->fetchAll());
 
             <label for="category_watches">Watches</label>
             <input type="checkbox" name="category_checkbox[]" id="category_watches" value="3">
+      
         <textarea name="text" id="text" ></textarea>
         <input type="submit" value="Send">
     </form>
 
 <?php
-foreach(array_reverse($all_posts) as $post): ?>
+foreach(array_reverse($all_posts) as $row => $post): ?>
 <div class="col-12 row mb-4 border border-dark justify-content-between">
     <div class="col-4">
-        <h2><?= ($post["title"]); ?></h2>
+        <h2><?= $post["title"]; ?></h2>
         <p><?= $post["date"]; ?></p>
         <form action="post.php" method="post">
           <input type="hidden" name="id" value="<?= $post["id"]; ?>">
