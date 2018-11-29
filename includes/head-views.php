@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,14 +28,14 @@ session_start();
     </head>
     <body>
 
-    <header class="container p-4">
-    <div class="d-flex justify-content-between border-bottom">
-        <div class="col-2 pb-4">
+    <header class="container-fluid p-4">
+    <div class="row">
+        <div class="col-12 pb-4 ">
             <a href="../index.php">
-                <img src="../images/logo_borders.png" alt="Logotype" style="width:100%; color:black">
+                <img src="../images/logo_borders.png" alt="Logotype" style="width:20%; color:black">
             </a>
         </div>
-        <nav class="col-10 align-self-center">
+        <nav class="align-self-center border-bottom">
         <h2>
         <?php
         if(isset($_SESSION["username"])){
@@ -44,7 +45,9 @@ session_start();
         }
         ?>
     </h2>
-            <a href="../includes/logout.php"><button class="btn btn-danger">Log out</button></a>
+        <div>
+            <a href="../includes/logout.php"><button class="button-inverted-light">Log out</button></a>
+        </div>
         </nav>
         </div>
     </header>
