@@ -27,7 +27,7 @@ class Posts
 
         $fetch_all_posts_statement = $this->pdo->prepare(
         "SELECT posts.title, posts.date, posts.image, posts.content, 
-        posts.category, categories.category, users.username 
+        posts.category, posts.id, categories.category, users.username 
         FROM posts
         JOIN categories
         ON posts.category = categories.id

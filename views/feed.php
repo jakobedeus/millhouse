@@ -15,7 +15,7 @@ $all_posts= $posts->fetchAll();
 ?>
 <div class="container justify-content-center">
 <h2>
-   Skriv nytt inlägg:
+   Write new post:
 </h2>
 <main class="col-12">
     <!-- If we are sending a file in a form we must supply the extra attribute
