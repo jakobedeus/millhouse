@@ -79,3 +79,43 @@
     }
   }
 }
+
+.button-inverted-dark {
+  background: none;
+  transition: all 300ms;
+  padding: 10px;
+  border-radius: 4px;
+  border:2px solid $dark;
+  color: $dark;
+  cursor: pointer;
+  font-family: $font-stack;
+  font-weight: bold;
+  &--primary {
+    
+    &:hover {
+      //built in function in sass, darkens a color
+      background-color: darken($button-primary, 10%); //button-primary:hover {}
+    }
+  }
+
+  &--secondary {
+    background-color: $button-secondary;
+    &:hover {
+      background-color: darken($button-secondary, 10%);
+    }
+  }
+
+  &--danger {
+    background-color: $button-danger;
+    &:hover {
+      background-color: darken($button-danger, 10%);
+    }
+  }
+
+  &--success {
+    background-color: $button-success;
+    &:hover {
+      background-color: darken($button-success, 10%);
+    }
+  }
+}
