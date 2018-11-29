@@ -1,3 +1,20 @@
+/* This is the 'final' scss-file, in sass we split up the code
+ * into partials to manage it more easily. I have already divided 
+ * the code into smaller parts for your
+ */
 
-@import"mixins";
-
+ @import"mixins";
+ @import 'variables';
+ @import 'base';
+ @import 'navbar';
+ @import 'button';
+ 
+ main {
+   display: flex;
+   height: 100%;
+   width: 50%;
+   justify-content: space-between;
+   align-items: center;
+ }
+ 
+ /*# sourceMappingURL=style.scss.map */
