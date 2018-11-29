@@ -1,3 +1,16 @@
+@import 'navbar';
+@import 'buttons';
+@import 'mixins';
+@import 'variables';
 
-@import"mixins";
+main {
+   display: flex;
+   height: 100%;
+   width: 50%;
+   justify-content: space-between;
+   align-items: center;
+ }
 
+ nav {
+   width: 100%;
+ }
