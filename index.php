@@ -3,6 +3,7 @@
 session_start();
 include 'includes/head-index.php';
 include 'includes/functions.php';
+include 'classes/Auth.php';
 
 
 ?>
