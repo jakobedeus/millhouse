@@ -29,25 +29,28 @@ session_start();
     <body>
 
     <header class="container-fluid p-4">
-    <div class="row">
-        <div class="col-12 pb-4 ">
-            <a href="../index.php">
-                <img src="../images/logo_borders.png" alt="Logotype" style="width:20%; color:black">
-            </a>
+    <div class="row d-flex justify-content-between">
+        <div class="col-12 p-4 logo_container">
+            <a href="../index.php" class="container d-flex justify-content-center"><img src="../images/logo_borders.png" alt="Logotype"></a>
         </div>
-        <nav class="align-self-center border-bottom">
-        <h2>
-        <?php
-        if(isset($_SESSION["username"])){
-        ?>
-             Hej <?= $_SESSION["username"]; ?>
-        <?php
-        }
-        ?>
-    </h2>
-        <div>
-            <a href="../includes/logout.php"><button class="button-inverted-light">Log out</button></a>
-        </div>
+        <nav class="d-flex col-12">
+            <div class="container justify-content-between row">
+                <a href=""><button class="button-inverted-dark"><i class="fas fa-envelope"></i> GET IN TOUCH</button></a>
+                <div class="category_container d-flex align-items-center">
+                    <ul>
+                        <li><a href="feed.php?value=1">SUN GLASSES</a></li>
+                        <li><a href="feed.php?value=2">LIVING</a></li>
+                        <li><a href="feed.php?value=3">WATCHES</a></li>
+                    </ul>
+                </div>
+                <div class="row d-flex align-items-center">
+                    <p><?php if(isset($_SESSION["username"])){ ?> Logged in as: <b><?= $_SESSION["username"]; ?>
+                    <?php
+                    }
+                    ?>       </b></p>
+                    <a href="../includes/logout.php"><button class="button-inverted-light">LOG OUT</button></a>
+                </div>
+            </div>
         </nav>
         </div>
     </header>
