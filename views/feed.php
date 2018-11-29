@@ -15,14 +15,7 @@ $all_posts= $posts->fetchAll();
 ?>
 <div class="container justify-content-center">
 <h2>
-    <?php
-    if(isset($_SESSION["username"])){
-    ?>
-         Hej <?= $_SESSION["username"]; ?>
-    <?php
-    }
-
-    ?>
+   Skriv nytt inlägg:
 </h2>
 <main class="col-12">
     <!-- If we are sending a file in a form we must supply the extra attribute
@@ -56,9 +49,7 @@ foreach(array_reverse($all_posts) as $post): ?>
 <div class="col-12 row mb-4 border border-dark justify-content-between">
     <div class="col-4">
         <h2><?= $post["title"]; ?></h2>
-        <p><?= $post["date"]; ?></p> 
-        <p>Category: <?= $post["category"]; ?></p>
-        <p>Wrote by: <?= $post["username"];  ?></p>
+        <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
         <p><?= $post["content"];  ?></p>
         <form action="post.php" method="post">
           <input type="hidden" name="id" value="<?= $post["id"]; ?>">
