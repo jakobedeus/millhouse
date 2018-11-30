@@ -8,7 +8,8 @@ include "../includes/fetch-single-post.php";
         <section>
         <h2>Hej</h2>
 
-        <?php //var_dump($single_post) ?>
+        <?php //var_dump($single_post)
+        var_dump($_SESSION["post_id"]);?>
             <article>
             <div class="col-12 row mb-4 border border-dark justify-content-between">
                     <div class="col-4">
@@ -39,6 +40,18 @@ include "../includes/fetch-single-post.php";
         </section>
 
     </main>
+
+
+
+    <?php
+    foreach(array_reverse($all_comments) as $comment):
+
+
+
+    echo $comment["content"];
+    echo $comment["created_by"];
+    endforeach;
+    ?>
 
     <?php
     include "../includes/footer-views.php";

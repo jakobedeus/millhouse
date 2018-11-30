@@ -1,25 +1,18 @@
 <?php
 session_start();
+include 'database-connection.php';
 
 
 $created_by = $_SESSION["user_id"];
 $content = $_POST["content"];
 $post_id = $_SESSION["post_id"];
 
-var_dump($created_by);
+/*var_dump($created_by);
 var_dump($content);
-var_dump($post_id);
-
-
-include 'database-connection.php';
+var_dump($_SESSION["post_id"]);*/
 
 
 
-//content $content
-//created by $username
-
-//post_id
-//putta in i databasen
 
 
 
@@ -33,3 +26,18 @@ $statement->execute(
     ":created_by" => $created_by
   ]
 );
+
+
+
+
+$fetch_all_comments_statement = $pdo->prepare("SELECT * FROM comments WHERE post_id = :post_id");
+$fetch_all_comments_statement->execute(
+  [
+    ":post_id" => $post_id
+  ]
+);
+
+$comments_for_specific_post = $fetch_all_comments_statement->fetchAll(PDO::FETCH_ASSOC);
+
+
+header ('location: ../views/post.php');
