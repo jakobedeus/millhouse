@@ -26,8 +26,8 @@ class Posts
         $all_posts = $fetch_all_posts_statement->fetchAll(PDO::FETCH_ASSOC);*/
 
         $fetch_all_posts_statement = $this->pdo->prepare(
-        "SELECT posts.title, posts.date, posts.image, posts.content, 
-        posts.category, posts.id, categories.category, users.username 
+        "SELECT posts.title, posts.date, posts.image, posts.content,
+        posts.category, posts.id, categories.category, users.username
         FROM posts
         JOIN categories
         ON posts.category = categories.id
@@ -61,7 +61,7 @@ class Posts
     public function fetchSinglePost()
     {
         
-        $post_id = $_GET["id"];
+        $$post_id = $_GET["id"];
         
         $fetch_single_post_statement = $this->pdo->prepare("SELECT * FROM posts WHERE id = :id");
 
@@ -74,6 +74,22 @@ class Posts
 
         return $single_posts;
 
-
+    }
+  
+    public function deletePost()
+    {
+        if(isset($_GET["id"])){        
+            $statement = $pdo->prepare(
+            "DELETE FROM posts WHERE id = :id");
+            
+            $statement->execute(
+                [
+                    ":id" => $_GET["id"]
+                ]
+            );
+            
+           // header('Location: checkout.php');
+        
+        }
     }
 }
