@@ -8,8 +8,8 @@ $content = $_POST["content"];
 $post_id = $_SESSION["post_id"];
 
 /*var_dump($created_by);
-var_dump($content);
-var_dump($_SESSION["post_id"]);*/
+var_dump($content);*/
+var_dump($_SESSION);
 
 
 

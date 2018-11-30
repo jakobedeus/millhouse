@@ -1,5 +1,5 @@
 <?php
-session_start();
+/*session_start();
 include 'database-connection.php';
 
     $post_id = $_POST["id"];
@@ -15,4 +15,4 @@ include 'database-connection.php';
 
     $_SESSION["post_id"] = $post_id;
 
-    $single_post = $single_post_Statement->fetch(PDO::FETCH_ASSOC);
+    $single_post = $single_post_Statement->fetch(PDO::FETCH_ASSOC);*/
