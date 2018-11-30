@@ -51,10 +51,8 @@ foreach(array_reverse($all_posts) as $post): ?>
         <h2><?= $post["title"]; ?></h2>
         <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
         <p><?= $post["content"];  ?></p>
-        <form action="post.php" method="post">
-          <input type="hidden" name="id" value="<?= $post["id"]; ?>">
-          <input type="submit" value="comment">
-        </form> 
+        
+        <a href="post.php?id=<?= $post["id"]; ?>">Go to post</a>
     </div>
     <div class="col-8">
         <img src="<?= $post["image"]; ?>" alt="Cool image.">
