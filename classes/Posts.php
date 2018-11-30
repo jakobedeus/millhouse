@@ -60,4 +60,22 @@ class Posts
     
     */   
     }
+    public function deletePost()
+    {
+        if(isset($_GET["id"])){        
+            $statement = $pdo->prepare(
+            "DELETE FROM posts WHERE id = :id");
+            
+            $statement->execute(
+                [
+                    ":id" => $_GET["id"]
+                ]
+            );
+            
+           // header('Location: checkout.php');
+        
+        }
+
+    }
+
 }
