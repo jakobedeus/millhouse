@@ -15,7 +15,7 @@ $all_posts= $posts->fetchAll();
 ?>
 <div class="container justify-content-center">
 <h2>
-   Write new post:
+   Write new post: <?php //var_dump($_POST["post_id"]); ?>
 </h2>
 <main class="col-12">
     <!-- If we are sending a file in a form we must supply the extra attribute
