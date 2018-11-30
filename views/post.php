@@ -1,29 +1,33 @@
 <?php
 include "../includes/head-views.php";
-include "../includes/fetch-single-post.php";
+include '../classes/Posts.php';
 
+$single_post = new Posts($pdo);
+$single_posts = $single_post->fetchSinglePost(); 
 ?>
 
     <main class="container">
 
         <section>
-        <h2>Hej</h2>
+                <?php
+        foreach($single_posts as $post):?>
+        
+        <div class="col-12 row mb-4 border border-dark justify-content-between">
+            <div class="col-4">
+                <h2><?= $post["title"]; ?></h2>
+                <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
+                <p><?= $post["content"];  ?></p>
+            </div>
+            <div class="col-8">
+                <img src="<?= $post["image"]; ?>" alt="Cool image.">
+            </div>
+        </div>
 
         <?php
-        var_dump($_GET["id"]);?>
-            <article>
-            <div class="col-12 row mb-4 border border-dark justify-content-between">
-                    <div class="col-4">
-                        <h2><?= $single_post["title"]; ?></h2>
-                        <p><?= $single_post["content"]; ?></p>
-                        <p>Category: <?= $single_post["category_checkbox"]; ?></p>
-                    </div>
-                    <div class="col-8">
-                        <img src="<?= $single_post["image"]; ?>" alt="Cool image.">
-                    </div>
-                    <button type="submit" class="btn btn-dark">COMMENT ON POST</button>
-            </div>
-            </article>
+        endforeach;
+    
+        ?>
+        
 
             <div class="row mb-4 border border-dark justify.content-between">
               <div class="col-10">
