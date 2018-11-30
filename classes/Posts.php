@@ -26,8 +26,8 @@ class Posts
         $all_posts = $fetch_all_posts_statement->fetchAll(PDO::FETCH_ASSOC);*/
 
         $fetch_all_posts_statement = $this->pdo->prepare(
-        "SELECT posts.title, posts.date, posts.image, posts.content, 
-        posts.category, posts.id, categories.category, users.username 
+        "SELECT posts.title, posts.date, posts.image, posts.content,
+        posts.category, posts.id, categories.category, users.username
         FROM posts
         JOIN categories
         ON posts.category = categories.id
@@ -42,7 +42,7 @@ class Posts
 
     public function fetchSinglePost()
     {
-    /* RONJA ska fixas när Parmis är klar med sin del. 
+    /* RONJA ska fixas när Parmis är klar med sin del.
     session_start();
 
     $post_id = $_POST["id"];
@@ -57,7 +57,7 @@ class Posts
     );
 
     $single_post = $single_post_Statement->fetch(PDO::FETCH_ASSOC);
-    
-    */   
+
+    */
     }
 }
