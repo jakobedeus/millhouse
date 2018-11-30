@@ -26,8 +26,9 @@ class Posts
         $all_posts = $fetch_all_posts_statement->fetchAll(PDO::FETCH_ASSOC);*/
 
         $fetch_all_posts_statement = $this->pdo->prepare(
-        "SELECT posts.title, posts.date, posts.image, posts.content, 
-        posts.id_category, posts.id, categories.category, users.username 
+
+        "SELECT posts.title, posts.date, posts.image, posts.content,
+        posts.id_category, posts.id, categories.category, users.username
         FROM posts
         JOIN categories
         ON posts.id_category = categories.id
@@ -40,24 +41,62 @@ class Posts
         return $all_posts;
     }
 
+     /*public function fetchPostByCategory(); 
+    {
+
+        $category_id = $_GET["category"];
+
+        $fetch_post_by_category = $this->pdo->prepare("SELECT * FROM posts WHERE category = :category");
+
+        $fetch_post_by_category->execute(
+            [
+                ":category" => $category_id
+            ]
+        );
+        $post_category = $fetch_post_by_category->fetchAll(PDO::FETCH_ASSOC);
+
+        return $post_category;
+    }
+*/
+
     public function fetchSinglePost()
     {
-    /* RONJA ska fixas när Parmis är klar med sin del. 
-    session_start();
+        
+        $post_id = $_GET["id"];
 
-    $post_id = $_POST["id"];
+        $fetch_single_post_statement = $this->pdo->prepare("SELECT * FROM posts WHERE id = :id");
 
-    $single_post_Statement = $pdo->prepare("SELECT * FROM posts
-        WHERE id = :id");
+        $fetch_single_post_statement->execute(
+            [
+                ":id" => $post_id
+            ]
+        );
+        $single_posts = $fetch_single_post_statement->fetchAll(PDO::FETCH_ASSOC);
 
-    $single_post_Statement->execute(
-        [
-            ":id" => $post_id
-        ]
-    );
+        return $single_posts;
 
-    $single_post = $single_post_Statement->fetch(PDO::FETCH_ASSOC);
-    
-    */   
+        $_SESSION["id"] = $post_id;
+
+    }
+  
+    public function deletePost()
+    {
+        $post_id = $_GET["id"];
+
+        if(isset($_GET["id"])){        
+            $delete_post_statement = $pdo->prepare(
+            "DELETE FROM posts WHERE id = :id");
+            
+            $delete_post_statement->execute(
+                [
+                    ":id" => $post_id
+                ]
+            );
+            
+            header('Location: feed.php');
+            
+            $delete_post = $delete_post_statement;
+            return $delete_post;
+        }
     }
 }
