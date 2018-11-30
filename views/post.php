@@ -1,6 +1,7 @@
 <?php
 include "../includes/head-views.php";
 include "../includes/fetch-single-post.php";
+
 ?>
 
     <main class="container">
@@ -8,8 +9,8 @@ include "../includes/fetch-single-post.php";
         <section>
         <h2>Hej</h2>
 
-        <?php //var_dump($single_post)
-        var_dump($_SESSION["post_id"]);?>
+        <?php
+        var_dump($_GET["id"]);?>
             <article>
             <div class="col-12 row mb-4 border border-dark justify-content-between">
                     <div class="col-4">

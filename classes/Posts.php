@@ -61,7 +61,7 @@ class Posts
     public function fetchSinglePost()
     {
         
-        $$post_id = $_GET["id"];
+        $post_id = $_GET["id"];
         
         $fetch_single_post_statement = $this->pdo->prepare("SELECT * FROM posts WHERE id = :id");
 
@@ -84,7 +84,7 @@ class Posts
             
             $statement->execute(
                 [
-                    ":id" => $_GET["id"]
+                    ":id" => $post_id
                 ]
             );
             
