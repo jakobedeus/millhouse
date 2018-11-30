@@ -40,24 +40,40 @@ class Posts
         return $all_posts;
     }
 
+     /*public function fetchPostByCategory(); 
+    {
+
+        $category_id = $_GET["category"];
+
+        $fetch_post_by_category = $this->pdo->prepare("SELECT * FROM posts WHERE category = :category");
+
+        $fetch_post_by_category->execute(
+            [
+                ":category" => $category_id
+            ]
+        );
+        $post_category = $fetch_post_by_category->fetchAll(PDO::FETCH_ASSOC);
+
+        return $post_category;
+    }
+*/
+
     public function fetchSinglePost()
     {
-    /* RONJA ska fixas när Parmis är klar med sin del. 
-    session_start();
+        
+        $post_id = $_GET["id"];
+        
+        $fetch_single_post_statement = $this->pdo->prepare("SELECT * FROM posts WHERE id = :id");
 
-    $post_id = $_POST["id"];
+        $fetch_single_post_statement->execute(
+            [
+                ":id" => $post_id
+            ]
+        );
+        $single_posts = $fetch_single_post_statement->fetchAll(PDO::FETCH_ASSOC);
 
-    $single_post_Statement = $pdo->prepare("SELECT * FROM posts
-        WHERE id = :id");
+        return $single_posts;
 
-    $single_post_Statement->execute(
-        [
-            ":id" => $post_id
-        ]
-    );
 
-    $single_post = $single_post_Statement->fetch(PDO::FETCH_ASSOC);
-    
-    */   
     }
 }
