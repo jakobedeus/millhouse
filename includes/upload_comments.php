@@ -6,10 +6,6 @@ $created_by = $_SESSION["user_id"];
 $content = $_POST["content"];
 $post_id = $_SESSION["post_id"];
 
-var_dump($created_by);
-var_dump($content);
-var_dump($post_id);
-
 
 include 'database-connection.php';
 

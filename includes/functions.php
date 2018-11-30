@@ -4,3 +4,4 @@ function access_denied_messages($fail_url, $message){
     return '<p>' . $message . '</p>';
   }
 }
+

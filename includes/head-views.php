@@ -1,7 +1,7 @@
 <?php
 session_start();
-
 ?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -38,9 +38,9 @@ session_start();
                 <a href=""><button class="button-inverted-dark"><i class="fas fa-envelope"></i> GET IN TOUCH</button></a>
                 <div class="category_container d-flex align-items-center">
                     <ul>
-                        <li><a href="feed.php?value=1">SUN GLASSES</a></li>
-                        <li><a href="feed.php?value=2">LIVING</a></li>
-                        <li><a href="feed.php?value=3">WATCHES</a></li>
+                        <li><a href="feed.php?category1=sunglasses">SUNGLASSES</a></li>
+                        <li><a href="feed.php?category2=living">LIVING</a></li>
+                        <li><a href="feed.php?category3=watches">WATCHES</a></li>
                     </ul>
                 </div>
                 <div class="row d-flex align-items-center">

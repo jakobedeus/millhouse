@@ -44,27 +44,57 @@ $all_posts= $posts->fetchAll();
         <input type="submit" value="Send">
     </form>
 
-<?php
-foreach(array_reverse($all_posts) as $post): ?>
-<div class="col-12 row mb-4 border border-dark justify-content-between">
-    <div class="col-4">
-        <h2><?= $post["title"]; ?></h2>
-        <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
-        <p><?= $post["content"];  ?></p>
-        <form action="post.php" method="post">
-          <input type="hidden" name="id" value="<?= $post["id"]; ?>">
-          <input type="submit" value="comment">
-        </form> 
-    </div>
-    <div class="col-8">
-        <img src="<?= $post["image"]; ?>" alt="Cool image.">
-    </div>
-</div>
+    <?php
+    if(isset($_GET["category2"])){
 
-  <?php
-  endforeach;
-  include '../includes/footer-views.php';
-  ?>
+        //Ska fixa det här, hämta från annat statement som ingte gjrts ännu. 
+
+        foreach(array_reverse($all_posts) as $post): ?>
+            <div class="col-12 row mb-4 border border-dark justify-content-between">
+                <div class="col-4">
+                    <h2><?= $post["title"]; ?></h2>
+                    <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
+                    <p><?= $post["content"];  ?></p>
+                    <form action="post.php" method="post">
+                        <input type="hidden" name="id" value="<?= $post["id"]; ?>">
+                        <input type="submit" value="comment">
+                    </form> 
+                </div>
+                <div class="col-8">
+                    <img src="<?= $post["image"]; ?>" alt="Cool image.">
+                </div>
+            </div>
+
+         <?php
+        endforeach;
+
+        
+    }else{
+        foreach(array_reverse($all_posts) as $post): ?>
+            <div class="col-12 row mb-4 border border-dark justify-content-between">
+                <div class="col-4">
+                    <h2><?= $post["title"]; ?></h2>
+                    <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
+                    <p><?= $post["content"];  ?></p>
+                    <!--<form action="post.php" method="post">
+                        <input type="hidden" name="id" value="<?= $post["id"]; ?>">
+                        <input type="submit" value="comment">
+                    </form> -->
+                    <a href="post.php?id=<?= $post["id"]; ?>">Go to post</a>
+                </div>
+                <div class="col-8">
+                    <img src="<?= $post["image"]; ?>" alt="Cool image.">
+                </div>
+            </div>
+
+         <?php
+        endforeach;
+    }
+    ?>
+
+    <?php
+    include '../includes/footer-views.php';
+    ?>
 
   </main>
   </div>
