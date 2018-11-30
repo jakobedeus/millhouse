@@ -3,8 +3,10 @@ include "../includes/head-views.php";
 include '../classes/Posts.php';
 include "../includes/fetch-single-post.php";
 
+
 $single_post = new Posts($pdo);
 $single_posts = $single_post->fetchSinglePost(); 
+$delete_post = $delete_post->deletePost;
 ?>
 
     <main class="container">
@@ -21,6 +23,11 @@ $single_posts = $single_post->fetchSinglePost();
             </div>
             <div class="col-8">
                 <img src="<?= $post["image"]; ?>" alt="Cool image.">
+            </div>
+            <div>
+                <a href="../classes/Posts.php?id=<?= $post["id"]; ?>">Delete Post</a>
+                <?php
+                var_dump($post["id"]);?>
             </div>
         </div>
 

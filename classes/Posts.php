@@ -80,18 +80,22 @@ class Posts
   
     public function deletePost()
     {
+        $post_id = $_GET["id"];
+
         if(isset($_GET["id"])){        
-            $statement = $pdo->prepare(
+            $delete_post_statement = $pdo->prepare(
             "DELETE FROM posts WHERE id = :id");
             
-            $statement->execute(
+            $delete_post_statement->execute(
                 [
-                    ":id" => $_GET["id"]
+                    ":id" => $post_id
                 ]
             );
             
-           // header('Location: checkout.php');
-        
+            header('Location: feed.php');
+            
+            $delete_post = $delete_post_statement;
+            return $delete_post;
         }
     }
 }

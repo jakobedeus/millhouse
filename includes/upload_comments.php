@@ -7,7 +7,9 @@ $content = $_POST["content"];
 $post_id = $_SESSION["post_id"];
 
 
+
 include 'database-connection.php';
+
 
 
 
