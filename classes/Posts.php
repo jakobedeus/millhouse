@@ -62,7 +62,7 @@ class Posts
     {
         
         $post_id = $_GET["id"];
-        
+
         $fetch_single_post_statement = $this->pdo->prepare("SELECT * FROM posts WHERE id = :id");
 
         $fetch_single_post_statement->execute(
@@ -73,6 +73,8 @@ class Posts
         $single_posts = $fetch_single_post_statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $single_posts;
+
+        $_SESSION["id"] = $post_id;
 
     }
   

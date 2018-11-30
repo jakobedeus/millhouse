@@ -1,6 +1,7 @@
 <?php
 include "../includes/head-views.php";
 include '../classes/Posts.php';
+include "../includes/fetch-single-post.php";
 
 $single_post = new Posts($pdo);
 $single_posts = $single_post->fetchSinglePost(); 
@@ -49,13 +50,15 @@ $single_posts = $single_post->fetchSinglePost();
 
 
     <?php
+/*
+
     foreach(array_reverse($all_comments) as $comment):
 
 
 
     echo $comment["content"];
     echo $comment["created_by"];
-    endforeach;
+    endforeach;*/
     ?>
 
     <?php
