@@ -1,6 +1,6 @@
 <?php
 include "../includes/head-views.php";
-include '../classes/Posts.php';
+//include '../classes/Posts.php';
 include "../includes/fetch-single-post.php";
 
 

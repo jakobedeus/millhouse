@@ -41,6 +41,17 @@ class Posts
         return $all_posts;
     }
 
+    public function fetchCategory()
+    {
+        $fetch_category = $this->pdo->prepare(
+        "SELECT category FROM categories");
+        $fetch_category->execute();
+        $all_category = $fetch_category->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $all_category;
+        
+    }
+
      /*public function fetchPostByCategory(); 
     {
 

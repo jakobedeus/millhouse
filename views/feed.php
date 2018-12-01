@@ -1,6 +1,6 @@
 <?php
     include "../includes/head-views.php";
-    include '../classes/Posts.php';
+    //include '../classes/Posts.php';
     //include "../includes/database-connection.php";
     //include '../includes/fetch_posts.php';
     //include '../includes/database-connection.php';
@@ -46,30 +46,11 @@ $all_posts= $posts->fetchAll();
 
 
     <?php
-    if(isset($_GET["category2"])){
+    if(isset($_GET['category'])){
 
-        //Ska fixa det här, hämta från annat statement som ingte gjrts ännu. 
+        //Ska hämta annan foreach från annan metod i classen 
+        echo "<h1> SKA VISA VALDA KATEGORI POSTS, GÖR DET PÅ MÅNDAG </h1>";
 
-        foreach(array_reverse($all_posts) as $post): ?>
-            <div class="col-12 row mb-4 border border-dark justify-content-between">
-                <div class="col-4">
-                    <h2><?= $post["title"]; ?></h2>
-                    <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
-                    <p><?= $post["content"];  ?></p>
-                    <form action="post.php" method="post">
-                        <input type="hidden" name="id" value="<?= $post["id"]; ?>">
-                        <input type="submit" value="comment">
-                    </form> 
-                </div>
-                <div class="col-8">
-                    <img src="<?= $post["image"]; ?>" alt="Cool image.">
-                </div>
-            </div>
-
-         <?php
-        endforeach;
-
-        
     }else{
         foreach(array_reverse($all_posts) as $post): ?>
             <div class="col-12 row mb-4 border border-dark justify-content-between">

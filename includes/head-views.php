@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+include '../classes/Posts.php';
+
+$category = new Posts($pdo);
+$all_category= $category->fetchCategory(); 
 ?>
 
 <!doctype html>
@@ -37,11 +42,19 @@ session_start();
             <div class="container justify-content-between row">
                 <a href=""><button class="button-inverted-dark"><i class="fas fa-envelope"></i> GET IN TOUCH</button></a>
                 <div class="category_container d-flex align-items-center">
-                    <ul>
-                        <li><a href="feed.php?category1=sunglasses">SUNGLASSES</a></li>
-                        <li><a href="feed.php?category2=living">LIVING</a></li>
-                        <li><a href="feed.php?category3=watches">WATCHES</a></li>
-                    </ul>
+
+                    <?php
+                    foreach($all_category as $post1):?>
+                    
+                        <?php $product_category = $post1['category'];?>
+                        <ul>    
+                            <li><a href="feed.php?category=<?= $product_category; ?>"><?= $product_category; ?></a></li>
+                        </ul>
+                  
+                    <?php
+                    endforeach;                    
+                    ?>
+
                 </div>
                 <div class="row d-flex align-items-center">
                     <p><?php if(isset($_SESSION["username"])){ ?> Logged in as: <b><?= $_SESSION["username"]; ?>
