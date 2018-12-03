@@ -8,9 +8,13 @@ session_start();
     //include '../includes/fetch_posts.php';
     //include '../includes/database-connection.php';
 
-$posts_fetch = new Posts($pdo);
+$posts_fetch = new PostsFetch($pdo);
 $all_posts= $posts_fetch->fetchAll();  
 $post_category= $posts_fetch->fetchPostByCategory();
+
+$category = new PostsFetch($pdo);
+$all_category= $category->fetchCategory();
+
 
 //$category = new Posts($pdo);
 //$post_category= $category->fetchPostByCategory();
@@ -42,9 +46,9 @@ $post_category= $posts_fetch->fetchPostByCategory();
             <option value="">Choose category</option>
             <option value="1">Living</option>
             <option value="2">Sun glasses</option>
-            <option value="1">Watches</option>
+            <option value="3">Watches</option>
         </select>
-       <textarea name="text" id="text" ></textarea>
+       <textarea name="text" id="text"></textarea>
        <input type="submit" value="Send">
     </form>
 

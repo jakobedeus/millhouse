@@ -1,3 +1,10 @@
+<?php
+//session_start();
+
+/*$category = new PostsFetch($pdo);
+$all_category= $category->fetchCategory(); */
+?>
+
 <!doctype html>
 <html lang="en">
     <head>

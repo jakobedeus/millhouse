@@ -1,6 +1,6 @@
 <?php
 
-include 'database-connection.php';
+/*include 'database-connection.php';
 //session_start();
 
 
@@ -21,6 +21,6 @@ include 'database-connection.php';
    var_dump($_SESSION);
 
 
-   $single_post = $single_post_Statement->fetch(PDO::FETCH_ASSOC);
+   $single_post = $single_post_Statement->fetch(PDO::FETCH_ASSOC);*/
 
 
