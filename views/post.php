@@ -35,7 +35,7 @@ $delete_post = $single_post->deletePost();
             </div>
             <div>
                 <a href="../views/feed.php">Delete Post</a>
-                <?php
+                
 
             </div>
         </div>
