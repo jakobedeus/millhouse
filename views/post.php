@@ -40,9 +40,6 @@ $delete_post = $bajs->deletePost();
                     <input type="submit" value="DELETE">
                     <input type="hidden" name="single_post_id_delete" value="<?= $post['id']; ?>">
                 </form>
-                <?php 
-                ?>
-                <!--<a href="../classes/PostsEdit.php">Delete Post</a>-->
                 
 
             </div>
