@@ -3,12 +3,8 @@ session_start();
 include "../includes/head-views.php";
 include "../includes/header-views.php";
 //include '../classes/Posts.php';
-<<<<<<< HEAD
-include "../includes/fetch-single-post.php";
-=======
 //include "../includes/fetch-single-post.php";
->>>>>>> master
-//include "../includes/upload_comments.php";
+include "../includes/upload_comments.php";
 
 //echo "Hej";
 
@@ -28,17 +24,10 @@ $delete_post = $bajs->deletePost();
 
         <section>
                 <?php
-<<<<<<< HEAD
-        foreach($single_posts as $post):?>
-
-        <div class="row mb-4 border border-dark justify-content-between">
-            <div class="col-10">
-=======
         foreach($one_post as $post):?>
-        
+
         <div class="col-12 row mb-4 border border-dark justify-content-between">
             <div class="col-4">
->>>>>>> master
                 <h2><?= $post["title"]; ?></h2>
                 <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
                 <p><?= $post["content"];  ?></p>
@@ -51,7 +40,7 @@ $delete_post = $bajs->deletePost();
                     <input type="submit" value="DELETE">
                     <input type="hidden" name="single_post_id_delete" value="<?= $post['id']; ?>">
                 </form>
-                
+
 
             </div>
         </div>
@@ -79,31 +68,23 @@ $delete_post = $bajs->deletePost();
 
     </main>
 
-
     <div class="row mb-4 border border-dark justify-content-between">
-      <div class="col-10">
-        <h2>COMMENTS</h2>
-        <?php
-<<<<<<< HEAD
-        foreach(array_reverse($comments_for_specific_post) as $comment){
-        echo "<h3>" . $comment["created_by"] . "</h3>" ;
-        echo $comment["content"]; echo "<br>";
-        echo "<b>" . $_SESSION["date_time"] . "</b>";
+         <div class="col-10">
+           <h2>COMMENTS</h2>
+           <?php
+           foreach(array_reverse($comments_for_specific_post) as $comment){
+           echo "<h3>" . $comment["created_by"] . "</h3>" ;
+           echo $comment["content"]; echo "<br>";
+           echo "<b>" . $_SESSION["date_time"] . "</b>";
 
 
-    }
-        ?>
-      </div>
-    </div>
-
-=======
-        /*foreach(array_reverse($comments_for_specific_post) as $comment){
->>>>>>> master
+       }
+           ?>
+         </div>
+       </div>
 
 
-    echo $comment["content"];
-    echo $comment["created_by"];
-    echo "<br>";
-        }*/
-    include "../includes/footer-views.php";
-    ?>
+
+       <?php
+       include "../includes/footer-views.php";
+       ?>
