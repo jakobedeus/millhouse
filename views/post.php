@@ -2,12 +2,15 @@
 include "../includes/head-views.php";
 //include '../classes/Posts.php';
 include "../includes/fetch-single-post.php";
+include "../includes/upload_comments.php";
 
 
 $single_post = new Posts($pdo);
 $single_posts = $single_post->fetchSinglePost();
 
+
 $delete_post = $single_post->deletePost();
+
 
 ?>
 
@@ -16,7 +19,7 @@ $delete_post = $single_post->deletePost();
         <section>
                 <?php
         foreach($single_posts as $post):?>
-        
+
         <div class="col-12 row mb-4 border border-dark justify-content-between">
             <div class="col-4">
                 <h2><?= $post["title"]; ?></h2>
@@ -29,18 +32,17 @@ $delete_post = $single_post->deletePost();
             <div>
                 <a href="../views/feed.php">Delete Post</a>
                 <?php
-                // ?id=<?= $post["id"];
-                // var_dump($post["id"]);?>
+
             </div>
         </div>
 
         <?php
         endforeach;
-    
-        ?>
-        
 
-            <div class="row mb-4 border border-dark justify.content-between">
+        ?>
+
+
+            <div class="row mb-4 border border-dark justify-content-between">
               <div class="col-10">
                 <h3>Comments</h3>
                 <h4>Write your comment</h4>
@@ -58,18 +60,20 @@ $delete_post = $single_post->deletePost();
     </main>
 
 
+    <div class="row mb-4 border border-dark justify-content-center">
+      <div class="col-">
+        <?php
+        foreach(array_reverse($comments_for_specific_post) as $comment){
 
-    <?php
-/*
+       echo $comment["content"];
+       echo $comment["created_by"];
+       echo "<br>";
+    }
+        ?>
+      </div>
+    </div>
 
-    foreach(array_reverse($all_comments) as $comment):
 
-
-
-    echo $comment["content"];
-    echo $comment["created_by"];
-    endforeach;*/
-    ?>
 
     <?php
     include "../includes/footer-views.php";
