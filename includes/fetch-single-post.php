@@ -1,7 +1,7 @@
 <?php
 
-include 'database-connection.php';
-session_start();
+/*include 'database-connection.php';
+//session_start();
 
 
    $post_id = $_GET["id"];
@@ -21,6 +21,6 @@ session_start();
    var_dump($_SESSION);
 
 
-   $single_post = $single_post_Statement->fetch(PDO::FETCH_ASSOC);
+   $single_post = $single_post_Statement->fetch(PDO::FETCH_ASSOC);*/
 
 

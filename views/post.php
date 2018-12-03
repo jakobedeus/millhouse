@@ -1,23 +1,44 @@
 <?php
+session_start();
 include "../includes/head-views.php";
+include "../includes/header-views.php";
 //include '../classes/Posts.php';
+<<<<<<< HEAD
 include "../includes/fetch-single-post.php";
+=======
+//include "../includes/fetch-single-post.php";
+>>>>>>> master
 //include "../includes/upload_comments.php";
 
+//echo "Hej";
 
-$single_post = new Posts($pdo);
-$single_posts = $single_post->fetchSinglePost();
-$delete_post = $delete_post->deletePost;
+//var_dump($_SESSION["post_id"]);
+//var_dump($_SESSION["id"]);
+
+
+$single_post = new PostsFetch($pdo);
+$one_post = $single_post->fetchSinglePost();
+
+$bajs = new PostsEdit($pdo);
+$delete_post = $bajs->deletePost();
+
 ?>
 
     <main class="container">
 
         <section>
                 <?php
+<<<<<<< HEAD
         foreach($single_posts as $post):?>
 
         <div class="row mb-4 border border-dark justify-content-between">
             <div class="col-10">
+=======
+        foreach($one_post as $post):?>
+        
+        <div class="col-12 row mb-4 border border-dark justify-content-between">
+            <div class="col-4">
+>>>>>>> master
                 <h2><?= $post["title"]; ?></h2>
                 <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
                 <p><?= $post["content"];  ?></p>
@@ -26,9 +47,12 @@ $delete_post = $delete_post->deletePost;
                 <img src="<?= $post["image"]; ?>" alt="Cool image.">
             </div>
             <div>
-                <a href="../classes/Posts.php?id=<?= $post["id"]; ?>">Delete Post</a>
-                <?php
-                //var_dump($post["id"]);?>
+                <form action="post.php" method="POST">
+                    <input type="submit" value="DELETE">
+                    <input type="hidden" name="single_post_id_delete" value="<?= $post['id']; ?>">
+                </form>
+                
+
             </div>
         </div>
 
@@ -60,6 +84,7 @@ $delete_post = $delete_post->deletePost;
       <div class="col-10">
         <h2>COMMENTS</h2>
         <?php
+<<<<<<< HEAD
         foreach(array_reverse($comments_for_specific_post) as $comment){
         echo "<h3>" . $comment["created_by"] . "</h3>" ;
         echo $comment["content"]; echo "<br>";
@@ -71,8 +96,14 @@ $delete_post = $delete_post->deletePost;
       </div>
     </div>
 
+=======
+        /*foreach(array_reverse($comments_for_specific_post) as $comment){
+>>>>>>> master
 
 
-    <?php
+    echo $comment["content"];
+    echo $comment["created_by"];
+    echo "<br>";
+        }*/
     include "../includes/footer-views.php";
     ?>
