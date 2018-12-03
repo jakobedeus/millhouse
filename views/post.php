@@ -2,7 +2,7 @@
 include "../includes/head-views.php";
 //include '../classes/Posts.php';
 include "../includes/fetch-single-post.php";
-include "../includes/upload_comments.php";
+//include "../includes/upload_comments.php";
 
 
 $single_post = new Posts($pdo);
@@ -16,8 +16,8 @@ $delete_post = $delete_post->deletePost;
                 <?php
         foreach($single_posts as $post):?>
 
-        <div class="col-12 row mb-4 border border-dark justify-content-between">
-            <div class="col-4">
+        <div class="row mb-4 border border-dark justify-content-between">
+            <div class="col-10">
                 <h2><?= $post["title"]; ?></h2>
                 <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
                 <p><?= $post["content"];  ?></p>
@@ -56,14 +56,16 @@ $delete_post = $delete_post->deletePost;
     </main>
 
 
-    <div class="row mb-4 border border-dark justify-content-center">
-      <div class="col-">
+    <div class="row mb-4 border border-dark justify-content-between">
+      <div class="col-10">
+        <h2>COMMENTS</h2>
         <?php
         foreach(array_reverse($comments_for_specific_post) as $comment){
+        echo "<h3>" . $comment["created_by"] . "</h3>" ;
+        echo $comment["content"]; echo "<br>";
+        echo "<b>" . $_SESSION["date_time"] . "</b>";
 
-       echo $comment["content"];
-       echo $comment["created_by"];
-       echo "<br>";
+
     }
         ?>
       </div>

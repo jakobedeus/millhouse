@@ -6,6 +6,9 @@ $created_by = $_SESSION["user_id"];
 $content = $_POST["content"];
 $post_id = $_SESSION["post_id"];
 $datetime = date('Y/m/d H:i:s');
+$_SESSION["date_time"] = $datetime;
+var_dump($_SESSION["date_time"]);
+
 
 
 
@@ -47,4 +50,4 @@ $comments_for_specific_post = $fetch_all_comments_statement->fetchAll(PDO::FETCH
 
 
 
-//header ('location: ../views/post.php');
+header ('location: ../views/post.php');
