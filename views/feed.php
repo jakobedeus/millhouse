@@ -75,6 +75,7 @@ $post_category= $posts_fetch->fetchPostByCategory();
                     <h2><?= $post["title"]; ?></h2>
                     <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
                     <p><?= $post["content"];  ?></p>
+
                     <a href="post.php?id=<?= $post["id"]; ?>">Go to post</a>
                 </div>
                 <div class="col-8">
