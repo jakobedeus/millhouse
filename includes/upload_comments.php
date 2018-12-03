@@ -13,11 +13,6 @@ include 'database-connection.php';
 
 
 
-//content $content
-//created by $username
-
-//post_id
-//putta in i databasen
 
 
 
@@ -34,7 +29,7 @@ $statement->execute(
 
 
 
-/*
+
 
 $fetch_all_comments_statement = $pdo->prepare("SELECT * FROM comments WHERE post_id = :post_id");
 $fetch_all_comments_statement->execute(
@@ -46,4 +41,7 @@ $fetch_all_comments_statement->execute(
 $comments_for_specific_post = $fetch_all_comments_statement->fetchAll(PDO::FETCH_ASSOC);
 
 
-header ('location: ../views/post.php');*/
+
+
+
+//header ('location: ../views/post.php');

@@ -47,12 +47,12 @@ class Posts
         "SELECT category FROM categories");
         $fetch_category->execute();
         $all_category = $fetch_category->fetchAll(PDO::FETCH_ASSOC);
-        
+
         return $all_category;
-        
+
     }
 
-     /*public function fetchPostByCategory(); 
+     /*public function fetchPostByCategory();
     {
 
         $category_id = $_GET["category"];
@@ -72,7 +72,7 @@ class Posts
 
     public function fetchSinglePost()
     {
-        
+
         $post_id = $_GET["id"];
 
         $fetch_single_post_statement = $this->pdo->prepare("SELECT * FROM posts WHERE id = :id");
@@ -89,23 +89,23 @@ class Posts
         $_SESSION["id"] = $post_id;
 
     }
-  
+
     public function deletePost()
     {
         $post_id = $_GET["id"];
 
-        if(isset($_GET["id"])){        
+        if(isset($_GET["id"])){
             $delete_post_statement = $pdo->prepare(
             "DELETE FROM posts WHERE id = :id");
-            
+
             $delete_post_statement->execute(
                 [
                     ":id" => $post_id
                 ]
             );
-            
+
             header('Location: feed.php');
-            
+
             $delete_post = $delete_post_statement;
             return $delete_post;
         }
