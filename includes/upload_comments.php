@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include 'database-connection.php';
 
 $created_by = $_SESSION["user_id"];
 $content = $_POST["content"];
@@ -8,7 +8,6 @@ $post_id = $_SESSION["post_id"];
 
 
 
-include 'database-connection.php';
 
 
 
@@ -26,7 +25,6 @@ $statement->execute(
    ":created_by" => $created_by
  ]
 );
-
 
 
 

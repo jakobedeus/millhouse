@@ -3,8 +3,10 @@ session_start();
 include "../includes/head-views.php";
 include "../includes/header-views.php";
 //include '../classes/Posts.php';
+
 include "../includes/fetch-single-post.php";
 include "../includes/upload_comments.php";
+
 
 
 $single_post = new Posts($pdo);
