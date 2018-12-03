@@ -8,7 +8,7 @@ $pdo = new PDO(
 
 );
 
-class Posts
+class PostsFetch
 {
     private $pdo;
     /* Inject the pdo connection so it is available inside of the class
@@ -82,12 +82,10 @@ class Posts
     }
 }
 
-    
-
 
     public function fetchSinglePost()
     {
-        
+        if(isset($_GET['id'])){ 
         $post_id = $_GET["id"];
 
         $fetch_single_post_statement = $this->pdo->prepare("SELECT * FROM posts WHERE id = :id");
@@ -104,25 +102,5 @@ class Posts
         $_SESSION["id"] = $post_id;
 
     }
-  
-    public function deletePost()
-    {
-
-            $post_id_delete = $_GET["id"];
-        
-            $delete_post_statement = $this->pdo->prepare(
-            "DELETE FROM posts WHERE id = :id");
-            
-            $delete_post_statement->execute(
-                [
-                    ":id" => $post_id_delete
-                ]
-            );
-                        
-            $delete_post = $delete_post_statement;
-
-            return $delete_post;
-        
-    }
-
+}
 }
