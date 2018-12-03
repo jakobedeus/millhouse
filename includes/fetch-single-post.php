@@ -1,7 +1,7 @@
 <?php
 
 include 'database-connection.php';
-session_start();
+//session_start();
 
 
    $post_id = $_GET["id"];
