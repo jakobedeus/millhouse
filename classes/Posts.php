@@ -52,23 +52,40 @@ class Posts
 
     }
 
-     /*public function fetchPostByCategory();
+
+     public function fetchPostByCategory()
+
     {
 
+        if(isset($_GET['category'])){ 
         $category_id = $_GET["category"];
+        
 
-        $fetch_post_by_category = $this->pdo->prepare("SELECT * FROM posts WHERE category = :category");
+        $fetch_post_by_category = $this->pdo->prepare(
 
-        $fetch_post_by_category->execute(
+            "SELECT posts.title, posts.date, posts.image, posts.content,
+            posts.id_category, posts.id, categories.category, users.username
+            FROM posts
+            JOIN categories
+            ON posts.id_category = categories.id
+            JOIN users
+            ON users.id = posts.created_by
+            WHERE category = :category
+            ");
+            $fetch_post_by_category->execute(
             [
                 ":category" => $category_id
             ]
-        );
-        $post_category = $fetch_post_by_category->fetchAll(PDO::FETCH_ASSOC);
-
-        return $post_category;
+            );
+            $post_category = $fetch_post_by_category->fetchAll(PDO::FETCH_ASSOC);
+            return $post_category;
+            
+            
     }
-*/
+}
+
+    
+
 
     public function fetchSinglePost()
     {
@@ -92,22 +109,24 @@ class Posts
 
     public function deletePost()
     {
-        $post_id = $_GET["id"];
 
-        if(isset($_GET["id"])){
-            $delete_post_statement = $pdo->prepare(
+
+            $post_id_delete = $_GET["id"];
+        
+            $delete_post_statement = $this->pdo->prepare(
+
             "DELETE FROM posts WHERE id = :id");
 
             $delete_post_statement->execute(
                 [
-                    ":id" => $post_id
+                    ":id" => $post_id_delete
                 ]
             );
 
-            header('Location: feed.php');
-
             $delete_post = $delete_post_statement;
+
             return $delete_post;
-        }
+        
     }
+
 }
