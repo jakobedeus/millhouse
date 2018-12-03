@@ -1,5 +1,8 @@
 <?php
+session_start();
+
     include "../includes/head-views.php";
+    include "../includes/header-views.php";
     //include '../classes/Posts.php';
     //include "../includes/database-connection.php";
     //include '../includes/fetch_posts.php';
