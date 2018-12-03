@@ -1,10 +1,12 @@
 <?php
-session_start();
+//session_start();
 
 
 $created_by = $_SESSION["user_id"];
 $content = $_POST["content"];
 $post_id = $_SESSION["post_id"];
+
+
 
 
 
@@ -33,9 +35,6 @@ $statement->execute(
 );
 
 
-
-/*
-
 $fetch_all_comments_statement = $pdo->prepare("SELECT * FROM comments WHERE post_id = :post_id");
 $fetch_all_comments_statement->execute(
   [
@@ -45,5 +44,4 @@ $fetch_all_comments_statement->execute(
 
 $comments_for_specific_post = $fetch_all_comments_statement->fetchAll(PDO::FETCH_ASSOC);
 
-
-header ('location: ../views/post.php');*/
+//header ('location: ../views/post.php');

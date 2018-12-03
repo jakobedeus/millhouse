@@ -1,13 +1,20 @@
 <?php
 include "../includes/head-views.php";
 //include '../classes/Posts.php';
-include "../includes/fetch-single-post.php";
+//include "../includes/fetch-single-post.php";
+//include "../includes/upload_comments.php";
+
+//echo "Hej";
+
+//var_dump($_SESSION["post_id"]);
+//var_dump($_SESSION["id"]);
 
 
-$single_post = new Posts($pdo);
-$single_posts = $single_post->fetchSinglePost();
+$single_post = new PostsFetch($pdo);
+$one_post = $single_post->fetchSinglePost();
 
-$delete_post = $single_post->deletePost();
+$bajs = new PostsEdit($pdo);
+$delete_post = $bajs->deletePost();
 
 ?>
 
@@ -15,7 +22,7 @@ $delete_post = $single_post->deletePost();
 
         <section>
                 <?php
-        foreach($single_posts as $post):?>
+        foreach($one_post as $post):?>
         
         <div class="col-12 row mb-4 border border-dark justify-content-between">
             <div class="col-4">
@@ -27,7 +34,13 @@ $delete_post = $single_post->deletePost();
                 <img src="<?= $post["image"]; ?>" alt="Cool image.">
             </div>
             <div>
-                <a href="../views/feed.php">Delete Post</a>
+                <form action="post.php" method="POST">
+                    <input type="submit" value="DELETE">
+                    <input type="hidden" name="single_post_id_delete" value="<?= $post['id']; ?>">
+                </form>
+                <?php 
+                ?>
+                <!--<a href="../classes/PostsEdit.php">Delete Post</a>-->
                 <?php
                 // ?id=<?= $post["id"];
                 // var_dump($post["id"]);?>
@@ -36,7 +49,7 @@ $delete_post = $single_post->deletePost();
 
         <?php
         endforeach;
-    
+
         ?>
         
 
@@ -61,14 +74,12 @@ $delete_post = $single_post->deletePost();
 
     <?php
 /*
-
-    foreach(array_reverse($all_comments) as $comment):
-
-
+    foreach(array_reverse($comments_for_specific_post) as $comment){
 
     echo $comment["content"];
     echo $comment["created_by"];
-    endforeach;*/
+    echo "<br>";
+}*/
     ?>
 
     <?php

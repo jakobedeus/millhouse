@@ -1,9 +1,10 @@
 <?php
 session_start();
 
-include '../classes/Posts.php';
+include '../classes/PostsFetch.php';
+include '../classes/PostsEdit.php';
 
-$category = new Posts($pdo);
+$category = new PostsFetch($pdo);
 $all_category= $category->fetchCategory(); 
 ?>
 
