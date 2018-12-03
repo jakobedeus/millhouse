@@ -59,7 +59,7 @@ $all_posts= $posts->fetchAll();
                     <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
                     <p><?= $post["content"];  ?></p>
                     <!--<form action="post.php" method="post">
-                        <input type="hidden" name="id" value="<?= $post["id"]; ?>">
+                        <input type="hidden" name="id" value=
                         <input type="submit" value="comment">
                     </form> -->
                     <a href="post.php?id=<?= $post["id"]; ?>">Go to post</a>

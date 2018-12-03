@@ -5,8 +5,10 @@ include "../includes/fetch-single-post.php";
 
 
 $single_post = new Posts($pdo);
-$single_posts = $single_post->fetchSinglePost(); 
-$delete_post = $delete_post->deletePost;
+$single_posts = $single_post->fetchSinglePost();
+
+$delete_post = $single_post->deletePost();
+
 ?>
 
     <main class="container">
@@ -25,9 +27,10 @@ $delete_post = $delete_post->deletePost;
                 <img src="<?= $post["image"]; ?>" alt="Cool image.">
             </div>
             <div>
-                <a href="../classes/Posts.php?id=<?= $post["id"]; ?>">Delete Post</a>
+                <a href="../views/feed.php">Delete Post</a>
                 <?php
-                var_dump($post["id"]);?>
+                // ?id=<?= $post["id"];
+                // var_dump($post["id"]);?>
             </div>
         </div>
 
