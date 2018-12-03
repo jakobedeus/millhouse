@@ -5,6 +5,8 @@ session_start();
 $created_by = $_SESSION["user_id"];
 $content = $_POST["content"];
 $post_id = $_SESSION["post_id"];
+$datetime = date('Y/m/d H:i:s');
+
 
 
 
@@ -17,13 +19,14 @@ include 'database-connection.php';
 
 
 $statement = $pdo->prepare("INSERT INTO comments
-(content, post_id, created_by) VALUES (:content, :post_id, :created_by)");
+(content, post_id, created_by, date) VALUES (:content, :post_id, :created_by, :date)");
 
 $statement->execute(
  [
    ":content" => $content,
    ":post_id" => $post_id,
-   ":created_by" => $created_by
+   ":created_by" => $created_by,
+   ":date" => $datetime
  ]
 );
 
