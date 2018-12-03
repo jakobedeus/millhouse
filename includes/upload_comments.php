@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include 'database-connection.php';
 
 $created_by = $_SESSION["user_id"];
 $content = $_POST["content"];
@@ -8,7 +8,6 @@ $post_id = $_SESSION["post_id"];
 
 
 
-include 'database-connection.php';
 
 
 
@@ -35,7 +34,6 @@ $statement->execute(
 
 
 /*
-
 $fetch_all_comments_statement = $pdo->prepare("SELECT * FROM comments WHERE post_id = :post_id");
 $fetch_all_comments_statement->execute(
   [

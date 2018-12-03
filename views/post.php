@@ -1,7 +1,7 @@
 <?php
 include "../includes/head-views.php";
 //include '../classes/Posts.php';
-include "../includes/fetch-single-post.php";
+//include "../includes/fetch-single-post.php";
 
 
 $single_post = new Posts($pdo);
