@@ -12,6 +12,9 @@ $posts_fetch = new PostsFetch($pdo);
 $all_posts= $posts_fetch->fetchAll();  
 $post_category= $posts_fetch->fetchPostByCategory();
 
+$category = new PostsFetch($pdo);
+$all_category= $category->fetchCategory();
+
 
 //$category = new Posts($pdo);
 //$post_category= $category->fetchPostByCategory();

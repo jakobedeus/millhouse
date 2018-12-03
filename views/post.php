@@ -18,7 +18,6 @@ $one_post = $single_post->fetchSinglePost();
 $bajs = new PostsEdit($pdo);
 $delete_post = $bajs->deletePost();
 
-
 ?>
 
     <main class="container">
@@ -76,12 +75,12 @@ $delete_post = $bajs->deletePost();
     <div class="row mb-4 border border-dark justify-content-center">
       <div class="col-">
         <?php
-        foreach(array_reverse($comments_for_specific_post) as $comment){
+        /*foreach(array_reverse($comments_for_specific_post) as $comment){
 
 
     echo $comment["content"];
     echo $comment["created_by"];
     echo "<br>";
-        }
+        }*/
     include "../includes/footer-views.php";
     ?>

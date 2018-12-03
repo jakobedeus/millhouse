@@ -1,11 +1,8 @@
 <?php
-session_start();
+//session_start();
 
-include '../classes/PostsFetch.php';
-include '../classes/PostsEdit.php';
-
-$category = new PostsFetch($pdo);
-$all_category= $category->fetchCategory(); 
+/*$category = new PostsFetch($pdo);
+$all_category= $category->fetchCategory(); */
 ?>
 
 <!doctype html>
