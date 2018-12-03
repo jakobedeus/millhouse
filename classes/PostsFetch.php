@@ -8,22 +8,20 @@ $pdo = new PDO(
 
 );
 
-class Posts
+class PostsFetch
 {
     private $pdo;
-    /* Inject the pdo connection so it is available inside of the class
-    * so we can call it with '$this->pdo', always available inside of the class
-    */
+
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
     }
-
+    
     public function fetchAll()
     {
-        /*$fetch_all_posts_statement = $this->pdo->prepare("SELECT * FROM posts");
+        $fetch_all_posts_statement = $this->pdo->prepare("SELECT * FROM posts");
         $fetch_all_posts_statement->execute();
-        $all_posts = $fetch_all_posts_statement->fetchAll(PDO::FETCH_ASSOC);*/
+        $all_posts = $fetch_all_posts_statement->fetchAll(PDO::FETCH_ASSOC);
 
         $fetch_all_posts_statement = $this->pdo->prepare(
 
@@ -80,16 +78,14 @@ class Posts
             $post_category = $fetch_post_by_category->fetchAll(PDO::FETCH_ASSOC);
             return $post_category;
             
-            
+           
     }
 }
-
-    
 
 
     public function fetchSinglePost()
     {
-
+        if(isset($_GET['id'])){ 
         $post_id = $_GET["id"];
 
         $fetch_single_post_statement = $this->pdo->prepare("SELECT * FROM posts WHERE id = :id");
@@ -106,27 +102,5 @@ class Posts
         $_SESSION["id"] = $post_id;
 
     }
-
-    public function deletePost()
-    {
-
-
-            $post_id_delete = $_GET["id"];
-        
-            $delete_post_statement = $this->pdo->prepare(
-
-            "DELETE FROM posts WHERE id = :id");
-
-            $delete_post_statement->execute(
-                [
-                    ":id" => $post_id_delete
-                ]
-            );
-
-            $delete_post = $delete_post_statement;
-
-            return $delete_post;
-        
-    }
-
+}
 }
