@@ -2,11 +2,11 @@
         <footer class="bg-primary">
           <div class="row">
             <div class="col">
-              <img src="/millhouse/images/coupleswatches.jpg" class="img-fluid" alt="couples watches" />
+              <!--<img src="/millhouse/images/coupleswatches.jpg" class="img-fluid" alt="couples watches" />
               <img src="/millhouse/images/living.jpg" class="img-fluid" alt="interior" />
               <img src="/millhouse/images/manwatch.jpg" class="img-fluid" alt="mens watch" />
               <img src="/millhouse/images/yellowgirl.jpg" class="img-fluid" alt="girl on yellow background" />
-              <img src="/millhouse/images/sunglassesbeach.jpg" class="img-fluid" alt="sunglasses" />
+              <img src="/millhouse/images/sunglassesbeach.jpg" class="img-fluid" alt="sunglasses" />-->
             </div>
           </div>
 

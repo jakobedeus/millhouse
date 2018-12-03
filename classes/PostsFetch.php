@@ -47,12 +47,14 @@ class PostsFetch
         "SELECT category FROM categories");
         $fetch_category->execute();
         $all_category = $fetch_category->fetchAll(PDO::FETCH_ASSOC);
-        
+
         return $all_category;
-        
+
     }
 
+
      public function fetchPostByCategory()
+
     {
 
         if(isset($_GET['category'])){ 

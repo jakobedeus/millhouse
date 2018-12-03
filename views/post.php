@@ -1,5 +1,7 @@
 <?php
+session_start();
 include "../includes/head-views.php";
+include "../includes/header-views.php";
 //include '../classes/Posts.php';
 //include "../includes/fetch-single-post.php";
 //include "../includes/upload_comments.php";
@@ -15,6 +17,7 @@ $one_post = $single_post->fetchSinglePost();
 
 $bajs = new PostsEdit($pdo);
 $delete_post = $bajs->deletePost();
+
 
 ?>
 
@@ -41,9 +44,8 @@ $delete_post = $bajs->deletePost();
                 <?php 
                 ?>
                 <!--<a href="../classes/PostsEdit.php">Delete Post</a>-->
-                <?php
-                // ?id=<?= $post["id"];
-                // var_dump($post["id"]);?>
+                
+
             </div>
         </div>
 
@@ -51,9 +53,9 @@ $delete_post = $bajs->deletePost();
         endforeach;
 
         ?>
-        
 
-            <div class="row mb-4 border border-dark justify.content-between">
+
+            <div class="row mb-4 border border-dark justify-content-between">
               <div class="col-10">
                 <h3>Comments</h3>
                 <h4>Write your comment</h4>
@@ -71,17 +73,15 @@ $delete_post = $bajs->deletePost();
     </main>
 
 
+    <div class="row mb-4 border border-dark justify-content-center">
+      <div class="col-">
+        <?php
+        foreach(array_reverse($comments_for_specific_post) as $comment){
 
-    <?php
-/*
-    foreach(array_reverse($comments_for_specific_post) as $comment){
 
     echo $comment["content"];
     echo $comment["created_by"];
     echo "<br>";
-}*/
-    ?>
-
-    <?php
+        }
     include "../includes/footer-views.php";
     ?>

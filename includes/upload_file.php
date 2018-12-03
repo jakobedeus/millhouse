@@ -9,12 +9,12 @@ $image = $_FILES["image"];
 $image_text = $_POST["text"];
 $title = $_POST["title"];
 $user_id = $_SESSION["user_id"];
-$date = date('Y/m/d H:i:s');   
+$date = date('Y/m/d H:i:s');
 $id_category = $_POST["category_checkbox"];
 
 foreach($id_category as $key => $value) {
   $id_category = $value;
-  
+
 }
 
 /**
@@ -78,7 +78,7 @@ $statement->execute(
   [
       ":post_id" => $value,
       ":category_id" => $category_id
-      
+
   ]
 );
 
