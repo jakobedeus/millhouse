@@ -7,7 +7,7 @@ $content = $_POST["content"];
 $post_id = $_SESSION["post_id"];
 $datetime = date('Y/m/d H:i:s');
 $_SESSION["date_time"] = $datetime;
-var_dump($_SESSION["date_time"]);
+
 
 
 
