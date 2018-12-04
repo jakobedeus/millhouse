@@ -101,15 +101,15 @@ $update_post = $update->updatePost();*/
            <?php
            foreach(array_reverse($comments_for_specific_post) as $comment){
            echo "<h3>" . $comment["created_by"] . "</h3>" ;
-           echo $comment["content"]; echo "<br>";
+           echo $comment["content"]; echo "<br>";?>
              
            <form action="../includes/delete-comments.php" method="POST">
                <input type="submit" value="DELETE COMMENTS">
                <input type="hidden" name="single_comment_id_delete" value="<?= $comment["id"]; ?>">
            </form>
-           echo "<b>" . $_SESSION["date_time"] . "</b>";
+           <?= "<b>" . $_SESSION["date_time"] . "</b>"; ?>
            
-           echo $comment["id"];
+           <?= $comment["id"]; ?>
 
 
          <?php }?>
