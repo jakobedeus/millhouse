@@ -1,4 +1,4 @@
-@import 'variables';
+/*@import 'variables';
 
 .logo_container img {
   height: 30%;
@@ -37,7 +37,7 @@ nav {
  
   }
  
- 
+
   .category_container{
      
       a {
@@ -55,4 +55,4 @@ nav {
           color:$light;
          font-weight: bold;
       }
-  }
+  }*/

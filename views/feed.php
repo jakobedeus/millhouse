@@ -62,7 +62,7 @@ $upload_ok = $insert_post->InsertPosts();
         //var_dump($_GET['category']);
         //Ska hämta annan foreach från annan metod i classen 
         foreach(array_reverse($post_category) as $category): ?>
-        <div class="col-12 row mb-4 border border-dark justify-content-between">
+        <div class="row mb-4 border border-dark justify-content-between">
             <div class="col-4">
                 <h2><?= $category["title"]; ?></h2>
                 <p><?= $category["date"] . '<strong> Category: </strong>' . $category["category"] . '<strong> Wrote by: </strong>' . $category["username"]; ?></p>
