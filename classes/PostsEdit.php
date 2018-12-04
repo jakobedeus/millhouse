@@ -9,6 +9,8 @@ $pdo = new PDO(
 
 );
 
+
+
 class PostsEdit
 {
     private $pdo;
@@ -19,13 +21,11 @@ class PostsEdit
     {
         $this->pdo = $pdo;
     }
-  
+    
     public function deletePost()
     {
         if(isset($_POST["single_post_id_delete"])){ 
-        $post_id = $_POST["single_post_id_delete"];
-
-        if(isset($_POST["single_post_id_delete"])){        
+            $post_id = $_POST["single_post_id_delete"];       
             $delete_post_statement = $this->pdo->prepare(
             "DELETE FROM posts WHERE id = :id");
             
@@ -39,7 +39,39 @@ class PostsEdit
             return $delete_post;
 
             //header('Location: feed.php');
+            }
+        }
+    
+    public function updatePost()
+    {
+        $id = $_GET["id"]; 
+
+        $title = $_POST["title"];
+        $content = $_POST["content"];
+        //$image = $_FILES["image"];
+        /*$id_category = $_POST["category_checkbox"];
+        $date = date('Y/m/d H:i:s');*/
+   
+            $update_post_statement = $this->pdo->prepare(
+            "UPDATE posts 
+            SET title = :title, content = :content
+            WHERE id = :id");
+            
+            $update_post_statement->execute(
+                [
+                    ":title" => $title,
+                    ":content" => $content,
+                    /*":image" => $image,
+                    ":date" => $date,
+                    */
+                    "id" => $id
+                ]
+            );
+            
+            $update_post = $update_post_statement;
+            return $update_post;
+
+            //header('Location: feed.php');
+            //}
         }
     }
-}
-}
