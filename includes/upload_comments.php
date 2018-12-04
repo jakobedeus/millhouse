@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 /*
 
 $created_by = $_SESSION["user_id"];

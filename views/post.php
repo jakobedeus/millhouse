@@ -88,7 +88,7 @@ $insert_comment = $add_comment->insertComments();
               <div class="col-10">
                 <h3>Comments</h3>
                 <h4>Write your comment</h4>
-                <form action="../includes/upload_comments.php" method="POST">
+                <form action="post.php?id=<?= $post["id"]; ?>" method="POST">
                   <label for="comments"></label>
                   <textarea name="content" rows="20" cols="100"></textarea>
                   <button type="submit" class="btn btn-dark">COMMENT ON POST</button>
@@ -105,11 +105,11 @@ $insert_comment = $add_comment->insertComments();
          <div class="col-10">
            <h2>COMMENTS</h2>
            <?php
-           foreach(array_reverse($comments_for_specific_post) as $comment){
+           /*foreach(array_reverse($comments_for_specific_post) as $comment){
            echo "<h3>" . $comment["created_by"] . "</h3>" ;
            echo $comment["content"]; echo "<br>";?>
 
-           <form action="../includes/delete-comments.php" method="POST">
+           <form action="post.php" method="POST">
                <input type="submit" value="DELETE COMMENTS">
                <input type="hidden" name="single_comment_id_delete" value="<?= $comment["id"]; ?>">
            </form>
@@ -118,7 +118,7 @@ $insert_comment = $add_comment->insertComments();
            <?= $comment["id"]; ?>
 
 
-         <?php }?>
+         <?php }*/?>
 
          </div>
        </div>

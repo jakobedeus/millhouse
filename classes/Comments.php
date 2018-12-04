@@ -35,16 +35,11 @@ class CommentsFetch
 
  public function insertComments()
  {
-
+  
    $created_by = $_SESSION["user_id"];
    $content = $_POST["content"];
-   $post_id = $_SESSION["post_id"];
+   $post_id = $_GET["id"];
    $datetime = date('Y/m/d H:i:s');
-
-
-
-
-
 
  $statement_insert_comment = $this->pdo->prepare("INSERT INTO comments
  (content, post_id, created_by, date) VALUES (:content, :post_id, :created_by, :date)");
