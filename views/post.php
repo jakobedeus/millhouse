@@ -15,10 +15,15 @@ include "../includes/upload_comments.php";
 $single_post = new PostsFetch($pdo);
 $one_post = $single_post->fetchSinglePost();
 
-$bajs = new PostsEdit($pdo);
-$delete_post = $bajs->deletePost();
+$delete= new PostsEdit($pdo);
+$delete_post = $delete->deletePost();
+
+/*$update = new PostsEdit($pdo);
+$update_post = $update->updatePost();*/
 
 ?>
+
+
 
     <main class="container">
 
@@ -44,11 +49,33 @@ $delete_post = $bajs->deletePost();
 
             </div>
         </div>
-
         <?php
         endforeach;
-
         ?>
+
+        <!-- If we are sending a file in a form we must supply the extra attribute
+     'encytype="multipart/form-data"', otherwise the file will be sent as a
+     string and not uploaded to the server, otherwise the form is similar to every other form -->
+     <form action="post.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
+        <label for="image">Image</label>
+        <!-- Use 'type="file"' to automatically create a input-field for uploads -->
+        <input type="file" name="image" id="image" src="../views/uploads/anka.jpg">
+        <!-- Use a textarea for a bigger input-field, put an ID on the area for the
+        wysiwyg-editor to initialize on -->
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" value="<?= $post["title"] ?>">
+
+        <select name="category_checkbox[]" id="" required>
+            <option value="">Choose category</option>
+            <option value="1">Living</option>
+            <option value="2">Sunglasses</option>
+            <option value="3">Watches</option>
+        </select>
+       <textarea name="text" id="text_edit"><?= $post["content"] ?></textarea>
+       <input type="hidden" name="single_post_id_update" value="<?= $post['id']; ?>">
+       <input type="submit" value="Update">
+    </form>
+    </section>
 
 
             <div class="row mb-4 border border-dark justify-content-between">
@@ -75,11 +102,14 @@ $delete_post = $bajs->deletePost();
            foreach(array_reverse($comments_for_specific_post) as $comment){
            echo "<h3>" . $comment["created_by"] . "</h3>" ;
            echo $comment["content"]; echo "<br>";
-           echo "<b>" . $_SESSION["date_time"] . "</b>";?>
+             
            <form action="../includes/delete-comments.php" method="POST">
                <input type="submit" value="DELETE COMMENTS">
                <input type="hidden" name="single_comment_id_delete" value="<?= $comment["id"]; ?>">
            </form>
+           echo "<b>" . $_SESSION["date_time"] . "</b>";
+           
+           echo $comment["id"];
 
 
          <?php }?>
@@ -91,4 +121,17 @@ $delete_post = $bajs->deletePost();
 
        <?php
        include "../includes/footer-views.php";
+       
        ?>
+       <!-- Link dependencies for the editor -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+  <script>
+    /**
+     * use the id of the textarea in the form to initialize this text-editor: #text
+     */
+    $(document).ready(function() {
+      $('#text_edit').summernote();
+    });
+  </script>

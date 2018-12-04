@@ -1,4 +1,4 @@
-<?php
+<?php/*
 //include '../includes/database-connection.php';
 
 $pdo = new PDO(
@@ -11,9 +11,9 @@ $pdo = new PDO(
 class Posts
 {
     private $pdo;
-    /* Inject the pdo connection so it is available inside of the class
-    * so we can call it with '$this->pdo', always available inside of the class
-    */
+     Inject the pdo connection so it is available inside of the class
+    so we can call it with '$this->pdo', always available inside of the class
+    
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
@@ -21,9 +21,9 @@ class Posts
 
     public function fetchAll()
     {
-        /*$fetch_all_posts_statement = $this->pdo->prepare("SELECT * FROM posts");
+        $fetch_all_posts_statement = $this->pdo->prepare("SELECT * FROM posts");
         $fetch_all_posts_statement->execute();
-        $all_posts = $fetch_all_posts_statement->fetchAll(PDO::FETCH_ASSOC);*/
+        $all_posts = $fetch_all_posts_statement->fetchAll(PDO::FETCH_ASSOC);
 
         $fetch_all_posts_statement = $this->pdo->prepare(
 
@@ -52,7 +52,7 @@ class Posts
 
     }
 
-     /*public function fetchPostByCategory();
+     public function fetchPostByCategory();
     {
 
         $category_id = $_GET["category"];
@@ -68,7 +68,7 @@ class Posts
 
         return $post_category;
     }
-*/
+
 
     public function fetchSinglePost()
     {
@@ -110,4 +110,4 @@ class Posts
             return $delete_post;
         }
     }
-}
+}*/?>
