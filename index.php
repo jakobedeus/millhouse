@@ -51,6 +51,7 @@ include 'includes/functions.php';
                                         <input name='username' id='login_username' type='text'>
                                         <label for='login_password'>Your Password</label>
                                         <input name='password' id='login_password' type='password'>
+                                        <br>
                                         <button type='submit'>Login!</button>
                                     </form>
                                 </div> <!-- closing card-body-->
