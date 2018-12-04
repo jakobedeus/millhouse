@@ -1,39 +1,48 @@
+
+@import 'variables';
+
 .button {
-    background: $button-primary;
+    background: $primary_color_1;
     transition: all 300ms;
     padding: 10px;
     border-radius: 4px;
-    color: $light;
+    color: $primary_color_2;
     cursor: pointer;
-    font-family: $font-stack;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     &--primary {
       
-      background-color: $button-primary;
+      background-color: $primary_color_1;
       &:hover {
         //built in function in sass, darkens a color
-        background-color: darken($button-primary, 10%); //button-primary:hover {}
+        background-color: darken($primary_color_1, 10%); //button-primary:hover {}
+
       }
     }
   
     &--secondary {
-      background-color: $button-secondary;
+
+      background-color: $primary_color_1;
       &:hover {
-        background-color: darken($button-secondary, 10%);
+        background-color: darken($primary_color_1, 10%);
       }
     }
   
     &--danger {
-      background-color: $button-danger;
+
+      background-color: $denied_font_color;
       &:hover {
-        background-color: darken($button-danger, 10%);
+        background-color: darken($denied_font_color, 10%);
+
       }
     }
   
     &--success {
-      background-color: $button-success;
+
+      background-color: pink;
       &:hover {
-        background-color: darken($button-success, 10%);
+        background-color: darken(pink, 10%);
+
       }
     }
 }
@@ -44,38 +53,44 @@
   transition: all 300ms;
   padding: 10px;
   border-radius: 4px;
-  border:2px solid $light;
-  color: $light;
+
+  border:2px solid $primary_color_2;
+  color: white;
   cursor: pointer;
-  font-family: $font-stack;
+  font-family: yellow;
   font-weight: bold;
   &--primary {
     
-    background-color: $button-primary;
+    background-color: $primary_color_1;
     &:hover {
       //built in function in sass, darkens a color
-      background-color: darken($button-primary, 10%); //button-primary:hover {}
+      background-color: darken($primary_color_1, 10%); //button-primary:hover {}
+
     }
   }
 
   &--secondary {
-    background-color: $button-secondary;
+
+    background-color: $primary_color_1;
     &:hover {
-      background-color: darken($button-secondary, 10%);
+      background-color: darken($primary_color_1, 10%);
+
     }
   }
 
   &--danger {
-    background-color: $button-danger;
+    background-color: red;
     &:hover {
-      background-color: darken($button-danger, 10%);
+      background-color: darken(red, 10%);
+
     }
   }
 
   &--success {
-    background-color: $button-success;
+    background-color: pink;
     &:hover {
-      background-color: darken($button-success, 10%);
+      background-color: darken(pink, 10%);
+
     }
   }
 }
@@ -85,37 +100,45 @@
   transition: all 300ms;
   padding: 10px;
   border-radius: 4px;
-  border:2px solid $dark;
-  color: $dark;
+
+  border:2px solid black;
+  color: black;
   cursor: pointer;
-  font-family: $font-stack;
+  font-family: Arial, Helvetica, sans-serif;
+
   font-weight: bold;
   &--primary {
     
     &:hover {
       //built in function in sass, darkens a color
-      background-color: darken($button-primary, 10%); //button-primary:hover {}
+
+      background-color: darken(green, 10%); //button-primary:hover {}
+
     }
   }
 
   &--secondary {
-    background-color: $button-secondary;
+
+    background-color: green;
     &:hover {
-      background-color: darken($button-secondary, 10%);
+      background-color: darken(yellow, 10%);
+
     }
   }
 
   &--danger {
-    background-color: $button-danger;
+    background-color: red;
     &:hover {
-      background-color: darken($button-danger, 10%);
+      background-color: darken(red, 10%);
+
     }
   }
 
   &--success {
-    background-color: $button-success;
+    background-color: pink;
     &:hover {
-      background-color: darken($button-success, 10%);
+      background-color: darken(pink, 10%);
+
     }
   }
 }
