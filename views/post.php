@@ -15,8 +15,11 @@ include "../includes/upload_comments.php";
 $single_post = new PostsFetch($pdo);
 $one_post = $single_post->fetchSinglePost();
 
-$bajs = new PostsEdit($pdo);
-$delete_post = $bajs->deletePost();
+$delete= new PostsEdit($pdo);
+$delete_post = $delete->deletePost();
+
+/*$update = new PostsEdit($pdo);
+$update_post = $update->updatePost();*/
 
 ?>
 
@@ -43,12 +46,9 @@ $delete_post = $bajs->deletePost();
                     <input type="hidden" name="single_post_id_delete" value="<?= $post['id']; ?>">
                 </form>
 
-                <a href="post.php/=<?= $post['id']; ?>=edit">Edit post</a>
-
 
             </div>
         </div>
-
         <?php
         endforeach;
         ?>
@@ -56,7 +56,7 @@ $delete_post = $bajs->deletePost();
         <!-- If we are sending a file in a form we must supply the extra attribute
      'encytype="multipart/form-data"', otherwise the file will be sent as a
      string and not uploaded to the server, otherwise the form is similar to every other form -->
-     <form action="../includes/upload_file.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
+     <form action="post.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
         <label for="image">Image</label>
         <!-- Use 'type="file"' to automatically create a input-field for uploads -->
         <input type="file" name="image" id="image" src="../views/uploads/anka.jpg">
@@ -72,6 +72,7 @@ $delete_post = $bajs->deletePost();
             <option value="3">Watches</option>
         </select>
        <textarea name="text" id="text_edit"><?= $post["content"] ?></textarea>
+       <input type="hidden" name="single_post_id_update" value="<?= $post['id']; ?>">
        <input type="submit" value="Update">
     </form>
     </section>
