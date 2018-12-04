@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+/*
 
 $created_by = $_SESSION["user_id"];
 $content = $_POST["content"];
@@ -41,3 +41,4 @@ $comments_for_specific_post = $fetch_all_comments_statement->fetchAll(PDO::FETCH
 
 
 //header ('location: ../views/post.php');
+/*
