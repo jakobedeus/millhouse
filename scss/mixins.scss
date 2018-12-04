@@ -1,16 +1,4 @@
 
-$headers_font: merriweather, sans-serif;
-$body_font: open sans, sans-serif;
-$primary_color_1: #1C3045;
-$primary_color_2: #F0F0F0;
-$secondary_color: #A6C9C6;
-$font-size: 1rem;
-$font_color: #333333;
-$denied_font_color: orangered;
-
-
-
-
 @mixin border($border_width){
     border: $border_width dotted $sign_color_2;
 }
