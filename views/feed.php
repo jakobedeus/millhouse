@@ -15,6 +15,9 @@ $post_category= $posts_fetch->fetchPostByCategory();
 $category = new PostsFetch($pdo);
 $all_category= $category->fetchCategory();
 
+$insert_post = new PostsInsert ($pdo);
+$upload_ok = $insert_post->
+
 
 //$category = new Posts($pdo);
 //$post_category= $category->fetchPostByCategory();
@@ -45,7 +48,7 @@ $all_category= $category->fetchCategory();
         <select name="category_checkbox[]" id="" required>
             <option value="">Choose category</option>
             <option value="1">Living</option>
-            <option value="2">Sunglasses</option>
+            <option value="2">Sun glasses</option>
             <option value="3">Watches</option>
         </select>
        <textarea name="text" id="text"></textarea>
