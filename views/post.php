@@ -75,11 +75,15 @@ $delete_post = $bajs->deletePost();
            foreach(array_reverse($comments_for_specific_post) as $comment){
            echo "<h3>" . $comment["created_by"] . "</h3>" ;
            echo $comment["content"]; echo "<br>";
-           echo "<b>" . $_SESSION["date_time"] . "</b>";
+           echo "<b>" . $_SESSION["date_time"] . "</b>";?>
+           <form action="../includes/delete-comments.php" method="POST">
+               <input type="submit" value="DELETE COMMENTS">
+               <input type="hidden" name="single_comment_id_delete" value="<?= $comment["id"]; ?>">
+           </form>
 
 
-       }
-           ?>
+         <?php }?>
+
          </div>
        </div>
 
