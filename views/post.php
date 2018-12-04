@@ -18,9 +18,8 @@ $one_post = $single_post->fetchSinglePost();
 $delete= new PostsEdit($pdo);
 $delete_post = $delete->deletePost();
 
-/*$update = new PostsEdit($pdo);
-$update_post = $update->updatePost();*/
-
+$update = new PostsEdit($pdo);
+$update_post = $update->updatePost();
 ?>
 
 
@@ -28,7 +27,10 @@ $update_post = $update->updatePost();*/
     <main class="container">
 
         <section>
+
                 <?php
+
+                
         foreach($one_post as $post):?>
 
         <div class="col-12 row mb-4 border border-dark justify-content-between">
@@ -51,12 +53,13 @@ $update_post = $update->updatePost();*/
         </div>
         <?php
         endforeach;
+       // var_dump($_GET["id"]
         ?>
 
         <!-- If we are sending a file in a form we must supply the extra attribute
      'encytype="multipart/form-data"', otherwise the file will be sent as a
      string and not uploaded to the server, otherwise the form is similar to every other form -->
-     <form action="../includes/upload_file.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
+     <form action="post.php?id=<?= $post["id"]; ?>" method="POST" enctype="multipart/form-data" class="m-4 p-4">
         <label for="image">Image</label>
         <!-- Use 'type="file"' to automatically create a input-field for uploads -->
         <input type="file" name="image" id="image" src="../views/uploads/anka.jpg">
@@ -71,7 +74,7 @@ $update_post = $update->updatePost();*/
             <option value="2">Sunglasses</option>
             <option value="3">Watches</option>
         </select>
-       <textarea name="text" id="text_edit"><?= $post["content"] ?></textarea>
+       <textarea name="content" id="text_edit"><?= $post["content"] ?></textarea>
        <input type="hidden" name="single_post_id_update" value="<?= $post['id']; ?>">
        <input type="submit" value="Update">
     </form>

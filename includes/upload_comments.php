@@ -4,21 +4,11 @@ session_start();
 
 $created_by = $_SESSION["user_id"];
 $content = $_POST["content"];
-$post_id = $_SESSION["post_id"];
+$post_id = $_GET["id"];
 $datetime = date('Y/m/d H:i:s');
-$_SESSION["date_time"] = $datetime;
-
-
-
-
 
 
 include 'database-connection.php';
-
-
-
-
-
 
 
 $statement = $pdo->prepare("INSERT INTO comments
