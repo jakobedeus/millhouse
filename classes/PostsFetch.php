@@ -47,11 +47,9 @@ class PostsFetch
 
     }
 
-
     public function fetchPostByCategory()
 
     {
-
         if(isset($_GET['category'])){ 
         $category_id = $_GET["category"];
         
@@ -105,7 +103,7 @@ class PostsFetch
 
         return $one_posts;
 
-        $_SESSION["id"] = $post_id;
+        //$_SESSION["id"] = $post_id;
 
     }
 }

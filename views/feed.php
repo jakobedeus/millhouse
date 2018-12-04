@@ -48,7 +48,7 @@ $upload_ok = $insert_post->InsertPosts();
         <select name="category_checkbox[]" id="" required>
             <option value="">Choose category</option>
             <option value="1">Living</option>
-            <option value="2">Sun glasses</option>
+            <option value="2">Sunglasses</option>
             <option value="3">Watches</option>
         </select>
        <textarea name="text" id="text"></textarea>
