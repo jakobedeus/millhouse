@@ -1,5 +1,6 @@
 @import 'variables';
 
+
 .logo_container img {
   height: 30%;
   width: 30%;
@@ -12,18 +13,18 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $primary;
-    font-family: $font-stack;
+    background-color: $secondary_color;
+    font-family: $body_font;
   }
   
   .nav__link {
     padding: 1.5rem 3rem;
-    color: $light;
+    color: $secondary_color;
     transition: all 300ms;
     text-decoration: none;
-    border-bottom: 2px solid $accent;
+    border-bottom: 2px solid green;
     &:hover {
-      color: $accent;
+      color: green;
     }
   }
 
@@ -41,18 +42,18 @@ nav {
   .category_container{
      
       a {
-         color:$light;
+         color: $primary_color_2;
          font-weight: bold;
       }
  
       a:hover {
-         color:$light;
+         color: $primary_color_2;
          font-weight: bold;
       }
  
       ul li {
           display: inline-block;
-          color:$light;
+          color: $primary_color_2;
          font-weight: bold;
       }
   }
