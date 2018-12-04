@@ -45,6 +45,8 @@ class PostsInsert {
                   ":id_category" => $id_category
               ]
         );
+
+        return $upload_ok;
         }
 
 
