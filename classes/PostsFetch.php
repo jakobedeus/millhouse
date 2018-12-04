@@ -51,7 +51,7 @@ class PostsFetch
     }
 
 
-     public function fetchPostByCategory()
+    public function fetchPostByCategory()
 
     {
 
@@ -79,13 +79,12 @@ class PostsFetch
             return $post_category;
             
            
+        }
     }
-}
 
 
     public function fetchSinglePost()
-    {
-        if(isset($_GET['id'])){ 
+    {if(isset($_GET['id'])){ 
         $post_id = $_GET["id"];
 
         $fetch_single_post_statement = $this->pdo->prepare("SELECT * FROM posts WHERE id = :id");
@@ -103,4 +102,5 @@ class PostsFetch
 
     }
 }
+
 }

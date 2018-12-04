@@ -76,6 +76,8 @@ $delete_post = $bajs->deletePost();
            echo "<h3>" . $comment["created_by"] . "</h3>" ;
            echo $comment["content"]; echo "<br>";
            echo "<b>" . $_SESSION["date_time"] . "</b>";
+           
+           echo $comment["id"];
 
 
        }

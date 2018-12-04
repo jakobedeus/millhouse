@@ -33,7 +33,7 @@ $all_category= $category->fetchCategory();
     <!-- If we are sending a file in a form we must supply the extra attribute
      'encytype="multipart/form-data"', otherwise the file will be sent as a
      string and not uploaded to the server, otherwise the form is similar to every other form -->
-    <form action="../includes/upload_file.php" method="POST" enctype="multipart/form-data">
+    <form action="feed.php" method="POST" enctype="multipart/form-data">
         <label for="image">Image</label>
         <!-- Use 'type="file"' to automatically create a input-field for uploads -->
         <input type="file" name="image" id="image" required>
