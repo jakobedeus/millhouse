@@ -2,6 +2,14 @@
 @import 'variables';
 
 .body_views{
-    background-color: #F0F0F0;
+    background-color: $primary_color_2;
 
+}
+
+div{
+    border: 2px solid red;
+}
+
+.blog_posts{
+    background-color: #ffffff;
 }
