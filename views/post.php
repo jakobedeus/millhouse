@@ -20,6 +20,9 @@ $delete_post = $delete->deletePost();
 
 $update = new PostsEdit($pdo);
 $update_post = $update->updatePost();
+
+$add_comment = new CommentsFetch($pdo);
+$insert_comment = $add_comment->insertComments();
 ?>
 
 
@@ -30,7 +33,7 @@ $update_post = $update->updatePost();
 
                 <?php
 
-                
+
         foreach($one_post as $post):?>
 
         <div class="col-12 row mb-4 border border-dark justify-content-between">
@@ -105,13 +108,13 @@ $update_post = $update->updatePost();
            foreach(array_reverse($comments_for_specific_post) as $comment){
            echo "<h3>" . $comment["created_by"] . "</h3>" ;
            echo $comment["content"]; echo "<br>";?>
-             
+
            <form action="../includes/delete-comments.php" method="POST">
                <input type="submit" value="DELETE COMMENTS">
                <input type="hidden" name="single_comment_id_delete" value="<?= $comment["id"]; ?>">
            </form>
            <?= "<b>" . $_SESSION["date_time"] . "</b>"; ?>
-           
+
            <?= $comment["id"]; ?>
 
 
@@ -124,7 +127,7 @@ $update_post = $update->updatePost();
 
        <?php
        include "../includes/footer-views.php";
-       
+
        ?>
        <!-- Link dependencies for the editor -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
