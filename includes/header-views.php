@@ -3,6 +3,8 @@
 
 include '../classes/PostsFetch.php';
 include '../classes/PostsEdit.php';
+include '../classes/PostsInsert.php';
+
 
 $category = new PostsFetch($pdo);
 $all_category= $category->fetchCategory(); 

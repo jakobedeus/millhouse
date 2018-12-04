@@ -34,7 +34,7 @@ class PostsInsert {
         $upload_ok = move_uploaded_file($temporary_location, $new_location);
 
         if($upload_ok){
-            $statement = $pdo->prepare("INSERT INTO posts (image, content, title, date, created_by, id_category) VALUES (:image, :content, :title, :date, :created_by, :id_category)");
+            $statement = $this->pdo->prepare("INSERT INTO posts (image, content, title, date, created_by, id_category) VALUES (:image, :content, :title, :date, :created_by, :id_category)");
             $statement->execute(
               [
                   ":image" => $new_location,
