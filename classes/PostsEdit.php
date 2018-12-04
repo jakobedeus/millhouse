@@ -44,6 +44,8 @@ class PostsEdit
     
     public function updatePost()
     {
+        
+        if(isset($_POST["title"])) {
         $id = $_GET["id"]; 
 
         $title = $_POST["title"];
@@ -74,4 +76,5 @@ class PostsEdit
             //header('Location: feed.php');
             //}
         }
+    }
     }
