@@ -41,5 +41,5 @@ class PostsEdit
             //header('Location: feed.php');
         }
     }
-    }
+}
 }
