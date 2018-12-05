@@ -57,19 +57,19 @@ public function fetchComments ()
   return  $comments_for_specific_post;
 }
 
-/*public function deleteComments ()
+public function deleteComments ()
 {
-  $post_id = $_GET["id"];
-  $delete_comment_statement = $this->pdo->prepare("DELETE FROM comments where post_id = :post_id");
+  $comment_id = $_GET["comment_id"];
+  $delete_comment_statement = $this->pdo->prepare("DELETE FROM comments where comment_id = :comment_id");
   $delete_comment_statement->execute(
     [
-      ":post_id" => $post_id
+      ":comment_id" => $comment_id
     ]
   );
 
   $delete_comment = $delete_comment_statement;
   return $delete_comment;
-}*/
+}
 }
 /* we need to access the class, we do this by creating an object that contains
 *   all the information regarding the class. Am object is just an variable.

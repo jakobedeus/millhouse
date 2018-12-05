@@ -20,8 +20,8 @@ $add_comment = new CommentsFetch($pdo);
 $insert_comment = $add_comment->insertComments();
 $show_comment = new CommentsFetch($pdo);
 $comments_for_specific_post = $show_comment->fetchComments();
-//$comment_delete = new CommentsFetch($pdo);
-//$delete_comment = $comment_delete->deleteComments();
+$comment_delete = new CommentsFetch($pdo);
+$delete_comment = $comment_delete->deleteComments();
 
 
 ?>
@@ -100,6 +100,11 @@ $comments_for_specific_post = $show_comment->fetchComments();
 
     </main>
 
+
+    <!--issues:
+    issue 1: comments only showing for specific user that is logged in.
+    issue 2: sending new comments when updating
+    issue 3: delete seems to delete all comments-->
     <div class="row mb-4 border border-dark justify-content-between">
          <div class="col-10">
            <h2>COMMENTS</h2>
@@ -107,19 +112,17 @@ $comments_for_specific_post = $show_comment->fetchComments();
            foreach(array_reverse($comments_for_specific_post) as $comment){
            echo "<h3>" . $comment["created_by"] . "</h3>" ;
            echo $comment["content"]; echo "<br>";?>
-           <form action="post.php" method="POST">
+           <form action="post.php?id=<?=$post["id"];?>" method="POST">
                <input type="submit" value="DELETE COMMENTS">
-               <input type="hidden" name="single_comment_id_delete" value="<?= $comment["id"]; ?>">
+               <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">
            </form>
            <?= "<b>" . $comment["date"] . "</b>"; ?>
-           <?= $comment["id"]; ?>
+           <?= $comment["comment_id"]; ?>
          <?php }?>
 
          </div>
        </div>
-        <?php var_dump($comment["id"]);
-        var_dump($comment["content"]);
-        var_dump($comment["date"]);?>
+
 
 
        <?php
