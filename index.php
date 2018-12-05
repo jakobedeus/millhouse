@@ -31,13 +31,13 @@ include 'includes/functions.php';
             <div class="accordion" id="accordionExample">
                 <div class="row justify-content-center">
                     <div class="col-5">
-                        <div class="card style_log_reg_form">
+                        <div>
                             <div class="card-header" id="headingOne">
                                 <h5 class="mb-0">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Log in</button>
+                                    <button class="btn btn-link log_in_button" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Log in</button>
                                 </h5>
                             </div> <!-- closing div card-header-->
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div id="collapseOne" class="collapse show style_log_reg_form" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
                                 <?php
                                     // My function, that echoes out if register fails
