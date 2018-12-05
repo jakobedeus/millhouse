@@ -1,9 +1,17 @@
 @import 'mixins';
 @import 'variables';
 
+
+p{
+    font-family: $body_font;
+}
+
+.font_h2{
+    font-family: $headers_font;
+}
+
 .body_views{
     background-color: $primary_color_2;
-
 }
 
 /*div{
@@ -12,4 +20,24 @@
 
 .blog_posts{
     background-color: #ffffff;
+
+
+.post_content_text{
+  max-height: 300px;
+  min-width: 250px;
+  //background-color: powderblue;
+
+}
+
+.post_image_frame{
+    height: 300px;
+    overflow: hidden;
+        
+    img {
+        object-fit: cover;
+        width: 100%;
+        height: 300px;
+
+        }
+}
 }

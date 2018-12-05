@@ -18,11 +18,10 @@ $upload_ok = $insert_post->InsertPosts();
 
 ?>
 <div class="container justify-content-center">
-    <h2>
-        Write new post: 
-    </h2>
-    <div class="row justify-content-center">
+   
+    <div class="row justify-content-center mb-5">
     <main class="col-12 col-md-10">
+        <h2 class="font_h2">Write new post: </h2>
         <!-- If we are sending a file in a form we must supply the extra attribute
         'encytype="multipart/form-data"', otherwise the file will be sent as a
         string and not uploaded to the server, otherwise the form is similar to every other form -->
@@ -32,8 +31,8 @@ $upload_ok = $insert_post->InsertPosts();
             <input type="file" name="image" id="image" required>
             <!-- Use a textarea for a bigger input-field, put an ID on the area for the
             wysiwyg-editor to initialize on -->
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" required>
+            <label for="title">Title</label><br />
+            <input type="text" name="title" id="title" required><br />
 
             <select name="category_checkbox[]" id="" required>
                 <option value="">Choose category</option>
@@ -42,7 +41,7 @@ $upload_ok = $insert_post->InsertPosts();
                 <option value="3">Watches</option>
             </select>
             <textarea name="text" id="text"></textarea>
-            <input type="submit" value="Send">
+            <input class="button" type="submit" value="Send">
         </form>
         </div>
 
@@ -53,36 +52,36 @@ $upload_ok = $insert_post->InsertPosts();
             //var_dump($_GET['category']);
             //Ska hämta annan foreach från annan metod i classen 
             foreach(array_reverse($post_category) as $category): ?>
-            <div class="row mb-5 border border-dark justify-content-center">
-                <div class="col-12 col-md-8">
-                    <h2><?= $category["title"]; ?></h2>
-                    <p><?= $category["date"] . '<strong> Category: </strong>' . $category["category"] . '<strong> Wrote by: </strong>' . $category["username"]; ?></p>
-                    <p><?= $category["content"];  ?></p>            
-                    <a href="post.php?id=<?= $category["id"]; ?>">Go to post</a>
+                <div class="row mb-5 justify-content-center blog_posts">
+                    <div class="col-12 col-md-7">
+                        <h2 class="font_h2"><?= $category["title"]; ?></h2>
+                        <p><?= $category["date"] . ' - ' . $category["category"];?></p>
+                        <p><?= '<strong> Wrote by: </strong>' . $category["username"]; ?></p>
+                        <p><?= $category["content"];  ?></p> 
+                        <p> 0 kommentarer <a href="post.php?id=<?= $category["id"]; ?>"><button class="button">Go to post</button></a></p>
+                    </div>
+                    <div class="post_image_frame col-12 col-md-5 p-0">
+                        <img src="<?= $category["image"]; ?>" alt="Cool image.">
+                    </div>
                 </div>
-                <div class="col-12 col-md-4">
-                    <img src="<?= $category["image"]; ?>" alt="Cool image.">
-                </div>
-            </div>
-
-        <?php
-        endforeach;
+            <?php
+            endforeach;
 
         }else{
     
             foreach(array_reverse($all_posts) as $post): ?>
-                <div class="row mb-5 justify-content-between blog_posts">
-                    <div class="col-12 col-md-8">
-                        <h2><?= $post["title"]; ?></h2>
-                        <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
-                        <p><?= $post["content"];  ?></p>
-                        <a href="post.php?id=<?= $post["id"]; ?>">Go to post</a>
+                <div class="row mb-5  justify-content-center blog_posts">
+                    <div class="post_content_text ol-12 col-md-7">
+                        <h2 class="font_h2"><?= $post["title"]; ?></h2>
+                        <p><?= $post["date"] . ' - ' . $post["category"];?></p>
+                        <p><?= '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
+                        <p class="post_content"><?= $post["content"];  ?></p> 
+                        <p> 0 kommentarer <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="post_image_frame col-12 col-md-5 p-0">
                         <img src="<?= $post["image"]; ?>" alt="Cool image.">
                     </div>
                 </div>
-
             <?php
             endforeach;
         }
