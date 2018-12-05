@@ -5,18 +5,25 @@ include "../includes/header-views.php";
 //include '../classes/Posts.php';
 //include "../includes/fetch-single-post.php";
 include "../includes/upload_comments.php";
-
 //echo "Hej";
-
 //var_dump($_SESSION["post_id"]);
 //var_dump($_SESSION["id"]);
-
-
 $single_post = new PostsFetch($pdo);
 $one_post = $single_post->fetchSinglePost();
 
+$delete= new PostsEdit($pdo);
+$delete_post = $delete->deletePost();
+$update = new PostsEdit($pdo);
+$update_post = $update->updatePost();
+
 $add_comment = new CommentsFetch($pdo);
 $insert_comment = $add_comment->insertComments();
+$show_comment = new CommentsFetch($pdo);
+$comments_for_specific_post = $show_comment->fetchComments();
+//$comment_delete = new CommentsFetch($pdo);
+//$delete_comment = $comment_delete->deleteComments();
+
+
 ?>
 
 
@@ -26,8 +33,6 @@ $insert_comment = $add_comment->insertComments();
         <section>
 
                 <?php
-
-
         foreach($one_post as $post):?>
 
         <div class="col-12 row mb-4 border border-dark justify-content-between">
@@ -99,29 +104,26 @@ $insert_comment = $add_comment->insertComments();
          <div class="col-10">
            <h2>COMMENTS</h2>
            <?php
-           /*foreach(array_reverse($comments_for_specific_post) as $comment){
+           foreach(array_reverse($comments_for_specific_post) as $comment){
            echo "<h3>" . $comment["created_by"] . "</h3>" ;
            echo $comment["content"]; echo "<br>";?>
-
            <form action="post.php" method="POST">
                <input type="submit" value="DELETE COMMENTS">
                <input type="hidden" name="single_comment_id_delete" value="<?= $comment["id"]; ?>">
            </form>
-           <?= "<b>" . $_SESSION["date_time"] . "</b>"; ?>
-
+           <?= "<b>" . $comment["date"] . "</b>"; ?>
            <?= $comment["id"]; ?>
-
-
-         <?php }*/?>
+         <?php }?>
 
          </div>
        </div>
-
+        <?php var_dump($comment["id"]);
+        var_dump($comment["content"]);
+        var_dump($comment["date"]);?>
 
 
        <?php
        include "../includes/footer-views.php";
-
        ?>
        <!-- Link dependencies for the editor -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
