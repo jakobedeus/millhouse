@@ -15,6 +15,8 @@ $all_category= $category->fetchCategory();
 $insert_post = new PostsInsert($pdo);
 $upload_ok = $insert_post->InsertPosts();
 
+$format = new PostsFormat();
+
 
 ?>
 <div class="container justify-content-center">
@@ -37,7 +39,7 @@ $upload_ok = $insert_post->InsertPosts();
             <select name="category_checkbox[]" id="" required>
                 <option value="">Choose category</option>
                 <option value="1">Living</option>
-                <option value="2">Sun glasses</option>
+                <option value="2">Sunglasses</option>
                 <option value="3">Watches</option>
             </select>
             <textarea name="text" id="text"></textarea>
@@ -53,11 +55,16 @@ $upload_ok = $insert_post->InsertPosts();
             //Ska hämta annan foreach från annan metod i classen 
             foreach(array_reverse($post_category) as $category): ?>
                 <div class="row mb-5 justify-content-center blog_posts">
-                    <div class="col-12 col-md-7">
+                    <div class="post_content_text col-12 col-md-7">
                         <h2 class="font_h2"><?= $category["title"]; ?></h2>
                         <p><?= $category["date"] . ' - ' . $category["category"];?></p>
                         <p><?= '<strong> Wrote by: </strong>' . $category["username"]; ?></p>
-                        <p><?= $category["content"];  ?></p> 
+                        <?php if(strlen($category["content"]) > 400){?>
+                            <p><?= $format->textShorten($category["content"]);  ?></p> 
+                            <a href="post.php?id=<?= $category["id"]; ?>"><p>Read more</p></a>
+                        <?php }else { ?>
+                            <p><?= $category["content"];  ?></p> 
+                        <?php } ?>
                         <p> 0 kommentarer <a href="post.php?id=<?= $category["id"]; ?>"><button class="button">Go to post</button></a></p>
                     </div>
                     <div class="post_image_frame col-12 col-md-5 p-0">
@@ -71,11 +78,16 @@ $upload_ok = $insert_post->InsertPosts();
     
             foreach(array_reverse($all_posts) as $post): ?>
                 <div class="row mb-5  justify-content-center blog_posts">
-                    <div class="post_content_text ol-12 col-md-7">
+                    <div class="post_content_text col-12 col-md-7">
                         <h2 class="font_h2"><?= $post["title"]; ?></h2>
                         <p><?= $post["date"] . ' - ' . $post["category"];?></p>
                         <p><?= '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
-                        <p class="post_content"><?= $post["content"];  ?></p> 
+                        <?php if(strlen($post["content"]) > 400){?>
+                            <p><?= $format->textShorten($post["content"]);  ?></p> 
+                            <a href="post.php?id=<?= $post["id"]; ?>"><p>Read more</p></a>
+                        <?php }else { ?>
+                            <p><?= $post["content"];  ?></p> 
+                        <?php } ?>
                         <p> 0 kommentarer <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
                     </div>
                     <div class="post_image_frame col-12 col-md-5 p-0">
@@ -85,6 +97,7 @@ $upload_ok = $insert_post->InsertPosts();
             <?php
             endforeach;
         }
+      
             ?>
 
     </main>
