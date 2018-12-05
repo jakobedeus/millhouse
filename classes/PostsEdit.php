@@ -37,8 +37,6 @@ class PostsEdit
             
             $delete_post = $delete_post_statement;
             return $delete_post;
-
-            //header('Location: feed.php');
             }
         }
     
@@ -72,11 +70,6 @@ class PostsEdit
             
             $update_post = $update_post_statement;
             return $update_post;
-
-            echo $_SERVER['PHP_SELF'];
-
-            //header('Location: feed.php');
-            //}
         }
     }
     }

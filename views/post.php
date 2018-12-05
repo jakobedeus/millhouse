@@ -15,11 +15,6 @@ include "../includes/upload_comments.php";
 $single_post = new PostsFetch($pdo);
 $one_post = $single_post->fetchSinglePost();
 
-$delete= new PostsEdit($pdo);
-$delete_post = $delete->deletePost();
-
-
-
 $add_comment = new CommentsFetch($pdo);
 $insert_comment = $add_comment->insertComments();
 ?>
@@ -45,7 +40,7 @@ $insert_comment = $add_comment->insertComments();
                 <img src="<?= $post["image"]; ?>" alt="Cool image.">
             </div>
             <div>
-                <form action="post.php" method="POST">
+                <form action="../includes/update_page.php" method="POST">
                     <input type="submit" value="DELETE">
                     <input type="hidden" name="single_post_id_delete" value="<?= $post['id']; ?>">
                 </form>
