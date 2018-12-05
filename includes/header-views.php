@@ -12,18 +12,18 @@ $all_category= $category->fetchCategory();
 ?>
 <body class="body_views">
     <header class="container-fluid p-4">
-        <div class="row d-flex justify-content-between">
+        <div class="row">
             <div class="col-12 p-4 logo_container">
                 <a href="../index.php" class="container d-flex justify-content-center"><img src="../images/logo_borders.png" alt="Logotype"></a>
             </div>
-            <nav class="d-flex col-12">
-                <div class="container d-flex justify-content-between">
+            <nav class="d-flex col-12  p-4 justify-content-center">
+                <div class="container d-flex row">
 
-                    <div class="col-6 col-lg-4 justify-self-start">
+                    <div class="col-4 col-md-3 d-flex align-self-center">
                         <a href=""><button class="button-inverted-dark text-center"><i class=" order-1 fas fa-envelope"></i> GET IN TOUCH</button></a>
                     </div>
 
-                    <div class="col-6 col-lg-4 order-3 order-md-2 category_container d-flex align-items-center">
+                    <div class="col-12 col-md-6 order-3 pt-4 order-md-2 category_container d-flex justify-content-center align-self-center">
                         <ul>
                             <li><a href="feed.php"><p>ALL</p></a></li>
                         </ul>           
@@ -38,10 +38,10 @@ $all_category= $category->fetchCategory();
                         ?>
                     </div>
 
-                    <div class="col-6 col-lg-4 order-2 order-md-3 d-flex align-items-center">
-                        <p><?php 
+                    <div class="col-8 col-md-3 order-2 order-md-3 d-flex align-items-center">
+                        <?php 
                         if(isset($_SESSION["username"])){ 
-                            ?><p> LOGGED IN AS: <b><?= $_SESSION["username"]; ?></p>
+                            ?><p class="mr-3"> LOGGED IN AS: <b><?= $_SESSION["username"]; ?>
                         <?php
                         }
                         ?>       
