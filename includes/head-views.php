@@ -5,7 +5,7 @@
 $all_category= $category->fetchCategory(); */
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <!-- Required meta tags -->
