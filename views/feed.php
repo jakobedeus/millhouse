@@ -18,10 +18,6 @@ $upload_ok = $insert_post->InsertPosts();
 
 $format = new PostsFormat();
 
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 
 ?>
 <div class="container justify-content-center">
