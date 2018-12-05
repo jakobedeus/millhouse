@@ -12,22 +12,27 @@ $post_category= $posts_fetch->fetchPostByCategory();
 $category = new PostsFetch($pdo);
 $all_category= $category->fetchCategory();
 
+
 $insert_post = new PostsInsert($pdo);
 $upload_ok = $insert_post->InsertPosts();
 
 $format = new PostsFormat();
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 
 ?>
 <div class="container justify-content-center">
    
     <div class="row justify-content-center mb-5">
-    <main class="col-12 col-md-10">
+    <main class="col-12 m-0 p-0">
         <h2 class="font_h2">Write new post: </h2>
         <!-- If we are sending a file in a form we must supply the extra attribute
         'encytype="multipart/form-data"', otherwise the file will be sent as a
         string and not uploaded to the server, otherwise the form is similar to every other form -->
-        <form action="feed.php" method="POST" enctype="multipart/form-data">
+        <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data">
             <label for="image">Image</label>
             <!-- Use 'type="file"' to automatically create a input-field for uploads -->
             <input type="file" name="image" id="image" required>
@@ -43,6 +48,7 @@ $format = new PostsFormat();
                 <option value="3">Watches</option>
             </select>
             <textarea name="text" id="text"></textarea>
+            <input type="hidden" name="new_post" id="new_post" value="<?= $post['id']; ?>">
             <input class="button" type="submit" value="Send">
         </form>
         </div>
