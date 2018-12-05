@@ -1,5 +1,5 @@
 
-        <footer class="bg-primary">
+        <footer class="footer_index">
           <div class="row">
             <div class="col">
               <!--<img src="/millhouse/images/coupleswatches.jpg" class="img-fluid" alt="couples watches" />
