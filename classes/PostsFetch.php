@@ -82,6 +82,7 @@ class PostsFetch
     {if(isset($_GET['id'])){ 
         $post_id = $_GET["id"];
 
+
         $fetch_single_post_statement = $this->pdo->prepare(
             
             "SELECT posts.title, posts.date, posts.image, posts.content, 
