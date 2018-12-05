@@ -12,11 +12,12 @@ $post_category= $posts_fetch->fetchPostByCategory();
 $category = new PostsFetch($pdo);
 $all_category= $category->fetchCategory();
 
+
 ?>
 <div class="container justify-content-center">
    
     <div class="row justify-content-center mb-5">
-    <main class="col-12 col-md-10">
+    <main class="col-12 m-0 p-0">
         <h2 class="font_h2">Write new post: </h2>
         <!-- If we are sending a file in a form we must supply the extra attribute
         'encytype="multipart/form-data"', otherwise the file will be sent as a
