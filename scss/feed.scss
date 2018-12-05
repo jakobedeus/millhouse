@@ -6,6 +6,18 @@ p{
     font-family: $body_font;
 }
 
+.blog_post_link{
+    font-family: $body_font;
+    color: $primary_color_1;
+    //text-decoration: none;
+}
+
+.blog_post_link:hover{
+    font-family: $body_font;
+    color: pink;
+    text-decoration: none;
+}
+
 .font_h2{
     font-family: $headers_font;
 }
@@ -16,28 +28,33 @@ p{
 
 /* div{
     border: 2px solid red;
-}*/
+} */
 
 .blog_posts{
     background-color: #ffffff;
+    //border-radius: 4px;
 
 
-.post_content_text{
-  max-height: 300px;
-  min-width: 250px;
-  //background-color: powderblue;
+.blog_post_content{
+    min-height: 300px;
+    min-width: 250px;
+    //background-color: powderblue;
 
-}
+    .blog_posts_content_text{
+        min-height: 120px;
+    }
+} 
 
 .post_image_frame{
     height: 300px;
     overflow: hidden;
+    //max-height: 350px;
         
     img {
         object-fit: cover;
         width: 100%;
         height: 300px;
-
-        }
+        //max-height: 350px;
+    }
 }
 }
