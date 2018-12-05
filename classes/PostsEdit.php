@@ -46,7 +46,7 @@ class PostsEdit
     {
         
         if(isset($_POST["title"])) {
-        $id = $_GET["id"]; 
+        $id = $_POST["single_post_id_update"]; 
 
         $title = $_POST["title"];
         $content = $_POST["content"];
@@ -72,6 +72,8 @@ class PostsEdit
             
             $update_post = $update_post_statement;
             return $update_post;
+
+            echo $_SERVER['PHP_SELF'];
 
             //header('Location: feed.php');
             //}

@@ -18,8 +18,7 @@ $one_post = $single_post->fetchSinglePost();
 $delete= new PostsEdit($pdo);
 $delete_post = $delete->deletePost();
 
-$update = new PostsEdit($pdo);
-$update_post = $update->updatePost();
+
 
 $add_comment = new CommentsFetch($pdo);
 $insert_comment = $add_comment->insertComments();
@@ -56,13 +55,13 @@ $insert_comment = $add_comment->insertComments();
         </div>
         <?php
         endforeach;
-       // var_dump($_GET["id"]
         ?>
 
         <!-- If we are sending a file in a form we must supply the extra attribute
      'encytype="multipart/form-data"', otherwise the file will be sent as a
      string and not uploaded to the server, otherwise the form is similar to every other form -->
-     <form action="post.php?id=<?= $post["id"]; ?>" method="POST" enctype="multipart/form-data" class="m-4 p-4">
+     <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
+     
         <label for="image">Image</label>
         <!-- Use 'type="file"' to automatically create a input-field for uploads -->
         <input type="file" name="image" id="image" src="../views/uploads/anka.jpg">
@@ -91,7 +90,7 @@ $insert_comment = $add_comment->insertComments();
                 <form action="post.php?id=<?= $post["id"]; ?>" method="POST">
                   <label for="comments"></label>
                   <textarea name="content" rows="20" cols="100"></textarea>
-                  <button type="submit" class="btn btn-dark">COMMENT ON POST</button>
+                  <button type="submit" class="btn btn-dark">>COMMENT ON POST</button>
                 </form>
 
               </div>
