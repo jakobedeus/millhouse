@@ -4,7 +4,6 @@ include "../includes/head-views.php";
 include "../includes/header-views.php";
 //include '../classes/Posts.php';
 //include "../includes/fetch-single-post.php";
-include "../includes/upload_comments.php";
 //echo "Hej";
 //var_dump($_SESSION["post_id"]);
 //var_dump($_SESSION["id"]);
