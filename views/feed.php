@@ -6,22 +6,19 @@ include "../includes/header-views.php";
 
 
 $posts_fetch = new PostsFetch($pdo);
-$all_posts= $posts_fetch->fetchAll();  
+$all_posts= $posts_fetch->fetchAll();
 $post_category= $posts_fetch->fetchPostByCategory();
 
 $category = new PostsFetch($pdo);
 $all_category= $category->fetchCategory();
 
 
-$insert_post = new PostsInsert($pdo);
-$upload_ok = $insert_post->InsertPosts();
-
 $blogpost_format = new PostsFormat();
 
 
 ?>
 <div class="container justify-content-center">
-   
+
     <div class="row justify-content-center mb-5">
     <main class="col-12 m-0 p-0">
         <h2 class="font_h2">Write new post: </h2>
@@ -44,7 +41,6 @@ $blogpost_format = new PostsFormat();
                 <option value="3">Watches</option>
             </select>
             <textarea name="text" id="text"></textarea>
-            <input type="hidden" name="new_post" id="new_post" value="<?= $post['id']; ?>">
             <input class="button" type="submit" value="Send">
         </form>
         </div>
@@ -54,7 +50,7 @@ $blogpost_format = new PostsFormat();
         if(isset($_GET['category'])){
 
             //var_dump($_GET['category']);
-            //Ska hämta annan foreach från annan metod i classen 
+            //Ska hämta annan foreach från annan metod i classen
             foreach(array_reverse($post_category) as $category): ?>
                 <div class="blog_posts row mb-5 justify-content-center">
                     <div class="blog_post_content col-12 col-md-7">
@@ -65,14 +61,14 @@ $blogpost_format = new PostsFormat();
                         <?php
                         if(strlen($category["content"]) > 300){
                         ?>
-                            <p><?= $blogpost_format->textShorten($category["content"]);  ?></p> 
+                            <p><?= $blogpost_format->textShorten($category["content"]);  ?></p>
                             <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Read more</p></a>
-                        <?php 
-                        }else{ 
+                        <?php
+                        }else{
                         ?>
-                            <p><?= $category["content"];  ?></p> 
-                        <?php 
-                        } 
+                            <p><?= $category["content"];  ?></p>
+                        <?php
+                        }
                         ?>
                         </div>
                         <p> 0 kommentarer <a href="post.php?id=<?= $category["id"]; ?>"><button class="button">Go to post</button></a></p>
@@ -85,7 +81,7 @@ $blogpost_format = new PostsFormat();
             endforeach;
 
         }else{
-    
+
             foreach(array_reverse($all_posts) as $post): ?>
                 <div class="blog_posts row mb-5  justify-content-center">
                     <div class="blog_post_content col-12 col-md-6">
@@ -93,17 +89,17 @@ $blogpost_format = new PostsFormat();
                         <p><?= $post["date"] . ' - ' . $post["category"];?></p>
                         <p><?= '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
                         <div class="blog_posts_content_text">
-                        <?php 
+                        <?php
                         if(strlen($post["content"]) > 400){
                         ?>
-                            <p><?= $blogpost_format->textShorten($post["content"]);  ?></p> 
+                            <p><?= $blogpost_format->textShorten($post["content"]);  ?></p>
                             <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>"><p>Read more</p></a>
-                        <?php 
-                        }else{ 
+                        <?php
+                        }else{
                         ?>
-                            <p><?= $post["content"];  ?></p> 
-                        <?php 
-                        } 
+                            <p><?= $post["content"];  ?></p>
+                        <?php
+                        }
                         ?>
                         </div>
                         <p> 0 kommentarer <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
@@ -115,7 +111,7 @@ $blogpost_format = new PostsFormat();
             <?php
             endforeach;
         }
-      
+
             ?>
 
     </main>
