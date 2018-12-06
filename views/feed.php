@@ -22,9 +22,10 @@ $upload_ok = $insert_post->InsertPosts();
 <main class="container justify-content-center">
     <?php
     if($_SESSION["admin"] === "is_admin"){?>
-
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fas fa-plus"></i> </button>
     <div class="row justify-content-center mb-5">
-        <div class="col-10 m-0 p-0">
+        <div class="col-10 m-0 p-0 collapse" id="collapseExample">
             <h2 class="font_h2">Write new post: </h2>
             <!-- If we are sending a file in a form we must supply the extra attribute
             'encytype="multipart/form-data"', otherwise the file will be sent as a
