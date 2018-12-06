@@ -59,7 +59,7 @@ public function fetchComments ()
 
 public function deleteComments ()
 {
-  $comment_id = $_GET["comment_id"];
+  $comment_id = $_POST["single_comment_id_delete"];
   $delete_comment_statement = $this->pdo->prepare("DELETE FROM comments where comment_id = :comment_id");
   $delete_comment_statement->execute(
     [
