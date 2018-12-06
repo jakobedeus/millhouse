@@ -27,14 +27,15 @@ class CommentsFetch
 
    $created_by = $_SESSION["user_id"];
    $content = $_POST["content"];
-   $post_id = $_GET["id"];
+   $post_id_insert = $_POST["comment_post_id"];
    $datetime = date('Y/m/d H:i:s');
+
  $statement_insert_comment = $this->pdo->prepare("INSERT INTO comments
  (content, post_id, created_by, date) VALUES (:content, :post_id, :created_by, :date)");
  $statement_insert_comment->execute(
  [
    ":content" => $content,
-   ":post_id" => $post_id,
+   ":post_id" => $post_id_insert,
    ":created_by" => $created_by,
    ":date" => $datetime
  ]
@@ -59,6 +60,7 @@ public function fetchComments ()
 
 public function deleteComments ()
 {
+
   $comment_id = $_POST["single_comment_id_delete"];
   $delete_comment_statement = $this->pdo->prepare("DELETE FROM comments where comment_id = :comment_id");
   $delete_comment_statement->execute(

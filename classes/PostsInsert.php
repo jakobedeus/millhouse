@@ -12,13 +12,13 @@ class PostsInsert {
     private $pdo;
 
     public function __construct($pdo){
-        
+
         $this->pdo = $pdo;
     }
 
     public function InsertPosts(){
 
-        if(isset($_POST["title"])) {
+
         $image = $_FILES["image"];
         $image_text = $_POST["text"];
         $title = $_POST["title"];
@@ -28,7 +28,7 @@ class PostsInsert {
 
         foreach($id_category as $key => $value) {
             $id_category = $value;
-      
+
         }
         $temporary_location = $image["tmp_name"];
         $new_location = "../views/uploads/" . $image["name"];
@@ -51,7 +51,7 @@ class PostsInsert {
         }
     }
 
-    }
+
 
 
 }

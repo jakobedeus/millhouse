@@ -7,15 +7,12 @@ include "../includes/admin-access.php";
 
 
 $posts_fetch = new PostsFetch($pdo);
-$all_posts= $posts_fetch->fetchAll();  
+$all_posts= $posts_fetch->fetchAll();
 $post_category= $posts_fetch->fetchPostByCategory();
 
 $category = new PostsFetch($pdo);
 $all_category= $category->fetchCategory();
 
-
-$insert_post = new PostsInsert($pdo);
-$upload_ok = $insert_post->InsertPosts();
 
 $blogpost_format = new PostsFormat();
 var_dump($_SESSION["admin"]);
@@ -75,6 +72,7 @@ var_dump($_SESSION["admin"]);
                         <p><?= $category["content"];  ?></p> 
                         <?php 
                         } 
+
                         ?>
                     </div> <!-- closing blog_posts_content_text-->
                     <p> 0 kommentarer <a href="post.php?id=<?= $category["id"]; ?>"><button class="button">Go to post</button></a></p>
@@ -95,16 +93,17 @@ var_dump($_SESSION["admin"]);
                     <p><?= '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
                     <div class="blog_posts_content_text">
                         <?php 
+
                         if(strlen($post["content"]) > 400){
                         ?>
-                            <p><?= $blogpost_format->textShorten($post["content"]);  ?></p> 
+                            <p><?= $blogpost_format->textShorten($post["content"]);  ?></p>
                             <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>"><p>Read more</p></a>
-                        <?php 
-                        }else{ 
+                        <?php
+                        }else{
                         ?>
-                            <p><?= $post["content"];  ?></p> 
-                        <?php 
-                        } 
+                            <p><?= $post["content"];  ?></p>
+                        <?php
+                        }
                         ?>
 
                     </div> <!-- closing blog_posts_content_text-->
@@ -117,6 +116,7 @@ var_dump($_SESSION["admin"]);
         <?php
         endforeach;
         }
+
         ?>
 </main> <!-- closing container-->
 
