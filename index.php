@@ -39,6 +39,7 @@ include 'includes/functions.php';
                             $text = access_denied_messages(
                                 'login_failed', 'Username or password is incorrect, please try again.'
                             );
+                            
                             echo $text;
                             ?>
                             <form action='includes/login.php' method='POST'>
