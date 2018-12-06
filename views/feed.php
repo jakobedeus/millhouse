@@ -102,6 +102,7 @@ $blogpost_format = new PostsFormat();
                         <?php 
                         } 
                         ?>
+
                     </div> <!-- closing blog_posts_content_text-->
                             <p> 0 kommentarer <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
                 </div> <!-- closing col-->
