@@ -9,7 +9,7 @@ include '../includes/functions.php';
 
 
 $category = new PostsFetch($pdo);
-$all_category= $category->fetchCategory(); 
+$all_category= $category->fetchCategory();
 ?>
 <body class="body_views">
     <header class="container-fluid p-4">
@@ -27,7 +27,7 @@ $all_category= $category->fetchCategory();
                     <div class="col-12 col-md-6 order-3 pt-4 order-md-2 category_container d-flex justify-content-center align-self-center">
                         <ul>
                             <li><a href="feed.php"><p>ALL</p></a></li>
-                        </ul>           
+                        </ul>
                         <?php
                         foreach($all_category as $post1):?>
                             <?php $product_category = $post1['category'];?>
@@ -35,7 +35,7 @@ $all_category= $category->fetchCategory();
                                     <li><a href="feed.php?category=<?= $product_category; ?>"><p class="text-uppercase"><?= $product_category; ?></p></a></li>
                                 </ul>
                         <?php
-                        endforeach;                    
+                        endforeach;
                         ?>
                     </div>
 
@@ -45,7 +45,7 @@ $all_category= $category->fetchCategory();
                             ?><p class="mr-3"> LOGGED IN AS: <b><?= $_SESSION["username"]; ?>
                         <?php
                         }
-                        ?>       
+                        ?>
                         </b></p>
 
                             <a href="../includes/logout.php"><button class="button_inverted_light text-center">LOG OUT</button></a>

@@ -7,7 +7,7 @@ include "../includes/admin-access.php";
 
 
 $posts_fetch = new PostsFetch($pdo);
-$all_posts= $posts_fetch->fetchAll();  
+$all_posts= $posts_fetch->fetchAll();
 $post_category= $posts_fetch->fetchPostByCategory();
 
 $category = new PostsFetch($pdo);
@@ -16,6 +16,7 @@ $all_category= $category->fetchCategory();
 
 $insert_post = new PostsInsert($pdo);
 $upload_ok = $insert_post->InsertPosts();
+
 
 ?>
 <main class="container justify-content-center">
@@ -76,6 +77,7 @@ $upload_ok = $insert_post->InsertPosts();
                             <p><?= $category["content"];  ?></p> 
                         <?php 
                         } 
+
                         ?>
                     </div> <!-- closing blog_posts_content_text-->
                     <p> 0 kommentarer <a href="post.php?id=<?= $category["id"]; ?>"><button class="button">Go to post</button></a></p>
@@ -103,12 +105,12 @@ $upload_ok = $insert_post->InsertPosts();
                             echo $blog_posts_content_text;
                         ?>
                             <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>"><p>Read more</p></a>
-                        <?php 
-                        }else{ 
+                        <?php
+                        }else{
                         ?>
-                            <p><?= $post["content"];  ?></p> 
-                        <?php 
-                        } 
+                            <p><?= $post["content"];  ?></p>
+                        <?php
+                        }
                         ?>
                     </div> <!-- closing blog_posts_content_text-->
                             <p> 0 kommentarer <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
@@ -120,6 +122,7 @@ $upload_ok = $insert_post->InsertPosts();
         <?php
         endforeach;
         }
+
         ?>
 </main> <!-- closing container-->
 

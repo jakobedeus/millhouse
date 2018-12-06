@@ -2,6 +2,7 @@
 session_start();
 include "../includes/head-views.php";
 include "../includes/header-views.php";
+
 //include '../classes/Posts.php';
 //include "../includes/fetch-single-post.php";
 //echo "Hej";
@@ -15,12 +16,14 @@ $delete_post = $delete->deletePost();
 $update = new PostsEdit($pdo);
 $update_post = $update->updatePost();
 
-$add_comment = new CommentsFetch($pdo);
-$insert_comment = $add_comment->insertComments();
+//$add_comment = new CommentsFetch($pdo);
+//$insert_comment = $add_comment->insertComments();
 $show_comment = new CommentsFetch($pdo);
 $comments_for_specific_post = $show_comment->fetchComments();
-$comment_delete = new CommentsFetch($pdo);
-$delete_comment = $comment_delete->deleteComments();
+
+
+//$comment_delete = new CommentsFetch($pdo);
+//$delete_comment = $comment_delete->deleteComments();
 
 
 ?>
@@ -90,35 +93,31 @@ $delete_comment = $comment_delete->deleteComments();
               <div class="col-10">
                 <h3>Comments</h3>
                 <h4>Write your comment</h4>
-                <form action="post.php?id=<?= $post["id"]; ?>" method="POST">
+                <form action="../includes/update_page.php" method="POST">
                   <label for="comments"></label>
+                  <input type="hidden" name="comment_post_id" value="<?= $post['id']; ?>">
                   <textarea name="content" rows="20" cols="100"></textarea>
                   <button type="submit" class="btn btn-dark">COMMENT ON POST</button>
                 </form>
               </div>
             </div>
 
-
-
-
-    <!--issues:
-    issue 1: comments only showing for specific user that is logged in.
-    issue 2: sending new comments when updating
-
     <div class="row mb-4 border border-dark justify-content-between">
          <div class="col-10">
            <h2>COMMENTS</h2>
            <?php
+           //var_dump($comments_for_specific_post);
            foreach(array_reverse($comments_for_specific_post) as $comment){
-           echo "<h3>" . $comment["created_by"] . "</h3>" ;
+           echo "<h3>" . $comment["username"] . "</h3>" ;
            echo $comment["content"]; echo "<br>";?>
-           <form action="post.php?id=<?=$post["id"];?>" method="POST">
-               <input type="submit" value="DELETE COMMENTS">
+           <form action="../includes/update_page.php" method="POST">
+
                <!--name och value-->
+               <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
                <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">
+               <input type="submit" value="DELETE COMMENTS">
            </form>
            <?= "<b>" . $comment["date"] . "</b>"; ?>
-           <?= $comment["comment_id"]; ?>
          <?php }?>
 
          </div>

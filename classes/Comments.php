@@ -27,14 +27,15 @@ class CommentsFetch
 
    $created_by = $_SESSION["user_id"];
    $content = $_POST["content"];
-   $post_id = $_GET["id"];
+   $post_id_insert = $_POST["comment_post_id"];
    $datetime = date('Y/m/d H:i:s');
+
  $statement_insert_comment = $this->pdo->prepare("INSERT INTO comments
  (content, post_id, created_by, date) VALUES (:content, :post_id, :created_by, :date)");
  $statement_insert_comment->execute(
  [
    ":content" => $content,
-   ":post_id" => $post_id,
+   ":post_id" => $post_id_insert,
    ":created_by" => $created_by,
    ":date" => $datetime
  ]
@@ -46,7 +47,12 @@ class CommentsFetch
 public function fetchComments ()
 {
   $post_id = $_GET["id"];
-  $fetch_all_comments_statement = $this->pdo->prepare("SELECT * FROM comments WHERE post_id = :post_id");
+  $fetch_all_comments_statement = $this->pdo->prepare(
+    "SELECT comments.created_by, users.id, users.username, comments.date, comments.content
+    FROM users
+    JOIN comments
+    ON users.id = comments.created_by ");
+
   $fetch_all_comments_statement->execute(
    [
      ":post_id" => $post_id
@@ -55,10 +61,12 @@ public function fetchComments ()
 
   $comments_for_specific_post = $fetch_all_comments_statement->fetchAll(PDO::FETCH_ASSOC);
   return  $comments_for_specific_post;
+  var_dump($comments_for_specific_post);
 }
 
 public function deleteComments ()
 {
+
   $comment_id = $_POST["single_comment_id_delete"];
   $delete_comment_statement = $this->pdo->prepare("DELETE FROM comments where comment_id = :comment_id");
   $delete_comment_statement->execute(
