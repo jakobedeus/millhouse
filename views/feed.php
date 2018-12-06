@@ -4,7 +4,6 @@ session_start();
 include "../includes/head-views.php";
 include "../includes/header-views.php";
 
-
 $posts_fetch = new PostsFetch($pdo);
 $all_posts= $posts_fetch->fetchAll();  
 $post_category= $posts_fetch->fetchPostByCategory();
@@ -18,81 +17,79 @@ $upload_ok = $insert_post->InsertPosts();
 
 $blogpost_format = new PostsFormat();
 
-
 ?>
-<div class="container justify-content-center">
-   
+<main class="container justify-content-center">
+    <?php 
+        if (isset($_SESSION["username = admin"])) { ?>
+
     <div class="row justify-content-center mb-5">
-    <main class="col-12 m-0 p-0">
-        <h2 class="font_h2">Write new post: </h2>
-        <!-- If we are sending a file in a form we must supply the extra attribute
-        'encytype="multipart/form-data"', otherwise the file will be sent as a
-        string and not uploaded to the server, otherwise the form is similar to every other form -->
-        <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data">
-            <label for="image">Image</label>
-            <!-- Use 'type="file"' to automatically create a input-field for uploads -->
-            <input type="file" name="image" id="image" required>
-            <!-- Use a textarea for a bigger input-field, put an ID on the area for the
-            wysiwyg-editor to initialize on -->
-            <label for="title">Title</label><br />
-            <input type="text" name="title" id="title" required><br />
+        <div class="col-10 m-0 p-0">
+            <h2 class="font_h2">Write new post: </h2>
+            <!-- If we are sending a file in a form we must supply the extra attribute
+            'encytype="multipart/form-data"', otherwise the file will be sent as a
+            string and not uploaded to the server, otherwise the form is similar to every other form -->
+            <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data">
+                <label for="image">Image</label>
+                <!-- Use 'type="file"' to automatically create a input-field for uploads -->
+                <input type="file" name="image" id="image" required>
+                <!-- Use a textarea for a bigger input-field, put an ID on the area for the
+                wysiwyg-editor to initialize on -->
+                <label for="title">Title</label><br />
+                <input type="text" name="title" id="title" required><br />
 
-            <select name="category_checkbox[]" id="" required>
-                <option value="">Choose category</option>
-                <option value="1">Living</option>
-                <option value="2">Sunglasses</option>
-                <option value="3">Watches</option>
-            </select>
-            <textarea name="text" id="text"></textarea>
-            <input type="hidden" name="new_post" id="new_post" value="<?= $post['id']; ?>">
-            <input class="button" type="submit" value="Send">
-        </form>
-        </div>
+                <select name="category_checkbox[]" id="" required>
+                    <option value="">Choose category</option>
+                    <option value="1">Living</option>
+                    <option value="2">Sunglasses</option>
+                    <option value="3">Watches</option>
+                </select>
+                <textarea name="text" id="text"></textarea>
+                <input type="hidden" name="new_post" id="new_post" value="<?= $post['id']; ?>">
+                <input class="button" type="submit" value="Send">
+            </form>
+        </div> <!-- closing col-->
+    </div> <!-- closing row-->
+    <?php
+    if(isset($_GET['category'])){
 
-
-        <?php
-        if(isset($_GET['category'])){
-
-            //var_dump($_GET['category']);
-            //Ska hämta annan foreach från annan metod i classen 
-            foreach(array_reverse($post_category) as $category): ?>
-                <div class="blog_posts row mb-5 justify-content-center">
-                    <div class="blog_post_content col-12 col-md-7">
-                        <h2 class="font_h2"><?= $category["title"]; ?></h2>
-                        <p><?= $category["date"] . ' - ' . $category["category"];?></p>
-                        <p><?= '<strong> Wrote by: </strong>' . $category["username"]; ?></p>
-                        <div class="blog_posts_content_text">
+        //Ska hämta annan foreach från annan metod i classen 
+        foreach(array_reverse($post_category) as $category): ?>
+            <div class="row blog_posts mb-5 justify-content-center">
+                <div class="col-12 col-md-7 blog_post_content">
+                    <h2 class="font_h2"><?= $category["title"]; ?></h2>
+                    <p><?= $category["date"] . ' - ' . $category["category"];?></p>
+                    <p><?= '<strong> Wrote by: </strong>' . $category["username"]; ?></p>
+                    <div class="blog_posts_content_text">
                         <?php
                         if(strlen($category["content"]) > 300){
                         ?>
-                            <p><?= $blogpost_format->textShorten($category["content"]);  ?></p> 
-                            <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Read more</p></a>
+                        <p><?= $blogpost_format->textShorten($category["content"]);  ?></p> 
+                        <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Read more</p></a>
                         <?php 
                         }else{ 
                         ?>
-                            <p><?= $category["content"];  ?></p> 
+                        <p><?= $category["content"];  ?></p> 
                         <?php 
                         } 
                         ?>
-                        </div>
-                        <p> 0 kommentarer <a href="post.php?id=<?= $category["id"]; ?>"><button class="button">Go to post</button></a></p>
-                    </div>
-                    <div class="post_image_frame col-12 col-md-5 p-0">
-                        <img src="<?= $category["image"]; ?>" alt="Cool image.">
-                    </div>
+                    </div> <!-- closing blog_posts_content_text-->
+                    <p> 0 kommentarer <a href="post.php?id=<?= $category["id"]; ?>"><button class="button">Go to post</button></a></p>
+                </div> <!-- closing col-12 col-md-7-->
+                <div class="post_image_frame col-12 col-md-5 p-0">
+                    <img src="<?= $category["image"]; ?>" alt="Cool image.">
                 </div>
-            <?php
-            endforeach;
+            </div> <!-- closing row-->
+        <?php
+        endforeach;
+    }else{
 
-        }else{
-    
-            foreach(array_reverse($all_posts) as $post): ?>
-                <div class="blog_posts row mb-5  justify-content-center">
-                    <div class="blog_post_content col-12 col-md-6">
-                        <h2 class="font_h2"><?= $post["title"]; ?></h2>
-                        <p><?= $post["date"] . ' - ' . $post["category"];?></p>
-                        <p><?= '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
-                        <div class="blog_posts_content_text">
+        foreach(array_reverse($all_posts) as $post): ?>
+            <div class="row blog_posts mb-5 justify-content-center">
+                <div class="blog_post_content col-12 col-md-6">
+                    <h2 class="font_h2"><?= $post["title"]; ?></h2>
+                    <p><?= $post["date"] . ' - ' . $post["category"];?></p>
+                    <p><?= '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
+                    <div class="blog_posts_content_text">
                         <?php 
                         if(strlen($post["content"]) > 400){
                         ?>
@@ -105,21 +102,19 @@ $blogpost_format = new PostsFormat();
                         <?php 
                         } 
                         ?>
-                        </div>
-                        <p> 0 kommentarer <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
-                    </div>
-                    <div class="post_image_frame col-12 col-md-5 p-0">
-                        <img src="<?= $post["image"]; ?>" alt="Cool image.">
-                    </div>
-                </div>
-            <?php
-            endforeach;
-        }
-      
-            ?>
 
-    </main>
-</div><!-- container -->
+                    </div> <!-- closing blog_posts_content_text-->
+                            <p> 0 kommentarer <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
+                </div> <!-- closing col-->
+                <div class="post_image_frame col-12 col-md-4 p-0">
+                    <img src="<?= $post["image"]; ?>" alt="Cool image.">
+                </div>
+            </div> <!-- closing row-->
+        <?php
+        endforeach;
+        }
+        ?>
+</main> <!-- closing container-->
 
 <?php
     include '../includes/footer-views.php';
@@ -137,5 +132,4 @@ $blogpost_format = new PostsFormat();
         $('#text').summernote();
     });
 </script>
-</body>
-</html>
+
