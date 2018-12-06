@@ -8,22 +8,27 @@
 
 nav {
     width: 100%;
-    //height: 10rem;
     display: flex;
     background-color: $secondary_color;
-    font-family: $body_font;
+    
   }
+
   
-  .nav__link {
+  a {
+      font-family: $body_font;
+    }
+  
+  
+  /*.nav__link {
     padding: 1.5rem 3rem;
     color: $secondary_color;
     transition: all 300ms;
     text-decoration: none;
-    border-bottom: 2px solid green;
+    //border-bottom: 2px solid green;
     &:hover {
       color: green;
     }
-  }
+  }*/
  
   .logo_container {
       width: 20%;
@@ -31,10 +36,14 @@ nav {
  
   .category_container{
      
-      a {
+      p{
          color: $primary_color_2;
          font-weight: bold;
-         
+      }
+
+      a:visited {
+        color: $primary_color_2;
+        font-weight: bold;
       }
  
       a:hover {
@@ -45,9 +54,7 @@ nav {
       ul li {
           display: inline-block;
           color: $primary_color_2;
-         font-weight: bold;
-         margin:1.2em;
-         margin:0 !important;
-         padding:0 !important;
+          font-weight: bold;
+          margin:1.2em;
       }
   }
