@@ -20,8 +20,8 @@ $all_category= $category->fetchCategory();
             <nav class="d-flex col-12  p-4 justify-content-center">
                 <div class="container d-flex row">
 
-                    <div class="col-4 col-md-2 d-flex align-self-center">
-                        <a href=""><button class="button-inverted-dark text-center"><i class=" order-1 fas fa-envelope"></i> GET IN TOUCH</button></a>
+                    <div class="col-4 col-md-3 d-flex align-self-center">
+                        <a href="mailto:info@millhouse.com"><button class="button_inverted_dark text-center"><i class=" order-1 fas fa-envelope"></i> GET IN TOUCH</button></a>
                     </div>
 
                     <div class="col-12 col-md-6 order-3 pt-4 order-md-2 category_container d-flex justify-content-center align-self-center">
@@ -39,15 +39,16 @@ $all_category= $category->fetchCategory();
                         ?>
                     </div>
 
-                    <div class="col-8 col-md-4 order-2 order-md-3 d-flex align-items-center">
-                        <?php
-                        if(isset($_SESSION["username"])){
+                    <div class="col-8 col-md-3 order-2 order-md-3 d-flex align-items-center">
+                        <?php 
+                        if(isset($_SESSION["username"])){ 
                             ?><p class="mr-3"> LOGGED IN AS: <b><?= $_SESSION["username"]; ?>
                         <?php
                         }
                         ?>
                         </b></p>
-                        <a href="../includes/logout.php"><button class="button-inverted-light">LOG OUT</button></a>
+
+                            <a href="../includes/logout.php"><button class="button_inverted_light text-center">LOG OUT</button></a>
                     </div>
 
                 </div>

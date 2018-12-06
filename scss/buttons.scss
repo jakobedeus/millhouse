@@ -1,144 +1,65 @@
 
 @import 'variables';
 
+
 .button {
-    background: $primary_color_1;
+    background: $secondary_color;
     transition: all 300ms;
-    padding: 10px;
-    border-radius: 4px;
-    color: $primary_color_2;
+    padding: 6px;
+    border-radius: 6px;
+    color: #ffffff; 
     cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    &--primary {
-      
-      background-color: $primary_color_1;
+    font-family: $body_font;
+    //font-weight: bold;
+    text-transform: uppercase;
+   
       &:hover {
-        //built in function in sass, darkens a color
-        background-color: darken($primary_color_1, 10%); //button-primary:hover {}
+        background-color: darken($secondary_color, 10%); //button-primary:hover {}
 
       }
-    }
+    
   
-    &--secondary {
-
-      background-color: $primary_color_1;
-      &:hover {
-        background-color: darken($primary_color_1, 10%);
-      }
-    }
-  
-    &--danger {
-
-      background-color: $denied_font_color;
-      &:hover {
-        background-color: darken($denied_font_color, 10%);
-
-      }
-    }
-  
-    &--success {
-
-      background-color: pink;
-      &:hover {
-        background-color: darken(pink, 10%);
-
-      }
-    }
+      &_delete {
+        background-color: $primary_color_1;
+        
+        &:hover {
+          background-color: lighten($primary_color_1, 10%);
+        }
+      }   
 }
 
 
-.button-inverted-light {
+.button_inverted_light {
   background: none;
   transition: all 300ms;
-  padding: 10px;
-  border-radius: 4px;
-
-  border:2px solid $primary_color_2;
-  color: white;
+  padding: 6px;
+  border-radius: 6px;
+  border:2px solid #ffffff;
+  color: #ffffff;
   cursor: pointer;
-  font-family: yellow;
-  font-weight: bold;
-  &--primary {
-    
-    background-color: $primary_color_1;
+  font-family: $body_font;
+  //font-weight: bold;
+  text-transform: uppercase;
+
     &:hover {
-      //built in function in sass, darkens a color
-      background-color: darken($primary_color_1, 10%); //button-primary:hover {}
-
+      background-color: darken($secondary_color, 10%);
     }
-  }
-
-  &--secondary {
-
-    background-color: $primary_color_1;
-    &:hover {
-      background-color: darken($primary_color_1, 10%);
-
-    }
-  }
-
-  &--danger {
-    background-color: red;
-    &:hover {
-      background-color: darken(red, 10%);
-
-    }
-  }
-
-  &--success {
-    background-color: pink;
-    &:hover {
-      background-color: darken(pink, 10%);
-
-    }
-  }
 }
 
-.button-inverted-dark {
+.button_inverted_dark {
   background: none;
   transition: all 300ms;
-  padding: 10px;
-  border-radius: 4px;
+  padding: 6px;
+  border-radius: 6px;
 
-  border:2px solid black;
-  color: black;
+  border:2px solid $primary_color_1;
+  color: $primary_color_1;
   cursor: pointer;
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-weight: bold;
-  &--primary {
+  font-family: $body_font;
+  //font-weight: bold;
+  text-transform: uppercase;
     
     &:hover {
-      //built in function in sass, darkens a color
-
-      background-color: darken(green, 10%); //button-primary:hover {}
-
+      background-color: darken ($secondary_color, 10%); 
     }
-  }
-
-  &--secondary {
-
-    background-color: green;
-    &:hover {
-      background-color: darken(yellow, 10%);
-
-    }
-  }
-
-  &--danger {
-    background-color: red;
-    &:hover {
-      background-color: darken(red, 10%);
-
-    }
-  }
-
-  &--success {
-    background-color: pink;
-    &:hover {
-      background-color: darken(pink, 10%);
-
-    }
-  }
 }
