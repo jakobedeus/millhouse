@@ -108,7 +108,7 @@ $blogpost_format = new PostsFormat();
                         </div>
                         <p> 0 kommentarer <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
                     </div>
-                    <div class="post_image_frame col-12 col-md-4 p-0">
+                    <div class="post_image_frame col-12 col-md-5 p-0">
                         <img src="<?= $post["image"]; ?>" alt="Cool image.">
                     </div>
                 </div>
