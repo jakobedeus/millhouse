@@ -10,7 +10,6 @@
     color: #ffffff; 
     cursor: pointer;
     font-family: $body_font;
-    //font-weight: bold;
     text-transform: uppercase;
    
       &:hover {
@@ -21,6 +20,14 @@
   
       &_delete {
         background-color: $primary_color_1;
+        transition: all 300ms;
+        padding: 6px;
+        border-radius: 6px;
+        color: #ffffff; 
+        cursor: pointer;
+        font-family: $body_font;
+        text-transform: uppercase;
+
         
         &:hover {
           background-color: lighten($primary_color_1, 10%);
@@ -38,7 +45,6 @@
   color: #ffffff;
   cursor: pointer;
   font-family: $body_font;
-  //font-weight: bold;
   text-transform: uppercase;
 
     &:hover {
@@ -56,7 +62,6 @@
   color: $primary_color_1;
   cursor: pointer;
   font-family: $body_font;
-  //font-weight: bold;
   text-transform: uppercase;
     
     &:hover {
