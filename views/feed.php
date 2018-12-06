@@ -3,6 +3,8 @@ session_start();
 
 include "../includes/head-views.php";
 include "../includes/header-views.php";
+include "../includes/admin-access.php";
+
 
 $posts_fetch = new PostsFetch($pdo);
 $all_posts= $posts_fetch->fetchAll();  
@@ -16,11 +18,11 @@ $insert_post = new PostsInsert($pdo);
 $upload_ok = $insert_post->InsertPosts();
 
 $blogpost_format = new PostsFormat();
-
+var_dump($_SESSION["admin"]);
 ?>
 <main class="container justify-content-center">
-    <?php 
-        if (isset($_SESSION["username = admin"])) { ?>
+    <?php
+    if($_SESSION["admin"] === "is_admin"){?>
 
     <div class="row justify-content-center mb-5">
         <div class="col-10 m-0 p-0">
@@ -49,7 +51,9 @@ $blogpost_format = new PostsFormat();
             </form>
         </div> <!-- closing col-->
     </div> <!-- closing row-->
+
     <?php
+    } // closing if-statement for admin access
     if(isset($_GET['category'])){
 
         //Ska hämta annan foreach från annan metod i classen 

@@ -22,6 +22,8 @@ $username_select_statement->execute(
 $fetched_user = $username_select_statement->fetch();
 $is_password_correct = password_verify($password, $fetched_user["password"]);
 
+$_SESSION["admin"] = $fetched_user["admin"];
+
 /* 
  * I do a session of the username. 
  * The user will keep inlogged until the user press the logout button.  
@@ -36,4 +38,3 @@ if($is_password_correct){
 
   header('Location: ../index.php?login_failed=true');
 }
-

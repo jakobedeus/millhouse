@@ -24,9 +24,6 @@ $delete_comment = $comment_delete->deleteComments();
 
 
 ?>
-
-
-
     <main class="container">
 
         <section>
@@ -44,12 +41,15 @@ $delete_comment = $comment_delete->deleteComments();
                 <img src="<?= $post["image"]; ?>" alt="Cool image.">
             </div>
             <div>
+            <?php
+                if($_SESSION["admin"] === "is_admin"){?>
+
                 <form action="../includes/update_page.php" method="POST">
                     <input type="submit" value="DELETE">
                     <input type="hidden" name="single_post_id_delete" value="<?= $post['id']; ?>">
                 </form>
 
-
+                <?php } ?> <!-- closing if-statement for admin access-->
             </div>
         </div>
         <?php
@@ -59,6 +59,9 @@ $delete_comment = $comment_delete->deleteComments();
         <!-- If we are sending a file in a form we must supply the extra attribute
      'encytype="multipart/form-data"', otherwise the file will be sent as a
      string and not uploaded to the server, otherwise the form is similar to every other form -->
+    <?php
+    if($_SESSION["admin"] === "is_admin"){?>
+
      <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
 
         <label for="image">Image</label>
@@ -79,6 +82,7 @@ $delete_comment = $comment_delete->deleteComments();
        <input type="hidden" name="single_post_id_update" value="<?= $post['id']; ?>">
        <input type="submit" value="Update">
     </form>
+    <?php } ?>
     </section>
 
 
