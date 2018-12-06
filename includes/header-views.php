@@ -4,8 +4,8 @@
 include '../classes/PostsFetch.php';
 include '../classes/PostsEdit.php';
 include '../classes/PostsInsert.php';
-include '../classes/PostsFormat.php';
 include '../classes/Comments.php';
+include '../includes/functions.php';
 
 
 $category = new PostsFetch($pdo);

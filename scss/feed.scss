@@ -9,13 +9,13 @@ p{
 .blog_post_link{
     font-family: $body_font;
     color: $primary_color_1;
-    //text-decoration: none;
+    text-decoration-line: underline;
 }
 
 .blog_post_link:hover{
     font-family: $body_font;
-    color: pink;
-    text-decoration: none;
+    color: $secondary_color;
+    
 }
 
 .font_h2{
