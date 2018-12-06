@@ -17,8 +17,6 @@ $all_category= $category->fetchCategory();
 $insert_post = new PostsInsert($pdo);
 $upload_ok = $insert_post->InsertPosts();
 
-$blogpost_format = new PostsFormat();
-var_dump($_SESSION["admin"]);
 ?>
 <main class="container justify-content-center">
     <?php
@@ -64,15 +62,18 @@ var_dump($_SESSION["admin"]);
                     <p><?= $category["date"] . ' - ' . $category["category"];?></p>
                     <p><?= '<strong> Wrote by: </strong>' . $category["username"]; ?></p>
                     <div class="blog_posts_content_text">
-                        <?php
+                        <?php 
                         if(strlen($category["content"]) > 300){
+                            $blog_posts_content_text = text_shorten( 
+                                $text = $category["content"]
+                             );
+                            echo $blog_posts_content_text;
                         ?>
-                        <p><?= $blogpost_format->textShorten($category["content"]);  ?></p> 
-                        <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Read more</p></a>
+                            <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Read more</p></a>
                         <?php 
                         }else{ 
                         ?>
-                        <p><?= $category["content"];  ?></p> 
+                            <p><?= $category["content"];  ?></p> 
                         <?php 
                         } 
                         ?>
@@ -89,15 +90,18 @@ var_dump($_SESSION["admin"]);
 
         foreach(array_reverse($all_posts) as $post): ?>
             <div class="row blog_posts mb-5 justify-content-center">
-                <div class="blog_post_content col-12 col-md-6">
+                <div class="blog_post_content col-12 col-md-7">
                     <h2 class="font_h2"><?= $post["title"]; ?></h2>
                     <p><?= $post["date"] . ' - ' . $post["category"];?></p>
                     <p><?= '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
                     <div class="blog_posts_content_text">
                         <?php 
-                        if(strlen($post["content"]) > 400){
+                        if(strlen($post["content"]) > 300){
+                            $blog_posts_content_text = text_shorten( 
+                                $text = $post["content"]
+                             );
+                            echo $blog_posts_content_text;
                         ?>
-                            <p><?= $blogpost_format->textShorten($post["content"]);  ?></p> 
                             <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>"><p>Read more</p></a>
                         <?php 
                         }else{ 
@@ -106,11 +110,10 @@ var_dump($_SESSION["admin"]);
                         <?php 
                         } 
                         ?>
-
                     </div> <!-- closing blog_posts_content_text-->
                             <p> 0 kommentarer <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
                 </div> <!-- closing col-->
-                <div class="post_image_frame col-12 col-md-4 p-0">
+                <div class="post_image_frame col-12 col-md-5 p-0">
                     <img src="<?= $post["image"]; ?>" alt="Cool image.">
                 </div>
             </div> <!-- closing row-->
