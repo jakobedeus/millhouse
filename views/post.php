@@ -61,7 +61,7 @@ $delete_comment = $comment_delete->deleteComments();
      'encytype="multipart/form-data"', otherwise the file will be sent as a
      string and not uploaded to the server, otherwise the form is similar to every other form -->
      <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
-     
+
         <label for="image">Image</label>
         <!-- Use 'type="file"' to automatically create a input-field for uploads -->
         <input type="file" name="image" id="image" src="../views/uploads/anka.jpg">
@@ -90,21 +90,18 @@ $delete_comment = $comment_delete->deleteComments();
                 <form action="post.php?id=<?= $post["id"]; ?>" method="POST">
                   <label for="comments"></label>
                   <textarea name="content" rows="20" cols="100"></textarea>
-                  <button type="submit" class="btn btn-dark">>COMMENT ON POST</button>
+                  <button type="submit" class="btn btn-dark">COMMENT ON POST</button>
                 </form>
-
               </div>
             </div>
 
-        </section>
 
-    </main>
 
 
     <!--issues:
     issue 1: comments only showing for specific user that is logged in.
     issue 2: sending new comments when updating
-    issue 3: delete seems to delete all comments-->
+
     <div class="row mb-4 border border-dark justify-content-between">
          <div class="col-10">
            <h2>COMMENTS</h2>
@@ -114,6 +111,7 @@ $delete_comment = $comment_delete->deleteComments();
            echo $comment["content"]; echo "<br>";?>
            <form action="post.php?id=<?=$post["id"];?>" method="POST">
                <input type="submit" value="DELETE COMMENTS">
+               <!--name och value-->
                <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">
            </form>
            <?= "<b>" . $comment["date"] . "</b>"; ?>
@@ -123,7 +121,9 @@ $delete_comment = $comment_delete->deleteComments();
          </div>
        </div>
 
+     </section>
 
+ </main>
 
        <?php
        include "../includes/footer-views.php";
