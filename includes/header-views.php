@@ -20,7 +20,7 @@ $all_category= $category->fetchCategory();
             <nav class="d-flex col-12  p-4 justify-content-center">
                 <div class="container d-flex row">
 
-                    <div class="col-4 col-md-3 d-flex align-self-center">
+                    <div class="col-4 col-md-2 d-flex align-self-center">
                         <a href=""><button class="button-inverted-dark text-center"><i class=" order-1 fas fa-envelope"></i> GET IN TOUCH</button></a>
                     </div>
 
@@ -39,7 +39,7 @@ $all_category= $category->fetchCategory();
                         ?>
                     </div>
 
-                    <div class="col-8 col-md-3 order-2 order-md-3 d-flex align-items-center">
+                    <div class="col-8 col-md-4 order-2 order-md-3 d-flex align-items-center">
                         <?php 
                         if(isset($_SESSION["username"])){ 
                             ?><p class="mr-3"> LOGGED IN AS: <b><?= $_SESSION["username"]; ?>
