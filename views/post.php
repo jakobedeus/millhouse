@@ -97,15 +97,14 @@ $comments_for_specific_post = $show_comment->fetchComments();
                 </form>
               </div>
             </div>
-    <!--issues:
-    issue 2: sending new comments when updating-->
 
     <div class="row mb-4 border border-dark justify-content-between">
          <div class="col-10">
            <h2>COMMENTS</h2>
            <?php
+           //var_dump($comments_for_specific_post);
            foreach(array_reverse($comments_for_specific_post) as $comment){
-           echo "<h3>" . $comment["created_by"] . "</h3>" ;
+           echo "<h3>" . $comment["username"] . "</h3>" ;
            echo $comment["content"]; echo "<br>";?>
            <form action="../includes/update_page.php" method="POST">
 
@@ -115,7 +114,6 @@ $comments_for_specific_post = $show_comment->fetchComments();
                <input type="submit" value="DELETE COMMENTS">
            </form>
            <?= "<b>" . $comment["date"] . "</b>"; ?>
-           <?= $comment["comment_id"]; ?>
          <?php }?>
 
          </div>
