@@ -88,7 +88,7 @@ $blogpost_format = new PostsFormat();
     
             foreach(array_reverse($all_posts) as $post): ?>
                 <div class="blog_posts row mb-5  justify-content-center">
-                    <div class="blog_post_content col-12 col-md-7">
+                    <div class="blog_post_content col-12 col-md-6">
                         <h2 class="font_h2"><?= $post["title"]; ?></h2>
                         <p><?= $post["date"] . ' - ' . $post["category"];?></p>
                         <p><?= '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
@@ -108,7 +108,7 @@ $blogpost_format = new PostsFormat();
                         </div>
                         <p> 0 kommentarer <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
                     </div>
-                    <div class="post_image_frame col-12 col-md-5 p-0">
+                    <div class="post_image_frame col-12 col-md-4 p-0">
                         <img src="<?= $post["image"]; ?>" alt="Cool image.">
                     </div>
                 </div>
