@@ -5,7 +5,7 @@ class PostsFormat{
 
   
 
-    public function textShorten($text, $limit = 500){
+    public function textShorten($text, $limit = 300){
         
         $text = $text . " ";
         $text = substr($text, 0, $limit);

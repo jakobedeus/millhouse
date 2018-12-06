@@ -16,7 +16,7 @@ $all_category= $category->fetchCategory();
 $insert_post = new PostsInsert($pdo);
 $upload_ok = $insert_post->InsertPosts();
 
-$format = new PostsFormat();
+$blogpost_format = new PostsFormat();
 
 
 ?>
@@ -56,17 +56,25 @@ $format = new PostsFormat();
             //var_dump($_GET['category']);
             //Ska hämta annan foreach från annan metod i classen 
             foreach(array_reverse($post_category) as $category): ?>
-                <div class="row mb-5 justify-content-center blog_posts">
-                    <div class="post_content_text col-12 col-md-7">
+                <div class="blog_posts row mb-5 justify-content-center">
+                    <div class="blog_post_content col-12 col-md-7">
                         <h2 class="font_h2"><?= $category["title"]; ?></h2>
                         <p><?= $category["date"] . ' - ' . $category["category"];?></p>
                         <p><?= '<strong> Wrote by: </strong>' . $category["username"]; ?></p>
-                        <?php if(strlen($category["content"]) > 400){?>
-                            <p><?= $format->textShorten($category["content"]);  ?></p> 
-                            <a href="post.php?id=<?= $category["id"]; ?>"><p>Read more</p></a>
-                        <?php }else { ?>
+                        <div class="blog_posts_content_text">
+                        <?php
+                        if(strlen($category["content"]) > 300){
+                        ?>
+                            <p><?= $blogpost_format->textShorten($category["content"]);  ?></p> 
+                            <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Read more</p></a>
+                        <?php 
+                        }else{ 
+                        ?>
                             <p><?= $category["content"];  ?></p> 
-                        <?php } ?>
+                        <?php 
+                        } 
+                        ?>
+                        </div>
                         <p> 0 kommentarer <a href="post.php?id=<?= $category["id"]; ?>"><button class="button">Go to post</button></a></p>
                     </div>
                     <div class="post_image_frame col-12 col-md-5 p-0">
@@ -79,20 +87,28 @@ $format = new PostsFormat();
         }else{
     
             foreach(array_reverse($all_posts) as $post): ?>
-                <div class="row mb-5  justify-content-center blog_posts">
-                    <div class="post_content_text col-12 col-md-7">
+                <div class="blog_posts row mb-5  justify-content-center">
+                    <div class="blog_post_content col-12 col-md-6">
                         <h2 class="font_h2"><?= $post["title"]; ?></h2>
                         <p><?= $post["date"] . ' - ' . $post["category"];?></p>
                         <p><?= '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
-                        <?php if(strlen($post["content"]) > 400){?>
-                            <p><?= $format->textShorten($post["content"]);  ?></p> 
-                            <a href="post.php?id=<?= $post["id"]; ?>"><p>Read more</p></a>
-                        <?php }else { ?>
+                        <div class="blog_posts_content_text">
+                        <?php 
+                        if(strlen($post["content"]) > 400){
+                        ?>
+                            <p><?= $blogpost_format->textShorten($post["content"]);  ?></p> 
+                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>"><p>Read more</p></a>
+                        <?php 
+                        }else{ 
+                        ?>
                             <p><?= $post["content"];  ?></p> 
-                        <?php } ?>
+                        <?php 
+                        } 
+                        ?>
+                        </div>
                         <p> 0 kommentarer <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
                     </div>
-                    <div class="post_image_frame col-12 col-md-5 p-0">
+                    <div class="post_image_frame col-12 col-md-4 p-0">
                         <img src="<?= $post["image"]; ?>" alt="Cool image.">
                     </div>
                 </div>
