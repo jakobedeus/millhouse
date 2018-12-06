@@ -11,10 +11,11 @@ include "../includes/header-views.php";
 $single_post = new PostsFetch($pdo);
 $one_post = $single_post->fetchSinglePost();
 
-$delete= new PostsEdit($pdo);
+/*$delete= new PostsEdit($pdo);
 $delete_post = $delete->deletePost();
+
 $update = new PostsEdit($pdo);
-$update_post = $update->updatePost();
+$update_post = $update->updatePost();*/
 
 //$add_comment = new CommentsFetch($pdo);
 //$insert_comment = $add_comment->insertComments();
@@ -111,11 +112,10 @@ $comments_for_specific_post = $show_comment->fetchComments();
            echo "<h3>" . $comment["username"] . "</h3>" ;
            echo $comment["content"]; echo "<br>";?>
            <form action="../includes/update_page.php" method="POST">
-
                <!--name och value-->
                <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
                <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">
-               <input type="submit" value="DELETE COMMENTS">
+               <input type="submit" value="DELETE COMMENTS" class="button_delete">
            </form>
            <?= "<b>" . $comment["date"] . "</b>"; ?>
          <?php }?>
