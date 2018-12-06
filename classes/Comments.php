@@ -48,10 +48,11 @@ public function fetchComments ()
 {
   $post_id = $_GET["id"];
   $fetch_all_comments_statement = $this->pdo->prepare(
-    "SELECT comments.created_by, users.id, users.username, comments.date, comments.content
+    "SELECT comments.created_by, users.id, users.username, comments.date, comments.content, comments.post_id, comments.comment_id
     FROM users
     JOIN comments
-    ON users.id = comments.created_by ");
+    ON users.id = comments.created_by
+    WHERE comments.post_id = :post_id");
 
   $fetch_all_comments_statement->execute(
    [
@@ -61,12 +62,12 @@ public function fetchComments ()
 
   $comments_for_specific_post = $fetch_all_comments_statement->fetchAll(PDO::FETCH_ASSOC);
   return  $comments_for_specific_post;
-  var_dump($comments_for_specific_post);
+  //var_dump($comments_for_specific_post);
 }
 
 public function deleteComments ()
 {
-
+  
   $comment_id = $_POST["single_comment_id_delete"];
   $delete_comment_statement = $this->pdo->prepare("DELETE FROM comments where comment_id = :comment_id");
   $delete_comment_statement->execute(

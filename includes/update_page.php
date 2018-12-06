@@ -31,6 +31,7 @@ if (isset($_POST["comment_post_id"])){
 }
 
 if (isset($_POST["single_comment_id_delete"])){
+  
   $comment_delete = new CommentsFetch($pdo);
   $delete_comment = $comment_delete->deleteComments();
   header('Location:../views/post.php?id='.$_POST["single_comment_id_delete_redirect"]);
