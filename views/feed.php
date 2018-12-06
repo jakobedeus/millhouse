@@ -22,11 +22,12 @@ $upload_ok = $insert_post->InsertPosts();
 <main class="container justify-content-center">
     <?php
     if($_SESSION["admin"] === "is_admin"){?>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fas fa-plus"></i> </button>
+    <button class="btn btn-light add_sign_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fas fa-plus add_sign"></i></button>
+    <h2 class="font_h2 new_post">New post</h2>
     <div class="row justify-content-center mb-5">
         <div class="col-10 m-0 p-0 collapse" id="collapseExample">
-            <h2 class="font_h2">Write new post: </h2>
+
             <!-- If we are sending a file in a form we must supply the extra attribute
             'encytype="multipart/form-data"', otherwise the file will be sent as a
             string and not uploaded to the server, otherwise the form is similar to every other form -->

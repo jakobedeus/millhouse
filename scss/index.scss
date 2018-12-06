@@ -54,3 +54,18 @@
 .denied {
     color: $denied_font_color;
 }
+
+.add_sign_btn {
+    background: none;
+    border: 2px solid red;
+}
+
+.add_sign {
+    color: $primary_color_1;
+    font-size: 2em;
+}
+.new_post {
+    font-size: 1.2em;
+    display: inline;
+    font-family: $headers_font;
+}
