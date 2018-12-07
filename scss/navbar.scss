@@ -29,6 +29,11 @@ nav {
       color: green;
     }
   }*/
+
+
+  .underline {
+    text-decoration: underline;
+  }
  
   .logo_container {
       width: 20%;
@@ -57,4 +62,22 @@ nav {
           font-weight: bold;
           margin:1.2em;
       }
+  }
+
+  .contact, .logout {
+    margin:20px 0;
+  }
+
+  @media screen and (min-width: 768px) {
+
+    .contact, .logout {
+      margin:0;
+    }
+    
+  }
+  
+  @media screen and (min-width: 992px) {
+  
+  
+      
   }

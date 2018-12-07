@@ -20,6 +20,12 @@ $upload_ok = $insert_post->InsertPosts();
 
 ?>
 <main class="container justify-content-center">
+
+    <?php 
+        if(isset($_SESSION["username"])){ 
+        ?><p class="h3">Welcome <b><?=$_SESSION["username"];?>
+        <?php
+        }?></b></p>
     <?php
     if($_SESSION["admin"] === "is_admin"){?>
     <button class="btn btn-light add_sign_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
