@@ -17,6 +17,9 @@ $all_category= $category->fetchCategory();
 $insert_post = new PostsInsert($pdo);
 $upload_ok = $insert_post->InsertPosts();
 
+$show_comment_amount = new CommentsFetch($pdo);
+$comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount();
+
 ?>
 <main class="container justify-content-center">
 
@@ -125,9 +128,27 @@ $upload_ok = $insert_post->InsertPosts();
                     <img src="<?= $post["image"]; ?>" alt="Cool image.">
                 </div>
             </div> <!-- closing row-->
+            <?php //var_dump($post["id"]); ?>
         <?php
         endforeach;
         }
+        //var_dump($comments_amount_for_specific_post);
+        //var_dump($_GET["id"]);
+        
+        /*foreach($comments_amount_for_specific_post as $comment_amount): ?>
+        <?php $hejs = $comment_amount["id"];
+        echo $hejs;*/
+        
+        ?>
+       
+
+          <?php/*
+        endforeach; */
+
+        
+        
+
+
 
         ?>
 
