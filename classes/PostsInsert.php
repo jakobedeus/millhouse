@@ -18,12 +18,13 @@ class PostsInsert {
 
     public function InsertPosts(){
 
-
+        if (isset($_POST["title"])) {
         $image = $_FILES["image"];
         $image_text = $_POST["text"];
         $title = $_POST["title"];
         $user_id = $_SESSION["user_id"];
-        $date = date('Y/m/d H:i:s');
+        date_default_timezone_set("Europe/Stockholm");
+        $date = date('Y/m/d H:i');
         $id_category = $_POST["category_checkbox"];
 
         foreach($id_category as $key => $value) {
@@ -50,6 +51,7 @@ class PostsInsert {
         return $upload_ok;
         }
     }
+}
 
 
 

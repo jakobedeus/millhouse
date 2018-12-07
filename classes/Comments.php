@@ -28,7 +28,8 @@ class CommentsFetch
    $created_by = $_SESSION["user_id"];
    $content = $_POST["content"];
    $post_id_insert = $_POST["comment_post_id"];
-   $datetime = date('Y/m/d H:i:s');
+   date_default_timezone_set("Europe/Stockholm");
+   $datetime = date('Y/m/d H:i');
 
  $statement_insert_comment = $this->pdo->prepare("INSERT INTO comments
  (content, post_id, created_by, date) VALUES (:content, :post_id, :created_by, :date)");

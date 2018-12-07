@@ -1,10 +1,3 @@
-<?php
-//session_start();
-
-/*$category = new PostsFetch($pdo);
-$all_category= $category->fetchCategory(); */
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,7 +12,7 @@ $all_category= $category->fetchCategory(); */
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans|Abril+Fatface" rel="stylesheet">
 
         <!-- My CSS -->
         <link rel="stylesheet" href="../css/style.css" type="text/css">

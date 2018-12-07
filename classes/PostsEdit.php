@@ -27,7 +27,8 @@ class PostsEdit
         if(isset($_POST["single_post_id_delete"])){
             $post_id = $_POST["single_post_id_delete"];
             $delete_post_statement = $this->pdo->prepare(
-            "DELETE FROM posts WHERE id = :id");
+            "DELETE FROM posts WHERE id = :id;
+            DELETE FROM comments WHERE post_id = :id;");
 
             $delete_post_statement->execute(
                 [

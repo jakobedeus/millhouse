@@ -32,6 +32,7 @@ p{
     border: 2px solid red;
 } */
 
+
 .blog_posts{
     background-color: #ffffff;
     border-radius: 4px;
@@ -45,6 +46,7 @@ p{
 
     .blog_posts_content_text{
         min-height: 110px;
+        overflow-x: hidden;
     }
 } 
 

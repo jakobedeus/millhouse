@@ -20,14 +20,18 @@ $upload_ok = $insert_post->InsertPosts();
 $show_comment_amount = new CommentsFetch($pdo);
 $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount();
 
-
 ?>
 <main class="container justify-content-center">
+
+    <?php 
+        if(isset($_SESSION["username"])){ 
+        ?><h3>Welcome <b class="text-capitalize"><?=$_SESSION["username"];?>
+        <?php
+        }?></b></h3>
     <?php
     if($_SESSION["admin"] === "is_admin"){?>
     <button class="btn btn-light add_sign_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fas fa-plus add_sign"></i></button>
-    <h2 class="font_h2 new_post">New post</h2>
+    <i class="fas fa-plus add_sign"></i><h2 class="font_h2 new_post">New post</h2></button>
     <div class="row justify-content-center mb-5">
         <div class="col-10 m-0 p-0 collapse" id="collapseExample">
 
@@ -65,8 +69,8 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
             <div class="row blog_posts mb-5 justify-content-center">
                 <div class="col-12 col-md-7 blog_post_content">
                     <h2 class="font_h2"><?= $category["title"]; ?></h2>
-                    <p><?= $category["date"] . ' - ' . $category["category"];?></p>
-                    <p><?= '<strong> Wrote by: </strong>' . $category["username"]; ?></p>
+                    <p><i class="fas fa-clock"></i> <?= $category["date"] . ' - ' ?><a class="blog_post_link" href="feed.php?category=<?=$category["category"];?>"><?=$category["category"];?></a> </p>
+                    <p><i class="fas fa-user"></i> <?= '<strong> Wrote by: </strong>' . $category["username"]; ?></p>
                     <div class="blog_posts_content_text">
                         <?php 
                         if(strlen($category["content"]) > 300){
@@ -98,9 +102,9 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         foreach(array_reverse($all_posts) as $post): ?>
             <div class="row blog_posts mb-5 justify-content-center">
                 <div class="blog_post_content col-12 col-md-7">
-                    <h2 class="font_h2"><?= $post["title"]; ?></h2>
-                    <p><?= $post["date"] . ' - ' . $post["category"];?></p>
-                    <p><?= '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
+                    <h2 class="font_h2 text-capitalize"><?= $post["title"]; ?></h2>
+                    <p><i class="fas fa-clock"></i> <?= $post["date"] . ' - ' ?><a class="blog_post_link"  href="feed.php?category=<?=$post["category"];?>"><?=$post["category"];?></a> </p>
+                    <p><i class="fas fa-user"></i> <?= '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
                     <div class="blog_posts_content_text">
                         <?php 
                         if(strlen($post["content"]) > 300){

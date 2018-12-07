@@ -7,7 +7,6 @@ include '../classes/PostsInsert.php';
 include '../classes/Comments.php';
 include '../includes/functions.php';
 
-
 $category = new PostsFetch($pdo);
 $all_category= $category->fetchCategory();
 ?>
@@ -20,7 +19,7 @@ $all_category= $category->fetchCategory();
             <nav class="d-flex col-12  p-4 justify-content-center">
                 <div class="container d-flex row">
 
-                    <div class="col-4 col-md-3 d-flex align-self-center">
+                    <div class="col-6 col-md-3 d-flex align-self-center justify-content-center contact">
                         <a href="mailto:info@millhouse.com"><button class="button_inverted_dark text-center"><i class=" order-1 fas fa-envelope"></i> GET IN TOUCH</button></a>
                     </div>
 
@@ -29,26 +28,27 @@ $all_category= $category->fetchCategory();
                             <li><a href="feed.php"><p>ALL</p></a></li>
                         </ul>
                         <?php
-                        foreach($all_category as $post1):?>
-                            <?php $product_category = $post1['category'];?>
+                        foreach($all_category as $category_link):?>
+                            <?php $product_category = $category_link['category'];
+                            ?>
+
                                 <ul>
-                                    <li><a href="feed.php?category=<?= $product_category; ?>"><p class="text-uppercase"><?= $product_category; ?></p></a></li>
+                                
+                                    <?php  if(isset($_GET["category"]) && $_GET["category"]==$product_category)  {?>
+                                    <li><a href="feed.php?category=<?= $product_category; ?>"><p class="underline text-uppercase"><?= $product_category; ?></p></a></li>
+                        
+                                    <?php } else { ?>
+                                        <li><a href="feed.php?category=<?= $product_category; ?>"><p class="text-uppercase"><?= $product_category; ?></p></a></li>
+                                    <?php }?>
+                                    
                                 </ul>
                         <?php
                         endforeach;
                         ?>
                     </div>
 
-                    <div class="col-8 col-md-3 order-2 order-md-3 d-flex align-items-center">
-                        <?php 
-                        if(isset($_SESSION["username"])){ 
-                            ?><p class="mr-3"> LOGGED IN AS: <b><?= $_SESSION["username"]; ?>
-                        <?php
-                        }
-                        ?>
-                        </b></p>
-
-                            <a href="../includes/logout.php"><button class="button_inverted_light text-center">LOG OUT</button></a>
+                    <div class="col-6 col-md-3 logout d-flex order-2 order-md-3 justify-content-center  align-items-center">
+                    <a href="../includes/logout.php" class="col-12"><button class="button_inverted_light text-center">LOG OUT</button></a>    
                     </div>
 
                 </div>
