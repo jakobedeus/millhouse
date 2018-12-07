@@ -12,26 +12,8 @@ $comments_for_specific_post = $show_comment->fetchComments();
 ?>
 <main class="container">
 
-
-    <?php
-    foreach($one_post as $post):?>
-    <div class="row blog_posts justify-content-center">
-        <div class="col-8">
-            <h2 class="text-capitalize"><?= $post["title"]; ?></h2>
-            
-            <p><i class="fas fa-clock"></i> <?= $post["date"] ?><strong> Category: </strong><?=$post["category"]?><strong> Wrote by: </strong><?=$post["username"]; ?></p>
-            <p><?= $post["content"];  ?></p>
-        </div> <!-- closin col-4-->
-    </div>
-    <div class="row blog_posts justify-content-center">
-        <div class="col-8 post_image_frame_post">
-            <img src="<?= $post["image"]; ?>" alt="Cool image.">
-        </div><!-- closin col-8-->
-        
-    </div> <!-- closin row-->
     <div class="row justify-content-center">
         <div class="col-10 blog_posts">
-
 
             <?php
             foreach($one_post as $post):?>
@@ -92,8 +74,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
                 }?>
                 </div><!-- closin col-->
             </div><!-- closin row-->
-        </div>
-    </div>
+       
     <div class="row mb-4 justify-content-around">
         <div class="col-8">
             <h2>COMMENTS</h2>
@@ -111,23 +92,22 @@ $comments_for_specific_post = $show_comment->fetchComments();
             <?php
             foreach(array_reverse($comments_for_specific_post) as $comment){?>
             <h3><?=$comment["username"];?></h3>
-            <b><?=$comment["date"];?></b>
+            <b><i class="fas fa-clock"></i> <?=$comment["date"];?></b>
             <p><?=$comment["content"];?></p>            
             <form action="../includes/update_page.php" method="POST">
                 <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
                 <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">
                 <button class="btn btn-light add_sign_btn" type="submit"><i class="far fa-trash-alt add_sign_delete"></i></button>
                 <hr>
-
             </form>
-
-            <b><i class="fas fa-clock"></i> <?=$comment["date"];?></b>
             <hr>
 
             <?php 
             }?>
         </div><!-- closin col-->
     </div><!-- closin row-->
+    </div>
+    </div>
 </main>
 
 <?php
