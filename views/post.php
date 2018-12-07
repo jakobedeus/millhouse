@@ -11,8 +11,27 @@ $comments_for_specific_post = $show_comment->fetchComments();
 
 ?>
 <main class="container">
+
+
+    <?php
+    foreach($one_post as $post):?>
+    <div class="row blog_posts justify-content-center">
+        <div class="col-8">
+            <h2 class="text-capitalize"><?= $post["title"]; ?></h2>
+            
+            <p><i class="fas fa-clock"></i> <?= $post["date"] ?><strong> Category: </strong><?=$post["category"]?><strong> Wrote by: </strong><?=$post["username"]; ?></p>
+            <p><?= $post["content"];  ?></p>
+        </div> <!-- closin col-4-->
+    </div>
+    <div class="row blog_posts justify-content-center">
+        <div class="col-8 post_image_frame_post">
+            <img src="<?= $post["image"]; ?>" alt="Cool image.">
+        </div><!-- closin col-8-->
+        
+    </div> <!-- closin row-->
     <div class="row justify-content-center">
         <div class="col-10 blog_posts">
+
 
             <?php
             foreach($one_post as $post):?>
@@ -81,9 +100,9 @@ $comments_for_specific_post = $show_comment->fetchComments();
             <form action="../includes/update_page.php" method="POST">
                 <label for="comments"></label>
                 <input type="hidden" name="comment_post_id" value="<?= $post['id']; ?>">
-                <textarea name="content" rows="5" cols="50" placeholder="Write your comment here"></textarea>
-                <br>
-                <button type="submit" class="btn btn-dark post_comment_btn">POST COMMENT</button>
+                <textarea name="content" rows="5" cols="50" placeholder="Write your comment here" required></textarea>
+                <button type="submit" class="btn btn-dark">POST COMMENT</button>
+
             </form>
         </div> <!-- closin col-->
     </div><!-- closin row-->
@@ -101,6 +120,10 @@ $comments_for_specific_post = $show_comment->fetchComments();
                 <hr>
 
             </form>
+
+            <b><i class="fas fa-clock"></i> <?=$comment["date"];?></b>
+            <hr>
+
             <?php 
             }?>
         </div><!-- closin col-->
