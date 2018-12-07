@@ -18,7 +18,7 @@ class PostsInsert {
 
     public function InsertPosts(){
 
-
+        if (isset($_POST["title"])) {
         $image = $_FILES["image"];
         $image_text = $_POST["text"];
         $title = $_POST["title"];
@@ -50,6 +50,7 @@ class PostsInsert {
         return $upload_ok;
         }
     }
+}
 
 
 

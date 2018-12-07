@@ -10,5 +10,14 @@
 
 
 body {
-    overflow-x: hidden;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.col-12, .col-6{
+    padding:0;
+}
+
+nav {
+    display: block;
 }
