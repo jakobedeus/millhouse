@@ -4,6 +4,7 @@
 
 p{
     font-family: $body_font;
+    font-family: $font_color;
 }
 
 .blog_post_link{
@@ -20,6 +21,7 @@ p{
 
 .font_h2{
     font-family: $headers_font;
+    font-family: $font_color;
 }
 
 .body_views{
@@ -33,6 +35,7 @@ p{
 .blog_posts{
     background-color: #ffffff;
     border-radius: 4px;
+    box-shadow: 0 0 10px 1px lightgrey;
 
 
 .blog_post_content{
