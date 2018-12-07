@@ -29,12 +29,14 @@ $comments_for_specific_post = $show_comment->fetchComments();
 
 ?>
 <main class="container">
+
     <?php
     foreach($one_post as $post):?>
     <div class="row blog_posts justify-content-center">
         <div class="col-8">
-            <h2><?= $post["title"]; ?></h2>
-            <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
+            <h2 class="text-capitalize"><?= $post["title"]; ?></h2>
+            
+            <p><i class="fas fa-clock"></i> <?= $post["date"] ?><strong> Category: </strong><?=$post["category"]?><strong> Wrote by: </strong><?=$post["username"]; ?></p>
             <p><?= $post["content"];  ?></p>
         </div> <!-- closin col-4-->
     </div>
@@ -93,7 +95,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
             <form action="../includes/update_page.php" method="POST">
                 <label for="comments"></label>
                 <input type="hidden" name="comment_post_id" value="<?= $post['id']; ?>">
-                <textarea name="content" rows="5" cols="50" placeholder="Write your comment here"></textarea>
+                <textarea name="content" rows="5" cols="50" placeholder="Write your comment here" required></textarea>
                 <button type="submit" class="btn btn-dark">POST COMMENT</button>
             </form>
         </div> <!-- closin col-->
@@ -112,7 +114,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
                 <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">
                 <input type="submit" value="DELETE COMMENTS" class="button_delete">
             </form>
-            <b><?=$comment["date"];?></b>
+            <b><i class="fas fa-clock"></i> <?=$comment["date"];?></b>
             <hr>
             <?php 
             }?>

@@ -5,13 +5,23 @@
 @import 'feed';
 @import 'index';
 @import 'post';
+@import 'footer';
 
 *{margin:0;padding:0;outline:0;font-size:1em;font-weight:normal;font-style:normal;border:0;text-decoration:none;list-style-type:none}
 
+html {
+    overflow-x: hidden;
+    margin:0 !important;
+    padding:0;
+    width: 100% !important;
+}
 
 body {
     margin: 0 auto;
     width: 100%;
+    overflow-x: hidden;
+    color:$font_color;
+    
 }
 
 .col-12, .col-6{
