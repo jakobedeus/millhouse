@@ -19,9 +19,9 @@ $comments_for_specific_post = $show_comment->fetchComments();
             foreach($one_post as $post):?>
             <div class="row blog_posts_content blog_posts justify-content-center">
                 <div class="col-10 blog_posts_content_text">
-                    <h2><?= $post["title"]; ?></h2>
+                    <h2 class="text-capitalize"><?= $post["title"]; ?></h2>
                     <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
-                    <p><?= $post["content"];  ?></p>
+                    <p class="text-capitalize"><?= $post["content"];  ?></p>
                     <hr>
                 </div> <!-- closin col-4-->
             </div>
@@ -93,7 +93,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
             foreach(array_reverse($comments_for_specific_post) as $comment){?>
             <h3><?=$comment["username"];?></h3>
             <b><i class="fas fa-clock"></i> <?=$comment["date"];?></b>
-            <p><?=$comment["content"];?></p>            
+            <p class="text-capitalize"><?=$comment["content"];?></p>            
             <form action="../includes/update_page.php" method="POST">
                 <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
                 <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">

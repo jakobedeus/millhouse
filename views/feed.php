@@ -68,9 +68,9 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         foreach(array_reverse($post_category) as $category): ?>
             <div class="row blog_posts mb-5 justify-content-center">
                 <div class="col-12 col-md-7 blog_post_content">
-                    <h2 class="font_h2"><?= $category["title"]; ?></h2>
+                    <h2 class="font_h2 text-capitalize"><?= $category["title"]; ?></h2>
                     <p><i class="fas fa-clock"></i> <?= $category["date"] . ' - ' ?><a class="blog_post_link" href="feed.php?category=<?=$category["category"];?>"><?=$category["category"];?></a> </p>
-                    <p><i class="fas fa-user"></i> <?= '<strong> Wrote by: </strong>' . $category["username"]; ?></p>
+                    <p><i class="fas fa-user"></i> <?= $category["username"]; ?></p>
                     <div class="blog_posts_content_text">
                         <?php
                         if(strlen($category["content"]) > 300){
@@ -104,8 +104,8 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                 <div class="blog_post_content col-12 col-md-7">
                     <h2 class="font_h2 text-capitalize"><?= $post["title"]; ?></h2>
                     <p><i class="fas fa-clock"></i> <?= $post["date"] . ' - ' ?><a class="blog_post_link"  href="feed.php?category=<?=$post["category"];?>"><?=$post["category"];?></a> </p>
-                    <p><i class="fas fa-user"></i> <?= '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
-                    <div class="blog_posts_content_text">
+                    <p><i class="fas fa-user"></i> <?= $post["username"]; ?></p>
+                    <div class="blog_posts_content_text text-capitalize">
                         <?php
                         if(strlen($post["content"]) > 300){
                             $blog_posts_content_text = text_shorten(
