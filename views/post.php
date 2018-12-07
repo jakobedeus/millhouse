@@ -28,117 +28,110 @@ $comments_for_specific_post = $show_comment->fetchComments();
 
 
 ?>
-    <main class="container">
-
-        <section>
-
-                <?php
-        foreach($one_post as $post):?>
-
-        <div class="col-12 row mb-4 border border-dark justify-content-between">
-            <div class="col-4">
-                <h2><?= $post["title"]; ?></h2>
-                <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
-                <p><?= $post["content"];  ?></p>
-            </div>
-            <div class="col-8">
-                <img src="<?= $post["image"]; ?>" alt="Cool image.">
-            </div>
-            <div>
-            <?php
-                if($_SESSION["admin"] === "is_admin"){?>
-
-                <form action="../includes/update_page.php" method="POST">
-                    <input type="submit" value="DELETE">
-                    <input type="hidden" name="single_post_id_delete" value="<?= $post['id']; ?>">
-                </form>
-
-                <?php } ?> <!-- closing if-statement for admin access-->
-            </div>
-        </div>
-        <?php
-        endforeach;
-        ?>
-
-        <!-- If we are sending a file in a form we must supply the extra attribute
-     'encytype="multipart/form-data"', otherwise the file will be sent as a
-     string and not uploaded to the server, otherwise the form is similar to every other form -->
+<main class="container">
     <?php
-    if($_SESSION["admin"] === "is_admin"){?>
+    foreach($one_post as $post):?>
+    <div class="row blog_posts justify-content-center">
+        <div class="col-8">
+            <h2><?= $post["title"]; ?></h2>
+            <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
+            <p><?= $post["content"];  ?></p>
+        </div> <!-- closin col-4-->
+    </div>
+    <div class="row blog_posts justify-content-center">
+        <div class="col-8 post_image_frame_post">
+            <img src="<?= $post["image"]; ?>" alt="Cool image.">
+        </div><!-- closin col-8-->
+        
+    </div> <!-- closin row-->
 
-     <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
+    <div class="row blog_posts justify-content-center">
+        <div class="col-8 inline_form">
+        <?php
+            if($_SESSION["admin"] === "is_admin"){?>
+            <form action="../includes/update_page.php" method="POST">
+                <button class="btn btn-light add_sign_btn" type="submit"><i class="far fa-trash-alt add_sign"></i></button>
+                <input type="hidden" name="single_post_id_delete" value="<?= $post['id']; ?>">
+            </form>
+            <button class="btn btn-light add_sign_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fas fa-wrench add_sign"></i></button>              
+            <?php 
+            } ?> <!-- closing if-statement for admin access-->
+        </div>
+    </div> <!-- closin row-->
 
-        <label for="image">Image</label>
-        <!-- Use 'type="file"' to automatically create a input-field for uploads -->
-        <input type="file" name="image" id="image" src="../views/uploads/anka.jpg">
-        <!-- Use a textarea for a bigger input-field, put an ID on the area for the
-        wysiwyg-editor to initialize on -->
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title" value="<?= $post["title"] ?>">
+    <?php
+    endforeach;
+    ?>
 
-        <select name="category_checkbox[]" id="" required>
-            <option value="">Choose category</option>
-            <option value="1">Living</option>
-            <option value="2">Sunglasses</option>
-            <option value="3">Watches</option>
-        </select>
-       <textarea name="content" id="text_edit"><?= $post["content"] ?></textarea>
-       <input type="hidden" name="single_post_id_update" value="<?= $post['id']; ?>">
-       <input type="submit" value="Update">
-    </form>
-    <?php } ?>
-    </section>
-
-
-            <div class="row mb-4 border border-dark justify-content-between">
-              <div class="col-10">
-                <h3>Comments</h3>
-                <h4>Write your comment</h4>
-                <form action="../includes/update_page.php" method="POST">
-                  <label for="comments"></label>
-                  <input type="hidden" name="comment_post_id" value="<?= $post['id']; ?>">
-                  <textarea name="content" rows="20" cols="100"></textarea>
-                  <button type="submit" class="btn btn-dark">COMMENT ON POST</button>
-                </form>
-              </div>
-            </div>
-
+    <div class="row justify-content-center">
+        <div class="col-10 collapse" id="collapseExample">
+        <?php
+        if($_SESSION["admin"] === "is_admin"){?>
+            <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
+                <label for="image">Image</label>
+                <input type="file" name="image" id="image" src="../views/uploads/anka.jpg">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" value="<?= $post["title"] ?>">
+                <select name="category_checkbox[]" id="" required>
+                    <option value="">Choose category</option>
+                    <option value="1">Living</option>
+                    <option value="2">Sunglasses</option>
+                    <option value="3">Watches</option>
+                </select>
+                <textarea name="content" id="text_edit"><?= $post["content"] ?></textarea>
+                <input type="hidden" name="single_post_id_update" value="<?= $post['id']; ?>">
+                <input type="submit" value="Update">
+            </form>
+        <?php 
+        }?>
+        </div><!-- closin col-->
+    </div><!-- closin row-->
     <div class="row mb-4 border border-dark justify-content-between">
-         <div class="col-10">
-           <h2>COMMENTS</h2>
-           <?php
-           //var_dump($comments_for_specific_post);
-           foreach(array_reverse($comments_for_specific_post) as $comment){
-           echo "<h3>" . $comment["username"] . "</h3>" ;
-           echo $comment["content"]; echo "<br>";?>
-           <form action="../includes/update_page.php" method="POST">
-               <!--name och value-->
-               <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
-               <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">
-               <input type="submit" value="DELETE COMMENTS" class="button_delete">
-           </form>
-           <?= "<b>" . $comment["date"] . "</b>"; ?>
-         <?php }?>
+        <div class="col-10">
+            <h3>Comments</h3>
+            <form action="../includes/update_page.php" method="POST">
+                <label for="comments"></label>
+                <input type="hidden" name="comment_post_id" value="<?= $post['id']; ?>">
+                <textarea name="content" rows="5" cols="50" placeholder="Write your comment here"></textarea>
+                <button type="submit" class="btn btn-dark">POST COMMENT</button>
+            </form>
+        </div> <!-- closin col-->
+    </div><!-- closin row-->
+    <div class="row mb-4 border border-dark justify-content-between">
+        <div class="col-10">
+            <h2>COMMENTS</h2>
+            <?php
+            //var_dump($comments_for_specific_post);
+            foreach(array_reverse($comments_for_specific_post) as $comment){?>
+            <h3><?=$comment["username"];?></h3>
+            <p><?=$comment["content"];?></p>
+            <br>
+            <form action="../includes/update_page.php" method="POST">
+                <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
+                <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">
+                <input type="submit" value="DELETE COMMENTS" class="button_delete">
+            </form>
+            <b><?=$comment["date"];?></b>
+            <hr>
+            <?php 
+            }?>
+        </div><!-- closin col-->
+    </div><!-- closin row-->
+</main>
 
-         </div>
-       </div>
-
-     </section>
-
- </main>
-
-       <?php
-       include "../includes/footer-views.php";
-       ?>
+<?php
+include "../includes/footer-views.php";
+?>
        <!-- Link dependencies for the editor -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
-  <script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+    <script>
     /**
      * use the id of the textarea in the form to initialize this text-editor: #text
      */
     $(document).ready(function() {
       $('#text_edit').summernote();
     });
-  </script>
+    </script>

@@ -23,8 +23,7 @@ $upload_ok = $insert_post->InsertPosts();
     <?php
     if($_SESSION["admin"] === "is_admin"){?>
     <button class="btn btn-light add_sign_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fas fa-plus add_sign"></i></button>
-    <h2 class="font_h2 new_post">New post</h2>
+    <i class="fas fa-plus add_sign"></i><h2 class="font_h2 new_post">New post</h2></button>
     <div class="row justify-content-center mb-5">
         <div class="col-10 m-0 p-0 collapse" id="collapseExample">
 
