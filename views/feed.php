@@ -17,7 +17,6 @@ $all_category= $category->fetchCategory();
 $insert_post = new PostsInsert($pdo);
 $upload_ok = $insert_post->InsertPosts();
 
-
 ?>
 <main class="container justify-content-center">
 

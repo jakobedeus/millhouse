@@ -7,7 +7,6 @@ include '../classes/PostsInsert.php';
 include '../classes/Comments.php';
 include '../includes/functions.php';
 
-
 $category = new PostsFetch($pdo);
 $all_category= $category->fetchCategory();
 ?>
