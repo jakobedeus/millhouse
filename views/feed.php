@@ -61,7 +61,7 @@ $upload_ok = $insert_post->InsertPosts();
     } // closing if-statement for admin access
     if(isset($_GET['category'])){
 
-        //Ska hämta annan foreach från annan metod i classen 
+        //Ska hämta annan foreach från annan metod i classen
         foreach(array_reverse($post_category) as $category): ?>
             <div class="row blog_posts mb-5 justify-content-center">
                 <div class="col-12 col-md-7 blog_post_content">
@@ -69,20 +69,20 @@ $upload_ok = $insert_post->InsertPosts();
                     <p><i class="fas fa-clock"></i> <?= $category["date"] . ' - ' ?><a class="blog_post_link" href="feed.php?category=<?=$category["category"];?>"><?=$category["category"];?></a> </p>
                     <p><i class="fas fa-user"></i> <?= '<strong> Wrote by: </strong>' . $category["username"]; ?></p>
                     <div class="blog_posts_content_text">
-                        <?php 
+                        <?php
                         if(strlen($category["content"]) > 300){
-                            $blog_posts_content_text = text_shorten( 
+                            $blog_posts_content_text = text_shorten(
                                 $text = $category["content"]
                              );
                             echo $blog_posts_content_text;
                         ?>
                             <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Read more</p></a>
-                        <?php 
-                        }else{ 
+                        <?php
+                        }else{
                         ?>
-                            <p><?= $category["content"];  ?></p> 
-                        <?php 
-                        } 
+                            <p><?= $category["content"];  ?></p>
+                        <?php
+                        }
 
                         ?>
                     </div> <!-- closing blog_posts_content_text-->
@@ -103,9 +103,9 @@ $upload_ok = $insert_post->InsertPosts();
                     <p><i class="fas fa-clock"></i> <?= $post["date"] . ' - ' ?><a class="blog_post_link"  href="feed.php?category=<?=$post["category"];?>"><?=$post["category"];?></a> </p>
                     <p><i class="fas fa-user"></i> <?= '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
                     <div class="blog_posts_content_text">
-                        <?php 
+                        <?php
                         if(strlen($post["content"]) > 300){
-                            $blog_posts_content_text = text_shorten( 
+                            $blog_posts_content_text = text_shorten(
                                 $text = $post["content"]
                              );
                             echo $blog_posts_content_text;
@@ -130,6 +130,56 @@ $upload_ok = $insert_post->InsertPosts();
         }
 
         ?>
+
+      <?php
+      /*$page = ! empty( $_GET['page'] ) ? (int) $_GET['page'] : 1;
+
+   $total_posts = count($all_posts);
+   //echo $total_posts . "<br />";
+   $number_of_elements_per_page = 3;
+
+   $number_of_pages = ceil($total_posts/$number_of_elements_per_page);
+   //echo $number_of_pages;
+   $page = max($page, 1); //get 1 page when $_GET['page'] <= 0
+   $page = min($page, $number_of_pages); //get last page when $_GET['page'] > $totalPages
+   $offset = ($page - 1) * $number_of_elements_per_page;
+   if( $offset < 0 ) $offset = 0;
+   $hello_post = array_slice( $all_posts, $offset, $number_of_elements_per_page);*/?>
+
+
+
+
+        <nav class="pagination">
+          <a href="feed.php?page=1">1</a>
+          <a href="feed.php?page=2">2</a>
+          <a href="feed.php?page=3">3</a>
+          <a href="feed.php?page=4">4</a>
+        </nav>
+
+        <?php
+        if(isset($_GET["page"])){
+          $current_page = $_GET["page"];
+
+
+          if($current_page === 1){
+            echo "1";
+          }
+          if($current_page === 2){
+            echo "2";
+          }
+          if($current_page === 3){
+            echo "3";
+          }
+          if($current_page === 4){
+            echo "4";
+          }
+        }
+
+
+
+
+
+          ?>
 </main> <!-- closing container-->
 
 <?php
@@ -148,4 +198,3 @@ $upload_ok = $insert_post->InsertPosts();
         $('#text').summernote();
     });
 </script>
-
