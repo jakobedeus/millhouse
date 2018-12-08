@@ -83,28 +83,17 @@ public function deleteComments ()
 
 public function fetchCommentsAmount ()
 {
-  //$post_id = $_GET["id"];
   $fetch_amount_of_comments_statement = $this->pdo->prepare(
-    "SELECT posts.id, COUNT(comments.comment_id)
-    FROM posts
-    JOIN comments
-    WHERE posts.id = comments.post_id
-    GROUP BY comments.comment_id");
+    "SELECT posts.id, COUNT(comments.post_id) as totalcomment
+    FROM posts 
+    LEFT JOIN comments 
+    ON posts.id = comments.post_id
+    GROUP BY posts.id, comments.post_id");
 
-/*$fetch_amount_of_comments_statement->execute(
-   [
-     ":post_id" => $post_id
-   ]
-  );*/
-
+  $fetch_amount_of_comments_statement->execute();
+  
   $comments_amount_for_specific_post = $fetch_amount_of_comments_statement->fetchAll(PDO::FETCH_ASSOC);
   return $comments_amount_for_specific_post;
-  //var_dump($comments_for_specific_post);
+}
 }
 
-
-}
-/* we need to access the class, we do this by creating an object that contains
-*   all the information regarding the class. Am object is just an variable.
-we call the $object/add_comment.
-*/
