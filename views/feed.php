@@ -25,7 +25,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
 
     <?php 
         if(isset($_SESSION["username"])){ 
-        ?><h3>Welcome <b class="text-capitalize"><?=$_SESSION["username"];?>
+        ?><h3 class="font_h3">Welcome <b class="text-capitalize"><?=$_SESSION["username"];?>
         <?php
         }?></b></h3>
     <?php
@@ -89,7 +89,16 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
 
                         ?>
                     </div> <!-- closing blog_posts_content_text-->
-                    <p> 0 kommentarer <a href="post.php?id=<?= $category["id"]; ?>"><button class="button">Go to post</button></a></p>
+                    <p><?php 
+                    foreach($comments_amount_for_specific_post as $com): ?>  
+                        <?php   
+                        if($com["id"] === $category['id']){
+                            echo $com["totalcomment"] . ' comments '; 
+                        }
+                        ?>
+                    <?php
+                    endforeach; 
+                    ?> <a href="post.php?id=<?= $category["id"]; ?>"><button class="button">Go to post</button></a></p>
                 </div> <!-- closing col-12 col-md-7-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
                     <img src="<?= $category["image"]; ?>" alt="Cool image.">
@@ -122,34 +131,24 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         }
                         ?>
                     </div> <!-- closing blog_posts_content_text-->
-                            <p> 0 kommentarer <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
+                            <p><?php 
+                            foreach($comments_amount_for_specific_post as $com): ?>  
+                                <?php   
+                                if($com["id"] === $post['id']){
+                                    echo $com["totalcomment"] . ' comments '; 
+                                }
+                                ?>
+                            <?php
+                            endforeach; 
+                            ?> <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
                 </div> <!-- closing col-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
                     <img src="<?= $post["image"]; ?>" alt="Cool image.">
                 </div>
             </div> <!-- closing row-->
-            <?php //var_dump($post["id"]); ?>
         <?php
         endforeach;
-        }
-        //var_dump($comments_amount_for_specific_post);
-        //var_dump($_GET["id"]);
-        
-        /*foreach($comments_amount_for_specific_post as $comment_amount): ?>
-        <?php $hejs = $comment_amount["id"];
-        echo $hejs;*/
-        
-        ?>
-       
-
-          <?php/*
-        endforeach; */
-
-        
-        
-
-
-
+    }
         ?>
 
       <?php
