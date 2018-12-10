@@ -55,20 +55,6 @@
     color: $denied_font_color;
 }
 
-.add_sign_btn {
-    background: none;
-    border: 2px solid red;
-}
-
-.add_sign {
-    color: $primary_color_1;
-    font-size: 2em;
-}
-.new_post {
-    font-size: 1.2rem;
-    display: inline;
-    font-family: $headers_font;
-}
 .inline_form {
     padding-right: 5px;
     padding-left: 5px;
@@ -88,18 +74,6 @@
         //max-height: 350px;
     }
 }
-.white {
-    background-color: white;
-}
 
-.add_sign_delete {
-    color: $primary_color_1;
-    font-size: 1.5rem;
-}
 
-.post_comment_btn {
-    margin-top: 1.5em;
-}
-hr {
-    font-size: 2em;
-}
+
