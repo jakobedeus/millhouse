@@ -7,10 +7,14 @@ p{
     font-family: $font_color;
 }
 
+.blog_title_link {
+    text-decoration: none;
+}
+
 .blog_post_link{
     font-family: $body_font;
     color: $primary_color_1;
-    text-decoration-line: underline;
+    text-decoration: underline;
 }
 
 .blog_post_link:hover{
@@ -41,12 +45,13 @@ p{
 
 .blog_post_content{
     min-height: 300px;
+    padding-left: 1.5em;
     //min-width: 250px;
     //background-color: powderblue;
 
     .blog_posts_content_text{
-        min-height: 110px;
-        overflow-x: hidden;
+        min-height: 130px;
+        
     }
 } 
 
