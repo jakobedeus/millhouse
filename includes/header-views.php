@@ -14,7 +14,7 @@ $all_category= $category->fetchCategory();
     <header class="container-fluid p-4">
         <div class="row">
             <div class="col-12 p-4 logo_container">
-                <a href="../index.php" class="container d-flex justify-content-center"><img src="../images/logo_borders.png" alt="Logotype"></a>
+                <h1><a href="../index.php" class="container d-flex justify-content-center"><img src="../images/logo_borders.png" alt="Logotype"></a></h1>
             </div>
             <nav class="d-flex col-12  p-4 justify-content-center">
                 <div class="container d-flex row">

@@ -65,11 +65,10 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
 
         //Ska hämta annan foreach från annan metod i classen
         foreach(array_reverse($post_category) as $category): ?>
-            <div class="row blog_posts mb-5 justify-content-center">
-                <div class="col-12 col-md-7 blog_post_content">
-                    <h2 class="font_h2"><?= $category["title"]; ?></h2>
-                    <p><i class="fas fa-clock"></i> <?= $category["date"] . ' - ' ?><a class="blog_post_link" href="feed.php?category=<?=$category["category"];?>"><?=$category["category"];?></a> </p>
-                    <p><i class="fas fa-user"></i> <?= $category["username"]; ?></p>
+            <div class="row blog_posts mb-5 justify-content-between">
+                <div class="col-12 col-md-6 blog_post_content">
+                    <a class="blog_title_link" href="post.php?id=<?= $category["id"]; ?>"><h2 class="font_h2"><?= $category["title"]; ?></h2></a>
+                    <p><i class="fas fa-clock"></i> <?= $category["date"] . ' - ' ?><a class="blog_post_link" href="feed.php?category=<?=$category["category"];?>"><?=$category["category"];?></a> - <i class="fas fa-user"></i> <?= $category["username"]; ?></p>
                     <div class="blog_posts_content_text">
                         <?php
                         if(strlen($category["content"]) > 300){
@@ -100,7 +99,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                     ?> <a href="post.php?id=<?= $category["id"]; ?>"><button class="button">Go to post</button></a></p>
                 </div> <!-- closing col-12 col-md-7-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
-                    <img src="<?= $category["image"]; ?>" alt="Cool image.">
+                    <img src="<?= $category["image"]; ?>" alt="<?= $category["title"]; ?>">
                 </div>
             </div> <!-- closing row-->
         <?php
@@ -108,11 +107,11 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
     }else{
 
         foreach(array_reverse($all_posts) as $post): ?>
-            <div class="row blog_posts mb-5 justify-content-center">
-                <div class="blog_post_content col-12 col-md-7">
-                    <h2 class="font_h2"><?= $post["title"]; ?></h2>
-                    <p><i class="fas fa-clock"></i> <?= $post["date"] . ' - ' ?><a class="blog_post_link"  href="feed.php?category=<?=$post["category"];?>"><?=$post["category"];?></a> </p>
-                    <p><i class="fas fa-user"></i> <?= $post["username"]; ?></p>
+            <div class="row blog_posts mb-5 justify-content-between">
+                <div class="blog_post_content col-12 col-md-6">
+                    <a class="blog_title_link" href="post.php?id=<?= $post["id"]; ?>"><h2 class="font_h2"><?= $post["title"]; ?></h2></a>
+                    <p><i class="fas fa-clock"></i> <?= $post["date"] . ' - ' ?><a class="blog_post_link"  href="feed.php?category=<?=$post["category"];?>"><?=$post["category"];?></a> - <i class="fas fa-user"></i> <?= $post["username"]; ?> </p>
+                    <p></p>
                     <div class="blog_posts_content_text">
                         <?php
                         if(strlen($post["content"]) > 300){
@@ -142,7 +141,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                             ?> <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
                 </div> <!-- closing col-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
-                    <img src="<?= $post["image"]; ?>" alt="Cool image.">
+                    <img src="<?= $post["image"]; ?>" alt="<?= $post["title"]; ?>">
                 </div>
             </div> <!-- closing row-->
         <?php
