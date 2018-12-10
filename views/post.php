@@ -85,7 +85,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
             <form action="../includes/update_page.php" method="POST">
                 <label for="comments"></label>
                 <input type="hidden" name="comment_post_id" value="<?= $post['id']; ?>">
-                <textarea name="content" rows="5" cols="50" placeholder="Write your comment here" required></textarea>
+                <textarea class="input_comment"name="content" rows="5" cols="50" placeholder="Write your comment here" required></textarea>
                 <br>
                 <button type="submit" class="btn btn-dark post_comment_btn">POST COMMENT</button>
             </form>
@@ -111,8 +111,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
                 }?>
             </div><!-- closing col-12-->
         <?php       
-        endforeach;?>
-       
+        endforeach;?> 
     </div><!-- closing row-->
 </main>
 
