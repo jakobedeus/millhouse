@@ -37,11 +37,11 @@ $comments_for_specific_post = $show_comment->fetchComments();
                         <?php
                         if($_SESSION["admin"] === "is_admin"){?>
                             <form action="../includes/update_page.php" method="POST">
-                                <button class="btn btn-light add_sign_btn" type="submit"><i class="far fa-trash-alt add_sign"></i></button>
+                                <button class="btn btn-light icon_btn" type="submit"><i class="far fa-trash-alt icon"></i></button>
                                 <input type="hidden" name="single_post_id_delete" value="<?= $post['id']; ?>">
                             </form>
-                            <button class="btn btn-light add_sign_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            <i class="fas fa-wrench add_sign"></i></button>             
+                            <button class="btn btn-light icon_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <i class="fas fa-wrench icon"></i></button>             
                         <?php 
                         } ?> <!-- closing if-statement for admin access-->
                     </div><!-- closing col-10-->
@@ -93,22 +93,26 @@ $comments_for_specific_post = $show_comment->fetchComments();
     </div><!-- closing row-->
 
     <div class="row mb-4 justify-content-center">
-            <?php
-            foreach(array_reverse($comments_for_specific_post) as $comment){?>
-
+        <?php
+        foreach(array_reverse($comments_for_specific_post) as $comment):?>
             <div class="col-12 col-md-11 col-lg-8 border_bottom">
                 <h4 class="font_h2"><?=$comment["username"];?></h4>
                 <b><i class="fas fa-clock"></i> <?=$comment["date"];?></b>
-                <p><?=$comment["content"];?></p>            
-                <form action="../includes/update_page.php" method="POST">
-                    <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
-                    <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">
-                    <button class="btn btn-light add_sign_btn" type="submit"><i class="far fa-trash-alt add_sign_delete"></i></button>
-                </form>
-            </div><!-- closing col-8-->
+                <p><?=$comment["content"];?></p>
+                <?php
+                if($_SESSION["admin"] === "is_admin"){?>
 
-            <?php 
-            }?>
+                    <form action="../includes/update_page.php" method="POST">
+                        <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
+                        <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">
+                        <button class="btn btn-light icon_btn" type="submit"><i class="far fa-trash-alt delete_comment_btn"></i></button>
+                    </form>
+                <?php
+                }?>
+            </div><!-- closing col-12-->
+        <?php       
+        endforeach;?>
+       
     </div><!-- closing row-->
 </main>
 
