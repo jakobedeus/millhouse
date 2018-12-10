@@ -19,9 +19,9 @@ $comments_for_specific_post = $show_comment->fetchComments();
 
                 <div class="row blog_posts_content justify-content-center">
                     <div class="col-12 col-lg-10 blog_posts_content_text">
-                        <h2 class="font_h2 text-capitalize"><?= $post["title"]; ?></h2>
+                        <h2 class="font_h2"><?= $post["title"]; ?></h2>
                         <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
-                        <p class="text-capitalize"><?= $post["content"];  ?></p>
+                        <p><?= $post["content"];  ?></p>
                         <hr>
                     </div> <!-- closing col-10-->
                 </div><!-- closing row-->
@@ -97,9 +97,9 @@ $comments_for_specific_post = $show_comment->fetchComments();
             foreach(array_reverse($comments_for_specific_post) as $comment){?>
 
             <div class="col-12 col-md-11 col-lg-8 border_bottom">
-                <h4 class="font_h2 text-capitalize"><?=$comment["username"];?></h4>
+                <h4 class="font_h2"><?=$comment["username"];?></h4>
                 <b><i class="fas fa-clock"></i> <?=$comment["date"];?></b>
-                <p class="text-capitalize"><?=$comment["content"];?></p>            
+                <p><?=$comment["content"];?></p>            
                 <form action="../includes/update_page.php" method="POST">
                     <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
                     <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">
