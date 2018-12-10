@@ -27,3 +27,6 @@ body {
 nav {
     display: block;
 }
+
+
+.row:before, .row:after {display: none !important;}
