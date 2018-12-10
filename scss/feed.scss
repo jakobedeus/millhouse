@@ -19,7 +19,7 @@ p{
     
 }
 
-.font_h2{
+.font_h2, .font_h3{
     font-family: $headers_font;
     color: $font_color;
 }
@@ -63,6 +63,10 @@ p{
         //max-height: 350px;
     }
 }
+}
+
+.add_sign{
+    margin-right: 0.5em;
 }
 
 @media screen and (min-width: 768px) {
