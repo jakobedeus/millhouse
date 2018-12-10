@@ -68,3 +68,28 @@
       background-color: darken($secondary_color, 10%); 
     }
 }
+
+.post_comment_btn {
+  margin-top: 1.5em;
+}
+.add_sign_btn {
+  background: none;
+  border: 2px solid red;
+}
+.add_sign_delete {
+  color: $primary_color_1;
+  font-size: 1.5rem;
+}
+.new_post {
+  font-size: 1.2rem;
+  display: inline;
+  font-family: $headers_font;
+}
+.add_sign {
+  color: $primary_color_1;
+  font-size: 2em;
+}
+
+.post_comment_btn {
+  margin-top: 1.5em;
+}

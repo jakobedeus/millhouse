@@ -13,7 +13,6 @@ $post_category= $posts_fetch->fetchPostByCategory();
 $category = new PostsFetch($pdo);
 $all_category= $category->fetchCategory();
 
-
 $insert_post = new PostsInsert($pdo);
 $upload_ok = $insert_post->InsertPosts();
 
