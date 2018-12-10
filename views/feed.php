@@ -90,10 +90,10 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         ?>
                     </div> <!-- closing blog_posts_content_text-->
                     <p><?php 
-                    foreach($comments_amount_for_specific_post as $com): ?>  
+                    foreach($comments_amount_for_specific_post as $comment): ?>  
                         <?php   
-                        if($com["id"] === $category['id']){
-                            echo $com["totalcomment"] . ' comments '; 
+                        if($comment["id"] === $category['id']){
+                            echo $comment["totalcomment"] . ' comments '; 
                         }
                         ?>
                     <?php
@@ -132,10 +132,10 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         ?>
                     </div> <!-- closing blog_posts_content_text-->
                             <p><?php 
-                            foreach($comments_amount_for_specific_post as $com): ?>  
+                            foreach($comments_amount_for_specific_post as $comment): ?>  
                                 <?php   
-                                if($com["id"] === $post['id']){
-                                    echo $com["totalcomment"] . ' comments '; 
+                                if($comment["id"] === $post['id']){
+                                    echo $comment["totalcomment"] . ' comments '; 
                                 }
                                 ?>
                             <?php
