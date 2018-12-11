@@ -11,17 +11,17 @@ include "../includes/head-views.php";
 include "../includes/header-views.php";
 
 if(isset($_POST["new_post"])){
-if(empty($_POST["title"]) || empty($_FILES["image"]) || empty($_POST["text"]) || empty($_POST["category_checkbox"])) {
-  
-  header ('location: ../views/feed.php?create_post_fail=true');
-  
-}else{
+  if(empty($_POST["title"]) || empty($_FILES["image"]) || empty($_POST["text"]) || empty($_POST["category_checkbox"])) {
+    
+    header ('location: ../views/feed.php?create_post_fail=true');
+    
+  }else{
 
-  $insert_post = new PostsInsert($pdo);
-  $upload_ok = $insert_post->InsertPosts();
-  header('Location: ../views/feed.php');
+    $insert_post = new PostsInsert($pdo);
+    $upload_ok = $insert_post->InsertPosts();
+    header('Location: ../views/feed.php');
 
-}
+  }
 }
 
 // If hidden value is set in $_POST when deleting post this script will run and redirect.
@@ -33,17 +33,16 @@ if (isset($_POST["single_post_id_delete"])){
 
 // If hidden value is set in $_POST when updating post this script will run and redirect.
 if(isset($_POST["single_post_id_update"])){
+  if(empty($_POST["title"]) || empty($_POST["content"])) {
+    
+    header ('Location: ../views/post.php?id='.$_POST["single_post_id_update"].'&fail=true');
+    
+  }else{
 
-if(empty($_POST["title"]) || empty($_FILES["image"]) || empty($_POST["text"]) || empty($_POST["category_checkbox"])) {
-  
-  header ('Location: ../views/post.php?id='.$_POST["single_post_id_update"].'fail=true');
-  
-}else{
-
-  $update = new PostsEdit($pdo);
-  $update_post = $update->updatePost();
-  header('Location: ../views/post.php?id='.$_POST["single_post_id_update"]);
-}
+    $update = new PostsEdit($pdo);
+    $update_post = $update->updatePost();
+    header('Location: ../views/post.php?id='.$_POST["single_post_id_update"]);
+  }
 }
 
 // If hidden value is set in $_POST when posting a comment this script will run and redirect.
