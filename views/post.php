@@ -74,7 +74,6 @@ $comments_for_specific_post = $show_comment->fetchComments();
                     if($_SESSION["admin"] === "is_admin"){?>
                         <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
                             <label for="title">Title</label>
-
                             <input type="text" name="title" id="title" value="<?= $post['title'] ?>">
                             <textarea name="content" id="text_edit"><?= $post["content"] ?></textarea>
 
