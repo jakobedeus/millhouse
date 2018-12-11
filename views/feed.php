@@ -35,6 +35,10 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
     if($_SESSION["admin"] === "is_admin"){?>
     <button class="btn btn-light icon_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     <i class="fas fa-plus feed_add_new_post_icon"></i><h2 class="font_h2 new_post">New post</h2></button>
+    <?php $text = access_denied_messages(
+                                'create_post_fail', 'You need to fill in all fields to create a post.'
+                            );
+                            echo $text; ?>
     <div class="row justify-content-center mb-5">
         <div class="col-10 m-0 p-0 collapse" id="collapseExample">
 
@@ -44,13 +48,13 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
             <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data">
                 <label for="image">Image</label>
                 <!-- Use 'type="file"' to automatically create a input-field for uploads -->
-                <input type="file" name="image" id="image" required>
+                <input type="file" name="image" id="image">
                 <!-- Use a textarea for a bigger input-field, put an ID on the area for the
                 wysiwyg-editor to initialize on -->
                 <label for="title">Title</label><br />
-                <input type="text" name="title" id="title" required><br />
+                <input type="text" name="title" id="title"><br />
 
-                <select name="category_checkbox[]" id="" required>
+                <select name="category_checkbox[]" id="">
                     <option value="">Choose category</option>
                     <option value="1">Living</option>
                     <option value="2">Sunglasses</option>
@@ -86,6 +90,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         }else{
                         ?>
                             <p><?= $category["content"];  ?></p>
+                            <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Go to post</p></a>
                         <?php
                         }
 
@@ -129,6 +134,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         }else{
                         ?>
                             <p><?= $post["content"];  ?></p>
+                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>"><p>Go to post</p></a>
                         <?php
                         }
                         ?>
