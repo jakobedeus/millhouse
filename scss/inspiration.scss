@@ -1,43 +1,21 @@
-//IN CSS
-
-body {
-  margin: 0 auto;
-  padding: 0;
-}
 .parallax {
   background-image: url("../images/ren-ran-232079-unsplash.jpg");
-
-  //specific height
-
-    min-height: 1000px;
-
-
-    //effect
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
+  min-height: 1000px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
-h3 {
-  position: absolute;
-  top: 50px;
-  left: 0;
-  width: 50%;
-}
-
 
 .white_overlay {
   height: 1000px;
   margin: 0 100px;
   padding: 60px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(28, 48, 69, 0.7);
   background-image: url("../images/millhouse_logo.png");
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-
 }
 
 .white_overlay_2 {
@@ -46,20 +24,9 @@ h3 {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-.white_overlay_3 {
-  height: 200px;
-  padding: 60px;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.white_overlay_4 {
-  height: 200px;
-  padding: 60px;
-  background-color: rgba(255, 255, 255, 0.5);
-}
 .parallax_2 {
   background-image: url("../images/sonnie-hiles-489078-unsplash.jpg");
-  min-height: 1000px;
+  min-height: 800px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -68,7 +35,7 @@ h3 {
 
 .parallax_3 {
   background-image: url("../images/rawpixel-632454-unsplash.jpg");
-  min-height: 1000px;
+  min-height: 800px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -77,9 +44,37 @@ h3 {
 
 .parallax_4 {
   background-image: url("../images/matthew-henry-136723-unsplash.jpg");
-  min-height: 1000px;
+  min-height: 800px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.parallax_paragraph {
+  color: black;
+  font-size: 2em;
+  font-family: open sans, sans-serif;
+  text-align: center;
+  letter-spacing: 20px;
+  font-weight: bolder;
+}
+
+a:link, a:visited, {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+h1 {
+  color: white;
+  font-size: 2em;
+  font-family: open sans, sans-serif;
+  text-align: center;
+  letter-spacing: 20px;
+  font-weight: bolder;
 }
