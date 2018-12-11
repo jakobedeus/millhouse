@@ -41,16 +41,9 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                             echo $text; ?>
     <div class="row justify-content-center mb-5">
         <div class="col-10 m-0 p-0 collapse" id="collapseExample">
-
-            <!-- If we are sending a file in a form we must supply the extra attribute
-            'encytype="multipart/form-data"', otherwise the file will be sent as a
-            string and not uploaded to the server, otherwise the form is similar to every other form -->
             <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data">
                 <label for="image">Image</label>
-                <!-- Use 'type="file"' to automatically create a input-field for uploads -->
                 <input type="file" name="image" id="image">
-                <!-- Use a textarea for a bigger input-field, put an ID on the area for the
-                wysiwyg-editor to initialize on -->
                 <label for="title">Title</label><br />
                 <input type="text" name="title" id="title"><br />
 
@@ -71,7 +64,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
     } // closing if-statement for admin access
     if(isset($_GET['category'])){
 
-        //Ska hämta annan foreach från annan metod i classen
+        // Using array_reverse to present the latest post first
         foreach(array_reverse($post_category) as $category): ?>
             <div class="row blog_posts mb-5 justify-content-between">
                 <div class="col-12 col-md-6 blog_post_content">
@@ -114,7 +107,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         <?php
         endforeach;
     }else{
-
+        
         foreach(array_reverse($all_posts) as $post): ?>
             <div class="row blog_posts mb-5 justify-content-between">
                 <div class="blog_post_content col-12 col-md-6">
@@ -129,7 +122,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                              );
                             echo $blog_posts_content_text;
                         ?>
-                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>#comments"><p>Comment</p></a>
+                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>#comments"><p>Read more</p></a>
                         <?php
                         }else{
                         ?>

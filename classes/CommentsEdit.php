@@ -8,27 +8,27 @@ $pdo = new PDO(
 class CommentsEdit
 {
 
- private $pdo;
+    private $pdo;
 
- public function __construct($pdo)
- {
-   $this->pdo = $pdo;
- }
- public function deleteComments ()
-{
+    public function __construct($pdo)
+    {
+      $this->pdo = $pdo;
+    }
+
+    public function deleteComments ()
+    {
   
-  $comment_id = $_POST["single_comment_id_delete"];
-  $delete_comment_statement = $this->pdo->prepare("DELETE FROM comments where comment_id = :comment_id");
-  $delete_comment_statement->execute(
-    [
-      ":comment_id" => $comment_id
-    ]
-  );
+      $comment_id = $_POST["single_comment_id_delete"];
 
-  $delete_comment = $delete_comment_statement;
-  return $delete_comment;
+      $delete_comment_statement = $this->pdo->prepare("DELETE FROM comments where comment_id = :comment_id");
+      $delete_comment_statement->execute(
+        [
+          ":comment_id" => $comment_id
+        ]
+      );
+
+      $delete_comment = $delete_comment_statement;
+      return $delete_comment;
+    }
+
 }
-
-}
-
-?>
