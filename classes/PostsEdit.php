@@ -1,6 +1,4 @@
 <?php
-//include '../includes/database-connection.php';
-
 
 $pdo = new PDO(
     "mysql:host=localhost;dbname=millhouse;charset=utf8",
@@ -9,14 +7,10 @@ $pdo = new PDO(
 
 );
 
-
-
 class PostsEdit
 {
     private $pdo;
-    /* Inject the pdo connection so it is available inside of the class
-    * so we can call it with '$this->pdo', always available inside of the class
-    */
+
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
@@ -24,8 +18,10 @@ class PostsEdit
 
     public function deletePost()
     {
+        // If hidden value $_POST["single_post_id_delete"] is set in post, run this script.
         if(isset($_POST["single_post_id_delete"])){
             $post_id = $_POST["single_post_id_delete"];
+            // Delete from two tables at the same time
             $delete_post_statement = $this->pdo->prepare(
             "DELETE FROM posts WHERE id = :id;
             DELETE FROM comments WHERE post_id = :id;");
@@ -43,16 +39,13 @@ class PostsEdit
 
     public function updatePost()
     {
-
-        if(isset($_POST["title"])) {
+        // If hidden value $_POST["single_post_id_update"] is set, run this code. 
         $id = $_POST["single_post_id_update"];
 
         $title = $_POST["title"];
         $content = $_POST["content"];
-        //$image = $_FILES["image"];
-        /*$id_category = $_POST["category_checkbox"];
-        $date = date('Y/m/d H:i:s');*/
 
+        // Define the value of the array. Point out the exact number to insert to database.
             $update_post_statement = $this->pdo->prepare(
             "UPDATE posts
             SET title = :title, content = :content
@@ -62,9 +55,6 @@ class PostsEdit
                 [
                     ":title" => $title,
                     ":content" => $content,
-                    /*":image" => $image,
-                    ":date" => $date,
-                    */
                     "id" => $id
                 ]
             );
@@ -73,4 +63,4 @@ class PostsEdit
             return $update_post;
         }
     }
-    }
+    
