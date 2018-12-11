@@ -17,7 +17,7 @@ class PostsFetch
         $this->pdo = $pdo;
     }
     
-    // Fetch all posts, join select query to get the right category on the right post.
+    // Fetch all posts
     public function fetchAll()
     {
 
@@ -38,14 +38,15 @@ class PostsFetch
         return $all_posts;
     }
 
-    // Return value in variable to use when looping out fetched data.
+    // Fetch all posts from table catgories.
     public function fetchCategory()
     {
         $fetch_category = $this->pdo->prepare(
         "SELECT category FROM categories");
         $fetch_category->execute();
         $all_category = $fetch_category->fetchAll(PDO::FETCH_ASSOC);
-
+        
+        // Return value in variable to use when looping out fetched data.
         return $all_category;
 
     }
@@ -53,10 +54,9 @@ class PostsFetch
     public function fetchPostByCategory()
 
     {
+        // If $_GET["category"] is set. Which comes to clicking on feed.php, run this code.
         if(isset($_GET['category'])){ 
         $category_id = $_GET["category"];
-        
-
         $fetch_post_by_category = $this->pdo->prepare(
 
             "SELECT posts.title, posts.date, posts.image, posts.content, 
@@ -74,6 +74,8 @@ class PostsFetch
             ]
             );
             $post_category = $fetch_post_by_category->fetchAll(PDO::FETCH_ASSOC);
+
+            // Return value in variable to use when looping out fetched data. Contains posts by category
             return $post_category;
             
            
@@ -82,10 +84,11 @@ class PostsFetch
 
 
     public function fetchSinglePost()
-    {if(isset($_GET['id'])){ 
+    {
+        // If $_GET["id"] is set, which is the post id on views/post.php run this code.
+        if(isset($_GET['id'])){ 
+
         $post_id = $_GET["id"];
-
-
         $fetch_single_post_statement = $this->pdo->prepare(
             
             "SELECT posts.title, posts.date, posts.image, posts.content, 
@@ -105,9 +108,8 @@ class PostsFetch
         );
         $one_posts = $fetch_single_post_statement->fetchAll(PDO::FETCH_ASSOC);
 
+        // Return fetched data in a variable.
         return $one_posts;
-
-        //$_SESSION["id"] = $post_id;
 
     }
 }
