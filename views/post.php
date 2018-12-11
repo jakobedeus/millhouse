@@ -34,17 +34,17 @@ $comments_for_specific_post = $show_comment->fetchComments();
                         <p><?= $post["date"] . "<strong> Category: </strong>" . $post["category"] . "<strong> Wrote by: </strong>" . $post["username"]; ?></p>
                         <p><?= $post["content"];  ?></p>
                         <hr>
-                    </div> <!-- closing col-10-->
+                    </div> <!-- closing col-12-->
                 </div><!-- closing row-->
 
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-10 post_image_frame_post">
                         <img src="<?= $post['image']; ?>" alt="Cool image.">
-                    </div><!-- closing col-10-->
+                    </div><!-- closing col-12-->
                 </div> <!-- closing row-->
 
                 <div class="row justify-content-center mt-4">
-                    <div class="col-12 col-lg-10 inline_form">
+                    <div class="col-12 col-lg-10 inline_form_post">
                         <?php
                         // If user role is admin, allow delete post
                         if($_SESSION["admin"] === "is_admin"){?>

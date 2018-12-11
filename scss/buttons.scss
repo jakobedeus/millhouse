@@ -1,46 +1,44 @@
-
 @import 'variables';
 
-
-.button {
-    background: $secondary_color;
-    transition: all 300ms;
-    padding: 6px;
-    border-radius: 6px;
-    color: #ffffff; 
-    cursor: pointer;
-    font-family: $body_font;
-    text-transform: uppercase;
-   
-      &:hover {
-        background-color: darken($secondary_color, 10%); //button-primary:hover {}
-
-      }
-    
-  
-      &_delete {
-        background-color: $primary_color_1;
-        transition: all 300ms;
-        padding: 6px;
-        border-radius: 6px;
-        color: #ffffff; 
-        cursor: pointer;
-        font-family: $body_font;
-        text-transform: uppercase;
-
-        
-        &:hover {
-          background-color: lighten($primary_color_1, 10%);
-        }
-      }   
+.collapse_login_reg_button {
+  background: none;
+  border-radius: 15px;
+  border:4px solid $secondary_color;
+  color: $secondary_color;
+  cursor: pointer;
+  font-family: $body_font;
+  font-weight: bold;
+  margin-bottom: 1em;
 }
 
+.btn_submit_login_reg {
+  border-radius: 10px;
+  background: $primary_color_1;
+  border:2px solid $primary_color_1;
+  color: $secondary_color;
+  margin-top: 2em;
+} 
+
+.button {
+  background: $secondary_color;
+  transition: all 300ms;
+  padding: 0.5em;
+  border-radius: $border_radius_button;
+  color: #ffffff; 
+  cursor: pointer;
+  font-family: $body_font;
+  text-transform: uppercase;
+   
+    &:hover {
+      background-color: darken($secondary_color, 10%);
+    }
+}
 
 .button_inverted_light {
   background: none;
   transition: all 300ms;
-  padding: 6px;
-  border-radius: 6px;
+  padding: 0.5em;
+  border-radius: $border_radius_button;
   border:2px solid #ffffff;
   color: #ffffff;
   cursor: pointer;
@@ -55,9 +53,8 @@
 .button_inverted_dark {
   background: none;
   transition: all 300ms;
-  padding: 6px;
-  border-radius: 6px;
-
+  padding: 0.5em;
+  border-radius: $border_radius_button;
   border:2px solid $primary_color_1;
   color: $primary_color_1;
   cursor: pointer;
@@ -74,11 +71,11 @@
 }
 .icon {
   color: $primary_color_1;
-  font-size: 2em;
+  font-size: 2rem;
 }
 .feed_add_new_post_icon{
   color: $primary_color_1;
-  font-size: 2em;
+  font-size: 2rem;
   margin-right: 0.5em;
 }
 .post_comment_btn {
@@ -93,11 +90,11 @@
   
   
   a:link {
-      color:$secondary_color;
+    color:$secondary_color;
   }
 
   a:visited {
-      color:$secondary_color;
+    color:$secondary_color;
   }
 
   /*a:hover {
@@ -126,7 +123,7 @@
       }*/
 
   i {
-      font-size: 2em;
+    font-size: 2em;
 
   }
 

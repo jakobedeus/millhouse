@@ -1,20 +1,19 @@
 @import 'variables';
 
-
-*{
+* {
     margin:0;
     padding:0;
     outline:0;
-    font-size:1em;
-    font-weight:normal;
-    font-style:normal;
-    border:0;
-    text-decoration:none;
-    list-style-type:none;
+    //font-size:1.5rem;
+    //font-weight:normal;
+    //font-style:normal;
+    //border:0;
+    //text-decoration:none;
+    //list-style-type:none;
 }
 
-html{
-    overflow-x: hidden;
+html {
+    overflow-x:hidden;
     margin:0 !important;
     padding:0;
     width: 100% !important;
@@ -22,18 +21,22 @@ html{
     -webkit-overflow-scrolling: touch;
 }
 
-body{
+body {
     margin: 0 auto;
     width: 100%;
     overflow-x: hidden;
     color:$font_color;
 }
 
-.row:before, .row:after{
+.row:before, .row:after {
     display: none !important;
 }
 
-p{
+p {
     font-family: $body_font;
     font-family: $font_color;
+}
+
+.text_denied {
+    color: $denied_font_color;
 }
