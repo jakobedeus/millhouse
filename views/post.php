@@ -3,6 +3,13 @@ session_start();
 include "../includes/head-views.php";
 include "../includes/header-views.php";
 
+if(!isset($_SESSION["username"])){
+    
+    header('Location: ../index.php');
+}else { 
+
+    // if-statement for access only if logged in.
+
 $single_post = new PostsFetch($pdo);
 $one_post = $single_post->fetchSinglePost();
 
@@ -100,7 +107,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
                 <b><i class="fas fa-clock"></i> <?=$comment["date"];?></b>
                 <p><?=$comment["content"];?></p>
                 <?php
-                if($_SESSION["admin"] === "is_admin"){?>
+                if($_SESSION["admin"] === "is_admin" || $_SESSION["user_id"] === $comment["created_by"]){?>
 
                     <form action="../includes/update_page.php" method="POST">
                         <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
@@ -129,3 +136,5 @@ include "../includes/footer-views.php";
       $('#text_edit').summernote();
     });
     </script>
+
+<?php }?> <!-- End if-statement for no access if not logged in-->

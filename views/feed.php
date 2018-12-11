@@ -5,6 +5,10 @@ include "../includes/head-views.php";
 include "../includes/header-views.php";
 include "../includes/admin-access.php";
 
+if(!isset($_SESSION["username"])){
+    
+    header('Location: ../index.php');
+}else {
 
 $posts_fetch = new PostsFetch($pdo);
 $all_posts= $posts_fetch->fetchAll();
@@ -135,10 +139,10 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                                 if($comment["id"] === $post['id']){
                                     echo $comment["totalcomment"] . ' comments '; 
                                 }
-                                ?>
-                            <?php
                             endforeach; 
                             ?> <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
+                            <!--<a href="post.php?id=<?= $post["id"]; ?>"><i class="fas fa-wrench icon"></i></a>
+                            <a href="post.php?id=<?= $post["id"]; ?>"><i class="far fa-trash-alt icon"></i></a>-->
                 </div> <!-- closing col-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
                     <img src="<?= $post["image"]; ?>" alt="<?= $post["title"]; ?>">
@@ -147,9 +151,6 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         <?php
         endforeach;
     }
-        ?>
-
-      <?php
       /*$page = ! empty( $_GET['page'] ) ? (int) $_GET['page'] : 1;
 
    $total_posts = count($all_posts);
@@ -162,20 +163,16 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
    $page = min($page, $number_of_pages); //get last page when $_GET['page'] > $totalPages
    $offset = ($page - 1) * $number_of_elements_per_page;
    if( $offset < 0 ) $offset = 0;
-   $hello_post = array_slice( $all_posts, $offset, $number_of_elements_per_page);*/?>
-
-
-
+   $hello_post = array_slice( $all_posts, $offset, $number_of_elements_per_page);?>
 
         <nav class="pagination">
           <a href="feed.php?page=1">1</a>
           <a href="feed.php?page=2">2</a>
           <a href="feed.php?page=3">3</a>
           <a href="feed.php?page=4">4</a>
-        </nav>
+        </nav>*/
 
-        <?php
-        if(isset($_GET["page"])){
+        /*if(isset($_GET["page"])){
           $current_page = $_GET["page"];
 
 
@@ -191,12 +188,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
           if($current_page === 4){
             echo "4";
           }
-        }
-
-
-
-
-
+        }*/
           ?>
 </main> <!-- closing container-->
 
@@ -216,3 +208,4 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         $('#text').summernote();
     });
 </script>
+<?php }?>
