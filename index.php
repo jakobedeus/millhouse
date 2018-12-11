@@ -39,19 +39,18 @@ include 'includes/functions.php';
                             $text = access_denied_messages(
                                 'login_failed', 'Username or password is incorrect, please try again.'
                             );
-                            
                             echo $text;
                             ?>
-                            <form action='includes/login.php' method='POST'>
-                                <label for='login_username'>Your Username</label>
-                                <input name='username' id='login_username' type='text'>
-                                <label for='login_password'>Your Password</label>
-                                <input name='password' id='login_password' type='password'>
+                            <form action="includes/login.php" method="POST">
+                                <label for="login_username">Your Username</label>
+                                <input name="username" id="login_username" type="text">
+                                <label for="login_password">Your Password</label>
+                                <input name="password" id="login_password" type="password">
                                 <br>
-                                <button class="btn_submit_login_reg btn-block" type='submit'>SIGN IN!</button>
+                                <button class="btn_submit_login_reg btn-block" type="submit">SIGN IN!</button>
                             </form>
                         </div> <!-- closing card-body-->
-                    </div> <!-- closing collapse item-->
+                    </div> <!-- closing collapseOne-->
                 </div> <!-- closing col-8 col-md-5-->
                 <div class="col-8 col-md-5">
                     <h5 class="mb-0">
@@ -72,18 +71,18 @@ include 'includes/functions.php';
                             );
                             echo $text;
                             ?>
-                            <form action='includes/register.php' method='POST'>
-                                <label for='reg_usernam'>Your Username</label>
-                                <input name='username' id='reg_username' type='text'>
-                                <label for='reg_password'>Your Password</label>
-                                <input name='password' id='reg_password' type='password'>
-                                <label for='email'>Your E-mail</label>
-                                <input name='email' id='email' type='text'>
-                                <input name='admin' value='not_admin' type='hidden'>
-                                <input class="btn_submit_login_reg btn-block" type='submit'value="REGISTER!">
+                            <form action="includes/register.php" method="POST">
+                                <label for="reg_usernam">Your Username</label>
+                                <input name="username" id="reg_username" type="text">
+                                <label for="reg_password">Your Password</label>
+                                <input name="password" id="reg_password" type="password">
+                                <label for="email">Your E-mail</label>
+                                <input name="email" id="email" type="text">
+                                <input name="admin" value="not_admin" type="hidden">
+                                <input class="btn_submit_login_reg btn-block" type="submit" value="REGISTER!">
                             </form>
                         </div><!-- closing card-body-->
-                    </div><!-- closing collapse item-->
+                    </div><!-- closing collapseTwo-->
                 </div>  <!-- closing col-8 col-md-5-->
             </div> <!-- closing row-->
         </div> <!-- closing accordition-->

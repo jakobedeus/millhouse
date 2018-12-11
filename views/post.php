@@ -27,7 +27,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
                 <div class="row blog_posts_content justify-content-center">
                     <div class="col-12 col-lg-10 blog_posts_content_text">
                         <h2 class="font_h2"><?= $post["title"]; ?></h2>
-                        <p><?= $post["date"] . '<strong> Category: </strong>' . $post["category"] . '<strong> Wrote by: </strong>' . $post["username"]; ?></p>
+                        <p><?= $post["date"] . "<strong> Category: </strong>" . $post["category"] . "<strong> Wrote by: </strong>" . $post["username"]; ?></p>
                         <p><?= $post["content"];  ?></p>
                         <hr>
                     </div> <!-- closing col-10-->
@@ -35,7 +35,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
 
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-10 post_image_frame_post">
-                        <img src="<?= $post["image"]; ?>" alt="Cool image.">
+                        <img src="<?= $post['image']; ?>" alt="Cool image.">
                     </div><!-- closing col-10-->
                 </div> <!-- closing row-->
 
@@ -66,7 +66,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
                             <label for="image">Image</label>
                             <input type="file" name="image" id="image" src="../views/uploads/anka.jpg" required>
                             <label for="title">Title</label>
-                            <input type="text" name="title" id="title" value="<?= $post["title"] ?>" required>
+                            <input type="text" name="title" id="title" value="<?= $post['title'] ?>" required>
                             <select name="category_checkbox[]" id="" required>
                                 <option value="">Choose category</option>
                                 <option value="1">Living</option>
@@ -111,7 +111,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
 
                     <form action="../includes/update_page.php#comments" method="POST">
                         <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
-                        <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">
+                        <input type="hidden" name="single_comment_id_delete" value="<?= $comment['comment_id']; ?>">
                         <button class="btn btn-light icon_btn" type="submit"><i class="far fa-trash-alt delete_comment_btn"></i></button>
                     </form>
                 <?php

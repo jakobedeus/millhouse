@@ -61,10 +61,11 @@ nav {
       }
  
       ul li {
-          display: inline-block;
+          display: flex;
           color: $primary_color_2;
           font-weight: bold;
           margin:1.2em;
+  
       }
   }
 
