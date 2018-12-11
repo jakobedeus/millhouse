@@ -14,7 +14,7 @@
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans" rel="stylesheet">
 
-        <!-- My CSS -->
+        <!-- CSS -->
         <link rel="stylesheet" href="css/style.css" type="text/css">
         
         <title>Millhouse</title>
