@@ -121,11 +121,17 @@ $comments_for_specific_post = $show_comment->fetchComments();
         endforeach;?> 
     </div><!-- closing row-->
 </main>
-<div class="top_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
+<div class="to_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
 <?php
 include "../includes/footer-views.php";
 ?>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<?php }?> <!-- End if-statement for no access if not logged in-->
 
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
@@ -137,7 +143,4 @@ include "../includes/footer-views.php";
       $('#text_edit').summernote();
     });
     </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<?php }?> <!-- End if-statement for no access if not logged in-->
 
