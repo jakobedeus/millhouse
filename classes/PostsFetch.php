@@ -1,5 +1,4 @@
 <?php
-//include '../includes/database-connection.php';
 
 $pdo = new PDO(
     "mysql:host=localhost;dbname=millhouse;charset=utf8",
@@ -8,6 +7,7 @@ $pdo = new PDO(
 
 );
 
+// Fetch posts with different methods and different types of data. 
 class PostsFetch
 {
     private $pdo;
@@ -17,6 +17,7 @@ class PostsFetch
         $this->pdo = $pdo;
     }
     
+    // Fetch all posts, join select query to get the right category on the right post.
     public function fetchAll()
     {
 
@@ -33,9 +34,11 @@ class PostsFetch
         $fetch_all_posts_statement->execute();
         $all_posts = $fetch_all_posts_statement->fetchAll(PDO::FETCH_ASSOC);
 
+        // Return value in variable to use when looping out fetched data.
         return $all_posts;
     }
 
+    // Return value in variable to use when looping out fetched data.
     public function fetchCategory()
     {
         $fetch_category = $this->pdo->prepare(
