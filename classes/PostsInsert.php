@@ -56,8 +56,7 @@ class PostsInsert {
                   ":date" => $date,
                   ":id_category" => $id_category
               ]
-        );
-
+        ); 
         return $upload_ok;
         }
     }
