@@ -86,10 +86,10 @@ $comments_for_specific_post = $show_comment->fetchComments();
     </div><!-- closing row-->
 
        
-    <div class="row mb-4 justify-content-around">
+    <div class="row mb-4 justify-content-around" id="comments">
         <div class="col-12 col-md-11 col-lg-8">
             <h3 class="font_h2">COMMENTS</h3>
-            <form action="../includes/update_page.php" method="POST">
+            <form action="../includes/update_page.php#comments" method="POST">
                 <label for="comments"></label>
                 <input type="hidden" name="comment_post_id" value="<?= $post['id']; ?>">
                 <textarea class="input_comment"name="content" rows="5" cols="50" placeholder="Write your comment here" required></textarea>
@@ -109,7 +109,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
                 <?php
                 if($_SESSION["admin"] === "is_admin" || $_SESSION["user_id"] === $comment["created_by"]){?>
 
-                    <form action="../includes/update_page.php" method="POST">
+                    <form action="../includes/update_page.php#comments" method="POST">
                         <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
                         <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">
                         <button class="btn btn-light icon_btn" type="submit"><i class="far fa-trash-alt delete_comment_btn"></i></button>
@@ -121,6 +121,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
         endforeach;?> 
     </div><!-- closing row-->
 </main>
+<div class="top_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
 <?php
 include "../includes/footer-views.php";
@@ -137,4 +138,6 @@ include "../includes/footer-views.php";
     });
     </script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <?php }?> <!-- End if-statement for no access if not logged in-->
+

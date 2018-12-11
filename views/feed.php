@@ -105,7 +105,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         ?>
                     <?php
                     endforeach; 
-                    ?> <a href="post.php?id=<?= $category["id"]; ?>"><button class="button">Go to post</button></a></p>
+                    ?> <a href="post.php?id=<?= $category["id"]; ?>#comments"><button class="button">Comment</button></a></p>
                 </div> <!-- closing col-12 col-md-7-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
                     <img src="<?= $category["image"]; ?>" alt="<?= $category["title"]; ?>">
@@ -129,7 +129,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                              );
                             echo $blog_posts_content_text;
                         ?>
-                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>"><p>Read more</p></a>
+                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>#comments"><p>Comment</p></a>
                         <?php
                         }else{
                         ?>
@@ -146,9 +146,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                                     echo $comment["totalcomment"] . ' comments '; 
                                 }
                             endforeach; 
-                            ?> <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
-                            <!--<a href="post.php?id=<?= $post["id"]; ?>"><i class="fas fa-wrench icon"></i></a>
-                            <a href="post.php?id=<?= $post["id"]; ?>"><i class="far fa-trash-alt icon"></i></a>-->
+                            ?> <a href="post.php?id=<?= $post["id"]; ?>#comments"><button class="button">Comment</button></a></p>
                 </div> <!-- closing col-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
                     <img src="<?= $post["image"]; ?>" alt="<?= $post["title"]; ?>">
@@ -196,7 +194,10 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
           }
         }*/
           ?>
+
+          
 </main> <!-- closing container-->
+<div class="top_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
 <?php
     include '../includes/footer-views.php';
@@ -214,4 +215,8 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         $('#text').summernote();
     });
 </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <?php }?>
+
