@@ -5,6 +5,10 @@ include "../includes/head-views.php";
 include "../includes/header-views.php";
 include "../includes/admin-access.php";
 
+if(!isset($_SESSION["username"])){
+    
+    header('Location: ../index.php');
+}else {
 
 $posts_fetch = new PostsFetch($pdo);
 $all_posts= $posts_fetch->fetchAll();
@@ -31,6 +35,10 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
     if($_SESSION["admin"] === "is_admin"){?>
     <button class="btn btn-light icon_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     <i class="fas fa-plus feed_add_new_post_icon"></i><h2 class="font_h2 new_post">New post</h2></button>
+    <?php $text = access_denied_messages(
+                                'create_post_fail', 'You need to fill in all fields to create a post.'
+                            );
+                            echo $text; ?>
     <div class="row justify-content-center mb-5">
         <div class="col-10 m-0 p-0 collapse" id="collapseExample">
 
@@ -40,13 +48,13 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
             <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data">
                 <label for="image">Image</label>
                 <!-- Use 'type="file"' to automatically create a input-field for uploads -->
-                <input type="file" name="image" id="image" required>
+                <input type="file" name="image" id="image">
                 <!-- Use a textarea for a bigger input-field, put an ID on the area for the
                 wysiwyg-editor to initialize on -->
                 <label for="title">Title</label><br />
-                <input type="text" name="title" id="title" required><br />
+                <input type="text" name="title" id="title"><br />
 
-                <select name="category_checkbox[]" id="" required>
+                <select name="category_checkbox[]" id="">
                     <option value="">Choose category</option>
                     <option value="1">Living</option>
                     <option value="2">Sunglasses</option>
@@ -82,6 +90,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         }else{
                         ?>
                             <p><?= $category["content"];  ?></p>
+                            <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Go to post</p></a>
                         <?php
                         }
 
@@ -96,7 +105,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         ?>
                     <?php
                     endforeach; 
-                    ?> <a href="post.php?id=<?= $category["id"]; ?>"><button class="button">Go to post</button></a></p>
+                    ?> <a href="post.php?id=<?= $category["id"]; ?>#comments"><button class="button">Comment</button></a></p>
                 </div> <!-- closing col-12 col-md-7-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
                     <img src="<?= $category["image"]; ?>" alt="<?= $category["title"]; ?>">
@@ -120,11 +129,12 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                              );
                             echo $blog_posts_content_text;
                         ?>
-                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>"><p>Read more</p></a>
+                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>#comments"><p>Comment</p></a>
                         <?php
                         }else{
                         ?>
                             <p><?= $post["content"];  ?></p>
+                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>"><p>Go to post</p></a>
                         <?php
                         }
                         ?>
@@ -135,10 +145,8 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                                 if($comment["id"] === $post['id']){
                                     echo $comment["totalcomment"] . ' comments '; 
                                 }
-                                ?>
-                            <?php
                             endforeach; 
-                            ?> <a href="post.php?id=<?= $post["id"]; ?>"><button class="button">Go to post</button></a></p>
+                            ?> <a href="post.php?id=<?= $post["id"]; ?>#comments"><button class="button">Comment</button></a></p>
                 </div> <!-- closing col-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
                     <img src="<?= $post["image"]; ?>" alt="<?= $post["title"]; ?>">
@@ -147,9 +155,6 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         <?php
         endforeach;
     }
-        ?>
-
-      <?php
       /*$page = ! empty( $_GET['page'] ) ? (int) $_GET['page'] : 1;
 
    $total_posts = count($all_posts);
@@ -162,20 +167,16 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
    $page = min($page, $number_of_pages); //get last page when $_GET['page'] > $totalPages
    $offset = ($page - 1) * $number_of_elements_per_page;
    if( $offset < 0 ) $offset = 0;
-   $hello_post = array_slice( $all_posts, $offset, $number_of_elements_per_page);*/?>
-
-
-
+   $hello_post = array_slice( $all_posts, $offset, $number_of_elements_per_page);?>
 
         <nav class="pagination">
           <a href="feed.php?page=1">1</a>
           <a href="feed.php?page=2">2</a>
           <a href="feed.php?page=3">3</a>
           <a href="feed.php?page=4">4</a>
-        </nav>
+        </nav>*/
 
-        <?php
-        if(isset($_GET["page"])){
+        /*if(isset($_GET["page"])){
           $current_page = $_GET["page"];
 
 
@@ -191,14 +192,12 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
           if($current_page === 4){
             echo "4";
           }
-        }
-
-
-
-
-
+        }*/
           ?>
+
+          
 </main> <!-- closing container-->
+<div class="top_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
 <?php
     include '../includes/footer-views.php';
@@ -216,3 +215,8 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         $('#text').summernote();
     });
 </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<?php }?>
+

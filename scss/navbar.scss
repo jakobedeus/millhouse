@@ -7,9 +7,12 @@
 }
 
 nav {
-    width: 100%;
-    position: sticky;
-    background-color: $secondary_color;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  display: block;
+  //background-color: yellow;
+  background-color: $secondary_color;
     
   }
 

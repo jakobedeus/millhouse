@@ -1,6 +1,5 @@
 
 <?php
-
 include '../classes/PostsFetch.php';
 include '../classes/PostsEdit.php';
 include '../classes/PostsInsert.php';
@@ -53,5 +52,5 @@ $all_category= $category->fetchCategory();
 
                 </div>
             </nav>
-        </div>
+        </div> <!-- closgin row-->
     </header>

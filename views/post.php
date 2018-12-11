@@ -3,6 +3,13 @@ session_start();
 include "../includes/head-views.php";
 include "../includes/header-views.php";
 
+if(!isset($_SESSION["username"])){
+    
+    header('Location: ../index.php');
+}else { 
+
+    // if-statement for access only if logged in.
+
 $single_post = new PostsFetch($pdo);
 $one_post = $single_post->fetchSinglePost();
 
@@ -57,16 +64,16 @@ $comments_for_specific_post = $show_comment->fetchComments();
                     if($_SESSION["admin"] === "is_admin"){?>
                         <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
                             <label for="image">Image</label>
-                            <input type="file" name="image" id="image" src="../views/uploads/anka.jpg">
+                            <input type="file" name="image" id="image" src="../views/uploads/anka.jpg" required>
                             <label for="title">Title</label>
-                            <input type="text" name="title" id="title" value="<?= $post["title"] ?>">
+                            <input type="text" name="title" id="title" value="<?= $post["title"] ?>" required>
                             <select name="category_checkbox[]" id="" required>
                                 <option value="">Choose category</option>
                                 <option value="1">Living</option>
                                 <option value="2">Sunglasses</option>
                                 <option value="3">Watches</option>
                             </select>
-                            <textarea name="content" id="text_edit"><?= $post["content"] ?></textarea>
+                            <textarea name="content" id="text_edit" required><?= $post["content"] ?></textarea>
                             <input type="hidden" name="single_post_id_update" value="<?= $post['id']; ?>">
                             <button type="submit" class="btn btn-dark">UPDATE</button>
                         </form>
@@ -79,10 +86,10 @@ $comments_for_specific_post = $show_comment->fetchComments();
     </div><!-- closing row-->
 
        
-    <div class="row mb-4 justify-content-around">
+    <div class="row mb-4 justify-content-around" id="comments">
         <div class="col-12 col-md-11 col-lg-8">
             <h3 class="font_h2">COMMENTS</h3>
-            <form action="../includes/update_page.php" method="POST">
+            <form action="../includes/update_page.php#comments" method="POST">
                 <label for="comments"></label>
                 <input type="hidden" name="comment_post_id" value="<?= $post['id']; ?>">
                 <textarea class="input_comment"name="content" rows="5" cols="50" placeholder="Write your comment here" required></textarea>
@@ -100,9 +107,9 @@ $comments_for_specific_post = $show_comment->fetchComments();
                 <b><i class="fas fa-clock"></i> <?=$comment["date"];?></b>
                 <p><?=$comment["content"];?></p>
                 <?php
-                if($_SESSION["admin"] === "is_admin"){?>
+                if($_SESSION["admin"] === "is_admin" || $_SESSION["user_id"] === $comment["created_by"]){?>
 
-                    <form action="../includes/update_page.php" method="POST">
+                    <form action="../includes/update_page.php#comments" method="POST">
                         <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
                         <input type="hidden" name="single_comment_id_delete" value="<?= $comment["comment_id"]; ?>">
                         <button class="btn btn-light icon_btn" type="submit"><i class="far fa-trash-alt delete_comment_btn"></i></button>
@@ -114,6 +121,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
         endforeach;?> 
     </div><!-- closing row-->
 </main>
+<div class="top_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
 <?php
 include "../includes/footer-views.php";
@@ -129,3 +137,7 @@ include "../includes/footer-views.php";
       $('#text_edit').summernote();
     });
     </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<?php }?> <!-- End if-statement for no access if not logged in-->
+
