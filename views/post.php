@@ -64,7 +64,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
                     if($_SESSION["admin"] === "is_admin"){?>
                         <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
                             <label for="image">Image</label>
-                            <input type="file" name="image" id="image" src="../views/uploads/anka.jpg" required>
+                            <input type="file" name="image" id="image" src="../views/uploads/anka.jpg">
                             <label for="title">Title</label>
                             <input type="text" name="title" id="title" value="<?= $post["title"] ?>" required>
                             <select name="category_checkbox[]" id="" required>
