@@ -2,30 +2,10 @@
 @import 'buttons';
 @import 'mixins';
 @import 'variables';
-@import 'feed';
+@import 'feed_and_post';
 @import 'index';
-@import 'post';
 @import 'footer';
 @import 'inspiration';
-
-*{margin:0;padding:0;outline:0;font-size:1em;font-weight:normal;font-style:normal;border:0;text-decoration:none;list-style-type:none}
-
-html {
-    overflow-x: hidden;
-    margin:0 !important;
-    padding:0;
-    width: 100% !important;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-}
-
-body {
-    margin: 0 auto;
-    width: 100%;
-    overflow-x: hidden;
-    color:$font_color;
-
-}
+@import 'general';
 
 
-.row:before, .row:after {display: none !important;}
