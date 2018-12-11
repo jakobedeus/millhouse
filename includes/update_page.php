@@ -4,11 +4,25 @@ session_start();
 include "../includes/head-views.php";
 include "../includes/header-views.php";
 
-if(isset($_POST["title"])) {
+/*
+
+    if(empty($_POST["username"]) || empty($_POST["email"]) || empty($_POST["password"])) {
+
+        header('Location: ../index.php?register_failed=true');
+
+          header ('location: ../index.php?register_failed_exist=true');
+*/
+
+if(empty($_POST["title"]) || empty($_FILES["image"]) || empty($_POST["text"]) || empty($_POST["category_checkbox"])) {
+  
+  header ('location: ../views/feed.php?create_post_fail=true');
+  
+}else{
 
   $insert_post = new PostsInsert($pdo);
   $upload_ok = $insert_post->InsertPosts();
   header('Location: ../views/feed.php');
+
 }
 
 if (isset($_POST["single_post_id_delete"])){
