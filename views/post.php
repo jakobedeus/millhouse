@@ -10,9 +10,12 @@ if(!isset($_SESSION["username"])){
 
     // if-statement for access only if logged in.
 
+
+// Call the class and function to fetch single post
 $single_post = new PostsFetch($pdo);
 $one_post = $single_post->fetchSinglePost();
 
+// Call the class and function to fetch comments
 $show_comment = new CommentsFetch($pdo);
 $comments_for_specific_post = $show_comment->fetchComments();
 
@@ -22,6 +25,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
         <div class="col-12 col-md-11 col-lg-10 blog_posts">
 
             <?php
+            // Loop from fetched variable $one_post
             foreach($one_post as $post):?>
 
                 <div class="row blog_posts_content justify-content-center">
@@ -42,6 +46,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
                 <div class="row justify-content-center mt-4">
                     <div class="col-12 col-lg-10 inline_form">
                         <?php
+                        // If user role is admin, allow delete post
                         if($_SESSION["admin"] === "is_admin"){?>
                             <form action="../includes/update_page.php" method="POST">
                                 <button class="btn btn-light icon_btn" type="submit"><i class="far fa-trash-alt icon"></i></button>
@@ -65,18 +70,13 @@ $comments_for_specific_post = $show_comment->fetchComments();
             <div class="row justify-content-center mb-5">
                 <div class="col-12 col-lg-10 collapse" id="collapseExample">
                     <?php
+                    // If user role is admin, allow edit post
                     if($_SESSION["admin"] === "is_admin"){?>
                         <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
                             <label for="title">Title</label>
 
-                            <input type="text" name="title" id="title" value="<?= $post['title'] ?>" required>
-                            <select name="category_checkbox[]" id="" required>
-                                <option value="">Choose category</option>
-                                <option value="1">Living</option>
-                                <option value="2">Sunglasses</option>
-                                <option value="3">Watches</option>
-                            </select>
-                            <textarea name="content" id="text_edit" required><?= $post["content"] ?></textarea>
+                            <input type="text" name="title" id="title" value="<?= $post['title'] ?>">
+                            <textarea name="content" id="text_edit"><?= $post["content"] ?></textarea>
 
                             <input type="hidden" name="single_post_id_update" value="<?= $post['id']; ?>">
                             <button type="submit" class="btn btn-dark">UPDATE</button>
