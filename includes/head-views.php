@@ -15,7 +15,7 @@
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans|Abril+Fatface" rel="stylesheet">
 
-        <!-- My CSS -->
+        <!-- CSS -->
         <link rel="stylesheet" href="../css/style.css" type="text/css">
 
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">

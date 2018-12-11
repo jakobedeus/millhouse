@@ -10,11 +10,17 @@ session_start();
 include "../includes/head-views.php";
 include "../includes/header-views.php";
 
-// If title is set in $_POST when sending the new post this script will run and redirect.
-if(isset($_POST["title"])) {
+
+if(empty($_POST["title"]) || empty($_FILES["image"]) || empty($_POST["text"]) || empty($_POST["category_checkbox"])) {
+  
+  header ('location: ../views/feed.php?create_post_fail=true');
+  
+}else{
+
   $insert_post = new PostsInsert($pdo);
   $upload_ok = $insert_post->InsertPosts();
   header('Location: ../views/feed.php');
+
 }
 
 // If hidden value is set in $_POST when deleting post this script will run and redirect.
