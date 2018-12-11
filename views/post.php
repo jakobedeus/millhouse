@@ -48,7 +48,11 @@ $comments_for_specific_post = $show_comment->fetchComments();
                                 <input type="hidden" name="single_post_id_delete" value="<?= $post['id']; ?>">
                             </form>
                             <button class="btn btn-light icon_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            <i class="fas fa-wrench icon"></i></button>             
+                            <i class="fas fa-wrench icon"></i></button>
+                            <?php $text = access_denied_messages(
+                                'fail', 'You need to fill in all fields to update a post.'
+                            );
+                            echo $text; ?>           
                         <?php 
                         } ?> <!-- closing if-statement for admin access-->
                     </div><!-- closing col-10-->
@@ -63,9 +67,8 @@ $comments_for_specific_post = $show_comment->fetchComments();
                     <?php
                     if($_SESSION["admin"] === "is_admin"){?>
                         <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
-                            <label for="image">Image</label>
-                            <input type="file" name="image" id="image" src="../views/uploads/anka.jpg" required>
                             <label for="title">Title</label>
+
                             <input type="text" name="title" id="title" value="<?= $post['title'] ?>" required>
                             <select name="category_checkbox[]" id="" required>
                                 <option value="">Choose category</option>
@@ -74,6 +77,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
                                 <option value="3">Watches</option>
                             </select>
                             <textarea name="content" id="text_edit" required><?= $post["content"] ?></textarea>
+
                             <input type="hidden" name="single_post_id_update" value="<?= $post['id']; ?>">
                             <button type="submit" class="btn btn-dark">UPDATE</button>
                         </form>
@@ -121,11 +125,17 @@ $comments_for_specific_post = $show_comment->fetchComments();
         endforeach;?> 
     </div><!-- closing row-->
 </main>
-<div class="top_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
+<div class="to_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
 <?php
 include "../includes/footer-views.php";
 ?>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<?php }?> <!-- End if-statement for no access if not logged in-->
 
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
@@ -137,7 +147,4 @@ include "../includes/footer-views.php";
       $('#text_edit').summernote();
     });
     </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<?php }?> <!-- End if-statement for no access if not logged in-->
 
