@@ -197,14 +197,20 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
 
           
 </main> <!-- closing container-->
-<div class="top_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
+<div class="to_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
 <?php
     include '../includes/footer-views.php';
 ?>
 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<?php }?>
+
   <!-- Link dependencies for the editor -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 <script>
@@ -215,8 +221,4 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         $('#text').summernote();
     });
 </script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<?php }?>
 
