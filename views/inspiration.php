@@ -5,7 +5,7 @@ include "../includes/head-views.php";
 <main>
   <div class="parallax">
     <div class="white_overlay">
-      <h1>LUXURY IS IN EACH DETAIL.</h1>
+      <h1 class="inspiration">LUXURY IS IN EACH DETAIL.</h1>
     </div>
   </div>
     <div class="parallax_2">

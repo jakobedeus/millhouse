@@ -1,7 +1,6 @@
-
 .parallax {
   background-image: url("../images/ren-ran-232079-unsplash.jpg");
-  min-height: 1000px;
+  min-height: 800px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -9,10 +8,10 @@
 }
 
 .white_overlay {
-  height: 1000px;
+  height: 800px;
   margin: 0 100px;
   padding: 60px;
-  background-color: rgba(28, 48, 69, 0.7);
+  background-color: rgba(28, 48, 69, 0.6);
   background-image: url("../images/millhouse_logo.png");
   background-position: center;
   background-attachment: fixed;
@@ -71,7 +70,7 @@ a:hover {
   color: black;
 }
 
-h1 {
+.inspiration {
   color: white;
   font-size: 2em;
   font-family: open sans, sans-serif;
