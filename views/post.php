@@ -49,11 +49,11 @@ $comments_for_specific_post = $show_comment->fetchComments();
                         // If user role is admin, allow delete post
                         if($_SESSION["admin"] === "is_admin"){?>
                             <form action="../includes/update_page.php" method="POST">
-                                <button class="btn btn-light icon_btn" type="submit"><i class="far fa-trash-alt icon"></i></button>
+                                <button class="btn btn-light icon_btn" type="submit"><i class="far fa-trash-alt icon" aria-label="delete post"></i></button>
                                 <input type="hidden" name="single_post_id_delete" value="<?= $post['id']; ?>">
                             </form>
                             <button class="btn btn-light icon_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            <i class="fas fa-wrench icon"></i></button>
+                            <i class="fas fa-wrench icon" aria-label="edit post"></i></button>
                             <?php $text = access_denied_messages(
                                 'fail', 'You need to fill in all fields to update a post.'
                             );
@@ -115,7 +115,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
                     <form action="../includes/update_page.php#comments" method="POST">
                         <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
                         <input type="hidden" name="single_comment_id_delete" value="<?= $comment['comment_id']; ?>">
-                        <button class="btn btn-light icon_btn" type="submit"><i class="far fa-trash-alt delete_comment_btn"></i></button>
+                        <button class="btn btn-light icon_btn" type="submit"><i class="far fa-trash-alt delete_comment_btn" aria-label="delete comment"></i></button>
                     </form>
                 <?php
                 }?>
