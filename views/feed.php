@@ -11,7 +11,6 @@ if(empty($_SESSION["username"])){
 
 
 }else {
-
     $posts_fetch = new PostsFetch($pdo);
     $all_posts= $posts_fetch->fetchAll();
     $post_category= $posts_fetch->fetchPostByCategory();
@@ -36,14 +35,13 @@ if(empty($_SESSION["username"])){
         <?php 
         if(isset($_SESSION["username"])){ ?>
             <h3 class="font_h3">Welcome <b class="text-capitalize"><?=$_SESSION["username"];?></b></h3>
-        <?php    
+        <?php
         }
-        
         if($_SESSION["admin"] === "is_admin"){?>
             <button class="btn btn-light icon_buttons" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <i class="fas fa-plus feed_add_new_post_icon" aria-label="add new post"></i><h2 class="font_h2 feed_new_post">New post</h2></button>
 
-            <?php 
+            <?php
             $text = access_denied_messages(
                 'create_post_fail', 'You need to fill in all fields to create a post.'
             );
@@ -55,7 +53,7 @@ if(empty($_SESSION["username"])){
                         <input type="file" name="image" id="image">
                         <label for="title">Title</label><br />
                         <input type="text" name="title" id="title"><br />
-        
+
                         <select name="category_checkbox[]" id="">
                             <option value="">Choose category</option>
                             <option value="1">Living</option>
@@ -70,7 +68,6 @@ if(empty($_SESSION["username"])){
             </div> <!-- closing row-->
         <?php
         } // closing if-statement for admin access
-        
         if(isset($_GET["category"])){
         // Using array_reverse to present the latest post first
         foreach(array_reverse($post_category) as $category): ?>
@@ -84,7 +81,7 @@ if(empty($_SESSION["username"])){
                             $blog_posts_content_text = text_shorten($text = $category["content"]);
                             echo $blog_posts_content_text;?>
                             <a class="blog_post_link" href="post.php?id=<?= $category['id']; ?>"><p>Read more</p></a>
-                        
+
                         <?php
                         }else {
                         ?>
@@ -130,7 +127,7 @@ if(empty($_SESSION["username"])){
                             $blog_posts_content_text = text_shorten($text = $post["content"]);
                             echo $blog_posts_content_text;?>
                             <a class="blog_post_link" href="post.php?id=<?= $post['id']; ?>#comments"><p>Read more</p></a>
-                        
+
                         <?php
                         }else{
                         ?>
@@ -161,7 +158,6 @@ if(empty($_SESSION["username"])){
                     <img src="<?= $post['image']; ?>" alt="<?= $post['title']; ?>">
                 </div>
             </div> <!-- closing row-->
-                
         <?php
         endforeach;
         }
