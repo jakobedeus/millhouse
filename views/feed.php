@@ -29,7 +29,7 @@ if(empty($_SESSION["username"])){
 
     <main class="container justify-content-center">
         <div class="row">
-            <div class="col-md-6 col-md-offset-6">
+            <div class="col-12">
                 <p class="feed_inspiration_link">Go to our inspiration site: <a class="highlight" href="inspiration.php"><span>Luxury is in each detail.</span></a></p>
             </div>
         </div>
