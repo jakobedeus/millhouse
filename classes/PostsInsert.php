@@ -1,13 +1,5 @@
 <?php
-
-// New pdo connection to connect to database.
-$pdo = new PDO(
-
-    "mysql:host=localhost;dbname=millhouse;charset=utf8",
-    "root", //user
-    "root"  //password
-
-);
+include "../includes/database-connection.php";
 
 // This class will be call on in update_page.php to insert data into the table posts in millhouse database.
 class PostsInsert {

@@ -1,10 +1,5 @@
 <?php
-
-$pdo = new PDO(
-    "mysql:host=localhost;dbname=millhouse;charset=utf8",
-    "root", //user
-    "root"  //password
-);
+include "../includes/database-connection.php";
 
 // Fetch posts with different methods and different types of data. 
 class PostsFetch {
