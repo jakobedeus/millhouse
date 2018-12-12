@@ -1,9 +1,0 @@
-
-@mixin border($border_width){
-    border: $border_width dotted $sign_color_2;
-}
-
-@mixin links(){
-    text-decoration: none;
-    font-weight: bold;
-}

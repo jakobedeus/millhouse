@@ -18,7 +18,7 @@ class CommentsInsert
 
     public function insertComments()
     {
-      //Redefine varibles to make them more understandable and easier to user
+      //Redefine variables to make them more understandable and easier to use
       $created_by = $_SESSION["user_id"];
       $content = $_POST["content"];
       $post_id_insert = $_POST["comment_post_id"];

@@ -17,8 +17,8 @@ class CommentsFetch
 
     public function fetchComments ()
     {
+    // Fetch comments to correct post
       $post_id = $_GET["id"];
-
       $fetch_all_comments_statement = $this->pdo->prepare(
         "SELECT comments.created_by, users.id, users.username, comments.date, comments.content, comments.post_id, comments.comment_id
         FROM users
@@ -36,6 +36,7 @@ class CommentsFetch
       return  $comments_for_specific_post;
     }
 
+    // Fetch number of comments to display on feed.
     public function fetchCommentsAmount ()
     {
       $fetch_amount_of_comments_statement = $this->pdo->prepare(

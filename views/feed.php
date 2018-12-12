@@ -33,53 +33,52 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
     </div>
   </div>
   <br>
+    <?php 
+        if(isset($_SESSION["username"])){ ?>
+            <h3 class="font_h3">Welcome <b class="text-capitalize"><?=$_SESSION["username"];?></b></h3>
+        <?php    
+        }
+    
+        if($_SESSION["admin"] === "is_admin"){?>
+            <button class="btn btn-light icon_buttons" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fas fa-plus feed_add_new_post_icon" aria-label="add new post"></i><h2 class="font_h2 new_post">New post</h2></button>
 
-    <?php
-        if(isset($_SESSION["username"])){
-        ?><h3 class="font_h3">Welcome <b class="text-capitalize"><?=$_SESSION["username"];?>
+            <?php 
+            $text = access_denied_messages(
+                'create_post_fail', 'You need to fill in all fields to create a post.'
+            );
+            echo $text; ?>
+            <div class="row justify-content-center mb-5">
+                <div class="col-10 m-0 p-0 collapse" id="collapseExample">
+                    <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data">
+                        <label for="image">Image</label>
+                        <input type="file" name="image" id="image">
+                        <label for="title">Title</label><br />
+                        <input type="text" name="title" id="title"><br />
+        
+                        <select name="category_checkbox[]" id="">
+                            <option value="">Choose category</option>
+                            <option value="1">Living</option>
+                            <option value="2">Sunglasses</option>
+                            <option value="3">Watches</option>
+                        </select>
+                        <textarea name="text" id="text"></textarea>
+                        <input type="hidden" name="new_post" id="new_post" value="<?= $post['id']; ?>">
+                        <input class="button" type="submit" value="Send">
+                    </form>
+                </div> <!-- closing col-->
+            </div> <!-- closing row-->
         <?php
-        }?></b></h3>
-    <?php
-    if($_SESSION["admin"] === "is_admin"){?>
-    <button class="btn btn-light icon_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fas fa-plus feed_add_new_post_icon"></i><h2 class="font_h2 new_post">New post</h2></button>
-    <?php $text = access_denied_messages(
-                                'create_post_fail', 'You need to fill in all fields to create a post.'
-                            );
-                            echo $text; ?>
-    <div class="row justify-content-center mb-5">
-        <div class="col-10 m-0 p-0 collapse" id="collapseExample">
-            <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data">
-                <label for="image">Image</label>
-                <input type="file" name="image" id="image">
-                <label for="title">Title</label><br />
-                <input type="text" name="title" id="title"><br />
 
-                <select name="category_checkbox[]" id="">
-                    <option value="">Choose category</option>
-                    <option value="1">Living</option>
-                    <option value="2">Sunglasses</option>
-                    <option value="3">Watches</option>
-                </select>
-                <textarea name="text" id="text"></textarea>
-                <input type="hidden" name="new_post" id="new_post" value="<?= $post['id']; ?>">
-                <input class="button" type="submit" value="Send">
-            </form>
-        </div> <!-- closing col-->
-    </div> <!-- closing row-->
-
-
-
-    <?php
-    } // closing if-statement for admin access
-    if(isset($_GET['category'])){
-
+        } // closing if-statement for admin access
+    
+        if(isset($_GET["category"])){
         // Using array_reverse to present the latest post first
         foreach(array_reverse($post_category) as $category): ?>
             <div class="row blog_posts mb-5 justify-content-between">
                 <div class="col-12 col-md-6 blog_post_content">
-                    <a class="blog_title_link" href="post.php?id=<?= $category["id"]; ?>"><h2 class="font_h2"><?= $category["title"]; ?></h2></a>
-                    <p><i class="fas fa-clock"></i> <?= $category["date"] . ' - ' ?><a class="blog_post_link" href="feed.php?category=<?=$category["category"];?>"><?=$category["category"];?></a> - <i class="fas fa-user"></i> <?= $category["username"]; ?></p>
+                    <a class="blog_title_link" href="post.php?id=<?= $category['id']; ?>"><h2 class="font_h2"><?= $category["title"]; ?></h2></a>
+                    <p><i class="fas fa-clock"></i> <?= $category["date"] . ' - ' ?><a class="blog_post_link" href="feed.php?category=<?=$category['category'];?>"><?=$category['category'];?></a> - <i class="fas fa-user"></i> <?= $category["username"]; ?></p>
                     <div class="blog_posts_content_text">
                         <?php
                         if(strlen($category["content"]) > 300){
@@ -88,76 +87,76 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                              );
                             echo $blog_posts_content_text;
                         ?>
-                            <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Read more</p></a>
+                            <a class="blog_post_link" href="post.php?id=<?= $category['id']; ?>"><p>Read more</p></a>
+                        
                         <?php
                         }else{
                         ?>
                             <p><?= $category["content"];  ?></p>
-                            <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Go to post</p></a>
+                            <a class="blog_post_link" href="post.php?id=<?= $category['id']; ?>"><p>Go to post</p></a>
                         <?php
-                        }
-
-                        ?>
+                        }?>
                     </div> <!-- closing blog_posts_content_text-->
-                    <p><?php
-                    foreach($comments_amount_for_specific_post as $comment): ?>
-                        <?php
-                        if($comment["id"] === $category['id']){
-                            echo $comment["totalcomment"] . ' comments ';
-                        }
-                        ?>
-                    <?php
-                    endforeach;
-                    ?> <a href="post.php?id=<?= $category["id"]; ?>#comments"><button class="button">Comment</button></a></p>
+                    <?php 
+                        foreach($comments_amount_for_specific_post as $comment):
+                          
+                            if($comment["id"] === $category["id"]){?>
+                                <p><?=$comment["totalcomment"];?> comments</p>
+                            <?php
+                            }
+                        endforeach; ?>
+                    <a href="post.php?id=<?= $category['id']; ?>#comments"><button class="feed_comment_button">Comment</button></a>
                 </div> <!-- closing col-12 col-md-7-->
-                <div class="post_image_frame col-12 col-md-5 p-0">
-                    <img src="<?= $category["image"]; ?>" alt="<?= $category["title"]; ?>">
+                <div class="col-12 col-md-5 p-0 post_image_frame">
+                    <img src="<?= $category['image']; ?>" alt="<?= $category['title']; ?>">
                 </div>
             </div> <!-- closing row-->
         <?php
         endforeach;
-    }else{
-
+        }else{
         foreach(array_reverse($all_posts) as $post): ?>
             <div class="row blog_posts mb-5 justify-content-between">
-                <div class="blog_post_content col-12 col-md-6">
-                    <a class="blog_title_link" href="post.php?id=<?= $post["id"]; ?>"><h2 class="font_h2"><?= $post["title"]; ?></h2></a>
-                    <p><i class="fas fa-clock"></i> <?= $post["date"] . ' - ' ?><a class="blog_post_link"  href="feed.php?category=<?=$post["category"];?>"><?=$post["category"];?></a> - <i class="fas fa-user"></i> <?= $post["username"]; ?> </p>
-                    <p></p>
+                <div class="col-12 col-md-6 blog_post_content">
+                    <a class="blog_title_link" href="post.php?id=<?= $post['id']; ?>"><h2 class="font_h2"><?= $post["title"]; ?></h2></a>
+                    <p><i class="fas fa-clock"></i> <?= $post["date"] . ' - ' ?><a class="blog_post_link"  href="feed.php?category=<?=$post['category'];?>"><?=$post["category"];?></a> - <i class="fas fa-user"></i><?= $post["username"]; ?> </p>
                     <div class="blog_posts_content_text">
                         <?php
                         if(strlen($post["content"]) > 300){
                             $blog_posts_content_text = text_shorten(
                                 $text = $post["content"]
-                             );
+                            );
                             echo $blog_posts_content_text;
                         ?>
-                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>#comments"><p>Read more</p></a>
+                            
+                            <a class="blog_post_link" href="post.php?id=<?= $post['id']; ?>#comments"><p>Read more</p></a>
+                        
                         <?php
                         }else{
                         ?>
                             <p><?= $post["content"];  ?></p>
-                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>"><p>Go to post</p></a>
+                            <a class="blog_post_link" href="post.php?id=<?= $post['id']; ?>"><p>Go to post</p></a>
                         <?php
                         }
                         ?>
-                    </div> <!-- closing blog_posts_content_text-->
-                            <p><?php
-                            foreach($comments_amount_for_specific_post as $comment): ?>
-                                <?php
-                                if($comment["id"] === $post['id']){
-                                    echo $comment["totalcomment"] . ' comments ';
-                                }
-                            endforeach;
-                            ?> <a href="post.php?id=<?= $post["id"]; ?>#comments"><button class="button">Comment</button></a></p>
+                    </div> <!-- closing blog_posts_content_text-->         
+                    <?php 
+                    foreach($comments_amount_for_specific_post as $comment):
+                    
+                        if($comment["id"] === $post["id"]){
+                          <p><?=$comment["totalcomment"];?> comments</p> 
+                        }
+                    endforeach;?>
+                    <a href="post.php?id=<?= $post['id']; ?>#comments"><button class="feed_comment_button">Comment</button></a>
                 </div> <!-- closing col-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
-                    <img src="<?= $post["image"]; ?>" alt="<?= $post["title"]; ?>">
+                    <img src="<?= $post['image']; ?>" alt="<?= $post['title']; ?>">
                 </div>
             </div> <!-- closing row-->
+        
         <?php
         endforeach;
-    }
+        }
+
       /*$page = ! empty( $_GET['page'] ) ? (int) $_GET['page'] : 1;
 
    $total_posts = count($all_posts);
@@ -204,16 +203,14 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
 
 <?php
     include '../includes/footer-views.php';
-?>
 
+}?> <!--ending if-statement for access only if logged in. -->
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<?php }?>
-
   <!-- Link dependencies for the editor -->
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 <script>
