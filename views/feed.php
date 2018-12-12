@@ -27,23 +27,23 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
 <main class="container justify-content-center">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-6">
-        <h4 class="inspiration_link">Go to our inspiration site: <a class="highlight" href="inspiration.php"><span>Luxury is in each detail.</span></a></h4>
+      <div class="col-">
+        <p class="inspiration_link">Go to our inspiration site: <a class="highlight" href="inspiration.php"><span>Luxury is in each detail.</span></a></p>
       </div>
     </div>
   </div>
   <br>
-    <?php 
+    <?php
         if(isset($_SESSION["username"])){ ?>
             <h3 class="font_h3">Welcome <b class="text-capitalize"><?=$_SESSION["username"];?></b></h3>
-        <?php    
+        <?php
         }
-    
+
         if($_SESSION["admin"] === "is_admin"){?>
             <button class="btn btn-light icon_buttons" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <i class="fas fa-plus feed_add_new_post_icon" aria-label="add new post"></i><h2 class="font_h2 new_post">New post</h2></button>
 
-            <?php 
+            <?php
             $text = access_denied_messages(
                 'create_post_fail', 'You need to fill in all fields to create a post.'
             );
@@ -55,7 +55,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         <input type="file" name="image" id="image">
                         <label for="title">Title</label><br />
                         <input type="text" name="title" id="title"><br />
-        
+
                         <select name="category_checkbox[]" id="">
                             <option value="">Choose category</option>
                             <option value="1">Living</option>
@@ -71,7 +71,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         <?php
 
         } // closing if-statement for admin access
-    
+
         if(isset($_GET["category"])){
         // Using array_reverse to present the latest post first
         foreach(array_reverse($post_category) as $category): ?>
@@ -88,7 +88,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                             echo $blog_posts_content_text;
                         ?>
                             <a class="blog_post_link" href="post.php?id=<?= $category['id']; ?>"><p>Read more</p></a>
-                        
+
                         <?php
                         }else{
                         ?>
@@ -97,9 +97,9 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         <?php
                         }?>
                     </div> <!-- closing blog_posts_content_text-->
-                    <?php 
+                    <?php
                         foreach($comments_amount_for_specific_post as $comment):
-                          
+
                             if($comment["id"] === $category["id"]){?>
                                 <p><?=$comment["totalcomment"];?> comments</p>
                             <?php
@@ -127,9 +127,9 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                             );
                             echo $blog_posts_content_text;
                         ?>
-                            
+
                             <a class="blog_post_link" href="post.php?id=<?= $post['id']; ?>#comments"><p>Read more</p></a>
-                        
+
                         <?php
                         }else{
                         ?>
@@ -138,13 +138,13 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         <?php
                         }
                         ?>
-                    </div> <!-- closing blog_posts_content_text-->         
-                    <?php 
+                    </div> <!-- closing blog_posts_content_text-->
+                    <?php
                     foreach($comments_amount_for_specific_post as $comment):
-                    
-                        if($comment["id"] === $post["id"]){
-                          <p><?=$comment["totalcomment"];?> comments</p> 
-                        }
+
+                        if($comment["id"] === $post["id"]){?>
+                          <p><?=$comment["totalcomment"];?> comments</p>
+                        <?php }
                     endforeach;?>
                     <a href="post.php?id=<?= $post['id']; ?>#comments"><button class="feed_comment_button">Comment</button></a>
                 </div> <!-- closing col-->
@@ -152,7 +152,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                     <img src="<?= $post['image']; ?>" alt="<?= $post['title']; ?>">
                 </div>
             </div> <!-- closing row-->
-        
+
         <?php
         endforeach;
         }

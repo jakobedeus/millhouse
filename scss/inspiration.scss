@@ -1,3 +1,18 @@
+.angle_left {
+background-color: white;
+width: 200px;
+height: 100px;
+position: absolute;
+bottom: 40px;
+left: 10%;
+font-size: 1.5rem;
+line-height: 100px;
+text-transform: uppercase;
+text-align: center;
+letter-spacing: 3px;
+}
+
+
 .parallax {
   background-image: url("../images/ren-ran-232079-unsplash.jpg");
   min-height: 800px;
@@ -7,7 +22,7 @@
   background-size: cover;
 }
 
-.white_overlay {
+.blue_overlay {
   height: 800px;
   margin: 0 100px;
   padding: 60px;
@@ -18,7 +33,7 @@
   background-repeat: no-repeat;
 }
 
-.white_overlay_2 {
+.white_overlay {
   height: 200px;
   padding: 60px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -72,11 +87,16 @@ a:hover {
 
 .inspiration {
   color: white;
-  font-size: 2em;
-  font-family: open sans, sans-serif;
   text-align: center;
   letter-spacing: 20px;
   font-weight: bolder;
+}
+
+  .inspiration_link {
+    font-size: 1.3em;
+    font-family: open sans, sans-serif;
+    font-weight: bold;
+
 }
 
 .highlight {
@@ -111,4 +131,12 @@ a:hover {
 			}
 
 		}
+  }
+
+  @media (max-width: 576px){
+  .inspiration_link{
+    font-size: 0.9em;
+    font-family: open sans, sans-serif;
+    font-weight: bold;
+  }
   }
