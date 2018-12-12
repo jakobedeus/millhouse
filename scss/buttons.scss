@@ -11,7 +11,7 @@
   margin-bottom: 1em;
 }
 
-.btn_submit_login_reg {
+.submit_login_reg_button {
   border-radius: 10px;
   background: $primary_color_1;
   border:2px solid $primary_color_1;
@@ -68,21 +68,22 @@
 
 .icon_buttons {
   background: none;
-}
-.icon {
-  color: $primary_color_1;
-  font-size: 2rem;
+
+  .icon {
+    color: $primary_color_1;
+    font-size: 2rem;
+  }
 }
 .feed_add_new_post_icon{
   color: $primary_color_1;
   font-size: 2rem;
   margin-right: 0.5em;
 }
-.post_comment_btn {
+.post_comment_button {
   margin-top: 1.5em;
 }
 
-.to_top {
+.back_to_top_button {
   position:fixed;
   z-index: 1000;
   bottom: 10vh;

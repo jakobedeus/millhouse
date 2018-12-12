@@ -41,7 +41,8 @@ if(empty($_SESSION["username"])){
         
         if($_SESSION["admin"] === "is_admin"){?>
             <button class="btn btn-light icon_buttons" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            <i class="fas fa-plus feed_add_new_post_icon" aria-label="add new post"></i><h2 class="font_h2 new_post">New post</h2></button>
+            <i class="fas fa-plus feed_add_new_post_icon" aria-label="add new post"></i><h2 class="font_h2 feed_new_post">New post</h2></button>
+
             <?php 
             $text = access_denied_messages(
                 'create_post_fail', 'You need to fill in all fields to create a post.'
@@ -109,8 +110,7 @@ if(empty($_SESSION["username"])){
                         </div>
                     </div>
                 </div> <!-- closing col-12 col-md-7-->
-
-                <div class="col-12 col-md-5 p-0 post_image_frame">
+                <div class="col-12 col-md-5 p-0 feed_image_frame_blogpost">
                     <img src="<?= $category['image']; ?>" alt="<?= $category['title']; ?>">
                 </div>
             </div> <!-- closing row-->
@@ -157,7 +157,7 @@ if(empty($_SESSION["username"])){
                     </div>
                 </div> <!-- closing col-->
 
-                <div class="post_image_frame col-12 col-md-5 p-0">
+                <div class="feed_image_frame_blogpost col-12 col-md-5 p-0">
                     <img src="<?= $post['image']; ?>" alt="<?= $post['title']; ?>">
                 </div>
             </div> <!-- closing row-->
@@ -166,68 +166,68 @@ if(empty($_SESSION["username"])){
         endforeach;
         }
 
-          /*$page = ! empty( $_GET['page'] ) ? (int) $_GET['page'] : 1;
+      /*$page = ! empty( $_GET['page'] ) ? (int) $_GET['page'] : 1;
 
-       $total_posts = count($all_posts);
-       //echo $total_posts . "<br />";
-       $number_of_elements_per_page = 3;
+   $total_posts = count($all_posts);
+   //echo $total_posts . "<br />";
+   $number_of_elements_per_page = 3;
 
-       $number_of_pages = ceil($total_posts/$number_of_elements_per_page);
-       //echo $number_of_pages;
-       $page = max($page, 1); //get 1 page when $_GET['page'] <= 0
-       $page = min($page, $number_of_pages); //get last page when $_GET['page'] > $totalPages
-       $offset = ($page - 1) * $number_of_elements_per_page;
-       if( $offset < 0 ) $offset = 0;
-       $hello_post = array_slice( $all_posts, $offset, $number_of_elements_per_page);?>
+   $number_of_pages = ceil($total_posts/$number_of_elements_per_page);
+   //echo $number_of_pages;
+   $page = max($page, 1); //get 1 page when $_GET['page'] <= 0
+   $page = min($page, $number_of_pages); //get last page when $_GET['page'] > $totalPages
+   $offset = ($page - 1) * $number_of_elements_per_page;
+   if( $offset < 0 ) $offset = 0;
+   $hello_post = array_slice( $all_posts, $offset, $number_of_elements_per_page);?>
 
-            <nav class="pagination">
-              <a href="feed.php?page=1">1</a>
-              <a href="feed.php?page=2">2</a>
-              <a href="feed.php?page=3">3</a>
-              <a href="feed.php?page=4">4</a>
-            </nav>*/
+        <nav class="pagination">
+          <a href="feed.php?page=1">1</a>
+          <a href="feed.php?page=2">2</a>
+          <a href="feed.php?page=3">3</a>
+          <a href="feed.php?page=4">4</a>
+        </nav>*/
 
-            /*if(isset($_GET["page"])){
-              $current_page = $_GET["page"];
-
-
-              if($current_page === 1){
-                echo "1";
-              }
-              if($current_page === 2){
-                echo "2";
-              }
-              if($current_page === 3){
-                echo "3";
-              }
-              if($current_page === 4){
-                echo "4";
-              }
-            }*/
-              ?>
+        /*if(isset($_GET["page"])){
+          $current_page = $_GET["page"];
 
 
-    </main> <!-- closing container-->
+          if($current_page === 1){
+            echo "1";
+          }
+          if($current_page === 2){
+            echo "2";
+          }
+          if($current_page === 3){
+            echo "3";
+          }
+          if($current_page === 4){
+            echo "4";
+          }
+        }*/
+          ?>
 
-    <div class="to_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
-    <?php
-        include '../includes/footer-views.php';
+</main> <!-- closing container-->
+<div class="back_to_top_button text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
-    }?> <!--ending if-statement for access only if logged in. -->
+<?php
+    include '../includes/footer-views.php';
+
+}?> <!--ending if-statement for access only if logged in. -->
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-      <!-- Link dependencies for the editor -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
-    <script>
-        /**
-         * use the id of the textarea in the form to initialize this text-editor: #text
-         */
-        $(document).ready(function() {
-            $('#text').summernote();
-        });
-    </script>
+  <!-- Link dependencies for the editor -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+<script>
+    /**
+     * use the id of the textarea in the form to initialize this text-editor: #text
+     */
+    $(document).ready(function() {
+        $('#text').summernote();
+    });
+</script>
+
