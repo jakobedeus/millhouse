@@ -1,9 +1,7 @@
 @import 'variables';
 
-
 .logo_container img {
   height: 180px;
-
 }
 
 nav {
@@ -11,78 +9,58 @@ nav {
   position: sticky;
   top: 0;
   display: block;
-  //background-color: yellow;
   background-color: $secondary_color;
-    
-  }
-
-  
-  a {
-      font-family: $body_font;
-    }
-  
-  
-  /*.nav__link {
-    padding: 1.5rem 3rem;
-    color: $secondary_color;
-    transition: all 300ms;
-    text-decoration: none;
-    //border-bottom: 2px solid green;
-    &:hover {
-      color: green;
-    }
-  }*/
-
-
-  .underline {
-    text-decoration: underline;
-    color: $primary_color_1 !important; //button-primary:hover {}
-  }
- 
-  .logo_container {
-      width: 20%;
-  }
- 
-  .category_container{
-     
-      p{
-         color: $primary_color_2;
-         font-weight: bold;
-      }
-
-      a:visited {
-        color: $primary_color_2;
-        font-weight: bold;
-      }
- 
-      a:hover {
-         color: $primary_color_2;
-         font-weight: bold;
-      }
- 
-      ul li {
-          display: flex;
-          color: $primary_color_2;
-          font-weight: bold;
-          margin:1.2em;
-  
-      }
-  }
 
   .contact, .logout {
-    margin:20px 0;
+    margin:2em 0;
   }
 
-  @media screen and (min-width: 768px) {
+  a {
+    font-family: $body_font;
+  }
 
-    .contact, .logout {
-      margin:0;
+  .logo_container {
+    width: 20%;
+  }
+
+  .category_container {   
+
+    p{
+      color: $primary_color_2;
+      font-weight: bold;
     }
-    
+
+    a:visited {
+      color: $primary_color_2;
+      font-weight: bold;
+    }
+  
+    a:hover {
+      color: $primary_color_2;
+      font-weight: bold;
+    }
+
+    ul li {
+      display: flex;
+      color: $primary_color_2;
+      font-weight: bold;
+      margin:1.2em;
+
+      .underline {
+        text-decoration: underline;
+        color: $primary_color_1 !important;
+      }
+    }
   }
-  
-  @media screen and (min-width: 992px) {
-  
-  
-      
+}
+
+@media screen and (min-width: 768px) {
+  .contact, .logout {
+    margin:0;
   }
+}
+  
+@media screen and (min-width: 992px) {
+  
+  
+}

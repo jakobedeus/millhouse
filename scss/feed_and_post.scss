@@ -1,75 +1,90 @@
 @import 'variables';
 
-.font_h2, .font_h3{
+.body_views {
+    background-color: $primary_color_2;
+}
+
+.font_h2, .font_h3 {
     font-family: $headers_font;
     color: $font_color;
 }
 
-.blog_title_link {
-    text-decoration: none;
+.new_post {
+    font-size: 1.2rem;
+    display: inline;
+    font-family: $headers_font;
 }
 
-.blog_post_link{
-    font-family: $body_font;
-    color: $primary_color_1;
-    text-decoration: underline;
-}
-
-.blog_post_link:hover{
-    font-family: $body_font;
-    color: $secondary_color;
-    
-}
-
-.body_views{
-    background-color: $primary_color_2;
-}
-
-.blog_posts{
+.blog_posts {
     background-color: #ffffff;
-    border-radius: 4px;
+    border-radius: $border_radius_background;
     box-shadow: 0 0 10px 1px lightgrey;
 
+    .blog_post_content {
+        min-height: 300px;
+        padding-left: 1.5em;
 
-.blog_post_content{
-    min-height: 300px;
-    padding-left: 1.5em;
+        .blog_title_link {
+            text-decoration: none;
+        }
 
-    .blog_posts_content_text{
-        min-height: 130px;
+        .blog_post_link {
+            font-family: $body_font;
+            color: $primary_color_1;
+            text-decoration: underline;
         
-    }
-} 
+            &:hover {
+                font-family: $body_font;
+                color: $secondary_color; 
+            }
+        }
 
-.post_image_frame{
-    height: 300px;
+        .blog_posts_content_text {
+            min-height: 130px;  
+        }
+    } 
+
+    .post_image_frame {
+        height: 300px;
+        overflow: hidden;
+        border-radius: $border_radius_background;
+            
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 300px;
+        }
+    }
+}
+
+.post_image_frame_post{
+    height: 500px;
     overflow: hidden;
-    border-radius: 4px;
-    //max-height: 350px;
+    border-radius: $border_radius_background;
         
     img {
         object-fit: cover;
         width: 100%;
-        height: 300px;
-        //max-height: 350px;
+        height: 500px;
     }
 }
+
+.inline_form_post {
+    padding-right: 5px;
+    padding-left: 5px;
+    display: flex;
 }
 
-.border_bottom{
-    border-bottom: 1px solid #1C3045;
-    margin-bottom: 5px;
-}
-
-.new_post{
-    font-size: 1.2rem;
-    display: inline;
-    font-family: $headers_font;
-  }
-
-.input_comment{
+.input_comment {
     background-color: #ffffff;
-    border-radius: 4px;
+    border-radius: $border_radius_background;
     box-shadow: 0 0 10px 1px lightgrey;
-    padding:10px;
+    padding: 1em;
 }
+
+.border_bottom {
+    border-bottom: 1px solid #1C3045;
+    margin-bottom: 0.5em;
+}
+
+

@@ -33,7 +33,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         }
     
         if($_SESSION["admin"] === "is_admin"){?>
-            <button class="btn btn-light icon_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <button class="btn btn-light icon_buttons" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <i class="fas fa-plus feed_add_new_post_icon" aria-label="add new post"></i><h2 class="font_h2 new_post">New post</h2></button>
 
             <?php 
@@ -62,9 +62,11 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                 </div> <!-- closing col-->
             </div> <!-- closing row-->
         <?php
+
         } // closing if-statement for admin access
     
         if(isset($_GET["category"])){
+
 
         // Using array_reverse to present the latest post first
         foreach(array_reverse($post_category) as $category): ?>
@@ -90,6 +92,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         <?php
                         }?>
                     </div> <!-- closing blog_posts_content_text-->
+
                     <?php 
                         foreach($comments_amount_for_specific_post as $comment):
                           
@@ -135,15 +138,14 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         ?>
                     </div> <!-- closing blog_posts_content_text-->
                     
-                    <p>
                     <?php 
                     foreach($comments_amount_for_specific_post as $comment):
                     
                         if($comment["id"] === $post["id"]){
-                            echo $comment["totalcomment"] . ' comments '; 
+                          <p><?=$comment["totalcomment"];?> comments</p> 
                         }
                     endforeach;?>
-                    <a href="post.php?id=<?= $post['id']; ?>#comments"><button class="button">Comment</button></a></p>
+                    <a href="post.php?id=<?= $post['id']; ?>#comments"><button class="button">Comment</button></a>
                 </div> <!-- closing col-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
                     <img src="<?= $post['image']; ?>" alt="<?= $post['title']; ?>">
