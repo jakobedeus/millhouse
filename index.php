@@ -46,7 +46,7 @@ include 'includes/functions.php';
                                 <label for="login_password">Your Password</label>
                                 <input name="password" id="login_password" type="password">
                                 <br>
-                                <button class="btn_submit_login_reg btn-block" type="submit">SIGN IN!</button>
+                                <button class="submit_login_reg_button btn-block" type="submit">Sign in</button>
                             </form>
                         </div> <!-- closing card-body-->
                     </div> <!-- closing collapseOne-->
@@ -78,7 +78,7 @@ include 'includes/functions.php';
                                 <label for="email">Your E-mail</label>
                                 <input name="email" id="email" type="text">
                                 <input name="admin" value="not_admin" type="hidden">
-                                <input class="btn_submit_login_reg btn-block" type="submit" value="REGISTER!">
+                                <input class="submit_login_reg_button btn-block" type="submit" value="Register">
                             </form>
                         </div><!-- closing card-body-->
                     </div><!-- closing collapseTwo-->

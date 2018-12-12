@@ -2,27 +2,27 @@
 
 .body_index {
     background-color: $primary_color_1;
-}
 
-.padding_top_content img {
-    padding-top: 2em;
-}
+    .padding_top_content img {
+        padding-top: 2em;
+    }
 
-.text_about_blog {
-    color: $primary_color_2;
-    text-align: center;
-}
+    .text_about_blog {
+        color: $primary_color_2;
+        text-align: center;
+    }
 
-.style_login_reg_form {
-    background-color: $primary_color_2;
-    color: $primary_color_1;
-    font-family: $body_font;
-    font-weight: bold;    
-    box-shadow: 2px 2px 12px 0 rgba(0, 0, 80, 0.2);
-    margin: 0 auto 2em auto;
-    border-radius: $border_radius_background;
-}
+    .style_login_reg_form {
+        background-color: $primary_color_2;
+        color: $primary_color_1;
+        font-family: $body_font;
+        font-weight: bold;    
+        box-shadow: 2px 2px 12px 0 rgba(0, 0, 80, 0.2);
+        margin: 0 auto 2em auto;
+        border-radius: $border_radius_background;
+    }
 
-.footer_index {
-    display: hidden;
+    .footer_index {
+        display: hidden;
+    }
 }

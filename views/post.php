@@ -38,13 +38,13 @@ $comments_for_specific_post = $show_comment->fetchComments();
                 </div><!-- closing row-->
 
                 <div class="row justify-content-center">
-                    <div class="col-12 col-lg-10 post_image_frame_post">
+                    <div class="col-12 col-lg-10 post_image_frame_blogpost">
                         <img src="<?= $post['image']; ?>" alt="Cool image.">
                     </div><!-- closing col-12-->
                 </div> <!-- closing row-->
 
                 <div class="row justify-content-center mt-4">
-                    <div class="col-12 col-lg-10 inline_form_post">
+                    <div class="col-12 col-lg-10 post_inline_form">
                         <?php
                         // If user role is admin, allow delete post
                         if($_SESSION["admin"] === "is_admin"){?>
@@ -95,9 +95,9 @@ $comments_for_specific_post = $show_comment->fetchComments();
             <form action="../includes/update_page.php#comments" method="POST">
                 <label for="comments"></label>
                 <input type="hidden" name="comment_post_id" value="<?= $post['id']; ?>">
-                <textarea class="input_comment"name="content" rows="5" cols="50" placeholder="Write your comment here" required></textarea>
+                <textarea class="post_input_comment"name="content" rows="5" cols="50" placeholder="Write your comment here" required></textarea>
                 <br>
-                <button type="submit" class="btn btn-dark post_comment_btn">POST COMMENT</button>
+                <button type="submit" class="btn btn-dark post_comment_button">POST COMMENT</button>
             </form>
         </div> <!-- closing col-8-->
     </div><!-- closing row-->
@@ -105,7 +105,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
     <div class="row mb-4 justify-content-center">
         <?php
         foreach(array_reverse($comments_for_specific_post) as $comment):?>
-            <div class="col-12 col-md-11 col-lg-8 border_bottom">
+            <div class="col-12 col-md-11 col-lg-8 post_border_bottom_comments">
                 <h4 class="font_h2"><?=$comment["username"];?></h4>
                 <b><i class="fas fa-clock"></i> <?=$comment["date"];?></b>
                 <p><?=$comment["content"];?></p>
@@ -124,7 +124,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
         endforeach;?> 
     </div><!-- closing row-->
 </main>
-<div class="to_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
+<div class="back_to_top_button text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
 <?php
 include "../includes/footer-views.php";

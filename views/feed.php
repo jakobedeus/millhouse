@@ -41,7 +41,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
     
         if($_SESSION["admin"] === "is_admin"){?>
             <button class="btn btn-light icon_buttons" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            <i class="fas fa-plus feed_add_new_post_icon" aria-label="add new post"></i><h2 class="font_h2 new_post">New post</h2></button>
+            <i class="fas fa-plus feed_add_new_post_icon" aria-label="add new post"></i><h2 class="font_h2 feed_new_post">New post</h2></button>
 
             <?php 
             $text = access_denied_messages(
@@ -107,7 +107,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         endforeach; ?>
                     <a href="post.php?id=<?= $category['id']; ?>#comments"><button class="feed_comment_button">Comment</button></a>
                 </div> <!-- closing col-12 col-md-7-->
-                <div class="col-12 col-md-5 p-0 post_image_frame">
+                <div class="col-12 col-md-5 p-0 feed_image_frame_blogpost">
                     <img src="<?= $category['image']; ?>" alt="<?= $category['title']; ?>">
                 </div>
             </div> <!-- closing row-->
@@ -142,13 +142,14 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                     <?php 
                     foreach($comments_amount_for_specific_post as $comment):
                     
-                        if($comment["id"] === $post["id"]){
+                        if($comment["id"] === $post["id"]){?>
                           <p><?=$comment["totalcomment"];?> comments</p> 
+                        <?php
                         }
                     endforeach;?>
                     <a href="post.php?id=<?= $post['id']; ?>#comments"><button class="feed_comment_button">Comment</button></a>
                 </div> <!-- closing col-->
-                <div class="post_image_frame col-12 col-md-5 p-0">
+                <div class="feed_image_frame_blogpost col-12 col-md-5 p-0">
                     <img src="<?= $post['image']; ?>" alt="<?= $post['title']; ?>">
                 </div>
             </div> <!-- closing row-->
@@ -199,7 +200,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
 
 
 </main> <!-- closing container-->
-<div class="to_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
+<div class="back_to_top_button text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
 <?php
     include '../includes/footer-views.php';
