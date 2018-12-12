@@ -3,7 +3,7 @@ session_start();
 
 
 // database_connection.php (connection with our database)  
-include 'database-connection.php';
+include "database-connection.php";
 
 /* 
  * Fetch data from database which matches the users input. 
@@ -33,8 +33,8 @@ if($is_password_correct){
   $_SESSION["username"] = $fetched_user["username"];
   $_SESSION["user_id"] = $fetched_user ["id"];
   
-  header('Location: ../views/feed.php');
+  header("Location: ../views/feed.php");
 } else {
 
-  header('Location: ../index.php?login_failed=true');
+  header("Location: ../index.php?login_failed=true");
 }
