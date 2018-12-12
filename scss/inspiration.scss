@@ -4,12 +4,13 @@ width: 200px;
 height: 100px;
 position: absolute;
 bottom: 40px;
-left: 10%;
+//left: 500px;
 font-size: 1.5rem;
 line-height: 100px;
 text-transform: uppercase;
 text-align: center;
 letter-spacing: 3px;
+
 }
 
 
@@ -92,7 +93,7 @@ a:hover {
   font-weight: bolder;
 }
 
-  .inspiration_link {
+  .feed_inspiration_link {
     font-size: 1.3em;
     font-family: open sans, sans-serif;
     font-weight: bold;
@@ -134,7 +135,7 @@ a:hover {
   }
 
   @media (max-width: 576px){
-  .inspiration_link{
+  .feed_inspiration_link{
     font-size: 0.9em;
     font-family: open sans, sans-serif;
     font-weight: bold;
