@@ -5,18 +5,15 @@ $pdo = new PDO(
    "root"  //password
 );
 
-class CommentsEdit
-{
+class CommentsEdit {
 
     private $pdo;
 
-    public function __construct($pdo)
-    {
+    public function __construct($pdo) {
       $this->pdo = $pdo;
     }
 
-    public function deleteComments ()
-    {
+    public function deleteComments() {
   
         // if hidden value $_POST["single_comment_id_delete"] is set, convert to new variable.
       $comment_id = $_POST["single_comment_id_delete"];
@@ -32,5 +29,4 @@ class CommentsEdit
       $delete_comment = $delete_comment_statement;
       return $delete_comment;
     }
-
 }

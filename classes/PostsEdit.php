@@ -7,17 +7,14 @@ $pdo = new PDO(
 
 );
 
-class PostsEdit
-{
+class PostsEdit {
     private $pdo;
 
-    public function __construct($pdo)
-    {
+    public function __construct($pdo) {
         $this->pdo = $pdo;
     }
 
-    public function deletePost()
-    {
+    public function deletePost() {
         // If hidden value $_POST["single_post_id_delete"] is set in post, run this script.
         if(isset($_POST["single_post_id_delete"])){
             $post_id = $_POST["single_post_id_delete"];
@@ -37,8 +34,7 @@ class PostsEdit
             }
         }
 
-    public function updatePost()
-    {
+    public function updatePost() {
         // If hidden value $_POST["single_post_id_update"] is set, run this code. 
         $id = $_POST["single_post_id_update"];
 
@@ -61,6 +57,6 @@ class PostsEdit
 
             $update_post = $update_post_statement;
             return $update_post;
-        }
     }
+}
     
