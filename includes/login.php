@@ -6,7 +6,7 @@ session_start();
 include 'database-connection.php';
 
 /* 
- * I want to login with username and password that's registered in the database.
+ * Fetch data from database which matches the users input. 
  */
 $username = $_POST["username"];
 $password = $_POST["password"];
@@ -25,8 +25,8 @@ $is_password_correct = password_verify($password, $fetched_user["password"]);
 $_SESSION["admin"] = $fetched_user["admin"];
 
 /* 
- * I do a session of the username. 
- * The user will keep inlogged until the user press the logout button.  
+ * Set username session in order to present it on feed.php as a welcome text and to validate access in interface.
+ * Set user_id session in to use when inserting comments and posts to database.
  */
 if($is_password_correct){
     

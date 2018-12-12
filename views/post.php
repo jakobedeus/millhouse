@@ -3,7 +3,8 @@ session_start();
 include "../includes/head-views.php";
 include "../includes/header-views.php";
 
-if(!isset($_SESSION["username"])){
+// If session username is empty, redirect to index.
+if(empty($_SESSION["username"])){
     
     header('Location: ../index.php');
 }else { 
@@ -31,29 +32,32 @@ $comments_for_specific_post = $show_comment->fetchComments();
                 <div class="row blog_posts_content justify-content-center">
                     <div class="col-12 col-lg-10 blog_posts_content_text">
                         <h2 class="font_h2"><?= $post["title"]; ?></h2>
-                        <p><?= $post["date"] . "<strong> Category: </strong>" . $post["category"] . "<strong> Wrote by: </strong>" . $post["username"]; ?></p>
+                        <p><i class="fas fa-clock"></i> <?= $post["date"] . "<strong> Category: </strong>" . $post["category"] . " <i class='fas fa-user'></i> " . $post["username"]; ?></p>
                         <p><?= $post["content"];  ?></p>
                         <hr>
                     </div> <!-- closing col-12-->
                 </div><!-- closing row-->
 
                 <div class="row justify-content-center">
-                    <div class="col-12 col-lg-10 post_image_frame_post">
+                    <div class="col-12 col-lg-10 post_image_frame_blogpost">
                         <img src="<?= $post['image']; ?>" alt="Cool image.">
                     </div><!-- closing col-12-->
                 </div> <!-- closing row-->
 
                 <div class="row justify-content-center mt-4">
-                    <div class="col-12 col-lg-10 inline_form_post">
+                    <div class="col-12 col-lg-10 post_inline_form">
                         <?php
                         // If user role is admin, allow delete post
                         if($_SESSION["admin"] === "is_admin"){?>
+                        <!-- Send post to update_page.php which runs correct method and sql query and redirects back to this page -->
                             <form action="../includes/update_page.php" method="POST">
                                 <button class="btn btn-light icon_buttons" type="submit"><i class="far fa-trash-alt icon" aria-label="delete post"></i></button>
+                                <!-- Send hidden value in order to select the correct $_POST on update_page.php -->
                                 <input type="hidden" name="single_post_id_delete" value="<?= $post['id']; ?>">
                             </form>
                             <button class="btn btn-light icon_buttons" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             <i class="fas fa-wrench icon" aria-label="edit post"></i></button>
+                            <!-- Validate if all fields filled -->
                             <?php $text = access_denied_messages(
                                 'fail', 'You need to fill in all fields to update a post.'
                             );
@@ -72,11 +76,13 @@ $comments_for_specific_post = $show_comment->fetchComments();
                     <?php
                     // If user role is admin, allow edit post
                     if($_SESSION["admin"] === "is_admin"){?>
+                    <!-- Send post to update_page.php which runs correct method and sql query and redirects back to this page -->
                         <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data" class="m-4 p-4">
                             <label for="title">Title</label>
+                            <!-- Insert fetched posts data as values to make it editable -->
                             <input type="text" name="title" id="title" value="<?= $post['title'] ?>">
                             <textarea name="content" id="text_edit"><?= $post["content"] ?></textarea>
-
+                            <!-- Send hidden value in order to select the correct $_POST on update_page.php -->
                             <input type="hidden" name="single_post_id_update" value="<?= $post['id']; ?>">
                             <button type="submit" class="btn btn-dark">UPDATE</button>
                         </form>
@@ -92,27 +98,32 @@ $comments_for_specific_post = $show_comment->fetchComments();
     <div class="row mb-4 justify-content-around" id="comments">
         <div class="col-12 col-md-11 col-lg-8">
             <h3 class="font_h2">COMMENTS</h3>
+            <!-- Send post to update_page.php which runs correct method and sql query and redirects back to this page -->
+            <!-- Send form to update_page.php and then scroll down to comment section -->
             <form action="../includes/update_page.php#comments" method="POST">
                 <label for="comments"></label>
                 <input type="hidden" name="comment_post_id" value="<?= $post['id']; ?>">
-                <textarea class="input_comment"name="content" rows="5" cols="50" placeholder="Write your comment here" required></textarea>
+                <textarea class="post_input_comment"name="content" rows="5" cols="50" placeholder="Write your comment here" required></textarea>
                 <br>
-                <button type="submit" class="btn btn-dark post_comment_btn">POST COMMENT</button>
+                <button type="submit" class="btn btn-dark post_comment_button">POST COMMENT</button>
             </form>
         </div> <!-- closing col-8-->
     </div><!-- closing row-->
 
     <div class="row mb-4 justify-content-center">
         <?php
+        // Using array_reverse to present the latest comment first
         foreach(array_reverse($comments_for_specific_post) as $comment):?>
-            <div class="col-12 col-md-11 col-lg-8 border_bottom">
+            <div class="col-12 col-md-11 col-lg-8 post_border_bottom_comments">
                 <h4 class="font_h2"><?=$comment["username"];?></h4>
                 <b><i class="fas fa-clock"></i> <?=$comment["date"];?></b>
                 <p><?=$comment["content"];?></p>
                 <?php
+                // Display delete form only for users who created the comment or have admin role.
                 if($_SESSION["admin"] === "is_admin" || $_SESSION["user_id"] === $comment["created_by"]){?>
-
+                    <!-- Send form to update_page.php and then scroll down to comment section -->
                     <form action="../includes/update_page.php#comments" method="POST">
+                        <!-- Send hidden value in order to select the correct $_POST and to redirect to the correct page on update_page.php -->
                         <input type="hidden" name="single_comment_id_delete_redirect" value="<?= $post['id']; ?>">
                         <input type="hidden" name="single_comment_id_delete" value="<?= $comment['comment_id']; ?>">
                         <button class="btn btn-light icon_buttons" type="submit"><i class="far fa-trash-alt delete_comment_btn" aria-label="delete comment"></i></button>
@@ -124,7 +135,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
         endforeach;?> 
     </div><!-- closing row-->
 </main>
-<div class="to_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
+<div class="back_to_top_button text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
 <?php
 include "../includes/footer-views.php";

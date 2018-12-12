@@ -8,6 +8,7 @@ include 'includes/functions.php';
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-8 padding_top_content text-center">
             <?php 
+            // If username is set in session, (if logged in), redirect to feed.php.
             if(isset($_SESSION["username"])){ 
             ?>
                 <p><?php header('Location: views/feed.php'); ?> </p>
@@ -34,7 +35,7 @@ include 'includes/functions.php';
                     <div id="collapseOne" class="collapse style_login_reg_form" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body">
                             <?php
-                            // My function, that echoes out if register fails
+                            // Function which echoes unique message if register fails
                             $text = access_denied_messages(
                                 'login_failed', 'Username or password is incorrect, please try again.'
                             );
@@ -46,7 +47,7 @@ include 'includes/functions.php';
                                 <label for="login_password">Your Password</label>
                                 <input name="password" id="login_password" type="password">
                                 <br>
-                                <button class="btn_submit_login_reg btn-block" type="submit">SIGN IN!</button>
+                                <button class="submit_login_reg_button btn-block" type="submit">Sign in</button>
                             </form>
                         </div> <!-- closing card-body-->
                     </div> <!-- closing collapseOne-->
@@ -58,13 +59,13 @@ include 'includes/functions.php';
                     <div id="collapseTwo" class="collapse style_login_reg_form" aria-labelledby="headingTwo" data-parent="#accordionExample">
                         <div class="card-body">
                            <?php
-                            // My function, that echoes out if register fails
+                            // Function which echoes unique message if register fails
                             $text = access_denied_messages(
                                 'register_failed', 'You need to fill in all fields.'
                             );
                             echo $text;
                             
-                            // My function, that echoes out if register fails
+                            // Function which echoes unique message if register fails
                             $text = access_denied_messages(
                                 'register_failed_exist', 'A user with this name already exists, try again.'
                             );
@@ -78,7 +79,7 @@ include 'includes/functions.php';
                                 <label for="email">Your E-mail</label>
                                 <input name="email" id="email" type="text">
                                 <input name="admin" value="not_admin" type="hidden">
-                                <input class="btn_submit_login_reg btn-block" type="submit" value="REGISTER!">
+                                <input class="submit_login_reg_button btn-block" type="submit" value="Register">
                             </form>
                         </div><!-- closing card-body-->
                     </div><!-- closing collapseTwo-->
