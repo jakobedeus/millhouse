@@ -33,7 +33,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         }?></b></h3>
     <?php
     if($_SESSION["admin"] === "is_admin"){?>
-    <button class="btn btn-light icon_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <button class="btn btn-light icon_buttons" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     <i class="fas fa-plus feed_add_new_post_icon"></i><h2 class="font_h2 new_post">New post</h2></button>
     <?php $text = access_denied_messages(
                                 'create_post_fail', 'You need to fill in all fields to create a post.'
@@ -98,7 +98,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         ?>
                     <?php
                     endforeach; 
-                    ?> <a href="post.php?id=<?= $category["id"]; ?>#comments"><button class="button">Comment</button></a></p>
+                    ?> <a href="post.php?id=<?= $category["id"]; ?>#comments"><button class="feed_comment_button">Comment</button></a></p>
                 </div> <!-- closing col-12 col-md-7-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
                     <img src="<?= $category["image"]; ?>" alt="<?= $category["title"]; ?>">
@@ -139,7 +139,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                                     echo $comment["totalcomment"] . ' comments '; 
                                 }
                             endforeach; 
-                            ?> <a href="post.php?id=<?= $post["id"]; ?>#comments"><button class="button">Comment</button></a></p>
+                            ?> <a href="post.php?id=<?= $post["id"]; ?>#comments"><button class="feed_comment_button">Comment</button></a></p>
                 </div> <!-- closing col-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
                     <img src="<?= $post["image"]; ?>" alt="<?= $post["title"]; ?>">

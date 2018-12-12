@@ -20,7 +20,7 @@ $all_category= $category->fetchCategory();
         </div>
         <nav class="row p-4">
             <div class="col-6 col-md-3 align-self-center text-center contact">
-                <a href="mailto:info@millhouse.com"><button class="button_inverted_dark text-center"><i class=" order-1 fas fa-envelope"></i> GET IN TOUCH</button></a>
+                <a href="mailto:info@millhouse.com"><button class="nav_button_inverted_dark text-center"><i class=" order-1 fas fa-envelope"></i> GET IN TOUCH</button></a>
             </div>
             <div class="col-12 order-3 col-md-6 order-md-2 pt-4 category_container d-flex justify-content-center">
                 <ul>
@@ -47,7 +47,7 @@ $all_category= $category->fetchCategory();
                 ?>
             </div>
             <div class="col-6 order-2 col-md-3 logout align-self-center text-center">
-                <a href="../includes/logout.php" class="col-12"><button class="button_inverted_light text-center">LOG OUT</button></a>    
+                <a href="../includes/logout.php" class="col-12"><button class="nav_button_inverted_light text-center">LOG OUT</button></a>    
             </div>
         </nav>
     </header>
