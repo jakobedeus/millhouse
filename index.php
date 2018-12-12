@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 include 'includes/head-index.php';
 include 'includes/functions.php';
@@ -17,7 +16,7 @@ include 'includes/functions.php';
             ?>
             <img class="img-fluid"src="images/millhouse_logo.png" alt="logo_image">
         </div>
-        <div class="col-12 col-md-10 col-lg-8 aboutblog">
+        <div class="col-12 col-md-10 col-lg-8 text_about_blog">
             <p>Lorem ipsum dolor amet waistcoat echo park live-edge, 
             cliche four loko pinterest tousled cred bespoke raw denim 
             vape 90's brooklyn meditation. Slow-carb vinyl vape cronut 
