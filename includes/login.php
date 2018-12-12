@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-//$_SESSION["username"] = $fetched_user ["username"];
-
 
 // database_connection.php (connection with our database)  
 include 'database-connection.php';
@@ -19,7 +17,9 @@ $username_select_statement->execute(
   ]
 );
 
+
 $fetched_user = $username_select_statement->fetch();
+// Verify if fetched users password is the same as input password.
 $is_password_correct = password_verify($password, $fetched_user["password"]);
 
 $_SESSION["admin"] = $fetched_user["admin"];
