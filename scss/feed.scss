@@ -1,0 +1,83 @@
+@import 'mixins';
+@import 'variables';
+
+
+p{
+    font-family: $body_font;
+    font-family: $font_color;
+}
+
+.blog_title_link {
+    text-decoration: none;
+}
+
+.blog_post_link{
+    font-family: $body_font;
+    color: $primary_color_1;
+    text-decoration: underline;
+}
+
+.blog_post_link:hover{
+    font-family: $body_font;
+    color: $secondary_color;
+
+}
+
+.font_h2, .font_h3{
+    font-family: $headers_font;
+    color: $font_color;
+}
+
+.body_views{
+    background-color: $primary_color_2;
+}
+
+/* div{
+    border: 2px solid red;
+} */
+
+
+.blog_posts{
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 0 10px 1px lightgrey;
+
+
+.blog_post_content{
+    min-height: 300px;
+    padding-left: 1.5em;
+    //min-width: 250px;
+    //background-color: powderblue;
+
+    .blog_posts_content_text{
+        min-height: 130px;
+
+    }
+}
+
+.post_image_frame{
+    height: 300px;
+    overflow: hidden;
+    border-radius: 4px;
+    //max-height: 350px;
+
+    img {
+        object-fit: cover;
+        width: 100%;
+        height: 300px;
+        //max-height: 350px;
+    }
+}
+}
+
+
+@media screen and (min-width: 768px) {
+
+
+}
+
+@media screen and (min-width: 992px) {
+
+
+
+}

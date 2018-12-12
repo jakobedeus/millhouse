@@ -6,7 +6,7 @@ include "../includes/header-views.php";
 include "../includes/admin-access.php";
 
 if(!isset($_SESSION["username"])){
-    
+
     header('Location: ../index.php');
 }else {
 
@@ -25,9 +25,17 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
 
 ?>
 <main class="container justify-content-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-6">
+        <h4 class="inspiration_link">Go to our inspiration site: <a class="highlight" href="inspiration.php"><span>Luxury is in each detail.</span></a></h4>
+      </div>
+    </div>
+  </div>
+  <br>
 
-    <?php 
-        if(isset($_SESSION["username"])){ 
+    <?php
+        if(isset($_SESSION["username"])){
         ?><h3 class="font_h3">Welcome <b class="text-capitalize"><?=$_SESSION["username"];?>
         <?php
         }?></b></h3>
@@ -60,6 +68,8 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         </div> <!-- closing col-->
     </div> <!-- closing row-->
 
+
+
     <?php
     } // closing if-statement for admin access
     if(isset($_GET['category'])){
@@ -89,15 +99,15 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
 
                         ?>
                     </div> <!-- closing blog_posts_content_text-->
-                    <p><?php 
-                    foreach($comments_amount_for_specific_post as $comment): ?>  
-                        <?php   
+                    <p><?php
+                    foreach($comments_amount_for_specific_post as $comment): ?>
+                        <?php
                         if($comment["id"] === $category['id']){
-                            echo $comment["totalcomment"] . ' comments '; 
+                            echo $comment["totalcomment"] . ' comments ';
                         }
                         ?>
                     <?php
-                    endforeach; 
+                    endforeach;
                     ?> <a href="post.php?id=<?= $category["id"]; ?>#comments"><button class="button">Comment</button></a></p>
                 </div> <!-- closing col-12 col-md-7-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
@@ -107,7 +117,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         <?php
         endforeach;
     }else{
-        
+
         foreach(array_reverse($all_posts) as $post): ?>
             <div class="row blog_posts mb-5 justify-content-between">
                 <div class="blog_post_content col-12 col-md-6">
@@ -132,13 +142,13 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                         }
                         ?>
                     </div> <!-- closing blog_posts_content_text-->
-                            <p><?php 
-                            foreach($comments_amount_for_specific_post as $comment): ?>  
-                                <?php   
+                            <p><?php
+                            foreach($comments_amount_for_specific_post as $comment): ?>
+                                <?php
                                 if($comment["id"] === $post['id']){
-                                    echo $comment["totalcomment"] . ' comments '; 
+                                    echo $comment["totalcomment"] . ' comments ';
                                 }
-                            endforeach; 
+                            endforeach;
                             ?> <a href="post.php?id=<?= $post["id"]; ?>#comments"><button class="button">Comment</button></a></p>
                 </div> <!-- closing col-->
                 <div class="post_image_frame col-12 col-md-5 p-0">
@@ -188,7 +198,7 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         }*/
           ?>
 
-          
+
 </main> <!-- closing container-->
 <div class="to_top text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
@@ -214,4 +224,3 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         $('#text').summernote();
     });
 </script>
-
