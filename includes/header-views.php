@@ -29,7 +29,7 @@ $all_category= $category->fetchCategory();
             </div>
             <div class="col-12 order-3 col-md-6 order-md-2 pt-4 category_container d-flex justify-content-center">
                 <ul>
-                    <li><a href="feed.php"><p>ALL</p></a></li>
+                  <li><a href="feed.php"><p>ALL</p></a></li>
                 </ul>
                 <?php
                 foreach($all_category as $category_link):
@@ -45,9 +45,9 @@ $all_category= $category->fetchCategory();
                         // else present a:link without underline.
                         } else { ?>
                         <li><a href="feed.php?category=<?= $product_category; ?>"><p class="text-uppercase"><?= $product_category; ?></p></a></li>
-                        <?php 
+                        <?php
                         }?>
-                        
+
                     </ul>
                 <?php
                 endforeach;
