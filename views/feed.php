@@ -5,7 +5,7 @@ include "../includes/head-views.php";
 include "../includes/header-views.php";
 include "../includes/admin-access.php";
 
-if(!isset($_SESSION["username"])){
+if(empty($_SESSION["username"])){
 
     header('Location: ../index.php');
 
