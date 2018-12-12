@@ -5,22 +5,24 @@ include "../includes/head-views.php";
 include "../includes/header-views.php";
 include "../includes/admin-access.php";
 
+// If session username is empty, redirect to index.
 if(empty($_SESSION["username"])){
 
-    header('Location: ../index.php');
+    header("Location: ../index.php");
 
 
 }else {
+    // Call the PostsFetch with and the different functions to fetch different kinds of posts.
     $posts_fetch = new PostsFetch($pdo);
     $all_posts= $posts_fetch->fetchAll();
     $post_category= $posts_fetch->fetchPostByCategory();
+    $all_category= $posts_fetch->fetchCategory();
 
-    $category = new PostsFetch($pdo);
-    $all_category= $category->fetchCategory();
-
+    // Call class to insert posts
     $insert_post = new PostsInsert($pdo);
-    $upload_ok = $insert_post->InsertPosts();
+    $upload_ok = $insert_post->insertPosts();
 
+    // Call class to fetch number of comments
     $show_comment_amount = new CommentsFetch($pdo);
     $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount();?>
 
@@ -33,17 +35,20 @@ if(empty($_SESSION["username"])){
         </div>
 
         <?php 
+        // Echo a welcome message with session username
         if(isset($_SESSION["username"])){ ?>
-            <h3 class="font_h3">Welcome <b class="text-capitalize"><?=$_SESSION["username"];?></b></h3>
+            <h3 class="font_h3">Welcome <strong class="text-capitalize"><?=$_SESSION["username"];?></strong></h3>
         <?php
         }
+        // If user role is admin, allow create new post
         if($_SESSION["admin"] === "is_admin"){?>
             <button class="btn btn-light icon_buttons" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <i class="fas fa-plus feed_add_new_post_icon" aria-label="add new post"></i><h2 class="font_h2 feed_new_post">New post</h2></button>
 
             <?php
+            // Validate if all fields filled
             $text = access_denied_messages(
-                'create_post_fail', 'You need to fill in all fields to create a post.'
+                "create_post_fail", "You need to fill in all fields to create a post."
             );
             echo $text; ?>
             <div class="row justify-content-center mb-5">
@@ -54,39 +59,44 @@ if(empty($_SESSION["username"])){
                         <label for="title">Title</label><br />
                         <input type="text" name="title" id="title"><br />
 
-                        <select name="category_checkbox[]" id="">
+                        <select name="category_list[]" id="">
                             <option value="">Choose category</option>
                             <option value="1">Living</option>
                             <option value="2">Sunglasses</option>
                             <option value="3">Watches</option>
                         </select>
                         <textarea name="text" id="text"></textarea>
-                        <input type="hidden" name="new_post" id="new_post" value="<?= $post['id']; ?>">
-                        <input class="button" type="submit" value="Send">
+                        <!-- Send hidden value in order to select the correct $_POST on update_page.php -->
+                        <input type="hidden" name="new_post" id="new_post" value="<?= $post["id"]; ?>">
+                        <input class="feed_comment_and_create_button" type="submit" value="Send">
                     </form>
                 </div> <!-- closing col-->
             </div> <!-- closing row-->
         <?php
         } // closing if-statement for admin access
+        // Loop posts with selected category
         if(isset($_GET["category"])){
         // Using array_reverse to present the latest post first
         foreach(array_reverse($post_category) as $category): ?>
             <div class="row blog_posts mb-5 justify-content-between">
                 <div class="col-12 col-md-6 blog_post_content">
-                    <a class="blog_title_link" href="post.php?id=<?= $category['id']; ?>"><h2 class="font_h2"><?= $category["title"]; ?></h2></a>
-                    <p><i class="fas fa-clock"></i> <?= $category["date"] . ' - ' ?><a class="blog_post_link" href="feed.php?category=<?=$category['category'];?>"><?=$category['category'];?></a> - <i class="fas fa-user"></i> <?= $category["username"]; ?></p>
+                    <a class="blog_title_link" href="post.php?id=<?= $category["id"]; ?>"><h2 class="font_h2"><?= $category["title"]; ?></h2></a>
+                    <p><i class="fas fa-clock" aria-label="time icon"></i> <?= $category["date"] . " - " ?><a class="blog_post_link" href="feed.php?category=<?=$category["category"];?>"><?=$category["category"];?></a> - <i class="fas fa-user" aria-label="author icon"></i> <?= $category["username"]; ?></p>
                     <div class="blog_posts_content_text">
                         <?php
+                        // Function to create and excerpt with a limit of 300 character
                         if(strlen($category["content"]) > 300){
                             $blog_posts_content_text = text_shorten($text = $category["content"]);
                             echo $blog_posts_content_text;?>
-                            <a class="blog_post_link" href="post.php?id=<?= $category['id']; ?>"><p>Read more</p></a>
+                            <!-- If the text of the post is larger than 300 characters, show read more button -->
+                            <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Read more</p></a>
 
                         <?php
                         }else {
                         ?>
                             <p><?= $category["content"];?></p>
-                            <a class="blog_post_link" href="post.php?id=<?= $category['id']; ?>"><p>Go to post</p></a>
+                            <!-- If not, show go to post button -->
+                            <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Go to post</p></a>
                         <?php
                         }?>
                     </div> <!-- closing blog_posts_content_text-->
@@ -94,7 +104,8 @@ if(empty($_SESSION["username"])){
                         <div class="col-3 d-flex align-self-center justify-content-center pt-2 inline_form_post">
                             <?php 
                             foreach($comments_amount_for_specific_post as $comment):
-                    
+                                // Display number of comments for each post. Using a select query to count number or rows
+                                // and return in as totalcomment.
                                 if($comment["id"] === $category["id"]){?>
                                     <p><?=$comment["totalcomment"];?> comments</p>
                                 <?php
@@ -103,36 +114,42 @@ if(empty($_SESSION["username"])){
                             ?>
                         </div>
                         <div class="col-2 d-flex align-self-center inline_form_post">
-                            <a class="feed_flex"href="post.php?id=<?= $category['id']; ?>#comments"><button class="feed_comment_button">Comment</button></a>
+                            <!-- Send form to update_page.php and then scroll down to comment section -->
+                            <a class="feed_flex"href="post.php?id=<?= $category["id"]; ?>#comments"><button class="feed_comment_and_create_button">Comment</button></a>
                         </div>
                     </div>
                 </div> <!-- closing col-12 col-md-7-->
                 <div class="col-12 col-md-5 p-0 feed_image_frame_blogpost">
-                    <img src="<?= $category['image']; ?>" alt="<?= $category['title']; ?>">
+                    <!-- Create alt text containing the title -->
+                    <img src="<?= $category["image"]; ?>" alt="<?= $category["title"]; ?>">
                 </div>
             </div> <!-- closing row-->
         <?php
         endforeach;
 
         }else{ // Ending if-statement for if categories is set. 
-
+        // Using array_reverse to present the latest post first
+        // Loop all posts
         foreach(array_reverse($all_posts) as $post): ?>
             <div class="row blog_posts mb-5 justify-content-between">
                 <div class="col-12 col-md-6 blog_post_content">
-                    <a class="blog_title_link" href="post.php?id=<?= $post['id']; ?>"><h2 class="font_h2"><?= $post["title"]; ?></h2></a>
-                    <p><i class="fas fa-clock"></i> <?= $post["date"] . ' - ' ?><a class="blog_post_link"  href="feed.php?category=<?=$post['category'];?>"><?=$post["category"];?></a> - <i class="fas fa-user"></i><?= $post["username"]; ?> </p>
+                    <a class="blog_title_link" href="post.php?id=<?= $post["id"]; ?>"><h2 class="font_h2">
+                        <?= $post["title"]; ?></h2></a>
+                    <p><i class="fas fa-clock" aria-label="time icon"></i> <?= $post["date"]?>
+                    - <a class="blog_post_link"  href="feed.php?category=<?=$post["category"];?>">
+                    <?=$post["category"];?></a> - <i class="fas fa-user" aria-label="author icon"></i> <?= $post["username"]; ?> </p>
                     <div class="blog_posts_content_text">
                         <?php
                         if(strlen($post["content"]) > 300){
                             $blog_posts_content_text = text_shorten($text = $post["content"]);
                             echo $blog_posts_content_text;?>
-                            <a class="blog_post_link" href="post.php?id=<?= $post['id']; ?>#comments"><p>Read more</p></a>
+                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>#comments"><p>Read more</p></a>
 
                         <?php
                         }else{
                         ?>
                             <p><?= $post["content"];?></p>
-                            <a class="blog_post_link" href="post.php?id=<?= $post['id']; ?>"><p>Go to post</p></a>
+                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>"><p>Go to post</p></a>
                         <?php
                         }
                         ?>
@@ -149,13 +166,13 @@ if(empty($_SESSION["username"])){
                             endforeach;?>
                         </div>
                         <div class="col-2 d-flex align-self-center inline_form_post">
-                            <a href="post.php?id=<?= $post['id']; ?>#comments"><button class="feed_comment_button">Comment</button></a>
+                            <a href="post.php?id=<?= $post["id"]; ?>#comments"><button class="feed_comment_and_create_button">Comment</button></a>
                         </div>
                     </div>
                 </div> <!-- closing col-->
 
                 <div class="feed_image_frame_blogpost col-12 col-md-5 p-0">
-                    <img src="<?= $post['image']; ?>" alt="<?= $post['title']; ?>">
+                    <img src="<?= $post["image"]; ?>" alt="<?= $post["title"]; ?>">
                 </div>
             </div> <!-- closing row-->
         <?php
@@ -207,7 +224,7 @@ if(empty($_SESSION["username"])){
 <div class="back_to_top_button text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
 <?php
-    include '../includes/footer-views.php';
+    include "../includes/footer-views.php";
 
 }?> <!--ending if-statement for access only if logged in. -->
 
@@ -223,7 +240,7 @@ if(empty($_SESSION["username"])){
      * use the id of the textarea in the form to initialize this text-editor: #text
      */
     $(document).ready(function() {
-        $('#text').summernote();
+        $("#text").summernote();
     });
 </script>
 
