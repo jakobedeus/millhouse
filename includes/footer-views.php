@@ -1,10 +1,10 @@
 
     <footer class="footer_views text-center">
       <div>
-        <a href="https://facebook.com"><i class="fab fa-facebook fa-3x mr-2"></i></a>
-        <a href="https://instagram.com"><i class="fab fa-instagram fa-3x mr-2"></i></a>
-        <a href="https://twitter.com"><i class="fab fa-twitter-square fa-3x mr-2"></i></a>
-        <a href="https://plus.google.com"><i class="fab fa-google-plus-square fa-3x mr-2"></i></a>
+        <a href="https://facebook.com"><i class="fab fa-facebook fa-3x mr-2" aria-label="facebook link icon"></i></a>
+        <a href="https://instagram.com"><i class="fab fa-instagram fa-3x mr-2" aria-label="Instagram link icon"></i></a>
+        <a href="https://twitter.com"><i class="fab fa-twitter-square fa-3x mr-2" aria-label="Twitter link icon"></i></a>
+        <a href="https://plus.google.com"><i class="fab fa-google-plus-square fa-3x mr-2" aria-label="Google plus link icon"></i></a>
       </div>
       <div>
         <p class="text-center copyright">© Never Ends</p> 
