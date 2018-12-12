@@ -1,5 +1,6 @@
 
 <?php
+// All the includes we need for the site.
 include '../classes/PostsFetch.php';
 include '../classes/PostsEdit.php';
 include '../classes/PostsInsert.php';
@@ -8,6 +9,10 @@ include '../classes/CommentsFetch.php';
 include '../classes/CommentsInsert.php';
 include '../includes/functions.php';
 
+
+/*
+ Fetch categories and put them in a list. To make it easier to add more categories in database and they will automatically loop out here. 
+*/
 $category = new PostsFetch($pdo);
 $all_category= $category->fetchCategory();
 ?>
@@ -32,10 +37,12 @@ $all_category= $category->fetchCategory();
                 ?>
                     <ul>
                         <?php  
+                        // If $_GET["category"] is active, add underline to a:link.
                         if(isset($_GET["category"]) && $_GET["category"]==$product_category)  {?>
                         <li><a href="feed.php?category=<?= $product_category; ?>"><p class="underline text-uppercase"><?= $product_category; ?></p></a></li>
             
                         <?php 
+                        // else present a:link without underline.
                         } else { ?>
                         <li><a href="feed.php?category=<?= $product_category; ?>"><p class="text-uppercase"><?= $product_category; ?></p></a></li>
                         <?php 

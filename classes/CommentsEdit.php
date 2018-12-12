@@ -18,8 +18,10 @@ class CommentsEdit
     public function deleteComments ()
     {
   
+        // if hidden value $_POST["single_comment_id_delete"] is set, convert to new variable.
       $comment_id = $_POST["single_comment_id_delete"];
 
+      // Delete from comments table where comment_id = $_POST["single_comment_id_delete"] 
       $delete_comment_statement = $this->pdo->prepare("DELETE FROM comments where comment_id = :comment_id");
       $delete_comment_statement->execute(
         [

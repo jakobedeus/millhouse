@@ -16,10 +16,11 @@ $admin  = $_POST["admin"];
         ]
     );
      
+
     $fetched_user = $statement->fetch();
-
+    // Make password hashed.
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
+    // Check if 
     if(empty($_POST["username"]) || empty($_POST["email"]) || empty($_POST["password"])) {
 
         header('Location: ../index.php?register_failed=true');
