@@ -55,7 +55,7 @@ if(empty($_SESSION["username"])){
                 <div class="col-10 m-0 p-0 collapse" id="collapseExample">
                     <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data">
                         <label for="image">Image</label>
-                        <input type="file" name="image" id="image">
+                        <input type="file" name="image" id="image" name="MAX_FILE_SIZE" value="2097152" >
                         <label for="title">Title</label><br />
                         <input type="text" name="title" id="title"><br />
 
