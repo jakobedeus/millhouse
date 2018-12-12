@@ -1,7 +1,7 @@
 <?php 
 
 session_start();
-include 'database-connection.php';
+include "database-connection.php";
 
 $username = $_POST["username"];
 $password = $_POST["password"];
@@ -23,10 +23,10 @@ $admin  = $_POST["admin"];
     // Check if input fields are empty. 
     if(empty($_POST["username"]) || empty($_POST["email"]) || empty($_POST["password"])) {
         
-        header('Location: ../index.php?register_failed=true');
+        header("Location: ../index.php?register_failed=true");
         // Check if username already exists in database. To create unique usernames to make it easier to identify users.
     } elseif ($username == $fetched_user["username"]){
-        header ('location: ../index.php?register_failed_exist=true');
+        header ("location: ../index.php?register_failed_exist=true");
 
     }else {
         // If all is good, insert into database. Redirect to index to make the user login with the correct credentials.
@@ -41,7 +41,7 @@ $admin  = $_POST["admin"];
                 ":admin" => $admin
             ]
         );
-        header ('location: ../index.php');
+        header ("location: ../index.php");
     }
 
 
