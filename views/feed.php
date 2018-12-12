@@ -5,40 +5,40 @@ include "../includes/head-views.php";
 include "../includes/header-views.php";
 include "../includes/admin-access.php";
 
-if(!isset($_SESSION["username"])){
+if(empty($_SESSION["username"])){
 
     header('Location: ../index.php');
+
+
 }else {
 
-$posts_fetch = new PostsFetch($pdo);
-$all_posts= $posts_fetch->fetchAll();
-$post_category= $posts_fetch->fetchPostByCategory();
+    $posts_fetch = new PostsFetch($pdo);
+    $all_posts= $posts_fetch->fetchAll();
+    $post_category= $posts_fetch->fetchPostByCategory();
 
-$category = new PostsFetch($pdo);
-$all_category= $category->fetchCategory();
+    $category = new PostsFetch($pdo);
+    $all_category= $category->fetchCategory();
 
-$insert_post = new PostsInsert($pdo);
-$upload_ok = $insert_post->InsertPosts();
+    $insert_post = new PostsInsert($pdo);
+    $upload_ok = $insert_post->InsertPosts();
 
-$show_comment_amount = new CommentsFetch($pdo);
-$comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount();
+    $show_comment_amount = new CommentsFetch($pdo);
+    $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount();?>
 
-?>
-<main class="container justify-content-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-6">
-        <h4 class="inspiration_link">Go to our inspiration site: <a class="highlight" href="inspiration.php"><span>Luxury is in each detail.</span></a></h4>
-      </div>
-    </div>
-  </div>
-  <br>
-    <?php 
+
+    <main class="container justify-content-center">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-6">
+                <p class="feed_inspiration_link">Go to our inspiration site: <a class="highlight" href="inspiration.php"><span>Luxury is in each detail.</span></a></p>
+            </div>
+        </div>
+
+        <?php 
         if(isset($_SESSION["username"])){ ?>
             <h3 class="font_h3">Welcome <b class="text-capitalize"><?=$_SESSION["username"];?></b></h3>
         <?php    
         }
-    
+        
         if($_SESSION["admin"] === "is_admin"){?>
             <button class="btn btn-light icon_buttons" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <i class="fas fa-plus feed_add_new_post_icon" aria-label="add new post"></i><h2 class="font_h2 feed_new_post">New post</h2></button>
@@ -69,9 +69,8 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                 </div> <!-- closing col-->
             </div> <!-- closing row-->
         <?php
-
         } // closing if-statement for admin access
-    
+        
         if(isset($_GET["category"])){
         // Using array_reverse to present the latest post first
         foreach(array_reverse($post_category) as $category): ?>
@@ -82,30 +81,34 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                     <div class="blog_posts_content_text">
                         <?php
                         if(strlen($category["content"]) > 300){
-                            $blog_posts_content_text = text_shorten(
-                                $text = $category["content"]
-                             );
-                            echo $blog_posts_content_text;
-                        ?>
+                            $blog_posts_content_text = text_shorten($text = $category["content"]);
+                            echo $blog_posts_content_text;?>
                             <a class="blog_post_link" href="post.php?id=<?= $category['id']; ?>"><p>Read more</p></a>
                         
                         <?php
-                        }else{
+                        }else {
                         ?>
-                            <p><?= $category["content"];  ?></p>
+                            <p><?= $category["content"];?></p>
                             <a class="blog_post_link" href="post.php?id=<?= $category['id']; ?>"><p>Go to post</p></a>
                         <?php
                         }?>
                     </div> <!-- closing blog_posts_content_text-->
-                    <?php 
-                        foreach($comments_amount_for_specific_post as $comment):
-                          
-                            if($comment["id"] === $category["id"]){?>
-                                <p><?=$comment["totalcomment"];?> comments</p>
-                            <?php
-                            }
-                        endforeach; ?>
-                    <a href="post.php?id=<?= $category['id']; ?>#comments"><button class="feed_comment_button">Comment</button></a>
+                    <div class="row">
+                        <div class="col-3 d-flex align-self-center justify-content-center pt-2 inline_form_post">
+                            <?php 
+                            foreach($comments_amount_for_specific_post as $comment):
+                    
+                                if($comment["id"] === $category["id"]){?>
+                                    <p><?=$comment["totalcomment"];?> comments</p>
+                                <?php
+                                }
+                            endforeach;
+                            ?>
+                        </div>
+                        <div class="col-2 d-flex align-self-center inline_form_post">
+                            <a class="feed_flex"href="post.php?id=<?= $category['id']; ?>#comments"><button class="feed_comment_button">Comment</button></a>
+                        </div>
+                    </div>
                 </div> <!-- closing col-12 col-md-7-->
                 <div class="col-12 col-md-5 p-0 feed_image_frame_blogpost">
                     <img src="<?= $category['image']; ?>" alt="<?= $category['title']; ?>">
@@ -113,7 +116,9 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
             </div> <!-- closing row-->
         <?php
         endforeach;
-        }else{
+
+        }else{ // Ending if-statement for if categories is set. 
+
         foreach(array_reverse($all_posts) as $post): ?>
             <div class="row blog_posts mb-5 justify-content-between">
                 <div class="col-12 col-md-6 blog_post_content">
@@ -122,38 +127,41 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                     <div class="blog_posts_content_text">
                         <?php
                         if(strlen($post["content"]) > 300){
-                            $blog_posts_content_text = text_shorten(
-                                $text = $post["content"]
-                            );
-                            echo $blog_posts_content_text;
-                        ?>
-                            
+                            $blog_posts_content_text = text_shorten($text = $post["content"]);
+                            echo $blog_posts_content_text;?>
                             <a class="blog_post_link" href="post.php?id=<?= $post['id']; ?>#comments"><p>Read more</p></a>
                         
                         <?php
                         }else{
                         ?>
-                            <p><?= $post["content"];  ?></p>
+                            <p><?= $post["content"];?></p>
                             <a class="blog_post_link" href="post.php?id=<?= $post['id']; ?>"><p>Go to post</p></a>
                         <?php
                         }
                         ?>
-                    </div> <!-- closing blog_posts_content_text-->         
-                    <?php 
-                    foreach($comments_amount_for_specific_post as $comment):
-                    
-                        if($comment["id"] === $post["id"]){?>
-                          <p><?=$comment["totalcomment"];?> comments</p> 
-                        <?php
-                        }
-                    endforeach;?>
-                    <a href="post.php?id=<?= $post['id']; ?>#comments"><button class="feed_comment_button">Comment</button></a>
+                    </div> <!-- closing blog_posts_content_text-->
+                    <div class="row">
+                        <div class="col-3 d-flex align-self-center justify-content-center pt-2 inline_form_post">         
+                            <?php 
+                            foreach($comments_amount_for_specific_post as $comment):
+                            
+                                if($comment["id"] === $post["id"]){?>
+                                  <p><?=$comment["totalcomment"];?> comments</p>
+                                <?php   
+                                }
+                            endforeach;?>
+                        </div>
+                        <div class="col-2 d-flex align-self-center inline_form_post">
+                            <a href="post.php?id=<?= $post['id']; ?>#comments"><button class="feed_comment_button">Comment</button></a>
+                        </div>
+                    </div>
                 </div> <!-- closing col-->
+
                 <div class="feed_image_frame_blogpost col-12 col-md-5 p-0">
                     <img src="<?= $post['image']; ?>" alt="<?= $post['title']; ?>">
                 </div>
             </div> <!-- closing row-->
-        
+                
         <?php
         endforeach;
         }
@@ -222,3 +230,4 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
         $('#text').summernote();
     });
 </script>
+

@@ -8,6 +8,7 @@ include 'includes/functions.php';
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-8 padding_top_content text-center">
             <?php 
+            // If username is set in session, (if logged in), redirect to feed.php.
             if(isset($_SESSION["username"])){ 
             ?>
                 <p><?php header('Location: views/feed.php'); ?> </p>
@@ -34,7 +35,7 @@ include 'includes/functions.php';
                     <div id="collapseOne" class="collapse style_login_reg_form" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body">
                             <?php
-                            // My function, that echoes out if register fails
+                            // Function which echoes unique message if register fails
                             $text = access_denied_messages(
                                 'login_failed', 'Username or password is incorrect, please try again.'
                             );
@@ -58,13 +59,13 @@ include 'includes/functions.php';
                     <div id="collapseTwo" class="collapse style_login_reg_form" aria-labelledby="headingTwo" data-parent="#accordionExample">
                         <div class="card-body">
                            <?php
-                            // My function, that echoes out if register fails
+                            // Function which echoes unique message if register fails
                             $text = access_denied_messages(
                                 'register_failed', 'You need to fill in all fields.'
                             );
                             echo $text;
                             
-                            // My function, that echoes out if register fails
+                            // Function which echoes unique message if register fails
                             $text = access_denied_messages(
                                 'register_failed_exist', 'A user with this name already exists, try again.'
                             );
