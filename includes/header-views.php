@@ -1,13 +1,13 @@
 
 <?php
 // All the includes we need for the site.
-include '../classes/PostsFetch.php';
-include '../classes/PostsEdit.php';
-include '../classes/PostsInsert.php';
-include '../classes/CommentsEdit.php';
-include '../classes/CommentsFetch.php';
-include '../classes/CommentsInsert.php';
-include '../includes/functions.php';
+include "../classes/PostsFetch.php";
+include "../classes/PostsEdit.php";
+include "../classes/PostsInsert.php";
+include "../classes/CommentsEdit.php";
+include "../classes/CommentsFetch.php";
+include "../classes/CommentsInsert.php";
+include "../includes/functions.php";
 
 
 /*
@@ -33,7 +33,7 @@ $all_category= $category->fetchCategory();
                 </ul>
                 <?php
                 foreach($all_category as $category_link):
-                $product_category = $category_link['category'];
+                $product_category = $category_link["category"];
                 ?>
                     <ul>
                         <?php  
