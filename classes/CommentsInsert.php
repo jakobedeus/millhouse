@@ -6,18 +6,15 @@ $pdo = new PDO(
    "root"  //password
 );
 
-class CommentsInsert
-{
+class CommentsInsert {
 
     private $pdo;
 
-    public function __construct($pdo)
-    {
+    public function __construct($pdo) {
       $this->pdo = $pdo;
     }
 
-    public function insertComments()
-    {
+    public function insertComments() {
       //Redefine variables to make them more understandable and easier to use
       $created_by = $_SESSION["user_id"];
       $content = $_POST["content"];

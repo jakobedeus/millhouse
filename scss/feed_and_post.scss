@@ -15,6 +15,17 @@
     font-family: $headers_font;
 }
 
+.blog_post_link {
+    font-family: $body_font;
+    color: $primary_color_1;
+    text-decoration: underline;
+
+    &:hover {
+        font-family: $body_font;
+        color: $secondary_color; 
+    }
+}
+
 .blog_posts {
     background-color: #ffffff;
     border-radius: $border_radius_background;
@@ -23,21 +34,6 @@
     .blog_post_content {
         min-height: 300px;
         padding-left: 1.5em;
-
-        .blog_title_link {
-            text-decoration: none;
-        }
-
-        .blog_post_link {
-            font-family: $body_font;
-            color: $primary_color_1;
-            text-decoration: underline;
-        
-            &:hover {
-                font-family: $body_font;
-                color: $secondary_color; 
-            }
-        }
 
         .blog_posts_content_text {
             min-height: 130px;  

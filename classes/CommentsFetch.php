@@ -5,18 +5,15 @@ $pdo = new PDO(
    "root"  //password
 );
 
-class CommentsFetch
-{
+class CommentsFetch {
 
     private $pdo;
 
-    public function __construct($pdo)
-    {
+    public function __construct($pdo) {
       $this->pdo = $pdo;
     }
 
-    public function fetchComments ()
-    {
+    public function fetchComments() {
     // Fetch comments to correct post
       $post_id = $_GET["id"];
       $fetch_all_comments_statement = $this->pdo->prepare(
@@ -37,8 +34,7 @@ class CommentsFetch
     }
 
     // Fetch number of comments to display on feed.
-    public function fetchCommentsAmount ()
-    {
+    public function fetchCommentsAmount() {
       $fetch_amount_of_comments_statement = $this->pdo->prepare(
         "SELECT posts.id, COUNT(comments.post_id) as totalcomment
         FROM posts 

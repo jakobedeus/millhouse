@@ -4,22 +4,18 @@ $pdo = new PDO(
     "mysql:host=localhost;dbname=millhouse;charset=utf8",
     "root", //user
     "root"  //password
-
 );
 
 // Fetch posts with different methods and different types of data. 
-class PostsFetch
-{
+class PostsFetch {
     private $pdo;
 
-    public function __construct($pdo)
-    {
+    public function __construct($pdo) {
         $this->pdo = $pdo;
     }
     
     // Fetch all posts
-    public function fetchAll()
-    {
+    public function fetchAll() {
 
         $fetch_all_posts_statement = $this->pdo->prepare(
 
@@ -39,8 +35,7 @@ class PostsFetch
     }
 
     // Fetch all posts from table catgories.
-    public function fetchCategory()
-    {
+    public function fetchCategory() {
         $fetch_category = $this->pdo->prepare(
         "SELECT category FROM categories");
         $fetch_category->execute();
@@ -48,12 +43,9 @@ class PostsFetch
         
         // Return value in variable to use when looping out fetched data.
         return $all_category;
-
     }
 
-    public function fetchPostByCategory()
-
-    {
+    public function fetchPostByCategory() {
         // If $_GET["category"] is set. Which comes to clicking on feed.php, run this code.
         if(isset($_GET['category'])){ 
         $category_id = $_GET["category"];
@@ -77,14 +69,12 @@ class PostsFetch
 
             // Return value in variable to use when looping out fetched data. Contains posts by category
             return $post_category;
-            
-           
+
         }
     }
 
 
-    public function fetchSinglePost()
-    {
+    public function fetchSinglePost() {
         // If $_GET["id"] is set, which is the post id on views/post.php run this code.
         if(isset($_GET['id'])){ 
 
@@ -111,7 +101,6 @@ class PostsFetch
         // Return fetched data in a variable.
         return $one_posts;
 
+        }
     }
-}
-
 }
