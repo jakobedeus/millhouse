@@ -20,16 +20,16 @@ $admin  = $_POST["admin"];
     $fetched_user = $statement->fetch();
     // Make password hashed.
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    // Check if 
+    // Check if input fields are empty. 
     if(empty($_POST["username"]) || empty($_POST["email"]) || empty($_POST["password"])) {
-
+        
         header('Location: ../index.php?register_failed=true');
-
+        // Check if username already exists in database. To create unique usernames to make it easier to identify users.
     } elseif ($username == $fetched_user["username"]){
         header ('location: ../index.php?register_failed_exist=true');
 
     }else {
-
+        // If all is good, insert into database. Redirect to index to make the user login with the correct credentials.
         $statement = $pdo->prepare("INSERT INTO users
         (username, password, mail, admin) VALUES (:username, :password, :mail, :admin)");
 

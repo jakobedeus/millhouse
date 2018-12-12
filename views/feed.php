@@ -5,7 +5,7 @@ include "../includes/head-views.php";
 include "../includes/header-views.php";
 include "../includes/admin-access.php";
 
-if(!isset($_SESSION["username"])){
+if(empty($_SESSION["username"])){
 
     header('Location: ../index.php');
 }else {
@@ -142,9 +142,9 @@ $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount()
                     <?php 
                     foreach($comments_amount_for_specific_post as $comment):
                     
-                        if($comment["id"] === $post["id"]){
+                        if($comment["id"] === $post["id"]){?>
                           <p><?=$comment["totalcomment"];?> comments</p> 
-                        }
+                          <?php }
                     endforeach;?>
                     <a href="post.php?id=<?= $post['id']; ?>#comments"><button class="feed_comment_button">Comment</button></a>
                 </div> <!-- closing col-->
