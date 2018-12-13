@@ -1,65 +1,49 @@
-.angle_left {
-background-color: white;
-width: 200px;
-height: 100px;
-position: absolute;
-bottom: 40px;
-//left: 500px;
-font-size: 1.5rem;
-line-height: 100px;
-text-transform: uppercase;
-text-align: center;
-letter-spacing: 3px;
-
-}
-
+@import 'variables';
 
 .parallax {
-  background-image: url("../images/ren-ran-232079-unsplash.jpg");
+  background-image: url("../images/background.jpg");
   min-height: 800px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
 
-.blue_overlay {
-  height: 800px;
-  margin: 0 100px;
-  padding: 60px;
-  background-color: rgba(28, 48, 69, 0.6);
-  background-image: url("../images/millhouse_logo.png");
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-}
+  .blue_overlay {
+    height: 800px;
+    margin: 0 100px;
+    padding: 60px;
+    background-color: rgba(28, 48, 69, 0.6);
+    background-image: url("../images/millhouse_logo.png");
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
 
-.white_overlay {
-  height: 200px;
-  padding: 60px;
-  background-color: rgba(255, 255, 255, 0.5);
+    .inspiration {
+      color: white;
+      text-align: center;
+      letter-spacing: 20px;
+      font-weight: bolder;
+    }
+
+      .angle_left {
+        background-color: white;
+        width: 200px;
+        height: 100px;
+        position: absolute;
+        bottom: 40px;
+        //left: 500px;
+        font-size: 1.5rem;
+        line-height: 100px;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 3px;
+      }
+
 }
 
 .parallax_2 {
-  background-image: url("../images/sonnie-hiles-489078-unsplash.jpg");
-  min-height: 800px;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.parallax_3 {
-  background-image: url("../images/rawpixel-632454-unsplash.jpg");
-  min-height: 800px;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.parallax_4 {
-  background-image: url("../images/matthew-henry-136723-unsplash.jpg");
+  background-image: url("../images/living.jpg");
   min-height: 800px;
   background-attachment: fixed;
   background-position: center;
@@ -68,36 +52,47 @@ letter-spacing: 3px;
 }
 
 .parallax_paragraph {
-  color: black;
-  font-size: 2em;
-  font-family: open sans, sans-serif;
-  text-align: center;
-  letter-spacing: 20px;
-  font-weight: bolder;
+    color: black;
+    font-size: 2em;
+    font-family: $body_font;
+    text-align: center;
+    letter-spacing: 20px;
+    font-weight: bolder;
 }
 
-/*a:link, a:visited, {
-  color: black;
+.white_overlay {
+  height: 200px;
+  padding: 60px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.parallax_3 {
+  background-image: url("../images/watches.jpg");
+  min-height: 800px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax_4 {
+  background-image: url("../images/sunglasses.jpg");
+  min-height: 800px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax_link {
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
   color: black;
-}*/
-
-.inspiration {
-  color: white;
-  text-align: center;
-  letter-spacing: 20px;
-  font-weight: bolder;
 }
 
-  .feed_inspiration_link {
-    font-size: 1.3em;
-    font-family: open sans, sans-serif;
-    font-weight: bold;
-
+.feed_inspiration_link {
+  font-size: 1.3em;
+  font-family: $body_font;
+  font-weight: bold;
 }
 
 .highlight {
@@ -130,14 +125,25 @@ a:hover {
 				height: 105%;
 				width: 105%;
 			}
-
 		}
   }
 
-  @media (max-width: 576px){
+@media (max-width: 576px){
   .feed_inspiration_link{
     font-size: 0.9em;
-    font-family: open sans, sans-serif;
+    font-family: $body_font;
     font-weight: bold;
   }
+}
+
+@media (min-width: 576px) {
+  .feed_inspiration_link{
+    display: none;
   }
+}
+
+@media (min-width: 992px) {
+  .feed_inspiration_link{
+    display: block;
+  }
+}

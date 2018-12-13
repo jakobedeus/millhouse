@@ -12,27 +12,27 @@ if(empty($_SESSION["username"])){
 ?>
 
 <main class="inspirational">
-    <div class="parallax">
+    <div class="parallax" title="background image">
       <div class="blue_overlay">
         <h1 class="inspiration">LUXURY IS IN EACH DETAIL.</h1>
         <div class="angle_left">
-          <i class="fas fa-angle-left">MILLHOUSE</i>
+          <i class="fas fa-angle-left"><a href="feed.php" class="parallax_link">MILLHOUSE</i></a>
         </div>
       </div>
     </div>
-      <div class="parallax_2">
+      <div class="parallax_2" title="living inspiration">
         <div class="white_overlay">
-          <p class="parallax_paragraph"><a href="feed.php?category=living">LIVING.</a></p>
+          <p class="parallax_paragraph"><a href="feed.php?category=living" class="parallax_link">LIVING.</a></p>
         </div>
       </div>
-      <div class="parallax_3">
+      <div class="parallax_3" title="watches">
         <div class="white_overlay">
-          <p class="parallax_paragraph"><a href="feed.php?category=watches">WATCHES.</a></p>
+          <p class="parallax_paragraph"><a href="feed.php?category=watches" class="parallax_link">WATCHES.</a></p>
         </div>
       </div>
-      <div class="parallax_4">
+      <div class="parallax_4" title="sunglasses">
         <div class="white_overlay">
-          <p class="parallax_paragraph"><a href="feed.php?category=sunglasses">SUNGLASSES.</a></p>
+          <p class="parallax_paragraph"><a href="feed.php?category=sunglasses" class="parallax_link">SUNGLASSES.</a></p>
         </div>
       </div>
   </div>
