@@ -54,7 +54,7 @@ $all_category= $category->fetchCategory();
                 ?>
             </div>
             <div class="col-6 order-2 col-md-3 logout align-self-center text-center">
-                <a href="../includes/logout.php" class="col-12"><button class="nav_button_inverted_light text-center">LOG OUT</button></a>    
+                <a href="../includes/logout.php" class="col-12"><button class="general_button text-center">LOG OUT</button></a>    
             </div>
         </nav>
     </header>
