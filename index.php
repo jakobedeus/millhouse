@@ -18,11 +18,9 @@ include "includes/functions.php";
             <img class="img-fluid"src="images/millhouse_logo.png" alt="Millhouse logotype">
         </div>
         <div class="col-12 col-md-10 col-lg-8 text_about_blog">
-            <p>Lorem ipsum dolor amet waistcoat echo park live-edge, 
-            cliche four loko pinterest tousled cred bespoke raw denim 
-            vape 90's brooklyn meditation. Slow-carb vinyl vape cronut 
-            gastropub, swag quinoa chillwave. You probably haven't heard 
+        <p> Millhouse is a former wholesale with a long history in selling accessories and interior products. As a first step to selling our products online we created this blog to make it easier for our customers to have their say. Stay tuned for our upcoming webshop!
             </p>
+           <p><i>Luxury is in each detail.</i></p>
         </div>
     </div> <!-- closing row-->
     <div class="row justify-content-center">
