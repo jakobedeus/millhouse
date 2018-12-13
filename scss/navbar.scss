@@ -23,8 +23,8 @@ nav {
     width: 20%;
   }
 
-  .category_container {   
-
+  .category_container { 
+    
     a:visited {
       color: $primary_color_1;
       font-weight: bold;
@@ -37,7 +37,8 @@ nav {
 
     ul li {
       display: flex;
-      margin:1.2em;
+      margin: 1.2em;
+      font-size: 1.7rem;
 
       .underline {
         font-weight: bold;
