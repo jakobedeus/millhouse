@@ -128,17 +128,15 @@
 		}
   }
 
+.feed_inspiration_link{
+  display: none;
+}
+
 @media (max-width: 576px){
   .feed_inspiration_link{
     font-size: 0.9em;
     font-family: $body_font;
     font-weight: bold;
-  }
-}
-
-@media (min-width: 576px) {
-  .feed_inspiration_link{
-    display: none;
   }
 }
 
