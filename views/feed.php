@@ -68,7 +68,7 @@ if(empty($_SESSION["username"])){
                         <textarea name="text" id="text"></textarea>
                         <!-- Send hidden value in order to select the correct $_POST on update_page.php -->
                         <input type="hidden" name="new_post" id="new_post" value="<?= $post["id"]; ?>">
-                        <input class="feed_comment_and_create_button" type="submit" value="Send">
+                        <input class="general_button" type="submit" value="Send">
                     </form>
                 </div> <!-- closing col-->
             </div> <!-- closing row-->
@@ -115,7 +115,7 @@ if(empty($_SESSION["username"])){
                         </div>
                         <div class="col-2 d-flex align-self-center inline_form_post">
                             <!-- Send form to update_page.php and then scroll down to comment section -->
-                            <a class="feed_flex"href="post.php?id=<?= $category["id"]; ?>#comments"><button class="feed_comment_and_create_button">Comment</button></a>
+                            <a class="feed_flex"href="post.php?id=<?= $category["id"]; ?>#comments"><button class="general_button">Comment</button></a>
                         </div>
                     </div>
                 </div> <!-- closing col-12 col-md-7-->
@@ -166,7 +166,7 @@ if(empty($_SESSION["username"])){
                             endforeach;?>
                         </div>
                         <div class="col-2 d-flex align-self-center inline_form_post">
-                            <a href="post.php?id=<?= $post["id"]; ?>#comments"><button class="feed_comment_and_create_button">Comment</button></a>
+                            <a href="post.php?id=<?= $post["id"]; ?>#comments"><button class="general_button">Comment</button></a>
                         </div>
                     </div>
                 </div> <!-- closing col-->

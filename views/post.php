@@ -87,7 +87,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
                             <textarea name="content" id="text_edit"><?= $post["content"] ?></textarea>
                             <!-- Send hidden value in order to select the correct $_POST on update_page.php -->
                             <input type="hidden" name="single_post_id_update" value="<?= $post["id"]; ?>">
-                            <button type="submit" class="btn btn-dark">UPDATE</button>
+                            <button type="submit" class="general_button">UPDATE</button>
                         </form>
                     <?php 
                     }?>
@@ -108,7 +108,7 @@ $comments_for_specific_post = $show_comment->fetchComments();
                 <input type="hidden" name="comment_post_id" value="<?= $post["id"]; ?>">
                 <textarea class="post_input_comment"name="content" rows="5" cols="50" placeholder="Write your comment here" required></textarea>
                 <br>
-                <button type="submit" class="btn btn-dark post_comment_button">POST COMMENT</button>
+                <button type="submit" class="general_button post_comment_button">POST COMMENT</button>
             </form>
         </div> <!-- closing col-8-->
     </section><!-- closing row-->

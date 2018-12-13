@@ -25,30 +25,23 @@ nav {
 
   .category_container {   
 
-    p{
-      color: $primary_color_2;
-      font-weight: bold;
-    }
-
     a:visited {
-      color: $primary_color_2;
+      color: $primary_color_1;
       font-weight: bold;
     }
   
     a:hover {
-      color: $primary_color_2;
+      color: $primary_color_1;
       font-weight: bold;
     }
 
     ul li {
       display: flex;
-      color: $primary_color_2;
-      font-weight: bold;
       margin:1.2em;
 
       .underline {
+        font-weight: bold;
         text-decoration: underline;
-        color: $primary_color_1 !important;
       }
     }
   }
