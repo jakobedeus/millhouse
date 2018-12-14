@@ -158,7 +158,7 @@ if(empty($_SESSION["username"])){
                         ?>
                     </div> <!-- closing blog_posts_content_text-->
                     <div class="row">
-                        <div class="col-3 d-flex align-self-center justify-content-center pt-2 inline_form_post">         
+                        <div class="col-6 col-md-3 d-flex align-self-center justify-content-center pt-2 inline_form_post">         
                             <?php 
                             foreach($comments_amount_for_specific_post as $comment):
                             
@@ -168,7 +168,7 @@ if(empty($_SESSION["username"])){
                                 }
                             endforeach;?>
                         </div>
-                        <div class="col-2 d-flex align-self-center inline_form_post">
+                        <div class="col-6 col-md-2 d-flex align-self-center inline_form_post">
                             <a href="post.php?id=<?= $post["id"]; ?>#comments"><button class="general_button">Comment</button></a>
                         </div>
                     </div>
