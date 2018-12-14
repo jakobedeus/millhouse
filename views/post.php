@@ -34,8 +34,8 @@ $comments_for_specific_post = $show_comment->fetchComments();
                         <h2 class="font_h2"><?= $post["title"]; ?></h2>
                         <p><i class="fas fa-clock" aria-label="time icon"></i> <?= $post["date"];?>
                         - <a class="blog_post_link"  href="feed.php?category=<?=$post["category"];?>">
-                        <?=$post["category"];?></a> - <?php $post["category"];?> 
-                        <i class="fas fa-user" aria-label="auther icon"></i> <?= $post["username"];?></p>
+                        <?=$post["category"];?></a><?php $post["category"];?> 
+                        </p>
                         <p><?= $post["content"];?></p>
                         <hr>
                     </div> <!-- closing col-12-->

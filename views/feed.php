@@ -27,19 +27,22 @@ if(empty($_SESSION["username"])){
     $comments_amount_for_specific_post = $show_comment_amount->fetchCommentsAmount();?>
 
 
-    <main class="container justify-content-center">
+    <main class="container  justify-content-between">
         <div class="row">
-            <div class="col-12">
-                <p class="feed_inspiration_link">Go to our inspiration site: <a class="highlight" href="inspiration.php"><span>Luxury is in each detail.</span></a></p>
+            <div class="col-7">
+                <?php 
+                // Echo a welcome message with session username
+                if(isset($_SESSION["username"])){ ?>
+                    <h3 class="font_h3 welcome_text">Welcome <strong class="text-capitalize"><?=$_SESSION["username"];?></strong></h3>
+                <?php
+                }?>
+
+            </div>
+            <div class="col-5">
+                <p class="feed_inspiration_link">Go to our inspiration site: <a class="highlight" href="inspiration.php"><span>Luxury is in each detail.</span></a>
             </div>
         </div>
-
-        <?php 
-        // Echo a welcome message with session username
-        if(isset($_SESSION["username"])){ ?>
-            <h3 class="font_h3">Welcome <strong class="text-capitalize"><?=$_SESSION["username"];?></strong></h3>
         <?php
-        }
         // If user role is admin, allow create new post
         if($_SESSION["admin"] === "is_admin"){?>
             <button class="btn btn-light icon_buttons" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -81,7 +84,7 @@ if(empty($_SESSION["username"])){
             <div class="row blog_posts mb-5 justify-content-between">
                 <div class="col-12 col-md-6 blog_post_content">
                     <a class="blog_title_link" href="post.php?id=<?= $category["id"]; ?>"><h2 class="font_h2"><?= $category["title"]; ?></h2></a>
-                    <p><i class="fas fa-clock" aria-label="time icon"></i> <?= $category["date"] . " - " ?><a class="blog_post_link" href="feed.php?category=<?=$category["category"];?>"><?=$category["category"];?></a> - <i class="fas fa-user" aria-label="author icon"></i> <?= $category["username"]; ?></p>
+                    <p><i class="fas fa-clock" aria-label="time icon"></i> <?= $category["date"] . " - " ?><a class="blog_post_link" href="feed.php?category=<?=$category["category"];?>"><?=$category["category"];?></a></p>
                     <div class="blog_posts_content_text">
                         <?php
                         // Function to create and excerpt with a limit of 300 character
@@ -101,7 +104,7 @@ if(empty($_SESSION["username"])){
                         }?>
                     </div> <!-- closing blog_posts_content_text-->
                     <div class="row">
-                        <div class="col-3 d-flex align-self-center justify-content-center pt-2 inline_form_post">
+                        <div class="col-6 col-md-3 d-flex align-self-center justify-content-center pt-2 inline_form_post">
                             <?php 
                             foreach($comments_amount_for_specific_post as $comment):
                                 // Display number of comments for each post. Using a select query to count number or rows
@@ -113,7 +116,7 @@ if(empty($_SESSION["username"])){
                             endforeach;
                             ?>
                         </div>
-                        <div class="col-2 d-flex align-self-center inline_form_post">
+                        <div class="col-6 col-md-2 d-flex align-self-center inline_form_post">
                             <!-- Send form to update_page.php and then scroll down to comment section -->
                             <a class="feed_flex"href="post.php?id=<?= $category["id"]; ?>#comments"><button class="general_button">Comment</button></a>
                         </div>
@@ -137,7 +140,7 @@ if(empty($_SESSION["username"])){
                         <?= $post["title"]; ?></h2></a>
                     <p><i class="fas fa-clock" aria-label="time icon"></i> <?= $post["date"]?>
                     - <a class="blog_post_link"  href="feed.php?category=<?=$post["category"];?>">
-                    <?=$post["category"];?></a> - <i class="fas fa-user" aria-label="author icon"></i> <?= $post["username"]; ?> </p>
+                    <?=$post["category"];?></a></p>
                     <div class="blog_posts_content_text">
                         <?php
                         if(strlen($post["content"]) > 300){
