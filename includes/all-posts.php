@@ -26,7 +26,7 @@
                 foreach($comments_amount_for_specific_post as $comment):
                             
                     if($comment["id"] === $post["id"]){?>
-                        <p><?=$comment["totalcomment"];?> comments</p>
+                        <p><?=$comment["totalcomment"];?> comment (s)</p>
                         <?php   
                     }
                 endforeach;?>
