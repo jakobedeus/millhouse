@@ -1,5 +1,5 @@
 <div class="row blog_posts mb-5 justify-content-between">
-    <div class="col-12 col-md-6 blog_post_content">
+    <div class="col-12 mb-3 col-md-6 blog_post_content">
         <a class="blog_title_link" href="post.php?id=<?= $category["id"]; ?>"><h2 class="font_h2"><?= $category["title"]; ?></h2></a>
         <p><i class="fas fa-clock" aria-label="time icon"></i> <?= $category["date"] . " - " ?><a class="blog_post_link" href="feed.php?category=<?=$category["category"];?>"><?=$category["category"];?></a></p>
         <div class="blog_posts_content_text">

@@ -26,7 +26,7 @@ include "includes/functions.php";
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 accordion" id="accordionExample">
             <div class="row justify-content-center">
-                <div class="col-8 col-md-6 col-lg-5">
+                <div class="col-10 col-md-6 col-lg-5">
                     <h5 class="mb-0">
                         <button class="btn btn-light btn-lg btn-block collapse_login_reg_button" type="button" data-toggle="collapse" aria-pressed="true" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">SIGN IN</button>
                     </h5>
@@ -50,7 +50,7 @@ include "includes/functions.php";
                         </div> <!-- closing card-body-->
                     </div> <!-- closing collapseOne-->
                 </div> <!-- closing col-8 col-md-5-->
-                <div class="col-8 col-md-6 col-lg-5">
+                <div class="col-10 col-md-6 col-lg-5">
                     <h5 class="mb-0">
                         <button class="btn btn-light btn-lg btn-block collapse_login_reg_button" type="button" data-toggle="collapse" data-toggle="button" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">REGISTER</button>
                     </h5>
