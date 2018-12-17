@@ -47,7 +47,6 @@ if(empty($_SESSION["username"])){
         if($_SESSION["admin"] === "is_admin"){?>
             <button class="btn btn-light icon_buttons" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <i class="fas fa-plus feed_add_new_post_icon" aria-label="add new post"></i><h2 class="font_h2 feed_new_post">New post</h2></button>
-
             <?php
             // Validate if all fields filled
             $text = access_denied_messages(
@@ -56,174 +55,29 @@ if(empty($_SESSION["username"])){
             echo $text; ?>
             <div class="row justify-content-center mb-5">
                 <div class="col-10 m-0 p-0 collapse" id="collapseExample">
-                    <form action="../includes/update_page.php" method="POST" enctype="multipart/form-data">
-                        <label for="image">Image</label>
-                        <input type="file" name="image" id="image" name="MAX_FILE_SIZE" value="2097152" >
-                        <label for="title">Title</label><br />
-                        <input type="text" name="title" id="title"><br />
-
-                        <select name="category_list[]" id="">
-                            <option value="">Choose category</option>
-                            <option value="1">Living</option>
-                            <option value="2">Sunglasses</option>
-                            <option value="3">Watches</option>
-                        </select>
-                        <textarea name="text" id="text"></textarea>
-                        <!-- Send hidden value in order to select the correct $_POST on update_page.php -->
-                        <input type="hidden" name="new_post" id="new_post" value="<?= $post["id"]; ?>">
-                        <input class="general_button" type="submit" value="Send">
-                    </form>
+                    <?php include "../includes/new-post-form.php"; ?>
                 </div> <!-- closing col-->
             </div> <!-- closing row-->
         <?php
         } // closing if-statement for admin access
         // Loop posts with selected category
         if(isset($_GET["category"])){
-        // Using array_reverse to present the latest post first
-        foreach(array_reverse($post_category) as $category): ?>
-            <div class="row blog_posts mb-5 justify-content-between">
-                <div class="col-12 col-md-6 blog_post_content">
-                    <a class="blog_title_link" href="post.php?id=<?= $category["id"]; ?>"><h2 class="font_h2"><?= $category["title"]; ?></h2></a>
-                    <p><i class="fas fa-clock" aria-label="time icon"></i> <?= $category["date"] . " - " ?><a class="blog_post_link" href="feed.php?category=<?=$category["category"];?>"><?=$category["category"];?></a></p>
-                    <div class="blog_posts_content_text">
-                        <?php
-                        // Function to create and excerpt with a limit of 300 character
-                        if(strlen($category["content"]) > 300){
-                            $blog_posts_content_text = text_shorten($text = $category["content"]);
-                            echo $blog_posts_content_text;?>
-                            <!-- If the text of the post is larger than 300 characters, show read more button -->
-                            <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Read more</p></a>
+            // Using array_reverse to present the latest post first
+            foreach(array_reverse($post_category) as $category): 
+                include "../includes/posts-by-category.php";
+            endforeach;
 
-                        <?php
-                        }else {
-                        ?>
-                            <p><?= $category["content"];?></p>
-                            <!-- If not, show go to post button -->
-                            <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Go to post</p></a>
-                        <?php
-                        }?>
-                    </div> <!-- closing blog_posts_content_text-->
-                    <div class="row">
-                        <div class="col-6 col-md-3 d-flex align-self-center justify-content-center pt-2 inline_form_post">
-                            <?php 
-                            foreach($comments_amount_for_specific_post as $comment):
-                                // Display number of comments for each post. Using a select query to count number or rows
-                                // and return in as totalcomment.
-                                if($comment["id"] === $category["id"]){?>
-                                    <p><?=$comment["totalcomment"];?> comments</p>
-                                <?php
-                                }
-                            endforeach;
-                            ?>
-                        </div>
-                        <div class="col-6 col-md-2 d-flex align-self-center inline_form_post">
-                            <!-- Send form to update_page.php and then scroll down to comment section -->
-                            <a class="feed_flex"href="post.php?id=<?= $category["id"]; ?>#comments"><button class="general_button">Comment</button></a>
-                        </div>
-                    </div>
-                </div> <!-- closing col-12 col-md-7-->
-                <div class="col-12 col-md-5 p-0 feed_image_frame_blogpost">
-                    <!-- Create alt text containing the title -->
-                    <img src="<?= $category["image"]; ?>" alt="<?= $category["title"]; ?>">
-                </div>
-            </div> <!-- closing row-->
-        <?php
-        endforeach;
-
-        }else{ // Ending if-statement for if categories is set. 
-        // Using array_reverse to present the latest post first
-        // Loop all posts
-        foreach(array_reverse($all_posts) as $post): ?>
-            <div class="row blog_posts mb-5 justify-content-between">
-                <div class="col-12 col-md-6 blog_post_content">
-                    <a class="blog_title_link" href="post.php?id=<?= $post["id"]; ?>"><h2 class="font_h2">
-                        <?= $post["title"]; ?></h2></a>
-                    <p><i class="fas fa-clock" aria-label="time icon"></i> <?= $post["date"]?>
-                    - <a class="blog_post_link"  href="feed.php?category=<?=$post["category"];?>">
-                    <?=$post["category"];?></a></p>
-                    <div class="blog_posts_content_text">
-                        <?php
-                        if(strlen($post["content"]) > 300){
-                            $blog_posts_content_text = text_shorten($text = $post["content"]);
-                            echo $blog_posts_content_text;?>
-                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>#comments"><p>Read more</p></a>
-
-                        <?php
-                        }else{
-                        ?>
-                            <p><?= $post["content"];?></p>
-                            <a class="blog_post_link" href="post.php?id=<?= $post["id"]; ?>"><p>Go to post</p></a>
-                        <?php
-                        }
-                        ?>
-                    </div> <!-- closing blog_posts_content_text-->
-                    <div class="row">
-                        <div class="col-6 col-md-3 d-flex align-self-center justify-content-center pt-2 inline_form_post">         
-                            <?php 
-                            foreach($comments_amount_for_specific_post as $comment):
-                            
-                                if($comment["id"] === $post["id"]){?>
-                                  <p><?=$comment["totalcomment"];?> comments</p>
-                                <?php   
-                                }
-                            endforeach;?>
-                        </div>
-                        <div class="col-6 col-md-2 d-flex align-self-center inline_form_post">
-                            <a href="post.php?id=<?= $post["id"]; ?>#comments"><button class="general_button">Comment</button></a>
-                        </div>
-                    </div>
-                </div> <!-- closing col-->
-
-                <div class="feed_image_frame_blogpost col-12 col-md-5 p-0">
-                    <img src="<?= $post["image"]; ?>" alt="<?= $post["title"]; ?>">
-                </div>
-            </div> <!-- closing row-->
-        <?php
-        endforeach;
+        }else{ 
+            // Ending if-statement for if categories is set. 
+            // Using array_reverse to present the latest post first
+            // Loop all posts
+            foreach(array_reverse($all_posts) as $post): 
+                include "../includes/all-posts.php";
+            endforeach;
         }
 
-      /*$page = ! empty( $_GET['page'] ) ? (int) $_GET['page'] : 1;
-
-   $total_posts = count($all_posts);
-   //echo $total_posts . "<br />";
-   $number_of_elements_per_page = 3;
-
-   $number_of_pages = ceil($total_posts/$number_of_elements_per_page);
-   //echo $number_of_pages;
-   $page = max($page, 1); //get 1 page when $_GET['page'] <= 0
-   $page = min($page, $number_of_pages); //get last page when $_GET['page'] > $totalPages
-   $offset = ($page - 1) * $number_of_elements_per_page;
-   if( $offset < 0 ) $offset = 0;
-   $hello_post = array_slice( $all_posts, $offset, $number_of_elements_per_page);?>
-
-        <nav class="pagination">
-          <a href="feed.php?page=1">1</a>
-          <a href="feed.php?page=2">2</a>
-          <a href="feed.php?page=3">3</a>
-          <a href="feed.php?page=4">4</a>
-        </nav>*/
-
-        /*if(isset($_GET["page"])){
-          $current_page = $_GET["page"];
-
-
-          if($current_page === 1){
-            echo "1";
-          }
-          if($current_page === 2){
-            echo "2";
-          }
-          if($current_page === 3){
-            echo "3";
-          }
-          if($current_page === 4){
-            echo "4";
-          }
-        }*/
           ?>
-
-
-</main> <!-- closing container-->
+    </main> <!-- closing container-->
 <div class="back_to_top_button text-center"><a href="#"><i class="fas fa-caret-up"></i><p>Back to top</p></a></div>
 
 <?php
@@ -231,9 +85,7 @@ if(empty($_SESSION["username"])){
 
 }?> <!--ending if-statement for access only if logged in. -->
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
   <!-- Link dependencies for the editor -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>

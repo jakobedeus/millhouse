@@ -60,11 +60,13 @@
     font-size: 2rem;
   }
 }
+
 .feed_add_new_post_icon{
   color: $primary_color_1;
   font-size: 2rem;
   margin-right: 0.5em;
 }
+
 .post_comment_button {
   margin-top: 1.5em;
 }
@@ -74,7 +76,6 @@
   z-index: 1000;
   bottom: 10vh;
   right: 2em;
-  
   
   a:link {
     color:$secondary_color;
@@ -89,5 +90,4 @@
 
   }
 
-  
 }
