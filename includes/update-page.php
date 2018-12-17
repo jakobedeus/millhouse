@@ -10,11 +10,35 @@ session_start();
 include "../includes/head-views.php";
 include "../includes/header-views.php";
 
+
+foreach($_POST["category_list"] as $key => $value) {
+    $_POST["category_list"] = $value;
+
+}
+$target_file = $temporary_location . basename($_FILES["image"]["name"]);
+$image = $_FILES["image"];
+$file_type = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+$temporary_location = $image["tmp_name"];
+$new_location = "../images/uploads/" . $image["name"];
+      
 if(isset($_POST["new_post"])){
-    if(empty($_POST["title"]) || empty($_FILES["image"]) || empty($_POST["text"]) || empty($_POST["category_list"])) {
+    if(empty($_POST["title"]) || empty($_FILES["image"]["name"]) || empty($_POST["text"]) || empty($_POST["category_list"])) {
     
       header ("location: ../views/feed.php?create_post_fail=true");
     
+    }elseif ($file_type != "jpg" && $file_type != "png" && $file_type != "jpeg" && $file_type != "gif" ) {
+
+        //If-statement we set to limit the type of an file approved to be uploaded. 
+
+        header ("location: ../views/feed.php?file_wrong_file_type=true");
+            
+
+    }elseif($_FILES["image"]["size"] > 1000000 ){ 
+
+        //If-statement we set to limit the size of an file approved to be uploaded.
+       
+        header ("location: ../views/feed.php?file_too_big=true");
     }else{
 
     $insert_post = new PostsInsert($pdo);
