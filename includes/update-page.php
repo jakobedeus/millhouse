@@ -34,7 +34,6 @@ if (isset($_POST["single_post_id_delete"])){
 // If hidden value is set in $_POST when updating post this script will run and redirect.
 if(isset($_POST["single_post_id_update"])){
     if(empty($_POST["title"]) || empty($_POST["content"])) {
-      
         header ("Location: ../views/post.php?id=".$_POST["single_post_id_update"]."&fail=true");
       
     }else{
