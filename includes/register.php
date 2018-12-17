@@ -3,9 +3,11 @@
 session_start();
 include "database-connection.php";
 
-$username = $_POST["username"];
-$password = $_POST["password"];
-$email = $_POST["email"];
+// strip_tags to secure input fields from inserting harmful code to database.
+
+$username = strip_tags($_POST["username"]);
+$password = strip_tags($_POST["password"]);
+$email = strip_tags($_POST["email"]);
 $admin  = $_POST["admin"];
 
     $statement = $pdo->prepare("SELECT * FROM users WHERE username = :username ");
