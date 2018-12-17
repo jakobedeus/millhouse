@@ -29,11 +29,13 @@ class PostsEdit {
     }
 
     public function updatePost() {
-        // If hidden value $_POST["single_post_id_update"] is set, run this code. 
+        // If hidden value $_POST["single_post_id_update"] is set, run this code.
+        // strip_tags to secure input fields from inserting harmful code to database.
+ 
         $id = $_POST["single_post_id_update"];
         $image = $_FILES["image"];
-        $title = $_POST["title"];
-        $content = $_POST["content"];
+        $title = strip_tags($_POST["title"]);
+        $content = strip_tags($_POST["content"]);
         $id_category = $_POST["category_list"];
         foreach($id_category as $key => $value) {
             $id_category = $value;

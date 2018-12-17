@@ -69,6 +69,11 @@ include "includes/functions.php";
                             );
                             echo $text;
                             ?>
+                            <!-- form to register users. We created a column in users table called "admin"
+                                for users who register we set a hidden value to "not_admin" that inputs in 
+                                to this column. The admin user is set to is_admin directly in the database.
+                                We did this so no one could set their role to admin from the website.
+                            -->
                             <form action="includes/register.php" method="POST">
                                 <label for="reg_usernam">Your Username</label>
                                 <input name="username" id="reg_username" type="text">

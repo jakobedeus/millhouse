@@ -57,9 +57,21 @@ if (isset($_POST["single_post_id_delete"])){
 
 // If hidden value is set in $_POST when updating post this script will run and redirect.
 if(isset($_POST["single_post_id_update"])){
-    if(empty($_POST["title"]) || empty($_POST["content"])) {
+    if(empty($_POST["title"]) || empty($_POST["category_list"]) || empty($_POST["content"])) {
         header ("Location: ../views/post.php?id=".$_POST["single_post_id_update"]."&fail=true");
       
+    }elseif ($file_type != "jpg" && $file_type != "png" && $file_type != "jpeg" && $file_type != "gif" && $file_type != "") {
+
+        //If-statement we set to limit the type of an file approved to be uploaded. 
+
+        header ("location: ../views/post.php?id=".$_POST["single_post_id_update"]."&file_wrong_file_type=true");
+            
+
+    }elseif($_FILES["image"]["size"] > 1000000 ){ 
+
+        //If-statement we set to limit the size of an file approved to be uploaded.
+       
+        header ("location: ../views/post.php?id=".$_POST["single_post_id_update"]."&file_too_big=true");
     }else{
 
         $update = new PostsEdit($pdo);

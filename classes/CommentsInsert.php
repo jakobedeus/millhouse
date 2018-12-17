@@ -10,10 +10,12 @@ class CommentsInsert {
     }
 
     public function insertComments() {
-      //Redefine variables to make them more understandable and easier to use
+      //Redefine variables to make them more understandable and easier to use.
+      // trip_tags to secure input fields from inserting harmful code to database.
+
       $created_by = $_SESSION["user_id"];
-      $content = $_POST["content"];
-      $post_id_insert = $_POST["comment_post_id"];
+      $content = strip_tags($_POST["content"]);
+      $post_id_insert = strip_tags($_POST["comment_post_id"]);
       date_default_timezone_set("Europe/Stockholm");
       $datetime = date('Y/m/d H:i');    
 
