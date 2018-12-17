@@ -32,7 +32,7 @@ class PostsFetch {
     // Fetch all posts from table catgories.
     public function fetchCategory() {
         $fetch_category = $this->pdo->prepare(
-        "SELECT category FROM categories");
+        "SELECT category, id FROM categories");
         $fetch_category->execute();
         $all_category = $fetch_category->fetchAll(PDO::FETCH_ASSOC);
         
@@ -77,7 +77,7 @@ class PostsFetch {
         $fetch_single_post_statement = $this->pdo->prepare(
             
             "SELECT posts.title, posts.date, posts.image, posts.content, 
-            posts.id, categories.category, users.username
+            posts.id, categories.category, users.username, posts.id_category
             FROM posts
             JOIN categories
             ON posts.id_category = categories.id
