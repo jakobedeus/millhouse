@@ -30,7 +30,7 @@ if(empty($_SESSION["username"])){
     <main class="container  justify-content-between">
         <div class="row">
             <div class="col-7">
-                <?php 
+                <?php
                 // Echo a welcome message with session username
                 if(isset($_SESSION["username"])){ ?>
                     <h3 class="font_h3 welcome_text">Welcome <strong class="text-capitalize"><?=$_SESSION["username"];?></strong></h3>
@@ -38,7 +38,7 @@ if(empty($_SESSION["username"])){
                 }?>
 
             </div>
-            <div class="col-5">
+            <div class="col-12">
                 <p class="feed_inspiration_link">Go to our inspiration site: <a class="highlight" href="inspiration.php"><span>Luxury is in each detail.</span></a>
             </div>
         </div>
@@ -52,18 +52,18 @@ if(empty($_SESSION["username"])){
             $text = access_denied_messages(
                 "create_post_fail", "You need to fill in all fields to create a post."
             );
-            echo $text; 
-            
+            echo $text;
+
             $text = access_denied_messages(
                 "file_too_big", "Sorry, your file is too large. Please make sure it's no larger than 1MB. Even better
                 if it's no bigger than 500kb."
             );
-            echo $text; 
+            echo $text;
 
             $text = access_denied_messages(
                 "file_wrong_file_type", "Oh no! Don't you dare! Only JPG, JPEG, PNG & GIF files are allowed."
             );
-            echo $text; 
+            echo $text;
             ?>
             <div class="row justify-content-center mb-5">
                 <div class="col-10 m-0 p-0 collapse" id="collapseExample">
@@ -75,15 +75,15 @@ if(empty($_SESSION["username"])){
         // Loop posts with selected category
         if(isset($_GET["category"])){
             // Using array_reverse to present the latest post first
-            foreach(array_reverse($post_category) as $category): 
+            foreach(array_reverse($post_category) as $category):
                 include "../includes/posts-by-category.php";
             endforeach;
 
-        }else{ 
-            // Ending if-statement for if categories is set. 
+        }else{
+            // Ending if-statement for if categories is set.
             // Using array_reverse to present the latest post first
             // Loop all posts
-            foreach(array_reverse($all_posts) as $post): 
+            foreach(array_reverse($all_posts) as $post):
                 include "../includes/all-posts.php";
             endforeach;
         }
@@ -110,4 +110,3 @@ if(empty($_SESSION["username"])){
         $("#text").summernote();
     });
 </script>
-
