@@ -5,6 +5,7 @@
         - <a class="blog_post_link"  href="feed.php?category=<?=$post["category"];?>">
         <?=$post["category"];?></a><?php $post["category"];?> 
         </p>
+
         <p><?= $post["content"];?></p>
         <hr>
     </div> <!-- closing col-12-->
@@ -30,10 +31,12 @@
             <button class="btn btn-light icon_buttons" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <i class="fas fa-wrench icon" aria-label="edit post"></i></button>
             <!-- Validate if all fields filled -->
-            <?php $text = access_denied_messages(
+            <?php 
+            $text = access_denied_messages(
                 "fail", "You need to fill in all fields to update a post."
             );
-            echo $text; 
+            echo $text;
+
             $text = access_denied_messages(
                 "file_too_big", "Sorry, your file is too large. Please make sure it's no larger than 1MB. Even better
                 if it's no bigger than 500kb."
@@ -45,8 +48,7 @@
             );
             echo $text;
             
-            ?>           
-        <?php 
-        } ?> <!-- closing if-statement for admin access-->
+        } 
+        ?> <!-- closing if-statement for admin access-->
     </div><!-- closing col-10-->
 </div> <!-- closing row-->

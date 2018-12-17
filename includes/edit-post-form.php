@@ -13,7 +13,8 @@
                 ?> <option value="<?= $category_value["id"] ?>" selected><?= $category_value["category"] ?></option> 
                 <?php
             } else {?>
-                <option value="<?= $category_value["id"]  ?>"><?= $category_value["category"] ?></option><?php
+                <option value="<?= $category_value["id"]  ?>"><?= $category_value["category"] ?></option>
+            <?php
             }  
         }
         ?>

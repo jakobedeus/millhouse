@@ -11,26 +11,27 @@
                 <!-- If the text of the post is larger than 300 characters, show read more button -->
                 <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Read more</p></a>
 
-                <?php
+            <?php
             }else {
-                ?>
+            ?>
                 <p><?= $category["content"];?></p>
                 <!-- If not, show go to post button -->
                 <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Go to post</p></a>
-                <?php
-            }?>
+            <?php
+            }
+            ?>
         </div> <!-- closing blog_posts_content_text-->
         <div class="row">
             <div class="col-6 col-md-3 d-flex align-self-center justify-content-center pt-2 inline_form_post">
                 <?php 
-                    foreach($comments_amount_for_specific_post as $comment):
-                        // Display number of comments for each post. Using a select query to count number or rows
-                        // and return in as totalcomment.
-                        if($comment["id"] === $category["id"]){?>
-                            <p><?=$comment["totalcomment"];?> comment (s)</p>
-                            <?php
-                        }
-                    endforeach;
+                foreach($comments_amount_for_specific_post as $comment):
+                    // Display number of comments for each post. Using a select query to count number or rows
+                    // and return in as totalcomment.
+                    if($comment["id"] === $category["id"]){?>
+                        <p><?=$comment["totalcomment"];?> comment (s)</p>
+                        <?php
+                    }
+                endforeach;
                 ?>
             </div>
             <div class="col-6 col-md-2 d-flex align-self-center inline_form_post">

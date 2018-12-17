@@ -13,5 +13,6 @@
             <button class="btn btn-light icon_buttons" type="submit"><i class="far fa-trash-alt delete_comment_btn" aria-label="delete comment"></i></button>
         </form>
     <?php
-    }?>
+    }
+    ?>
 </div><!-- closing col-12-->
