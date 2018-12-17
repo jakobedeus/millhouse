@@ -33,7 +33,19 @@
             <?php $text = access_denied_messages(
                 "fail", "You need to fill in all fields to update a post."
             );
-            echo $text; ?>           
+            echo $text; 
+            $text = access_denied_messages(
+                "file_too_big", "Sorry, your file is too large. Please make sure it's no larger than 1MB. Even better
+                if it's no bigger than 500kb."
+            );
+            echo $text; 
+
+            $text = access_denied_messages(
+                "file_wrong_file_type", "Oh no! Don't you dare! Only JPG, JPEG, PNG & GIF files are allowed."
+            );
+            echo $text;
+            
+            ?>           
         <?php 
         } ?> <!-- closing if-statement for admin access-->
     </div><!-- closing col-10-->

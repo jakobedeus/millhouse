@@ -17,8 +17,8 @@ class PostsInsert {
             
             // Redefine variables from $_POST.
             $image = $_FILES["image"];
-            $image_text = $_POST["text"];
-            $title = $_POST["title"];
+            $image_text = strip_tags($_POST["text"]);
+            $title = strip_tags($_POST["title"]);
             $user_id = $_SESSION["user_id"];
             // Set the correct timezone.
             date_default_timezone_set("Europe/Stockholm");
