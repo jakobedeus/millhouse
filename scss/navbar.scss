@@ -23,7 +23,12 @@ nav {
     width: 20%;
   }
 
-  .category_container { 
+  .category_container {
+    
+    a:link {
+      color: $primary_color_1;
+      font-weight: bold;
+    }
     
     a:visited {
       color: $primary_color_1;
