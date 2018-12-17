@@ -10,15 +10,20 @@ session_start();
 include "../includes/head-views.php";
 include "../includes/header-views.php";
 
+
+foreach($_POST["category_list"] as $key => $value) {
+    $_POST["category_list"] = $value;
+
+}
 $target_file = $temporary_location . basename($_FILES["image"]["name"]);
 $image = $_FILES["image"];
 $file_type = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 $temporary_location = $image["tmp_name"];
 $new_location = "../images/uploads/" . $image["name"];
-
+      
 if(isset($_POST["new_post"])){
-    if(empty($_POST["title"]) /*|| empty($_FILES["image"])*/ || empty($_POST["text"]) || empty($_POST["category_list"])) {
+    if(empty($_POST["title"]) || empty($_FILES["image"]["name"]) || empty($_POST["text"]) || empty($_POST["category_list"])) {
     
       header ("location: ../views/feed.php?create_post_fail=true");
     

@@ -15,15 +15,16 @@ nav {
     margin:2em 0;
   }
 
-  a {
-    font-family: $body_font;
-  }
-
   .logo_container {
     width: 20%;
   }
 
-  .category_container { 
+  .category_container {
+    
+    a:link {
+      color: $primary_color_1;
+      font-weight: bold;
+    }
     
     a:visited {
       color: $primary_color_1;
