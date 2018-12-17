@@ -5,7 +5,7 @@ include "../includes/head-views.php";
 
 if(empty($_SESSION["username"])){
 
-    header('Location: ../index.php');
+    header("Location: ../index.php");
 
 
 }else {
