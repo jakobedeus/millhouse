@@ -52,7 +52,19 @@ if(empty($_SESSION["username"])){
             $text = access_denied_messages(
                 "create_post_fail", "You need to fill in all fields to create a post."
             );
-            echo $text; ?>
+            echo $text; 
+            
+            $text = access_denied_messages(
+                "file_too_big", "Sorry, your file is too large. Please make sure it's no larger than 1MB. Even better
+                if it's no bigger than 500kb."
+            );
+            echo $text; 
+
+            $text = access_denied_messages(
+                "file_wrong_file_type", "Oh no! Don't you dare! Only JPG, JPEG, PNG & GIF files are allowed."
+            );
+            echo $text; 
+            ?>
             <div class="row justify-content-center mb-5">
                 <div class="col-10 m-0 p-0 collapse" id="collapseExample">
                     <?php include "../includes/new-post-form.php"; ?>
