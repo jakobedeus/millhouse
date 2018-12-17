@@ -27,7 +27,7 @@
                         // Display number of comments for each post. Using a select query to count number or rows
                         // and return in as totalcomment.
                         if($comment["id"] === $category["id"]){?>
-                            <p><?=$comment["totalcomment"];?> comments</p>
+                            <p><?=$comment["totalcomment"];?> comment (s)</p>
                             <?php
                         }
                     endforeach;
