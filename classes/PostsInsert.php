@@ -16,6 +16,8 @@ class PostsInsert {
         if (isset($_POST["title"])) {
             
             // Redefine variables from $_POST.
+            // strip_tags to secure input fields from inserting harmful code to database.
+
             $image = $_FILES["image"];
             $image_text = strip_tags($_POST["text"]);
             $title = strip_tags($_POST["title"]);

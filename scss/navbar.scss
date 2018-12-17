@@ -1,7 +1,7 @@
 @import 'variables';
 
 .logo_container img {
-  height: 180px;
+  height: 150px;
 }
 
 nav {
@@ -39,7 +39,7 @@ nav {
     ul li {
       display: flex;
       margin: 1.2em;
-      font-size: 1.7rem;
+      font-size: 1.5rem;
 
       .underline {
         font-weight: bold;
@@ -53,4 +53,9 @@ nav {
   .contact, .logout {
     margin:0;
   }
+
+  .logo_container img {
+    height: 180px;
+  }
+  
 }

@@ -1,5 +1,5 @@
 <div class="row blog_posts mb-5 justify-content-between">
-    <div class="col-12 col-md-6 blog_post_content">
+    <div class="col-12 mb-3 col-md-6 blog_post_content">
         <a class="blog_title_link" href="post.php?id=<?= $post["id"]; ?>"><h2 class="font_h2">
         <?= $post["title"]; ?></h2></a>
         <p><i class="fas fa-clock" aria-label="time icon"></i> <?= $post["date"]?>

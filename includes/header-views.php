@@ -1,13 +1,13 @@
 
 <?php
 // All the includes we need for the site.
-include "../classes/PostsFetch.php";
-include "../classes/PostsEdit.php";
-include "../classes/PostsInsert.php";
-include "../classes/CommentsEdit.php";
-include "../classes/CommentsFetch.php";
-include "../classes/CommentsInsert.php";
-include "../includes/functions.php";
+include '../classes/PostsFetch.php';
+include '../classes/PostsEdit.php';
+include '../classes/PostsInsert.php';
+include '../classes/CommentsEdit.php';
+include '../classes/CommentsFetch.php';
+include '../classes/CommentsInsert.php';
+include '../includes/functions.php';
 
 
 /*
@@ -25,26 +25,30 @@ $all_category= $category->fetchCategory();
         </div>
         <nav class="row p-4">
             <div class="col-6 col-md-3 align-self-center text-center contact">
-                <a href="mailto:info@millhouse.com"><button class="nav_button_inverted_dark text-center"><i class=" order-1 fas fa-envelope"></i> GET IN TOUCH</button></a>
+                <a href="mailto:info@millhouse.com"><button class="nav_button_inverted_dark text-center">
+                <i class=" order-1 fas fa-envelope"></i> GET IN TOUCH</button></a>
             </div>
             <div class="col-12 order-3 col-md-6 order-md-2 pt-4 category_container d-flex justify-content-center">
                 <ul>
-                  <li><a href="feed.php"><p>ALL</p></a></li>
+                    <li><a href="feed.php"><p>ALL</p></a></li>
                 </ul>
                 <?php
                 foreach($all_category as $category_link):
-                $product_category = $category_link["category"];
+                    $product_category = $category_link['category'];
                 ?>
                     <ul>
                         <?php  
                         // If $_GET["category"] is active, add underline to a:link.
-                        if(isset($_GET["category"]) && $_GET["category"]==$product_category)  {?>
-                        <li><a href="feed.php?category=<?= $product_category; ?>"><p class="underline text-uppercase"><?= $product_category; ?></p></a></li>
+                        if(isset($_GET["category"]) && $_GET["category"]==$product_category) {?>
+                            <li><a href="feed.php?category=<?= $product_category; ?>"><p class="underline text-uppercase">
+                            <?= $product_category; ?></p></a></li>
             
                         <?php 
                         // else present a:link without underline.
-                        } else { ?>
-                        <li><a href="feed.php?category=<?= $product_category; ?>"><p class="text-uppercase"><?= $product_category; ?></p></a></li>
+                        } else { 
+                        ?>
+                            <li><a href="feed.php?category=<?= $product_category; ?>"><p class="text-uppercase">
+                            <?= $product_category; ?></p></a></li>
                         <?php
                         }?>
 

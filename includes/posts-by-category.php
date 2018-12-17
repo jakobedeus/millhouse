@@ -1,5 +1,5 @@
 <div class="row blog_posts mb-5 justify-content-between">
-    <div class="col-12 col-md-6 blog_post_content">
+    <div class="col-12 mb-3 col-md-6 blog_post_content">
         <a class="blog_title_link" href="post.php?id=<?= $category["id"]; ?>"><h2 class="font_h2"><?= $category["title"]; ?></h2></a>
         <p><i class="fas fa-clock" aria-label="time icon"></i> <?= $category["date"] . " - " ?><a class="blog_post_link" href="feed.php?category=<?=$category["category"];?>"><?=$category["category"];?></a></p>
         <div class="blog_posts_content_text">
@@ -11,26 +11,27 @@
                 <!-- If the text of the post is larger than 300 characters, show read more button -->
                 <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Read more</p></a>
 
-                <?php
+            <?php
             }else {
-                ?>
+            ?>
                 <p><?= $category["content"];?></p>
                 <!-- If not, show go to post button -->
                 <a class="blog_post_link" href="post.php?id=<?= $category["id"]; ?>"><p>Go to post</p></a>
-                <?php
-            }?>
+            <?php
+            }
+            ?>
         </div> <!-- closing blog_posts_content_text-->
         <div class="row">
             <div class="col-6 col-md-3 d-flex align-self-center justify-content-center pt-2 inline_form_post">
                 <?php 
-                    foreach($comments_amount_for_specific_post as $comment):
-                        // Display number of comments for each post. Using a select query to count number or rows
-                        // and return in as totalcomment.
-                        if($comment["id"] === $category["id"]){?>
-                            <p><?=$comment["totalcomment"];?> comment (s)</p>
-                            <?php
-                        }
-                    endforeach;
+                foreach($comments_amount_for_specific_post as $comment):
+                    // Display number of comments for each post. Using a select query to count number or rows
+                    // and return in as totalcomment.
+                    if($comment["id"] === $category["id"]){?>
+                        <p><?=$comment["totalcomment"];?> comment (s)</p>
+                        <?php
+                    }
+                endforeach;
                 ?>
             </div>
             <div class="col-6 col-md-2 d-flex align-self-center inline_form_post">
